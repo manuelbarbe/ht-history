@@ -1,0 +1,27 @@
+﻿HT-History by manuhell
+
++ added
+- removed
+C changed
+
+v0.0.4
+-----------------
++ Goal details list sortable
++ Match type at goal details list
++ Current players highlighted
++ Scorers sortable by name
+
+v0.0.3
+-----------------
++ Scorers sortable by columns (except by Name)
+
+v0.0.2
+-----------------
++ using OAuth access token of user
+
+v0.0.1
+-----------------
++ overall top scorers
++ scorers per opponent
++ list of all goals of specified scorer
++ storing downloaded chpp files in APP/data 
