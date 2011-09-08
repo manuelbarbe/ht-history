@@ -1,5 +1,0 @@
-C:\Users\Manuel\Documents\Visual Studio 2010\Projects\HT-History\DevDefined.OAuth\src\DevDefined.OAuth\bin\Release\DevDefined.OAuth.dll
-C:\Users\Manuel\Documents\Visual Studio 2010\Projects\HT-History\DevDefined.OAuth\src\DevDefined.OAuth\bin\Release\DevDefined.OAuth.pdb
-C:\Users\Manuel\Documents\Visual Studio 2010\Projects\HT-History\DevDefined.OAuth\src\DevDefined.OAuth\obj\Release\ResolveAssemblyReference.cache
-C:\Users\Manuel\Documents\Visual Studio 2010\Projects\HT-History\DevDefined.OAuth\src\DevDefined.OAuth\obj\Release\DevDefined.OAuth.dll
-C:\Users\Manuel\Documents\Visual Studio 2010\Projects\HT-History\DevDefined.OAuth\src\DevDefined.OAuth\obj\Release\DevDefined.OAuth.pdb
