@@ -157,6 +157,11 @@ namespace HtHistory.Pages
                     item.Font = new Font(item.Font, FontStyle.Bold);
                 }
 
+                if (m.Player != null && m.Player.ID == 0)
+                {
+                    item.BackColor = Color.Gray;
+                }
+
                 object value = 0;
 
                 value = m.TotalItems.Count;
