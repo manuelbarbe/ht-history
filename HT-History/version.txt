@@ -4,6 +4,10 @@
 - removed
 C changed
 
+v0.0.5
+-----------------
++ Page "Appearances"
+
 v0.0.4
 -----------------
 + Goal details list sortable
