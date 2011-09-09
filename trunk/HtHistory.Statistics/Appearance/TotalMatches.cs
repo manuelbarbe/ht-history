@@ -104,9 +104,10 @@ namespace HtHistory.Statistics.Appearance
 
                 foreach (MatchEvent ev in md.Events)
                 {
-                    if (ev.Type == MatchEvent.MatchEventType.RedCardSecondWarningCheating ||
+                    if ((ev.TeamId == teamId) &&
+                        (ev.Type == MatchEvent.MatchEventType.RedCardSecondWarningCheating ||
                         ev.Type == MatchEvent.MatchEventType.RedCardSecondWarningNastyPlay ||
-                        ev.Type == MatchEvent.MatchEventType.RedCardWithoutWarning)
+                        ev.Type == MatchEvent.MatchEventType.RedCardWithoutWarning))
                     {
 
                         Player player = new Player(ev.PlayerId, Player.UnknownName);
