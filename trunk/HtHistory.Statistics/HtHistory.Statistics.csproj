@@ -42,10 +42,11 @@
   <ItemGroup>
     <Compile Include="Appearance\TotalMatches.cs" />
     <Compile Include="MatchGetter.cs" />
-    <Compile Include="PlayerStatisticItemCollection.cs" />
+    <Compile Include="Players\MatchAppearance.cs" />
+    <Compile Include="Players\StandardPlayerStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scoring\TopScorers.cs" />
-    <Compile Include="PlayerStatisticItem.cs" />
+    <Compile Include="Players\PlayerStatisticItem.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
