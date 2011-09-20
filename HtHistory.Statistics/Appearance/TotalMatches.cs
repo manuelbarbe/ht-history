@@ -61,8 +61,8 @@ namespace HtHistory.Statistics.Appearance
                 }
 
                 IEnumerable<Lineup.LineupItem> items;
-                if (md.HomeTeam.ID == teamId) items = md.HomeLineup.LineupItems.Values;
-                else if (md.AwayTeam.ID == teamId) items = md.AwayLineup.LineupItems.Values;
+                if (md.HomeTeam.ID == teamId) items = md.HomeLineup.LineupItems;
+                else if (md.AwayTeam.ID == teamId) items = md.AwayLineup.LineupItems;
                 else
                 {
                     HtLog.Warn("Received a bad match ({0})", md);

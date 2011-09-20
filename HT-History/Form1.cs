@@ -29,51 +29,7 @@ namespace HtHistory
         {
             try
             {
-                string token = null, tokenSecret = null;
-
-                string fullAuthDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "auth");
-                string filepath = Path.Combine(fullAuthDirectoryPath, "accesstoken");
-
-                if (File.Exists(filepath))
-                {
-                    using (Stream file = File.OpenRead(filepath))
-                    {
-                        TextReader r = new StreamReader(file, Encoding.UTF8);
-                        token = r.ReadLine();
-                        tokenSecret = r.ReadLine();
-                    }
-                }
-                else
-                {
-                    using (AuthorizeDialog authDlg = new AuthorizeDialog())
-                    {
-                        DialogResult res = authDlg.ShowDialog();
-                        if (res != DialogResult.OK)
-                        {
-                            Application.Exit();
-                        }
-                        else
-                        {
-                            token = authDlg.AccessToken;
-                            tokenSecret = authDlg.AccessTokenSecret;
-                            if (!Directory.Exists(fullAuthDirectoryPath))
-                            {
-                                Directory.CreateDirectory(fullAuthDirectoryPath);
-                            }
-                            File.WriteAllLines(filepath, new[] { token, tokenSecret }, Encoding.UTF8);
-                        }
-                    }
-                }
-
-
-                IChppAccessor accessor = new ChppFilesystemAccessor(new ChppOnlineAccessor(token, tokenSecret));
-                DataBridgeFactory dbf = new DataBridgeFactory();
-                dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
-                dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
-                dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
-                dbf.PlayersBridge = new ChppPlayersBridge(accessor);
-                Environment.DataBridgeFactory = dbf;
-
+                SetOnlineMode();
                 UpdateTeam();
                 UpdateOpponent();
             }
@@ -81,6 +37,64 @@ namespace HtHistory
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void SetOnlineMode()
+        {
+            string token = null, tokenSecret = null;
+
+            string fullAuthDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "auth");
+            string filepath = Path.Combine(fullAuthDirectoryPath, "accesstoken");
+
+            if (File.Exists(filepath))
+            {
+                using (Stream file = File.OpenRead(filepath))
+                {
+                    TextReader r = new StreamReader(file, Encoding.UTF8);
+                    token = r.ReadLine();
+                    tokenSecret = r.ReadLine();
+                }
+            }
+            else
+            {
+                using (AuthorizeDialog authDlg = new AuthorizeDialog())
+                {
+                    DialogResult res = authDlg.ShowDialog();
+                    if (res != DialogResult.OK)
+                    {
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        token = authDlg.AccessToken;
+                        tokenSecret = authDlg.AccessTokenSecret;
+                        if (!Directory.Exists(fullAuthDirectoryPath))
+                        {
+                            Directory.CreateDirectory(fullAuthDirectoryPath);
+                        }
+                        File.WriteAllLines(filepath, new[] { token, tokenSecret }, Encoding.UTF8);
+                    }
+                }
+            }
+
+            IChppAccessor accessor = new ChppFilesystemAccessor(new ChppOnlineAccessor(token, tokenSecret));
+            DataBridgeFactory dbf = new DataBridgeFactory();
+            dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
+            dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
+            dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
+            dbf.PlayersBridge = new ChppPlayersBridge(accessor);
+            Environment.DataBridgeFactory = dbf;
+        }
+
+        private void SetOfflineMode()
+        {
+            IChppAccessor accessor = new ChppFilesystemAccessor();
+            DataBridgeFactory dbf = new DataBridgeFactory();
+            dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
+            dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
+            dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
+            dbf.PlayersBridge = new ChppPlayersBridge(accessor);
+            Environment.DataBridgeFactory = dbf;
         }
 
         private void clearCacheToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,11 +179,48 @@ namespace HtHistory
 
             if (appearancePage1.Visible)
                 appearancePage1.StartWorking();
+
+            if (overviewPage1.Visible)
+                overviewPage1.StartWorking();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void offlineModeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (offlineModeToolStripMenuItem.Checked)
+                {
+                    SetOnlineMode();
+                    offlineModeToolStripMenuItem.Checked = false;
+                }
+                else
+                {
+                    SetOfflineMode();
+                    offlineModeToolStripMenuItem.Checked = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void proxyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (WebProxyDialog diag = new WebProxyDialog())
+            {
+                if (diag.ShowDialog() == DialogResult.OK)
+                {
+                    // TODO store proxy settings
+                }
+
+
+            }
         }
     }
 }
