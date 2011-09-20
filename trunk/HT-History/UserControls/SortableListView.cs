@@ -115,9 +115,10 @@ namespace HtHistory.UserControls
 
             return DefaultSorter;
         }
-        public void SetSorter(int column, IComparer<ListViewItem.ListViewSubItem> sorter)
+        public SortableListView SetSorter(int column, IComparer<ListViewItem.ListViewSubItem> sorter)
         {
             _sorters[column] = sorter;
+            return this;
         }
 
         #endregion
