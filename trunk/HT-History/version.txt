@@ -4,6 +4,11 @@
 - removed
 C changed
 
+v.0.0.6
+-----------------
++ Page "Overview"
++ Matches played and goals by season
+
 v0.0.5
 -----------------
 + Page "Appearances"
