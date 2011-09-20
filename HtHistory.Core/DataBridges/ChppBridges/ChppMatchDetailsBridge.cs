@@ -72,7 +72,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
         private Lineup GetLineup(uint matchId, uint teamId)
         {
-            string url = new StringBuilder("file=matchlineup&version=1.4&matchID=").Append(matchId)
+            string url = new StringBuilder("file=matchlineup&version=1.6&matchID=").Append(matchId)
                                        .Append("&teamID=").Append(teamId).ToString();
                                        
             XDocument doc = XDocument.Load(ChppAccessor.GetDataReader(url, DataFlags.Static));
@@ -90,7 +90,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
             {
                 Lineup.LineupRole role = (Lineup.LineupRole) int.Parse(elPlayer.AssertElement("RoleID").Value);
                 Player player = MatchParserHelper.GetPlayer(elPlayer);
-                lineup.LineupItems.Add(role, new Lineup.LineupItem() { Role = role, Player = player });
+                lineup.LineupItems.Add(new Lineup.LineupItem() { Role = role, Player = player });
             }
 
             return lineup;

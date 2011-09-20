@@ -72,6 +72,7 @@
     <Compile Include="DataContainers\Team.cs" />
     <Compile Include="DataContainers\TeamDetails.cs" />
     <Compile Include="DataContainers\User.cs" />
+    <Compile Include="ExtensionMethods\DataContainerExtensions.cs" />
     <Compile Include="ExtensionMethods\EnumExtensions.cs" />
     <Compile Include="ExtensionMethods\XContainerExtensions.cs" />
     <Compile Include="HtLog.cs" />

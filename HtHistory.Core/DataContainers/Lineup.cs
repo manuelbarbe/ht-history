@@ -68,9 +68,9 @@ namespace HtHistory.Core.DataContainers
 
         public Lineup()
         {
-            LineupItems = new Dictionary<LineupRole, LineupItem>();
+            LineupItems = new List<LineupItem>();
         }
 
-        public IDictionary<LineupRole, LineupItem> LineupItems { get; set; }
+        public IList<LineupItem> LineupItems { get; set; }
     }
 }
