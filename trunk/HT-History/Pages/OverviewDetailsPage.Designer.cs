@@ -28,14 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sortableListViewOverview = new HtHistory.UserControls.SortableListView();
             this.sortableListViewDetails = new HtHistory.UserControls.SortableListView();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.sortableListViewOverview);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.sortableListViewDetails);
+            this.splitContainer1.Size = new System.Drawing.Size(750, 500);
+            this.splitContainer1.SplitterDistance = 250;
+            this.splitContainer1.TabIndex = 1;
             // 
             // sortableListViewOverview
             // 
@@ -62,24 +80,6 @@
             this.sortableListViewDetails.UseCompatibleStateImageBehavior = false;
             this.sortableListViewDetails.View = System.Windows.Forms.View.Details;
             // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.sortableListViewOverview);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.sortableListViewDetails);
-            this.splitContainer1.Size = new System.Drawing.Size(750, 500);
-            this.splitContainer1.SplitterDistance = 250;
-            this.splitContainer1.TabIndex = 1;
-            // 
             // OverviewDetailsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +100,6 @@
         protected UserControls.SortableListView sortableListViewOverview;
         protected UserControls.SortableListView sortableListViewDetails;
         private System.Windows.Forms.SplitContainer splitContainer1;
-
+        
     }
 }

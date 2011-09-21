@@ -47,10 +47,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.scorerPage1 = new HtHistory.Pages.ScorerPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.appearancePage1 = new HtHistory.Pages.AppearancePage();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -189,7 +189,7 @@
             // 
             this.proxyToolStripMenuItem.Enabled = false;
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.proxyToolStripMenuItem.Text = "Proxy";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.proxyToolStripMenuItem_Click);
             // 
@@ -238,6 +238,14 @@
             this.tabPage3.Text = "Overview";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // overviewPage1
+            // 
+            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
+            this.overviewPage1.Name = "overviewPage1";
+            this.overviewPage1.Size = new System.Drawing.Size(903, 467);
+            this.overviewPage1.TabIndex = 0;
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.scorerPage1);
@@ -249,6 +257,14 @@
             this.tabPage1.Text = "Scorers";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // scorerPage1
+            // 
+            this.scorerPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scorerPage1.Location = new System.Drawing.Point(3, 3);
+            this.scorerPage1.Name = "scorerPage1";
+            this.scorerPage1.Size = new System.Drawing.Size(903, 467);
+            this.scorerPage1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.appearancePage1);
@@ -259,22 +275,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Appearance";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // overviewPage1
-            // 
-            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
-            this.overviewPage1.Name = "overviewPage1";
-            this.overviewPage1.Size = new System.Drawing.Size(903, 467);
-            this.overviewPage1.TabIndex = 0;
-            // 
-            // scorerPage1
-            // 
-            this.scorerPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scorerPage1.Location = new System.Drawing.Point(3, 3);
-            this.scorerPage1.Name = "scorerPage1";
-            this.scorerPage1.Size = new System.Drawing.Size(903, 467);
-            this.scorerPage1.TabIndex = 0;
             // 
             // appearancePage1
             // 
