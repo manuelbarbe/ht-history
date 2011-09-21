@@ -26,8 +26,29 @@ namespace HtHistory.Pages
             InitializeComponent();
         }
 
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
+
         private void InitializeComponent()
         {
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToClipboardToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 48);
+            // 
+            // copyToClipboardToolStripMenuItem
+            // 
+            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
+            this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+
             this.sortableListViewOverview.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
                 new ColumnHeader() { Text = "TM", TextAlign = HorizontalAlignment.Center, Width = 40 },
@@ -62,7 +83,7 @@ namespace HtHistory.Pages
                 .SetSorter(14, UserControls.SortableListView.TagSorter<DateTime>());
 
             this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
-
+            this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
 
             this.sortableListViewDetails.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
@@ -96,6 +117,8 @@ namespace HtHistory.Pages
                 .SetSorter(12, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(13, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(14, UserControls.SortableListView.TagSorter<DateTime>());
+
+            this.contextMenuStrip1.ResumeLayout(false);
         }
 
         public void OverviewSelectedIndexChanged(object sender, EventArgs e)
@@ -275,6 +298,30 @@ namespace HtHistory.Pages
 
                 sortableListViewOverview.Items.Add(item);
             }   
+        }
+
+        private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder b = new StringBuilder("[table][tr]");
+            foreach (ColumnHeader ch in sortableListViewOverview.Columns)
+            {
+                b.Append("[td]").Append(ch.Text).Append("[/td]");
+            }
+            b.Append("[/tr]").AppendLine();
+
+            foreach (ListViewItem lvi in sortableListViewOverview.Items)
+            {
+                b.Append("[tr]");
+                foreach (ListViewItem.ListViewSubItem lvsi in lvi.SubItems)
+                {
+                    b.Append("[td]").Append(lvsi.Text).Append("[/td]");
+                }
+                b.Append("[/tr]").AppendLine();
+            }
+
+            b.Append("[/table]");
+
+            Clipboard.SetText(b.ToString());
         }
    }
 }
