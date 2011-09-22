@@ -40,12 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appearance\TotalMatches.cs" />
     <Compile Include="MatchGetter.cs" />
     <Compile Include="Players\MatchAppearance.cs" />
     <Compile Include="Players\StandardPlayerStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scoring\TopScorers.cs" />
     <Compile Include="Players\PlayerStatisticItem.cs" />
   </ItemGroup>
   <ItemGroup />
