@@ -30,11 +30,21 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sortableListViewOverview = new HtHistory.UserControls.SortableListView();
-            this.sortableListViewDetails = new HtHistory.UserControls.SortableListView();
+            this.sortableListViewDetails1 = new HtHistory.UserControls.SortableListView();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.sortableListViewDetails2 = new HtHistory.UserControls.SortableListView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.sortableListViewDetails3 = new HtHistory.UserControls.SortableListView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -50,7 +60,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.sortableListViewDetails);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Size = new System.Drawing.Size(750, 500);
             this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 1;
@@ -68,17 +78,86 @@
             this.sortableListViewOverview.UseCompatibleStateImageBehavior = false;
             this.sortableListViewOverview.View = System.Windows.Forms.View.Details;
             // 
-            // sortableListViewDetails
+            // sortableListViewDetails1
             // 
-            this.sortableListViewDetails.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sortableListViewDetails.FullRowSelect = true;
-            this.sortableListViewDetails.Location = new System.Drawing.Point(0, 0);
-            this.sortableListViewDetails.MultiSelect = false;
-            this.sortableListViewDetails.Name = "sortableListViewDetails";
-            this.sortableListViewDetails.Size = new System.Drawing.Size(750, 246);
-            this.sortableListViewDetails.TabIndex = 0;
-            this.sortableListViewDetails.UseCompatibleStateImageBehavior = false;
-            this.sortableListViewDetails.View = System.Windows.Forms.View.Details;
+            this.sortableListViewDetails1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sortableListViewDetails1.FullRowSelect = true;
+            this.sortableListViewDetails1.Location = new System.Drawing.Point(3, 3);
+            this.sortableListViewDetails1.MultiSelect = false;
+            this.sortableListViewDetails1.Name = "sortableListViewDetails1";
+            this.sortableListViewDetails1.Size = new System.Drawing.Size(736, 214);
+            this.sortableListViewDetails1.TabIndex = 0;
+            this.sortableListViewDetails1.UseCompatibleStateImageBehavior = false;
+            this.sortableListViewDetails1.View = System.Windows.Forms.View.Details;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(750, 246);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.sortableListViewDetails1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(742, 220);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.sortableListViewDetails2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(742, 220);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // sortableListViewDetails2
+            // 
+            this.sortableListViewDetails2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sortableListViewDetails2.FullRowSelect = true;
+            this.sortableListViewDetails2.Location = new System.Drawing.Point(3, 3);
+            this.sortableListViewDetails2.MultiSelect = false;
+            this.sortableListViewDetails2.Name = "sortableListViewDetails2";
+            this.sortableListViewDetails2.Size = new System.Drawing.Size(736, 214);
+            this.sortableListViewDetails2.TabIndex = 1;
+            this.sortableListViewDetails2.UseCompatibleStateImageBehavior = false;
+            this.sortableListViewDetails2.View = System.Windows.Forms.View.Details;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.sortableListViewDetails3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(742, 220);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // sortableListViewDetails3
+            // 
+            this.sortableListViewDetails3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sortableListViewDetails3.FullRowSelect = true;
+            this.sortableListViewDetails3.Location = new System.Drawing.Point(3, 3);
+            this.sortableListViewDetails3.MultiSelect = false;
+            this.sortableListViewDetails3.Name = "sortableListViewDetails3";
+            this.sortableListViewDetails3.Size = new System.Drawing.Size(736, 214);
+            this.sortableListViewDetails3.TabIndex = 1;
+            this.sortableListViewDetails3.UseCompatibleStateImageBehavior = false;
+            this.sortableListViewDetails3.View = System.Windows.Forms.View.Details;
             // 
             // OverviewDetailsPage
             // 
@@ -91,6 +170,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -98,8 +181,14 @@
         #endregion
 
         protected UserControls.SortableListView sortableListViewOverview;
-        protected UserControls.SortableListView sortableListViewDetails;
+        protected UserControls.SortableListView sortableListViewDetails1;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TabControl tabControl1;
+        protected System.Windows.Forms.TabPage tabPage1;
+        protected System.Windows.Forms.TabPage tabPage2;
+        protected UserControls.SortableListView sortableListViewDetails2;
+        protected System.Windows.Forms.TabPage tabPage3;
+        protected UserControls.SortableListView sortableListViewDetails3;
         
     }
 }

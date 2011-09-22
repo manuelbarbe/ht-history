@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using HtHistory.Core;
 using System.Drawing;
+using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Pages
 {
@@ -49,6 +50,10 @@ namespace HtHistory.Pages
             this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
             this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
 
+            tabPage1.Text = "Seasons";
+            tabPage2.Text = "Matches";
+            tabPage3.Text = "Goals";
+
             this.sortableListViewOverview.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
                 new ColumnHeader() { Text = "TM", TextAlign = HorizontalAlignment.Center, Width = 40 },
@@ -85,7 +90,7 @@ namespace HtHistory.Pages
             this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
             this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
 
-            this.sortableListViewDetails.Columns.AddRange(new ColumnHeader[] {
+            this.sortableListViewDetails1.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
                 new ColumnHeader() { Text = "TM", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "TG", TextAlign = HorizontalAlignment.Center, Width = 40 },
@@ -102,7 +107,7 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
                 new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 } });
 
-            sortableListViewDetails
+            sortableListViewDetails1
                 .SetSorter(1, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(2, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(3, UserControls.SortableListView.TagSorter<int>())
@@ -118,14 +123,138 @@ namespace HtHistory.Pages
                 .SetSorter(13, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(14, UserControls.SortableListView.TagSorter<DateTime>());
 
+            this.sortableListViewDetails2.Columns.AddRange(new ColumnHeader[] {
+                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
+                new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
+                new ColumnHeader() { Text = "Position", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 }});
+
+            sortableListViewDetails2
+                .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
+                .SetSorter(1, UserControls.SortableListView.NullSorter)
+                .SetSorter(5, UserControls.SortableListView.TagSorter<int>());   
+
+            this.sortableListViewDetails3.Columns.AddRange(new ColumnHeader[] {
+                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
+                new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
+                new ColumnHeader() { Text = "Scored", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "Minute", TextAlign = HorizontalAlignment.Center, Width = 50 }});
+
+            sortableListViewDetails3
+                .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
+                .SetSorter(1, UserControls.SortableListView.NullSorter)
+                .SetSorter(5, UserControls.SortableListView.TagSorter<int>()); 
+
             this.contextMenuStrip1.ResumeLayout(false);
         }
 
         public void OverviewSelectedIndexChanged(object sender, EventArgs e)
         {
+            FillDetailsSeason();
+            FillDetailsMatches();
+            FillDetailsGoals();
+        }
+
+        private void FillDetailsGoals()
+        {
             try
             {
-                sortableListViewDetails.Items.Clear();
+                sortableListViewDetails3.Items.Clear();
+
+                if (sortableListViewOverview.SelectedItems.Count == 0) return;
+
+                PlayerStatisticItem<MatchAppearance> sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerStatisticItem<MatchAppearance>;
+
+                if (sitem == null) return;
+
+                foreach (var v in sitem.TotalItems.SafeEnum())
+                {
+                    foreach (Goal g in v.Goals.SafeEnum())
+                    {
+                        ListViewItem item = new ListViewItem(g.Match.Date.ToShortDateString());
+                        item.Tag = g.Match.Date;
+                        item.SubItems[0].Tag = item.Tag;
+
+                        object value = 0;
+
+                        value = new HtTime(g.Match.Date);
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                        value = g.Match.Type;
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                        value = g.Match;
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                        value = g.Score;
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                        value = g.Minute;
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                        sortableListViewDetails3.Items.Add(item);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void FillDetailsMatches()
+        {
+            try
+            {
+                sortableListViewDetails2.Items.Clear();
+
+                if (sortableListViewOverview.SelectedItems.Count == 0) return;
+
+                PlayerStatisticItem<MatchAppearance> sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerStatisticItem<MatchAppearance>;
+
+                if (sitem == null) return;
+
+                foreach (MatchAppearance d in sitem.TotalItems)
+                {
+                    ListViewItem item = new ListViewItem(d.Match.Date.ToShortDateString());
+                    item.Tag = d.Match.Date;
+                    item.SubItems[0].Tag = item.Tag;
+
+                    object value = 0;
+
+                    value = new HtTime(d.Match.Date);
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = d.Match.Type;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = d.Match;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = d.Role;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = -1;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    sortableListViewDetails2.Items.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void FillDetailsSeason()
+        {
+            try
+            {
+                sortableListViewDetails1.Items.Clear();
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
 
@@ -148,7 +277,7 @@ namespace HtHistory.Pages
                 }
 
 
-                foreach(var v in appearancesBySeason)
+                foreach (var v in appearancesBySeason)
                 {
                     var m = v.Value;
 
@@ -194,9 +323,9 @@ namespace HtHistory.Pages
                     value = m.Last;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((DateTime)value).ToShortDateString()) { Tag = value });
 
-                    sortableListViewDetails.Items.Add(item);
+                    sortableListViewDetails1.Items.Add(item);
                 }
-            
+
             }
             catch (Exception ex)
             {
@@ -237,7 +366,7 @@ namespace HtHistory.Pages
             }
 
             sortableListViewOverview.Items.Clear();
-            sortableListViewDetails.Items.Clear();
+            sortableListViewDetails1.Items.Clear();
 
             ResultData data = (ResultData)e.Result;
             

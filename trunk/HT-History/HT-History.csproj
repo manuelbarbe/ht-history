@@ -80,9 +80,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Images.resx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AppearancePage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Include="Pages\OverviewDetailsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,9 +87,6 @@
       <DependentUpon>OverviewDetailsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\OverviewPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Pages\ScorerPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="PleaseWaitDialog.cs">
