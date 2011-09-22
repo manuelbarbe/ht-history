@@ -10,7 +10,6 @@ using HtHistory.Core.DataContainers;
 using HtHistory.Core.DataBridges;
 using HtHistory.Core.DataBridges.ChppBridges;
 using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
-using HtHistory.Statistics.Scoring;
 using System.Reflection;
 using System.IO;
 using HtHistory.Core.DataBridges.CacheBridges;
@@ -174,12 +173,6 @@ namespace HtHistory
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (scorerPage1.Visible)
-                scorerPage1.StartWorking();
-
-            if (appearancePage1.Visible)
-                appearancePage1.StartWorking();
-
             if (overviewPage1.Visible)
                 overviewPage1.StartWorking();
         }

@@ -48,16 +48,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.overviewPage1 = new HtHistory.Pages.OverviewPage();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.scorerPage1 = new HtHistory.Pages.ScorerPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.appearancePage1 = new HtHistory.Pages.AppearancePage();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxTeamId
@@ -219,8 +213,6 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(15, 136);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -235,7 +227,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(909, 473);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Overview";
+            this.tabPage3.Text = "Players";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // overviewPage1
@@ -245,44 +237,6 @@
             this.overviewPage1.Name = "overviewPage1";
             this.overviewPage1.Size = new System.Drawing.Size(903, 467);
             this.overviewPage1.TabIndex = 0;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.scorerPage1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(909, 473);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Scorers";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // scorerPage1
-            // 
-            this.scorerPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scorerPage1.Location = new System.Drawing.Point(3, 3);
-            this.scorerPage1.Name = "scorerPage1";
-            this.scorerPage1.Size = new System.Drawing.Size(903, 467);
-            this.scorerPage1.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.appearancePage1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(909, 473);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Appearance";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // appearancePage1
-            // 
-            this.appearancePage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.appearancePage1.Location = new System.Drawing.Point(3, 3);
-            this.appearancePage1.Name = "appearancePage1";
-            this.appearancePage1.Size = new System.Drawing.Size(903, 467);
-            this.appearancePage1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -310,8 +264,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,10 +286,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private Pages.ScorerPage scorerPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private Pages.AppearancePage appearancePage1;
         private System.Windows.Forms.ToolStripMenuItem offlineModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem proxyToolStripMenuItem;
