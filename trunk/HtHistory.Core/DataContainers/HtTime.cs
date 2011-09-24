@@ -7,7 +7,7 @@ namespace HtHistory.Core.DataContainers
 {
     public class HtTime
     {
-        private static readonly DateTime HattrickEpoch = new DateTime(1997, 9, 27);
+        private static readonly DateTime HattrickEpoch = new DateTime(1997, 9, 22); //Monday?
 
         public HtTime(DateTime UTC)
         {
