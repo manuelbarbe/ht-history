@@ -56,6 +56,7 @@
             this.buttonOK.TabIndex = 1;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // label1
             // 
@@ -100,6 +101,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Name = "WebProxyDialog";
             this.Text = "WebProxyDialog";
+            this.Load += new System.EventHandler(this.WebProxyDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

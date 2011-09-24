@@ -32,63 +32,14 @@ namespace HtHistory.Pages
 
         private void InitializeComponent()
         {
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
-            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1.SuspendLayout();
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToClipboardToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 48);
-            // 
-            // copyToClipboardToolStripMenuItem
-            // 
-            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
-            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
-            this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+            InitializeContextMenu();
+            InitializeTabs();
+            InitializeOverviewList();
+            InitializeDetailsLists();
+        }
 
-            tabPage1.Text = "Seasons";
-            tabPage2.Text = "Matches";
-            tabPage3.Text = "Goals";
-
-            this.sortableListViewOverview.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
-                new ColumnHeader() { Text = "TM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "TG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "LM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "LG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "CM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "CG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "QM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "QG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "FM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 } });
-
-            sortableListViewOverview
-                .SetSorter(1, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(2, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(3, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(4, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(5, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(6, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(7, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(8, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(9, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(10, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(11, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(12, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(13, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(14, UserControls.SortableListView.TagSorter<DateTime>());
-
-            this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
-            this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
+        private void InitializeDetailsLists()
+        {
 
             this.sortableListViewDetails1.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
@@ -134,7 +85,7 @@ namespace HtHistory.Pages
             sortableListViewDetails2
                 .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(1, UserControls.SortableListView.NullSorter)
-                .SetSorter(5, UserControls.SortableListView.TagSorter<int>());   
+                .SetSorter(5, UserControls.SortableListView.TagSorter<int>());
 
             this.sortableListViewDetails3.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
@@ -147,7 +98,76 @@ namespace HtHistory.Pages
             sortableListViewDetails3
                 .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(1, UserControls.SortableListView.NullSorter)
-                .SetSorter(5, UserControls.SortableListView.TagSorter<int>()); 
+                .SetSorter(5, UserControls.SortableListView.TagSorter<int>());
+
+        }
+
+        private void InitializeOverviewList()
+        {
+
+            this.sortableListViewOverview.Columns.AddRange(new ColumnHeader[] {
+                new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
+                new ColumnHeader() { Text = "TM", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "TG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "LM", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "LG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "CM", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "CG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "QM", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "QG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "FM", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 } });
+
+            sortableListViewOverview
+                .SetSorter(1, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(2, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(3, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(4, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(5, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(6, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(7, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(8, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(9, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(10, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(11, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(12, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(13, UserControls.SortableListView.TagSorter<DateTime>())
+                .SetSorter(14, UserControls.SortableListView.TagSorter<DateTime>());
+
+            this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
+            this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
+        }
+
+        private void InitializeTabs()
+        {
+            tabPage1.Text = "Seasons";
+            tabPage2.Text = "Matches";
+            tabPage3.Text = "Goals";
+        }
+
+        private void InitializeContextMenu()
+        {
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToClipboardToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 48);
+            // 
+            // copyToClipboardToolStripMenuItem
+            // 
+            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
+            this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
 
             this.contextMenuStrip1.ResumeLayout(false);
         }

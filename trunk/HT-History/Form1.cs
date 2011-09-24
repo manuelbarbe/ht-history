@@ -209,10 +209,16 @@ namespace HtHistory
             {
                 if (diag.ShowDialog() == DialogResult.OK)
                 {
-                    // TODO store proxy settings
+                    string fullAuthDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "auth");
+                    string filepath = Path.Combine(fullAuthDirectoryPath, "proxy");
+
+                    if (!Directory.Exists(fullAuthDirectoryPath))
+                    {
+                        Directory.CreateDirectory(fullAuthDirectoryPath);
+                    }
+
+                    File.WriteAllLines(filepath, new[] { diag.WebProxyUri }, Encoding.UTF8);
                 }
-
-
             }
         }
 

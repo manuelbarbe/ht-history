@@ -181,9 +181,8 @@
             // 
             // proxyToolStripMenuItem
             // 
-            this.proxyToolStripMenuItem.Enabled = false;
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.proxyToolStripMenuItem.Text = "Proxy";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.proxyToolStripMenuItem_Click);
             // 
