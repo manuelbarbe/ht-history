@@ -17,6 +17,8 @@ namespace HtHistory
             InitializeComponent();
         }
 
+        public string WebProxyUri { get; set; }
+
         private void buttonTest_Click(object sender, EventArgs e)
         {
             try
@@ -34,6 +36,16 @@ namespace HtHistory
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void WebProxyDialog_Load(object sender, EventArgs e)
+        {
+            textBoxProxyURI.Text = WebProxyUri ?? string.Empty;
+        }
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            WebProxyUri = textBoxProxyURI.Text;
         }
     }
 }
