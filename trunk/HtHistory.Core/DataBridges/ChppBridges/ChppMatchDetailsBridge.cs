@@ -32,11 +32,15 @@ namespace HtHistory.Core.DataBridges.ChppBridges
             MatchDetails md = new MatchDetails(match.ID, match.Type, match.HomeTeam, match.AwayTeam);
             md.Date = match.Date;
 
+            uint homeGoals = uint.Parse(elMatch.AssertElement("HomeTeam").AssertElement("HomeGoals").Value);
+            uint awayGoals = uint.Parse(elMatch.AssertElement("AwayTeam").AssertElement("AwayGoals").Value);
+            md.FinalScore = new Score(homeGoals, awayGoals);
+
             IList<Goal> goals = new List<Goal>();
             foreach (XElement elGoal in doc.Root.Descendants("Goal"))
             {
                 goals.Add(new Goal(
-                                match,
+                                md,
                                 uint.Parse(elGoal.AssertElement("ScorerMinute").Value),
                                 new Score(
                                     uint.Parse(elGoal.AssertElement("ScorerHomeGoals").Value),
