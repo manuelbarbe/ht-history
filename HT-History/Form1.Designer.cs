@@ -145,7 +145,6 @@
             // 
             // clearCacheToolStripMenuItem
             // 
-            this.clearCacheToolStripMenuItem.Enabled = false;
             this.clearCacheToolStripMenuItem.Name = "clearCacheToolStripMenuItem";
             this.clearCacheToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.clearCacheToolStripMenuItem.Text = "Clear cache";
@@ -182,7 +181,7 @@
             // proxyToolStripMenuItem
             // 
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.proxyToolStripMenuItem.Text = "Proxy";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.proxyToolStripMenuItem_Click);
             // 
@@ -257,6 +256,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

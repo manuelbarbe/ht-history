@@ -17,7 +17,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
         private const string OAuthAccessTokenUrl = "https://chpp.hattrick.org/oauth/access_token.ashx";
         private const string OAuthProtectedResourceUrl = "http://chpp.hattrick.org/chppxml.ashx";
 
-        public ChppOnlineAccessor()
+        public ChppOnlineAccessor(string proxy = null)
         {
             OAuthConsumerContext context = new OAuthConsumerContext()
             { 
@@ -27,9 +27,14 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
             };
 
             _oAuthSession = new OAuthSession(context, OAuthRequestTokenUrl, OAuthAuthorizeUrl, OAuthAccessTokenUrl);
+            
+            if (!string.IsNullOrEmpty(proxy))
+            {
+                _oAuthSession.ProxyServerUri = new Uri(proxy);
+            }
         }
 
-        public ChppOnlineAccessor(string accessToken, string accessTokenSecret) : this()
+        public ChppOnlineAccessor(string accessToken, string accessTokenSecret, string proxy = null) : this(proxy)
         {
             _oAuthSession.AccessToken = new TokenBase(){ ConsumerKey = OAuthConsumerKey, Token = accessToken, TokenSecret = accessTokenSecret };
         }
