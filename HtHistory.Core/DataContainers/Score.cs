@@ -18,7 +18,7 @@ namespace HtHistory.Core.DataContainers
 
         public override string ToString()
         {
-            return String.Format("{0} : {1}", HomeGoals, AwayGoals);
+            return String.Format("{0}:{1}", HomeGoals, AwayGoals);
         }
     }
 }
