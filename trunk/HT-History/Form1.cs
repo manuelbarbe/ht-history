@@ -18,6 +18,9 @@ namespace HtHistory
 {
     public partial class Form1 : Form
     {
+        private Settings _settings = new Settings();
+        private static readonly string SettingsFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.xml");
+
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +31,20 @@ namespace HtHistory
         {
             try
             {
+                if (File.Exists(SettingsFile))
+                {
+                    SaveDo(() =>
+                    {
+                        _settings.Load(SettingsFile);
+                    });
+                }
+
                 SetOnlineMode();
+
+                string team;
+                _settings.TryGetValue("team", out team);
+                if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
+
                 UpdateTeam();
                 UpdateOpponent();
             }
@@ -40,21 +56,12 @@ namespace HtHistory
 
         private void SetOnlineMode()
         {
-            string token = null, tokenSecret = null;
+            string token, tokenSecret, proxy;
 
-            string fullAuthDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "auth");
-            string filepath = Path.Combine(fullAuthDirectoryPath, "accesstoken");
+            _settings.TryGetValue("accessToken", out token);
+            _settings.TryGetValue("accessTokenSecret", out tokenSecret);
 
-            if (File.Exists(filepath))
-            {
-                using (Stream file = File.OpenRead(filepath))
-                {
-                    TextReader r = new StreamReader(file, Encoding.UTF8);
-                    token = r.ReadLine();
-                    tokenSecret = r.ReadLine();
-                }
-            }
-            else
+            if (token == null || tokenSecret == null)
             {
                 using (AuthorizeDialog authDlg = new AuthorizeDialog())
                 {
@@ -65,18 +72,16 @@ namespace HtHistory
                     }
                     else
                     {
-                        token = authDlg.AccessToken;
-                        tokenSecret = authDlg.AccessTokenSecret;
-                        if (!Directory.Exists(fullAuthDirectoryPath))
-                        {
-                            Directory.CreateDirectory(fullAuthDirectoryPath);
-                        }
-                        File.WriteAllLines(filepath, new[] { token, tokenSecret }, Encoding.UTF8);
+                        _settings["accessToken"] = token = authDlg.AccessToken;
+                        _settings["accessTokenSecret"] = tokenSecret = authDlg.AccessTokenSecret;
+                        _settings.Save(SettingsFile);
                     }
                 }
             }
 
-            IChppAccessor accessor = new ChppFilesystemAccessor(new ChppOnlineAccessor(token, tokenSecret));
+            _settings.TryGetValue("proxy", out proxy);
+
+            IChppAccessor accessor = new ChppFilesystemAccessor(new ChppOnlineAccessor(token, tokenSecret, proxy));
             DataBridgeFactory dbf = new DataBridgeFactory();
             dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
             dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
@@ -98,33 +103,34 @@ namespace HtHistory
 
         private void clearCacheToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            SaveDo(() =>
             {
-                //TODO: remove this hardcoded crap
-                Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data"), true);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+                if (DialogResult.OK ==
+                    MessageBox.Show("Do you really want to delete all cached data?", "Please confirm", MessageBoxButtons.OKCancel))
+                {
+                    // delete files from filesystem
+                    //TODO: remove this hardcoded crap
+                    Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data"), true);
+
+                    // re-create bridges, this will delete memory caches
+                    if (offlineModeToolStripMenuItem.Checked) SetOfflineMode();
+                    else SetOnlineMode();
+                }
+            });
         }
 
         private void UpdateTeam()
         {
-            try
+            SaveDo(() =>
             {
                 Environment.Team = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(uint.Parse(textBoxTeamId.Text));
                 labelTeamInfo.Text = Environment.Team.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            });
         }
 
         private void UpdateOpponent()
         {
-            try
+            SaveDo(() =>
             {
                 if (textBoxOppId.Text == string.Empty)
                 {
@@ -138,11 +144,7 @@ namespace HtHistory
                 }
 
                 labelOpponentInfo.Text = Environment.Opponent != null ? Environment.Opponent.ToString() : "all teams";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+            });
         }
 
         private void textBoxTeamId_KeyDown(object sender, KeyEventArgs e)
@@ -184,7 +186,7 @@ namespace HtHistory
 
         private void offlineModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            SaveDo(()=>
             {
                 if (offlineModeToolStripMenuItem.Checked)
                 {
@@ -196,6 +198,36 @@ namespace HtHistory
                     SetOfflineMode();
                     offlineModeToolStripMenuItem.Checked = true;
                 }
+            });
+        }
+
+        private void proxyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveDo(()=>
+            {
+                using (WebProxyDialog diag = new WebProxyDialog())
+                {
+                    string proxy;
+                    _settings.TryGetValue("proxy", out proxy);
+                    diag.WebProxyUri = proxy ?? string.Empty;
+
+                    if (diag.ShowDialog() == DialogResult.OK)
+                    {
+                        _settings["proxy"] = diag.WebProxyUri;
+                        _settings.Save(SettingsFile);
+
+                        // update proxy
+                        if (offlineModeToolStripMenuItem.Enabled == false) SetOnlineMode();
+                    }
+                }
+            });
+        }
+
+        private void SaveDo(Action action)
+        {
+            try
+            {
+                action();
             }
             catch (Exception ex)
             {
@@ -203,24 +235,17 @@ namespace HtHistory
             }
         }
 
-        private void proxyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            using (WebProxyDialog diag = new WebProxyDialog())
+            try
             {
-                if (diag.ShowDialog() == DialogResult.OK)
-                {
-                    string fullAuthDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "auth");
-                    string filepath = Path.Combine(fullAuthDirectoryPath, "proxy");
-
-                    if (!Directory.Exists(fullAuthDirectoryPath))
-                    {
-                        Directory.CreateDirectory(fullAuthDirectoryPath);
-                    }
-
-                    File.WriteAllLines(filepath, new[] { diag.WebProxyUri }, Encoding.UTF8);
-                }
+                _settings["team"] = textBoxTeamId.Text;
+                _settings.Save(SettingsFile);
+            }
+            catch
+            {
+                ; // suppress all errors
             }
         }
-
     }
 }

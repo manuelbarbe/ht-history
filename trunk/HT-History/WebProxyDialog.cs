@@ -23,8 +23,8 @@ namespace HtHistory
         {
             try
             {
-                IWebProxy proxy = string.IsNullOrEmpty(textBoxProxyURI.Text) ? null : new WebProxy(textBoxProxyURI.Text);
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://www.google.com");
+                IWebProxy proxy = string.IsNullOrEmpty(textBoxProxyURI.Text) ? null : new WebProxy(new Uri(textBoxProxyURI.Text));
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://www.google.com");
                 request.Proxy = proxy;
                 request.Timeout = 10000; // 10 sec.
                 request.UserAgent = "HT-History test client";

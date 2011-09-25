@@ -46,7 +46,14 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
             {                
                 if (File.Exists(filepath))
                 {
-                    return new StreamReader(File.OpenRead(filepath));
+                    using (FileStream fileStream = File.OpenRead(filepath))
+                    {
+                        MemoryStream memoryStream = new MemoryStream((int)fileStream.Length);
+                        fileStream.CopyTo(memoryStream); // copying file to memory allows Dispose of FileStream here
+                                                         // this should definitely be done my clients later, not here (TODO)
+                        memoryStream.Position = 0;
+                        return new StreamReader(memoryStream);
+                    }
                 }
             }
             
@@ -62,9 +69,12 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
                 Directory.CreateDirectory(fullDataDirectoryPath);
             }
 
-            string fileContent = FallbackAccessor.GetDataReader(query, flags).ReadToEnd();
-            File.WriteAllText(filepath, fileContent, Encoding.UTF8); // Todo remove hard encoding
-            return new StringReader(fileContent);
+            using (TextReader fallbackReader = FallbackAccessor.GetDataReader(query, flags))
+            {
+                string fileContent = fallbackReader.ReadToEnd();
+                File.WriteAllText(filepath, fileContent, Encoding.UTF8); // Todo remove hard encoding
+                return new StringReader(fileContent);
+            }
         }
     }
 }
