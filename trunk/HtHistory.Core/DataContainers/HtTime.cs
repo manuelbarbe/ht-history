@@ -9,9 +9,9 @@ namespace HtHistory.Core.DataContainers
     {
         private static readonly DateTime HattrickEpoch = new DateTime(1997, 9, 22); //Monday?
 
-        public HtTime(DateTime UTC)
+        public HtTime(DateTime htTime)
         {
-            DateTime = UTC;
+            DateTime = htTime;
         }
 
         public HtTime(int season, int week, int day = 1)
