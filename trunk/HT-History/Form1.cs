@@ -45,8 +45,8 @@ namespace HtHistory
                 _settings.TryGetValue("team", out team);
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
 
-                UpdateTeam();
-                UpdateOpponent();
+                //UpdateTeam();
+                //UpdateOpponent();
             }
             catch (Exception ex)
             {
@@ -175,8 +175,15 @@ namespace HtHistory
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (overviewPage1.Visible)
-                overviewPage1.StartWorking();
+            SaveDo(() =>
+                {
+                    UpdateTeam();
+                    UpdateOpponent();
+
+                    if (overviewPage1.Visible)
+                        overviewPage1.StartWorking();
+
+                });
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -246,6 +253,12 @@ namespace HtHistory
             {
                 ; // suppress all errors
             }
+        }
+
+        private void splashScreenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SplashScreen ss = new SplashScreen();
+            ss.ShowDialog();
         }
     }
 }
