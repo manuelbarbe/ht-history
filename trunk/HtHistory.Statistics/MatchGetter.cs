@@ -37,7 +37,7 @@ namespace HtHistory.Statistics
             if (teamDetails == null || teamDetails.Owner == null || teamDetails.Owner.JoinDate == null)
                 throw new Exception("Cannot get join date of owner");
 
-            MatchArchive ar = MAB.GetMatches(TeamId, teamDetails.Owner.JoinDate.Value, DateTime.Now); // todo: to ht time
+            MatchArchive ar = MAB.GetMatches(TeamId, teamDetails.Owner.JoinDate.Value, DateTime.Now.ToHtTime()); // todo: to ht time
 
             IList<MatchDetails> mdl = new List<MatchDetails>();
 
