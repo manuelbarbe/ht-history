@@ -19,7 +19,18 @@ namespace HtHistory
     public partial class Form1 : Form
     {
         private Settings _settings = new Settings();
-        private static readonly string SettingsFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.xml");
+        private static readonly string BaseDirectory;
+        private static readonly string DataDirectory;
+        private static readonly string SettingsFile;
+
+        PleaseWaitDialog _pwd = new PleaseWaitDialog();
+
+        static Form1()
+        {
+            BaseDirectory = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "HT-History");
+            DataDirectory = Path.Combine(BaseDirectory, "data");
+            SettingsFile = Path.Combine(BaseDirectory, "settings.xml");
+        }
 
         public Form1()
         {
@@ -81,7 +92,7 @@ namespace HtHistory
 
             _settings.TryGetValue("proxy", out proxy);
 
-            IChppAccessor accessor = new ChppFilesystemAccessor(new ChppOnlineAccessor(token, tokenSecret, proxy));
+            IChppAccessor accessor = new ChppFilesystemAccessor(DataDirectory, new ChppOnlineAccessor(token, tokenSecret, proxy));
             DataBridgeFactory dbf = new DataBridgeFactory();
             dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
             dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
@@ -92,7 +103,7 @@ namespace HtHistory
 
         private void SetOfflineMode()
         {
-            IChppAccessor accessor = new ChppFilesystemAccessor();
+            IChppAccessor accessor = new ChppFilesystemAccessor(DataDirectory);
             DataBridgeFactory dbf = new DataBridgeFactory();
             dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
             dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
@@ -124,7 +135,10 @@ namespace HtHistory
             SaveDo(() =>
             {
                 Environment.Team = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(uint.Parse(textBoxTeamId.Text));
-                labelTeamInfo.Text = Environment.Team.ToString();
+                labelTeamInfo.BeginInvoke((Action) delegate
+                {
+                    labelTeamInfo.Text = Environment.Team.ToString();
+                });
             });
         }
 
@@ -143,7 +157,10 @@ namespace HtHistory
                     else Environment.Opponent = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(oppId);
                 }
 
-                labelOpponentInfo.Text = Environment.Opponent != null ? Environment.Opponent.ToString() : "all teams";
+                labelOpponentInfo.BeginInvoke((Action)delegate
+                {
+                    labelOpponentInfo.Text = Environment.Opponent != null ? Environment.Opponent.ToString() : "all teams";
+                });
             });
         }
 
@@ -151,38 +168,51 @@ namespace HtHistory
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateTeam();
+                //UpdateTeam();
             } 
         }
 
         private void textBoxTeamId_Leave(object sender, EventArgs e)
         {
-            UpdateTeam();
+            //UpdateTeam();
         }
 
         private void textBoxOppId_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateOpponent();
+                //UpdateOpponent();
             }
         }
 
         private void textBoxOppId_Leave(object sender, EventArgs e)
         {
-            UpdateOpponent();
+            //UpdateOpponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             SaveDo(() =>
                 {
-                    UpdateTeam();
-                    UpdateOpponent();
+                    _pwd.Show();
+                    
+                    BackgroundWorker bgw = new BackgroundWorker();
+                    bgw.DoWork += (s, e1) => { UpdateTeam(); UpdateOpponent(); };
+                    bgw.RunWorkerCompleted += (s, e2) =>
+                        {
+                            _pwd.Hide();
+                            if (e2.Error != null)
+                            {
+                                MessageBox.Show(e2.Error.ToString());
+                            }
+                            else
+                            {
+                                if (overviewPage1.Visible)
+                                    overviewPage1.StartWorking();
+                            }
+                        };
 
-                    if (overviewPage1.Visible)
-                        overviewPage1.StartWorking();
-
+                    bgw.RunWorkerAsync();
                 });
         }
 
