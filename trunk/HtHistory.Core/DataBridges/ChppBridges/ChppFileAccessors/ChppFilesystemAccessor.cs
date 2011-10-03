@@ -9,18 +9,21 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
     /// </summary>
     public class ChppFilesystemAccessor : IChppAccessor
     {
-        public readonly string DataDirectory = "data";
+        public readonly string DataDirectory;
 
         /// <summary>
         /// standard ctor
         /// </summary>
-        public ChppFilesystemAccessor() {}
+        public ChppFilesystemAccessor(string directory)
+        {
+            DataDirectory = directory;
+        }
         
         /// <summary>
         /// ctor with fallback
         /// </summary>
         /// <param name="fallback">Fallback that is used to get data that is not present at filesystem</param>
-        public ChppFilesystemAccessor(IChppAccessor fallback)
+        public ChppFilesystemAccessor(string directory, IChppAccessor fallback) : this(directory)
         {
             FallbackAccessor = fallback;
         }
@@ -38,8 +41,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
         /// <returns>TextReader to data</returns>
         public TextReader GetDataReader(string query, DataFlags flags)
         {
-            string fullDataDirectoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DataDirectory);
-            string filepath = Path.Combine(fullDataDirectoryPath, query.Replace(":", string.Empty)); // TODO use: replace all non filename chars
+            string filepath = Path.Combine(DataDirectory, query.Replace(":", string.Empty)); // TODO use: replace all non filename chars
 
             if ( (flags & DataFlags.Static) == DataFlags.Static || // if data isn't expected to change
                  FallbackAccessor == null)                         // or if we don't have any fallback (e.g. online)
@@ -57,22 +59,22 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
                 }
             }
             
-            return GetAndBackupDataFromFallback(query, flags, fullDataDirectoryPath, filepath);
+            return GetAndBackupDataFromFallback(query, flags);
         }
 
-        private TextReader GetAndBackupDataFromFallback(string query, DataFlags flags, string fullDataDirectoryPath, string filepath)
+        private TextReader GetAndBackupDataFromFallback(string query, DataFlags flags)
         {
             if (FallbackAccessor == null) throw new Exception("Cannot get requested data for " + query);
             
-            if (!Directory.Exists(fullDataDirectoryPath))
+            if (!Directory.Exists(DataDirectory))
             {
-                Directory.CreateDirectory(fullDataDirectoryPath);
+                Directory.CreateDirectory(DataDirectory);
             }
 
             using (TextReader fallbackReader = FallbackAccessor.GetDataReader(query, flags))
             {
                 string fileContent = fallbackReader.ReadToEnd();
-                File.WriteAllText(filepath, fileContent, Encoding.UTF8); // Todo remove hard encoding
+                File.WriteAllText(Path.Combine(DataDirectory, query.Replace(":", string.Empty)), fileContent, Encoding.UTF8); // Todo remove hard encoding
                 return new StringReader(fileContent);
             }
         }
