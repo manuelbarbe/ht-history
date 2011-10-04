@@ -27,7 +27,7 @@ namespace HtHistory
         private void SplashScreen_Load(object sender, EventArgs e)
         {
             Version v =  Assembly.GetExecutingAssembly().GetName().Version;
-            labelVersion.Text = String.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
+            labelVersion.Text = String.Format("v {0}.{1}.{2}", v.Major, v.Minor, v.Build);
         }
     }
 }

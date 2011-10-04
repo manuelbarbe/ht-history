@@ -1,11 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-  <Product Name='Ht-History !(bind.FileVersion.HtHistoryEXE)' Id='B2B7F102-5D78-47A8-8C85-EC49C2DD4090' UpgradeCode='7BAB6F46-62D9-43A6-B77A-855579CDEE10'
-    Language='1033' Codepage='1252' Version="!(bind.FileVersion.HtHistoryEXE)" Manufacturer='manuhell'>
+  <Product Name='Ht-History !(bind.FileVersion.HtHistoryEXE)' Id='57E95D28-8667-498D-BE65-442872525156' UpgradeCode='7BAB6F46-62D9-43A6-B77A-855579CDEE10'
+    Language='1033' Codepage='1252' Version='!(bind.FileVersion.HtHistoryEXE)' Manufacturer='manuhell'>
 
     <Package Id='*' Keywords='Installer' Description="HtHistory Installer"
       Comments='HtHistory is licensed under MIT license' Manufacturer='manuhell'
       InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
+
+    <Upgrade Id='7BAB6F46-62D9-43A6-B77A-855579CDEE10'>
+      <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
+        Minimum='!(bind.FileVersion.HtHistoryEXE)' IncludeMinimum='yes'
+        Maximum='!(bind.FileVersion.HtHistoryEXE)' IncludeMaximum='yes' />
+      <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
+        Minimum='!(bind.FileVersion.HtHistoryEXE)' IncludeMinimum='no' />
+      <UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND'
+        Minimum='0.0.0' IncludeMinimum='yes'
+        Maximum='!(bind.FileVersion.HtHistoryEXE)' IncludeMaximum='no' />
+    </Upgrade>
+
+    <CustomAction Id='AlreadyUpdated' Error='[ProductName] is already installed.' />
+    <CustomAction Id='NoDowngrade' Error='A later version of [ProductName] is already installed.' />
 
     <Media Id='1' Cabinet='HtHistory.cab' EmbedCab='yes' DiskPrompt='CD-ROM #1' />
     <Property Id='DiskPrompt' Value="HtHistory Installation [1]" />
@@ -36,7 +50,7 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
           </Component>
 
           <Component Id='Licenses' Guid='223B6A9A-0BA6-4FFE-BEA8-88C1E0F733F0'>
-            <File Id='MITLicense' Name='MIT_License.txt' DiskId='1' Source='MIT_License.txt' KeyPath='yes' />
+            <File Id='MITLicense' Name='MIT_License.rtf' DiskId='1' Source='MIT_License.rtf' KeyPath='yes' />
           </Component>
 
         </Directory>
@@ -65,6 +79,11 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
       <ComponentRef Id='ProgramMenuDir' />
     </Feature>
 
+    <InstallExecuteSequence>
+      <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>SELFFOUND</Custom>
+      <Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
+    </InstallExecuteSequence>
+    
     <Icon Id="HtHistoryIcon.exe" SourceFile="HT-History.exe" />
 
     <!--<UIRef Id="WixUI_Mondo" />-->
@@ -72,6 +91,8 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
     <UIRef Id="WixUI_InstallDir" />
     <UIRef Id="WixUI_ErrorProgressText" />
 
+    <WixVariable Id="WixUILicenseRtf" Value="MIT_License.rtf" />
+    
   </Product>
 </Wix>
 

@@ -35,7 +35,9 @@ namespace HtHistory
         public Form1()
         {
             InitializeComponent();
-            this.Text = String.Format("HT-History by manuhell, v{0}", Assembly.GetExecutingAssembly().GetName().Version);   
+            Version v = Assembly.GetExecutingAssembly().GetName().Version;
+            string version = String.Format("v {0}.{1}.{2}", v.Major, v.Minor, v.Build);
+            this.Text = String.Format("HT-History by manuhell, {0}", version);   
         }
 
         private void Form1_Load(object sender, EventArgs e)
