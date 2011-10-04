@@ -36,7 +36,7 @@ namespace HtHistory
         {
             InitializeComponent();
             Version v = Assembly.GetExecutingAssembly().GetName().Version;
-            string version = String.Format("v {0}.{1}.{2}", v.Major, v.Minor, v.Build);
+            string version = String.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
             this.Text = String.Format("HT-History by manuhell, {0}", version);   
         }
 
