@@ -121,7 +121,7 @@ namespace HtHistory
                 {
                     // delete files from filesystem
                     //TODO: remove this hardcoded crap
-                    Directory.Delete(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data"), true);
+                    Directory.Delete(DataDirectory, true);
 
                     // re-create bridges, this will delete memory caches
                     if (offlineModeToolStripMenuItem.Checked) SetOfflineMode();

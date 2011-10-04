@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-  <Product Name='Ht-History 0.1' Id='B2B7F102-5D78-47A8-8C85-EC49C2DD4090' UpgradeCode='7BAB6F46-62D9-43A6-B77A-855579CDEE10'
-    Language='1033' Codepage='1252' Version='0.1.0' Manufacturer='Manuhell all alone'>
+  <Product Name='Ht-History !(bind.FileVersion.HtHistoryEXE)' Id='B2B7F102-5D78-47A8-8C85-EC49C2DD4090' UpgradeCode='7BAB6F46-62D9-43A6-B77A-855579CDEE10'
+    Language='1033' Codepage='1252' Version="!(bind.FileVersion.HtHistoryEXE)" Manufacturer='manuhell'>
 
     <Package Id='*' Keywords='Installer' Description="HtHistory Installer"
-      Comments='HtHistory is licensed under MIT license' Manufacturer='Manuhell all alone'
+      Comments='HtHistory is licensed under MIT license' Manufacturer='manuhell'
       InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
 
     <Media Id='1' Cabinet='HtHistory.cab' EmbedCab='yes' DiskPrompt='CD-ROM #1' />
@@ -16,9 +16,9 @@
 
           <Component Id='MainExecutable' Guid='9D61BBEB-4791-4AD8-B60D-88D5A3D2BCAF'>
             <File Id='HtHistoryEXE' Name='HT-History.exe' DiskId='1' Source='HT-History.exe' KeyPath='yes'>
-              <Shortcut Id="startmenuHtHistory" Directory="ProgramMenuDir" Name="HT-History 0.1"
+              <Shortcut Id="startmenuHtHistory" Directory="ProgramMenuDir" Name="HT-History"
 WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise="yes" />
-              <Shortcut Id="desktopHtHistory" Directory="DesktopFolder" Name="HT-History 0.1"
+              <Shortcut Id="desktopHtHistory" Directory="DesktopFolder" Name="HT-History"
                 WorkingDirectory='INSTALLDIR' Icon="HtHistoryIcon.exe" IconIndex="0" Advertise="yes" />
             </File>
           </Component>
@@ -33,6 +33,10 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
 
           <Component Id='OAuthLibrary' Guid='4E587C03-D8DD-4339-82A6-44666EF6CC6D'>
             <File Id='OAuthDLL' Name='DevDefined.OAuth.dll' DiskId='1' Source='DevDefined.OAuth.dll' KeyPath='yes' />
+          </Component>
+
+          <Component Id='Licenses' Guid='223B6A9A-0BA6-4FFE-BEA8-88C1E0F733F0'>
+            <File Id='MITLicense' Name='MIT_License.txt' DiskId='1' Source='MIT_License.txt' KeyPath='yes' />
           </Component>
 
         </Directory>
@@ -51,15 +55,22 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
 
     </Directory>
 
-    <Feature Id='Complete' Level='1'>
+    <Feature Id='Complete' Title='HT-History' Description='The complete package.'
+      Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
       <ComponentRef Id='MainExecutable' />
       <ComponentRef Id='CoreLibrary' />
       <ComponentRef Id='StatisticsLibrary' />
       <ComponentRef Id='OAuthLibrary' />
+      <ComponentRef Id='Licenses' />
       <ComponentRef Id='ProgramMenuDir' />
     </Feature>
 
     <Icon Id="HtHistoryIcon.exe" SourceFile="HT-History.exe" />
+
+    <!--<UIRef Id="WixUI_Mondo" />-->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+    <UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
 
   </Product>
 </Wix>
