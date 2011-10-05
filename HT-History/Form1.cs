@@ -292,5 +292,36 @@ namespace HtHistory
             SplashScreen ss = new SplashScreen();
             ss.ShowDialog();
         }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StringBuilder builder = new StringBuilder()
+                .AppendLine("What you should do:")
+                .AppendLine()
+                .AppendLine("- enter your team id")
+                .AppendLine("- opt. enter an opponent team id (only matches against that team included)")
+                .AppendLine("- click refresh")
+                .AppendLine("- be patient, HT-History is downloading data from hattrick now")
+                .AppendLine("- browse your player list")
+                .AppendLine("\t TM: total matches")
+                .AppendLine("\t TG: total goals")
+                .AppendLine("\t LM: league matches")
+                .AppendLine("\t LG: league goals")
+                .AppendLine("\t CM: cup matches")
+                .AppendLine("\t CG: cup goals")
+                .AppendLine("\t QM: qualifier matches")
+                .AppendLine("\t QG: qualifier goals")
+                .AppendLine("\t FM: friendly matches")
+                .AppendLine("\t FG: friendly goals")
+                .AppendLine("\t OM: other matches, e.g hattrick masters")
+                .AppendLine("\t OG: other goals")
+                .AppendLine("- sort by clicking column headers")
+                .AppendLine("- select player and look at individual stats on the 3 tables at the bottom")
+                .AppendLine("- opt. right click main table and choose 'copy to clipboard'")
+                .AppendLine("- opt. show off with your players at hattrick forums");
+
+            MessageBox.Show(builder.ToString(), "Short help");
+
+        }
     }
 }

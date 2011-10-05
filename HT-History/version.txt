@@ -4,6 +4,20 @@
 - removed
 C changed
 
+v0.1.0
+-----------------
++ short help
+
+v0.0.7
+-----------------
+C storing persitent data in AppData
+C auth is now in XML
+C only one full list "Players" in UI now
++ remembering last team id
++ proxy may work
++ Installer
++ copy to clipboard
+
 v.0.0.6
 -----------------
 + Page "Overview"
