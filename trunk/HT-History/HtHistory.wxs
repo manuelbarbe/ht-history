@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
-  <Product Name='Ht-History !(bind.FileVersion.HtHistoryEXE)' Id='57E95D28-8667-498D-BE65-442872525156' UpgradeCode='7BAB6F46-62D9-43A6-B77A-855579CDEE10'
+  <Product Name='Ht-History !(bind.FileVersion.HtHistoryEXE)' Id='*' UpgradeCode='7BAB6F46-62D9-43A6-B77A-855579CDEE10'
     Language='1033' Codepage='1252' Version='!(bind.FileVersion.HtHistoryEXE)' Manufacturer='manuhell'>
 
     <Package Id='*' Keywords='Installer' Description="HtHistory Installer"
@@ -82,6 +82,7 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
     <InstallExecuteSequence>
       <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>SELFFOUND</Custom>
       <Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
+      <RemoveExistingProducts Before="InstallInitialize" />
     </InstallExecuteSequence>
     
     <Icon Id="HtHistoryIcon.exe" SourceFile="HT-History.exe" />
