@@ -7,6 +7,11 @@
       Comments='HtHistory is licensed under MIT license' Manufacturer='manuhell'
       InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
 
+    <PropertyRef Id="NETFRAMEWORK40CLIENT" />
+    <Condition Message="This setup requires the .NET Framework 4.0 to be installed.">
+      Installed OR NETFRAMEWORK40CLIENT
+    </Condition>
+
     <Upgrade Id='7BAB6F46-62D9-43A6-B77A-855579CDEE10'>
       <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
         Minimum='!(bind.FileVersion.HtHistoryEXE)' IncludeMinimum='yes'
