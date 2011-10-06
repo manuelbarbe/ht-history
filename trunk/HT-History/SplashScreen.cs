@@ -20,8 +20,8 @@ namespace HtHistory
 
         private void SplashScreen_KeyDown(object sender, KeyEventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
-            Close();
+            //DialogResult = DialogResult.Cancel;
+            //Close();
         }
 
         private void SplashScreen_Load(object sender, EventArgs e)

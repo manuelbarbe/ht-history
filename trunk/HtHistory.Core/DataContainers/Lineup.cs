@@ -56,6 +56,8 @@ namespace HtHistory.Core.DataContainers
             ReplacedPlayer3 = 21,
 
             // extended by me
+            InjuredWithoutReplacement = 21760,
+            ReplacedPlayerN = 21761,
             RedCardedPlayer = 21771,
             Unknown = 21772,
         }
