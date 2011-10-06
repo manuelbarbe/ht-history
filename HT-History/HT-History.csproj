@@ -148,6 +148,7 @@
     <None Include="app.config" />
     <None Include="HtHistory.wxs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </None>
     <None Include="MIT_License.rtf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

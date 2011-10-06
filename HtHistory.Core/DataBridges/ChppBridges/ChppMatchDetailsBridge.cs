@@ -92,7 +92,17 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
             foreach (XElement elPlayer in elLineup.Elements("Player"))
             {
-                Lineup.LineupRole role = (Lineup.LineupRole) int.Parse(elPlayer.AssertElement("RoleID").Value);
+                Lineup.LineupRole role;
+                XElement elRoleId = elPlayer.Element("RoleID");
+                if (elRoleId == null)
+                {
+                    role = Lineup.LineupRole.ReplacedPlayerN;
+                }
+                else
+                {
+                    role = (Lineup.LineupRole)int.Parse(elPlayer.AssertElement("RoleID").Value);
+                }
+
                 Player player = MatchParserHelper.GetPlayer(elPlayer);
                 lineup.LineupItems.Add(new Lineup.LineupItem() { Role = role, Player = player });
             }

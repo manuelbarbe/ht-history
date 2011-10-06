@@ -109,25 +109,35 @@ namespace HtHistory.Statistics.Players
         {
             foreach (MatchEvent ev in md.Events)
             {
+                uint playerId = ev.PlayerId;
+
                 if ((ev.TeamId == teamId) &&
                     (ev.Type == MatchEvent.MatchEventType.RedCardSecondWarningCheating ||
                     ev.Type == MatchEvent.MatchEventType.RedCardSecondWarningNastyPlay ||
-                    ev.Type == MatchEvent.MatchEventType.RedCardWithoutWarning ||
-                    ev.Type == MatchEvent.MatchEventType.InjuredAndNoReplacementExists ||
+                    ev.Type == MatchEvent.MatchEventType.RedCardWithoutWarning))
+                {
+                    AddPlayer(ret, playerId, Lineup.LineupRole.RedCardedPlayer, md);
+                }
+                else if ((ev.TeamId == teamId) &&
+                    (ev.Type == MatchEvent.MatchEventType.InjuredAndNoReplacementExists ||
                     ev.Type == MatchEvent.MatchEventType.InjuredAfterFoulAndNoReplacementExists))
                 {
-
-                    Player player = new Player(ev.PlayerId, Player.UnknownName);
-
-                    if (!ret.ContainsKey(player))
-                    {
-                        ret.Add(player, new MatchAppearance(player, md, Lineup.LineupRole.RedCardedPlayer));
-                    }
-                    else
-                    {
-                        throw new Exception(string.Format("Tried to add Player {0} twice", player));
-                    }
+                    AddPlayer(ret, playerId, Lineup.LineupRole.InjuredWithoutReplacement, md);
                 }
+            }
+        }
+
+        private static void AddPlayer(IDictionary<Player, MatchAppearance> ret, uint playerId, Lineup.LineupRole role, MatchDetails md)
+        {
+            Player player = new Player(playerId, Player.UnknownName);
+
+            if (!ret.ContainsKey(player))
+            {
+                ret.Add(player, new MatchAppearance(player, md, role));
+            }
+            else
+            {
+                throw new Exception(string.Format("Tried to add Player {0} twice", player));
             }
         }
 
