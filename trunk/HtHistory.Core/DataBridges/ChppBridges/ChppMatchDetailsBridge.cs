@@ -94,7 +94,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
             {
                 Lineup.LineupRole role;
                 XElement elRoleId = elPlayer.Element("RoleID");
-                if (elRoleId == null)
+                if (elRoleId == null || string.IsNullOrEmpty(elRoleId.Value))
                 {
                     role = Lineup.LineupRole.ReplacedPlayerN;
                 }

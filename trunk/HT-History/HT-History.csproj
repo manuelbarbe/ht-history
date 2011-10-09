@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,10 +63,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorizeDialog.cs">
+    <Compile Include="Dialogs\AuthorizeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AuthorizeDialog.Designer.cs">
+    <Compile Include="Dialogs\AuthorizeDialog.Designer.cs">
       <DependentUpon>AuthorizeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Environment.cs" />
@@ -89,31 +90,37 @@
     <Compile Include="Pages\OverviewPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PleaseWaitDialog.cs">
+    <Compile Include="Pages\PlayerChartPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\PlayerChartPage.Designer.cs">
+      <DependentUpon>PlayerChartPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PleaseWaitDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PleaseWaitDialog.Designer.cs">
+    <Compile Include="Dialogs\PleaseWaitDialog.Designer.cs">
       <DependentUpon>PleaseWaitDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="SplashScreen.cs">
+    <Compile Include="Dialogs\SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashScreen.Designer.cs">
+    <Compile Include="Dialogs\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="WebProxyDialog.cs">
+    <Compile Include="Dialogs\WebProxyDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WebProxyDialog.Designer.cs">
+    <Compile Include="Dialogs\WebProxyDialog.Designer.cs">
       <DependentUpon>WebProxyDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AuthorizeDialog.resx">
+    <EmbeddedResource Include="Dialogs\AuthorizeDialog.resx">
       <DependentUpon>AuthorizeDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
@@ -126,7 +133,10 @@
     <EmbeddedResource Include="Pages\OverviewDetailsPage.resx">
       <DependentUpon>OverviewDetailsPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PleaseWaitDialog.resx">
+    <EmbeddedResource Include="Pages\PlayerChartPage.resx">
+      <DependentUpon>PlayerChartPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PleaseWaitDialog.resx">
       <DependentUpon>PleaseWaitDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -139,20 +149,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SplashScreen.resx">
+    <EmbeddedResource Include="Dialogs\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WebProxyDialog.resx">
+    <EmbeddedResource Include="Dialogs\WebProxyDialog.resx">
       <DependentUpon>WebProxyDialog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="HtHistory.wxs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="MIT_License.rtf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -165,16 +168,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chpp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HtHistory.Core\HtHistory.Core.csproj">
-      <Project>{75B039ED-5C8F-4FCC-9AEE-BE0B9C073334}</Project>
-      <Name>HtHistory.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HtHistory.Statistics\HtHistory.Statistics.csproj">
-      <Project>{00DD84C0-55D5-4B61-AECF-F4F840A6893A}</Project>
-      <Name>HtHistory.Statistics</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\splash.jpg" />
@@ -204,11 +197,20 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HtHistory.Core\HtHistory.Core.csproj">
+      <Project>{75B039ED-5C8F-4FCC-9AEE-BE0B9C073334}</Project>
+      <Name>HtHistory.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HtHistory.Statistics\HtHistory.Statistics.csproj">
+      <Project>{00DD84C0-55D5-4B61-AECF-F4F840A6893A}</Project>
+      <Name>HtHistory.Statistics</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cd $(TargetDir)
-candle.exe HtHistory.wxs
-light.exe -ext WixUIExtension -ext WixNetFxExtension HtHistory.wixobj</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

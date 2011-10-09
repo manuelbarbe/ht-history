@@ -23,7 +23,16 @@ namespace HtHistory
 
         private void AuthorizeDialog_Load(object sender, EventArgs e)
         {
-            linkLabelRequestUri.Text = _accessor.GetAuthorizeUrl();
+            try
+            {
+                linkLabelRequestUri.Text = _accessor.GetAuthorizeUrl();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("It seems, that CHPP cannot be accessed right now. Please check your internet connection or try again later.\n\n{0}", ex), "Error");
+                DialogResult = DialogResult.Abort;
+                Close();
+            }
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
