@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlExtensions.cs" />
     <Compile Include="Dialogs\AuthorizeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +71,11 @@
       <DependentUpon>AuthorizeDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Environment.cs" />
+    <Compile Include="Export\ITable.cs" />
+    <Compile Include="Export\ITableExporter.cs" />
+    <Compile Include="Export\Table.cs" />
+    <Compile Include="Export\TableExporterBBCode.cs" />
+    <Compile Include="Export\TableExporterCSV.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,7 @@
       <Name>HtHistory.Statistics</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

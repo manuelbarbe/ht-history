@@ -10,6 +10,8 @@ using System.ComponentModel;
 using HtHistory.Core;
 using System.Drawing;
 using HtHistory.Core.ExtensionMethods;
+using HtHistory.Export;
+using System.IO;
 
 namespace HtHistory.Pages
 {
@@ -29,6 +31,7 @@ namespace HtHistory.Pages
 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToCSVToolStripMenuItem;
 
         private void InitializeComponent()
         {
@@ -153,12 +156,13 @@ namespace HtHistory.Pages
         {
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
             this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToClipboardToolStripMenuItem});
+            this.copyToClipboardToolStripMenuItem, this.exportToCSVToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(170, 48);
             // 
@@ -168,6 +172,14 @@ namespace HtHistory.Pages
             this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
             this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
             this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+            // 
+            // exportToCSVToolStripMenuItem
+            // 
+            this.exportToCSVToolStripMenuItem.Name = "exportToCSVToolStripMenuItem";
+            this.exportToCSVToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.exportToCSVToolStripMenuItem.Text = "Export to CSV...";
+            this.exportToCSVToolStripMenuItem.Click += new System.EventHandler(this.exportToCSVToolStripMenuItem_Click);
+
 
             this.contextMenuStrip1.ResumeLayout(false);
         }
@@ -451,26 +463,48 @@ namespace HtHistory.Pages
 
         private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder b = new StringBuilder("[table][tr]");
-            foreach (ColumnHeader ch in sortableListViewOverview.Columns)
-            {
-                b.Append("[td]").Append(ch.Text).Append("[/td]");
-            }
-            b.Append("[/tr]").AppendLine();
+            Table table = TableFromListView(sortableListViewOverview);
 
-            foreach (ListViewItem lvi in sortableListViewOverview.Items)
+            StringWriter wr = new StringWriter();
+            new TableExporterBBCode().Export(table, wr);
+
+            Clipboard.SetText(wr.ToString());
+        }
+
+        private void exportToCSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.SaveDo(() =>
             {
-                b.Append("[tr]");
-                foreach (ListViewItem.ListViewSubItem lvsi in lvi.SubItems)
+                SaveFileDialog safeFileDialog = new SaveFileDialog();
+
+                safeFileDialog.InitialDirectory = "c:\\";
+                safeFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+                safeFileDialog.RestoreDirectory = false;
+
+                if (safeFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    b.Append("[td]").Append(lvsi.Text).Append("[/td]");
+                    Table table = TableFromListView(sortableListViewOverview);
+                    using (Stream stream = File.OpenWrite(safeFileDialog.FileName))
+                    {
+                        StreamWriter wr = new StreamWriter(stream);
+                        new TableExporterCSV(",").Export(table, wr);
+                    }
                 }
-                b.Append("[/tr]").AppendLine();
-            }
+            });
+        }
 
-            b.Append("[/table]");
+        private Table TableFromListView(ListView view)
+        {
+            Table table = new Table();
+            IEnumerable<ColumnHeader> headers = view.Columns.Cast<ColumnHeader>();
+            table.ColumHeaders = headers.Select((ch) => ch.Text).ToArray();
 
-            Clipboard.SetText(b.ToString());
+            table.Data =
+            view.Items.Cast<ListViewItem>().Select(
+                (lvi) => lvi.SubItems.Cast<ListViewItem.ListViewSubItem>().Select(
+                    (lvsi) => lvsi.Text).ToArray()).ToArray();
+
+            return table;
         }
    }
 }
