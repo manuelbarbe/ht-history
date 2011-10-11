@@ -486,7 +486,7 @@ namespace HtHistory.Pages
                     Table table = TableFromListView(sortableListViewOverview);
                     using (Stream stream = File.OpenWrite(safeFileDialog.FileName))
                     {
-                        StreamWriter wr = new StreamWriter(stream);
+                        StreamWriter wr = new StreamWriter(stream, Encoding.ASCII);
                         new TableExporterCSV(",").Export(table, wr);
                     }
                 }

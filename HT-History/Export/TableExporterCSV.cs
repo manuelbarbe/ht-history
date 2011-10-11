@@ -22,6 +22,9 @@ namespace HtHistory.Export
 
         public void Export(ITable table, System.IO.TextWriter writer)
         {
+            writer.Write("sep=");
+            writer.WriteLine(_separator);
+
             foreach (object obj in table.ColumHeaders.SafeEnum())
             {
                 writer.Write(obj.ToString());
