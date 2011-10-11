@@ -476,10 +476,7 @@ namespace HtHistory.Pages
             this.SaveDo(() =>
             {
                 SaveFileDialog safeFileDialog = new SaveFileDialog();
-
-                safeFileDialog.InitialDirectory = "c:\\";
                 safeFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-                safeFileDialog.RestoreDirectory = false;
 
                 if (safeFileDialog.ShowDialog() == DialogResult.OK)
                 {
