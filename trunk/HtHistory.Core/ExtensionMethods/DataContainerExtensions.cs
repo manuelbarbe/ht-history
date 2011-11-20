@@ -25,5 +25,31 @@ namespace HtHistory.Core.ExtensionMethods
                 role == Lineup.LineupRole.SubstitutionForward_);
         }
 
+        public static bool IsRedCard(this MatchEvent.MatchEventType type)
+        {
+            return
+                type == MatchEvent.MatchEventType.RedCardSecondWarningCheating ||
+                type == MatchEvent.MatchEventType.RedCardSecondWarningNastyPlay ||
+                type == MatchEvent.MatchEventType.RedCardWithoutWarning;
+        }
+
+        public static bool IsSubstitution(this MatchEvent.MatchEventType type)
+        {
+            return
+                type == MatchEvent.MatchEventType.SubstitutionMinute ||
+                type == MatchEvent.MatchEventType.SubstitutionTeamIsAhead ||
+                type == MatchEvent.MatchEventType.SubstitutionTeamIsBehind ||
+                type == MatchEvent.MatchEventType.ModeratelyInjuredLeavesField ||
+                type == MatchEvent.MatchEventType.BadlyInjuredLeavesField ||
+                type == MatchEvent.MatchEventType.InjuredAfterFoulButExits;
+        }
+
+        public static bool IsInjuredWithoutSubstitute(this MatchEvent.MatchEventType type)
+        {
+            return
+                type == MatchEvent.MatchEventType.InjuredAndNoReplacementExists ||
+                type == MatchEvent.MatchEventType.InjuredAfterFoulAndNoReplacementExists ||
+                type == MatchEvent.MatchEventType.KeeperInjuredFieldPlayerHasToTakeHisPlace;
+        }
     }
 }
