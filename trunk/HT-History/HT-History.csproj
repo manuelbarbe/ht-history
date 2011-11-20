@@ -70,6 +70,12 @@
     <Compile Include="Dialogs\AuthorizeDialog.Designer.cs">
       <DependentUpon>AuthorizeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\PlayerDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\PlayerDetails.Designer.cs">
+      <DependentUpon>PlayerDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Environment.cs" />
     <Compile Include="Export\ITable.cs" />
     <Compile Include="Export\ITableExporter.cs" />
@@ -128,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="Dialogs\AuthorizeDialog.resx">
       <DependentUpon>AuthorizeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\PlayerDetails.resx">
+      <DependentUpon>PlayerDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
