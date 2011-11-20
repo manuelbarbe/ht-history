@@ -97,7 +97,6 @@ namespace HtHistory.UserControls
         {
             View = View.Details;
             FullRowSelect = true;
-            MultiSelect = false;
             ListViewItemSorter = this; // hej, we are self sorting
         }
 
@@ -133,7 +132,6 @@ namespace HtHistory.UserControls
             base.OnCreateControl();
             View = View.Details;
             FullRowSelect = true;
-            MultiSelect = false;
             ListViewItemSorter = this; // hej, we are self sorting
         }
 
