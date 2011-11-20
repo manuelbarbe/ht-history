@@ -34,6 +34,7 @@ namespace HtHistory.Statistics.Players
                 AddLineupPlayers(teamId, thisMatchAppearances, md);
                 AddDisappearedPlayers(teamId, thisMatchAppearances, md);
                 AddGoals(teamId, thisMatchAppearances, md);
+                AddReplacements(teamId, thisMatchAppearances, md);
 
                 // add items to return value
                 foreach (var v in thisMatchAppearances)
@@ -109,25 +110,22 @@ namespace HtHistory.Statistics.Players
         {
             foreach (MatchEvent ev in md.Events)
             {
+                if (ev.TeamId != teamId) continue;
+
                 uint playerId = ev.PlayerId;
 
-                if ((ev.TeamId == teamId) &&
-                    (ev.Type == MatchEvent.MatchEventType.RedCardSecondWarningCheating ||
-                    ev.Type == MatchEvent.MatchEventType.RedCardSecondWarningNastyPlay ||
-                    ev.Type == MatchEvent.MatchEventType.RedCardWithoutWarning))
+                if ( ev.Type.IsRedCard() )
                 {
-                    AddPlayer(ret, playerId, Lineup.LineupRole.RedCardedPlayer, md);
+                    AddPlayer(ret, playerId, Lineup.LineupRole.RedCardedPlayer, md, ev.Minute, null, null);
                 }
-                else if ((ev.TeamId == teamId) &&
-                    (ev.Type == MatchEvent.MatchEventType.InjuredAndNoReplacementExists ||
-                    ev.Type == MatchEvent.MatchEventType.InjuredAfterFoulAndNoReplacementExists))
+                else if ( ev.Type.IsInjuredWithoutSubstitute() )
                 {
-                    AddPlayer(ret, playerId, Lineup.LineupRole.InjuredWithoutReplacement, md);
+                    AddPlayer(ret, playerId, Lineup.LineupRole.InjuredWithoutReplacement, md, null, null, ev.Minute);
                 }
             }
         }
 
-        private static void AddPlayer(IDictionary<Player, MatchAppearance> ret, uint playerId, Lineup.LineupRole role, MatchDetails md)
+        private static void AddPlayer(IDictionary<Player, MatchAppearance> ret, uint playerId, Lineup.LineupRole role, MatchDetails md, uint? redcarded, uint? substitutedIn, uint? substitutedOut)
         {
             Player player = new Player(playerId, Player.UnknownName);
 
@@ -135,10 +133,10 @@ namespace HtHistory.Statistics.Players
             {
                 ret.Add(player, new MatchAppearance(player, md, role));
             }
-            else
-            {
-                throw new Exception(string.Format("Tried to add Player {0} twice", player));
-            }
+            
+            if (substitutedIn != null)  ret[player].SubstituteIn  = substitutedIn;
+            if (substitutedOut != null) ret[player].SubstituteOut = substitutedOut;
+            if (redcarded != null)      ret[player].RedCarded     = redcarded;
         }
 
         private static void AddGoals(uint teamId, IDictionary<Player, MatchAppearance> thisMatchAppearances, MatchDetails md)
@@ -151,6 +149,22 @@ namespace HtHistory.Statistics.Players
 
                 thisMatchAppearances[g.Scorer].Goals.Add(g);
             }   
+        }
+
+        private void AddReplacements(uint teamId, IDictionary<Player, MatchAppearance> thisMatchAppearances, MatchDetails md)
+        {
+            foreach (MatchEvent ev in md.Events)
+            {
+                if (ev.TeamId != teamId) continue;
+
+                if (ev.Type.IsSubstitution())
+                {
+                    // out player
+                    AddPlayer(thisMatchAppearances, ev.PlayerId, Lineup.LineupRole.Unknown, md, null, null, ev.Minute);
+                    // in player
+                    AddPlayer(thisMatchAppearances, ev.OtherPlayerId, Lineup.LineupRole.Unknown, md, null, ev.Minute, null);
+                }
+            }
         }
     }
 }
