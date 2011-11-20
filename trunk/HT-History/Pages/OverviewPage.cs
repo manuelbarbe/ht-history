@@ -59,14 +59,14 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Qmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Fmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Omin", TextAlign = HorizontalAlignment.Center, Width = 60 }
+                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 70 },
+                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 70 },
+                new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Qmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Fmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Omin", TextAlign = HorizontalAlignment.Center, Width = 55 }
             });
 
             sortableListViewDetails1
@@ -142,14 +142,14 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Qmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Fmin", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Omin", TextAlign = HorizontalAlignment.Center, Width = 60 }
+                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 70 },
+                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 70 },
+                new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Qmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Fmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "Omin", TextAlign = HorizontalAlignment.Center, Width = 55 }
             });
 
             sortableListViewOverview
