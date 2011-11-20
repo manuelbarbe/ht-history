@@ -199,9 +199,13 @@ namespace HtHistory.Core.DataContainers
     336 	Tactic Type: Long shots
     343 	Tactic: Attack in middle used
     344 	Tactic: Attack on wings used
-    350 	Player substitution: team is behind
-    351 	Player substitution: team is ahead
-    352 	Player substitution: minute
+             */
+             
+            SubstitutionTeamIsBehind =  350,
+            SubstitutionTeamIsAhead = 351,
+            SubstitutionMinute = 352,
+
+        /*
     360 	Change of tactic: team is behind
     361 	Change of tactic: team is ahead
     362 	Change of tactic: minute
