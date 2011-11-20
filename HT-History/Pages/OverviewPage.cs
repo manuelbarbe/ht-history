@@ -84,12 +84,19 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
                 new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
                 new ColumnHeader() { Text = "Position", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 }});
+                new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "In", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "Out", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "RedCard", TextAlign = HorizontalAlignment.Center, Width = 50 },
+            });
 
             sortableListViewDetails2
                 .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(1, UserControls.SortableListView.NullSorter)
-                .SetSorter(5, UserControls.SortableListView.TagSorter<int>());
+                .SetSorter(5, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(6, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(7, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(8, UserControls.SortableListView.TagSorter<uint>());
 
             this.sortableListViewDetails3.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
@@ -102,8 +109,7 @@ namespace HtHistory.Pages
             sortableListViewDetails3
                 .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(1, UserControls.SortableListView.NullSorter)
-                .SetSorter(5, UserControls.SortableListView.TagSorter<int>());
-
+                .SetSorter(5, UserControls.SortableListView.TagSorter<uint>());
         }
 
         private void InitializeOverviewList()
@@ -279,8 +285,17 @@ namespace HtHistory.Pages
                     value = d.Role;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
-                    value = -1;
+                    value = d.Minutes;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = d.SubstituteIn;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-" ) { Tag = value });
+
+                    value = d.SubstituteOut;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
+
+                    value = d.RedCarded;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
 
                     sortableListViewDetails2.Items.Add(item);
                 }
