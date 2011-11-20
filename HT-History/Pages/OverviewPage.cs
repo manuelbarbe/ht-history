@@ -12,6 +12,7 @@ using System.Drawing;
 using HtHistory.Core.ExtensionMethods;
 using HtHistory.Export;
 using System.IO;
+using System.Collections;
 
 namespace HtHistory.Pages
 {
@@ -197,6 +198,8 @@ namespace HtHistory.Pages
             {
                 sortableListViewDetails3.Items.Clear();
 
+                sortableListViewDetails3.SuspendLayout();
+
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
 
                 PlayerStatisticItem<MatchAppearance> sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerStatisticItem<MatchAppearance>;
@@ -236,6 +239,10 @@ namespace HtHistory.Pages
             {
                 MessageBox.Show(ex.ToString());
             }
+            finally
+            {
+                sortableListViewDetails3.ResumeLayout();
+            }
         }
 
         private void FillDetailsMatches()
@@ -243,6 +250,8 @@ namespace HtHistory.Pages
             try
             {
                 sortableListViewDetails2.Items.Clear();
+
+                sortableListViewDetails2.SuspendLayout();
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
 
@@ -279,6 +288,10 @@ namespace HtHistory.Pages
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                sortableListViewDetails2.ResumeLayout();
             }
         }
 
@@ -483,8 +496,10 @@ namespace HtHistory.Pages
                     Table table = TableFromListView(sortableListViewOverview);
                     using (Stream stream = File.OpenWrite(safeFileDialog.FileName))
                     {
-                        StreamWriter wr = new StreamWriter(stream, Encoding.ASCII);
-                        new TableExporterCSV(",").Export(table, wr);
+                        using (StreamWriter wr = new StreamWriter(stream, Encoding.ASCII))
+                        {
+                            new TableExporterCSV(",").Export(table, wr);
+                        }
                     }
                 }
             });
@@ -496,8 +511,10 @@ namespace HtHistory.Pages
             IEnumerable<ColumnHeader> headers = view.Columns.Cast<ColumnHeader>();
             table.ColumHeaders = headers.Select((ch) => ch.Text).ToArray();
 
+            ICollection items = (view.SelectedItems.Count > 1) ? (ICollection)view.SelectedItems : view.Items;
+
             table.Data =
-            view.Items.Cast<ListViewItem>().Select(
+            items.Cast<ListViewItem>().Select(
                 (lvi) => lvi.SubItems.Cast<ListViewItem.ListViewSubItem>().Select(
                     (lvsi) => lvsi.Text).ToArray()).ToArray();
 
