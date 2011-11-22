@@ -635,6 +635,10 @@ namespace HtHistory.Pages
 
             if (data != null && to != null)
             {
+                sortableListViewDetails1.Items.Clear();
+                sortableListViewDetails2.Items.Clear();
+                sortableListViewDetails3.Items.Clear();
+
                 IEnumerable<MatchDetails> md = to.Tag == null ? data.Matches : data.Matches.Where(m => new HtTime(m.Date).Season == (int)to.Tag);
 
                 IListData listData = GetForMatches(md);
