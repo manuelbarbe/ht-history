@@ -37,6 +37,5 @@ namespace HtHistory.Pages
  
         protected abstract void ShowResult(object sender, RunWorkerCompletedEventArgs e);
 
-
     }
 }

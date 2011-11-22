@@ -14,6 +14,11 @@ using HtHistory.Export;
 using System.IO;
 using System.Collections;
 
+using PlayerData = HtHistory.Statistics.PlayerStatisticItem<HtHistory.Statistics.Players.MatchAppearance>;
+using IListData = System.Collections.Generic.IDictionary<HtHistory.Core.DataContainers.Player, HtHistory.Statistics.PlayerStatisticItem<HtHistory.Statistics.Players.MatchAppearance>>;
+using ListData = System.Collections.Generic.Dictionary<HtHistory.Core.DataContainers.Player, HtHistory.Statistics.PlayerStatisticItem<HtHistory.Statistics.Players.MatchAppearance>>;
+
+
 namespace HtHistory.Pages
 {
     public class OverviewPage : OverviewDetailsPage
@@ -21,8 +26,9 @@ namespace HtHistory.Pages
 
         private class ResultData
         {
-            public IDictionary<Player, PlayerStatisticItem<MatchAppearance>> Infos { get; set; }
+            public IListData Infos { get; set; }
             public IEnumerable<Player> CurrentPlayers { get; set; }
+            public IEnumerable<MatchDetails> Matches { get; set; }
         }
 
         public OverviewPage()
@@ -40,6 +46,8 @@ namespace HtHistory.Pages
             InitializeTabs();
             InitializeOverviewList();
             InitializeDetailsLists();
+
+            this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
         }
 
         private void InitializeDetailsLists()
@@ -59,8 +67,8 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 70 },
-                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 70 },
+                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
                 new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
                 new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
                 new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
@@ -142,8 +150,8 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
                 new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 70 },
-                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 70 },
+                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
                 new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
                 new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
                 new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
@@ -234,7 +242,7 @@ namespace HtHistory.Pages
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
 
-                PlayerStatisticItem<MatchAppearance> sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerStatisticItem<MatchAppearance>;
+                PlayerData sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerData;
 
                 if (sitem == null) return;
 
@@ -287,7 +295,7 @@ namespace HtHistory.Pages
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
 
-                PlayerStatisticItem<MatchAppearance> sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerStatisticItem<MatchAppearance>;
+                PlayerData sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerData;
 
                 if (sitem == null) return;
 
@@ -344,11 +352,11 @@ namespace HtHistory.Pages
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
 
-                PlayerStatisticItem<MatchAppearance> sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerStatisticItem<MatchAppearance>;
+                PlayerData sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerData;
 
                 if (sitem == null) return;
 
-                IDictionary<int, PlayerStatisticItem<MatchAppearance>> appearancesBySeason = new Dictionary<int, PlayerStatisticItem<MatchAppearance>>();
+                IDictionary<int, PlayerData> appearancesBySeason = new Dictionary<int, PlayerData>(); ;
 
                 foreach (MatchAppearance d in sitem.TotalItems)
                 {
@@ -432,14 +440,20 @@ namespace HtHistory.Pages
             }
         }
 
+        IListData GetForMatches(IEnumerable<MatchDetails> matches)
+        {
+            StandardPlayerStatistics ts = new StandardPlayerStatistics(matches);
+            return ts.GetFor(Environment.Team == null ? 0 : Environment.Team.ID, true);
+        }
+
         protected override void DoWork(object sender, DoWorkEventArgs e)
         {
-            StandardPlayerStatistics ts = new StandardPlayerStatistics(
-                new MatchGetter(Environment.Team == null ? 0 : Environment.Team.ID,
+            IEnumerable<MatchDetails> matches = new MatchGetter(
+                                Environment.Team == null ? 0 : Environment.Team.ID,
                                 Environment.Opponent == null ? 0 : Environment.Opponent.ID,
                                 Environment.DataBridgeFactory.TeamDetailsBridge,
                                 Environment.DataBridgeFactory.MatchArchiveBridge,
-                                Environment.DataBridgeFactory.MatchDetailsBridge));
+                                Environment.DataBridgeFactory.MatchDetailsBridge);
        
             IEnumerable<Player> currentPlayers = new List<Player>();
             try
@@ -451,9 +465,12 @@ namespace HtHistory.Pages
                 HtLog.Warn("Cannot get current players ({0})", ex.ToString());
             }
 
-            e.Result = new ResultData() {
-                Infos = ts.GetFor(Environment.Team == null ? 0 : Environment.Team.ID, true),
-                CurrentPlayers = currentPlayers };
+            e.Result = new ResultData()
+            {
+                Infos = GetForMatches(matches),
+                CurrentPlayers = currentPlayers,
+                Matches = matches 
+            };
         }
 
         protected override void ShowResult(object sender, RunWorkerCompletedEventArgs e)
@@ -464,19 +481,40 @@ namespace HtHistory.Pages
                 return;
             }
 
-            sortableListViewOverview.Items.Clear();
             sortableListViewDetails1.Items.Clear();
+            sortableListViewDetails2.Items.Clear();
+            sortableListViewDetails3.Items.Clear();
 
+            comboBoxFilter.Items.Clear();
+          
             ResultData data = (ResultData)e.Result;
-            
-            foreach (PlayerStatisticItem<MatchAppearance> m in data.Infos.Values)
+
+            comboBoxFilter.Items.Add(new TaggedObject("all seasons"));
+            foreach (int season in data.Matches.Select(m => new HtTime(m.Date).Season).Distinct().OrderBy( i => i))
             {
-                string name = (m.Player != null && m.Player.Name != null) ? m.Player.Name : Player.UnknownName; 
+                comboBoxFilter.Items.Add(new TaggedObject(String.Format("Season {0}", season), season));
+            }
+
+            IListData listData = data.Infos;
+            ListView listView = sortableListViewOverview;
+
+            FillListView(data, listData, listView);  
+        }
+
+        private static void FillListView(ResultData data, IListData listData, ListView listView)
+        {
+            listView.Tag = data;
+
+            listView.Items.Clear();
+
+            foreach (PlayerData m in listData.Values)
+            {
+                string name = (m.Player != null && m.Player.Name != null) ? m.Player.Name : Player.UnknownName;
                 ListViewItem item = new ListViewItem(name);
                 item.Tag = m;
                 item.SubItems[0].Tag = item.Tag;
 
-                if (m.Player != null && data.CurrentPlayers.FirstOrDefault( p => (p.ID == m.Player.ID) ) != null)
+                if (m.Player != null && data.CurrentPlayers.FirstOrDefault(p => (p.ID == m.Player.ID)) != null)
                 {
                     item.Font = new Font(item.Font, FontStyle.Bold);
                 }
@@ -537,11 +575,8 @@ namespace HtHistory.Pages
                 value = m.OtherItems.Sum(ma => ma.Minutes);
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
-
-
-
-                sortableListViewOverview.Items.Add(item);
-            }   
+                listView.Items.Add(item);
+            }
         }
 
         private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -589,6 +624,24 @@ namespace HtHistory.Pages
                     (lvsi) => lvsi.Text).ToArray()).ToArray();
 
             return table;
+        }
+
+        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxFilter.SelectedItem == null) return;
+
+            ResultData data = sortableListViewOverview.Tag as ResultData;
+            TaggedObject to = comboBoxFilter.SelectedItem as TaggedObject;
+
+            if (data != null && to != null)
+            {
+                IEnumerable<MatchDetails> md = to.Tag == null ? data.Matches : data.Matches.Where(m => new HtTime(m.Date).Season == (int)to.Tag);
+
+                IListData listData = GetForMatches(md);
+                ListView listView = sortableListViewOverview;
+
+                FillListView(data, listData, listView);
+            }
         }
    }
 }

@@ -52,7 +52,7 @@ namespace HtHistory.Core.DataContainers
             BadlyInjuredLeavesField = 92,
             InjuredAndNoReplacementExists = 93,
             InjuredAfterFoulButContinues = 94,
-            InjuredAfterFoulButExits = 95,
+            InjuredAfterFoulAndExits = 95,
             InjuredAfterFoulAndNoReplacementExists = 96,
             KeeperInjuredFieldPlayerHasToTakeHisPlace = 97,
 

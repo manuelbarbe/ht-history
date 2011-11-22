@@ -123,6 +123,7 @@
     <Compile Include="Dialogs\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaggedObject.cs" />
     <Compile Include="UserControls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
