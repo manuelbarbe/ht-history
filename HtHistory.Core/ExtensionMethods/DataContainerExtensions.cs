@@ -41,7 +41,7 @@ namespace HtHistory.Core.ExtensionMethods
                 type == MatchEvent.MatchEventType.SubstitutionTeamIsBehind ||
                 type == MatchEvent.MatchEventType.ModeratelyInjuredLeavesField ||
                 type == MatchEvent.MatchEventType.BadlyInjuredLeavesField ||
-                type == MatchEvent.MatchEventType.InjuredAfterFoulButExits;
+                type == MatchEvent.MatchEventType.InjuredAfterFoulAndExits;
         }
 
         public static bool IsInjuredWithoutSubstitute(this MatchEvent.MatchEventType type)

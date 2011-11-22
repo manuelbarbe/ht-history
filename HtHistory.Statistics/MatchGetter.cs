@@ -31,25 +31,32 @@ namespace HtHistory.Statistics
         private IMatchArchiveBridge MAB { get; set; }
         private IMatchDetailsBridge MDB { get; set; }
 
+        private IList<MatchDetails> _mdl = null;
+
         public IEnumerator<MatchDetails> GetEnumerator()
         {
-            TeamDetails teamDetails = TDB.GetTeamDetails(TeamId);
-            if (teamDetails == null || teamDetails.Owner == null || teamDetails.Owner.JoinDate == null)
-                throw new Exception("Cannot get join date of owner");
-
-            MatchArchive ar = MAB.GetMatches(TeamId, teamDetails.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
-
-            IList<MatchDetails> mdl = new List<MatchDetails>();
-
-            foreach (Match m in ar.SafeEnum())
+            if (_mdl == null)
             {
-                // check if specified opponent is playing match
-                if (OpponentId != 0 && !(OpponentId == m.HomeTeam.ID || OpponentId == m.AwayTeam.ID)) continue;
+                TeamDetails teamDetails = TDB.GetTeamDetails(TeamId);
+                if (teamDetails == null || teamDetails.Owner == null || teamDetails.Owner.JoinDate == null)
+                    throw new Exception("Cannot get join date of owner");
 
-                mdl.Add(MDB.GetMatchDetails(m.ID));
+                MatchArchive ar = MAB.GetMatches(TeamId, teamDetails.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
+
+                IList<MatchDetails> mdl = new List<MatchDetails>();
+
+                foreach (Match m in ar.SafeEnum())
+                {
+                    // check if specified opponent is playing match
+                    if (OpponentId != 0 && !(OpponentId == m.HomeTeam.ID || OpponentId == m.AwayTeam.ID)) continue;
+
+                    mdl.Add(MDB.GetMatchDetails(m.ID));
+                }
+
+                _mdl = mdl;
             }
 
-            return mdl.GetEnumerator();
+            return _mdl.GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
