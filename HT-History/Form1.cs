@@ -303,22 +303,19 @@ namespace HtHistory
                 .AppendLine("- click refresh")
                 .AppendLine("- be patient, HT-History is downloading data from hattrick now")
                 .AppendLine("- browse your player list")
-                .AppendLine("\t TM: total matches")
-                .AppendLine("\t TG: total goals")
-                .AppendLine("\t LM: league matches")
-                .AppendLine("\t LG: league goals")
-                .AppendLine("\t CM: cup matches")
-                .AppendLine("\t CG: cup goals")
-                .AppendLine("\t QM: qualifier matches")
-                .AppendLine("\t QG: qualifier goals")
-                .AppendLine("\t FM: friendly matches")
-                .AppendLine("\t FG: friendly goals")
-                .AppendLine("\t OM: other matches, e.g hattrick masters")
-                .AppendLine("\t OG: other goals")
+                .AppendLine("\t Tot: total")
+                .AppendLine("\t Com: competitive (Lea + Cup + Qua)")
+                .AppendLine("\t Lea: league")
+                .AppendLine("\t Cup: cup")
+                .AppendLine("\t Qua: qualifier")
+                .AppendLine("\t Fri: friendly")
+                .AppendLine("\t Oth: other match types")
+                .AppendLine("\t Ma: matches")
+                .AppendLine("\t Go: goals")
+                .AppendLine("\t Min: minutes")
                 .AppendLine("- sort by clicking column headers")
                 .AppendLine("- select player and look at individual stats on the 3 tables at the bottom")
-                .AppendLine("- opt. right click main table and choose 'copy to clipboard'")
-                .AppendLine("- opt. show off with your players at hattrick forums");
+                .AppendLine("- opt. right click main table and choose 'copy to clipboard'");
 
             MessageBox.Show(builder.ToString(), "Short help");
 

@@ -55,26 +55,29 @@ namespace HtHistory.Pages
 
             this.sortableListViewDetails1.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
-                new ColumnHeader() { Text = "TM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "TG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "LM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "LG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "CM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "CG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "QM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "QG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "FM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "TotMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "TotGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "ComMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "ComGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "LeaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "LeaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "CupMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "CupGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "QuaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "QuaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "FriMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "FriGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "OthMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "OthGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
                 new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Qmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Fmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Omin", TextAlign = HorizontalAlignment.Center, Width = 55 }
+                new ColumnHeader() { Text = "TotMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "ComMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "LeaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "CupMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "QuaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "FriMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "OthMin", TextAlign = HorizontalAlignment.Center, Width = 55 }
             });
 
             sortableListViewDetails1
@@ -90,14 +93,17 @@ namespace HtHistory.Pages
                 .SetSorter(10, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(11, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(12, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(13, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(14, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(15, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(16, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(13, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(14, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(15, UserControls.SortableListView.TagSorter<DateTime>())
+                .SetSorter(16, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(17, UserControls.SortableListView.TagSorter<long>())
                 .SetSorter(18, UserControls.SortableListView.TagSorter<long>())
                 .SetSorter(19, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(20, UserControls.SortableListView.TagSorter<long>());
+                .SetSorter(20, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(21, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(22, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(23, UserControls.SortableListView.TagSorter<long>());
 
             this.sortableListViewDetails2.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
@@ -138,26 +144,29 @@ namespace HtHistory.Pages
 
             this.sortableListViewOverview.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
-                new ColumnHeader() { Text = "TM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "TG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "LM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "LG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "CM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "CG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "QM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "QG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "FM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "FG", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "OM", TextAlign = HorizontalAlignment.Center, Width = 40 },
-                new ColumnHeader() { Text = "OG", TextAlign = HorizontalAlignment.Center, Width = 40 },
+                new ColumnHeader() { Text = "TotMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "TotGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "ComMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "ComGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "LeaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "LeaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "CupMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "CupGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "QuaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "QuaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "FriMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "FriGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "OthMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "OthGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
                 new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Tmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Lmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Cmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Qmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Fmin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "Omin", TextAlign = HorizontalAlignment.Center, Width = 55 }
+                new ColumnHeader() { Text = "TotMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "ComMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "LeaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "CupMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "QuaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "FriMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
+                new ColumnHeader() { Text = "OthMin", TextAlign = HorizontalAlignment.Center, Width = 55 } 
             });
 
             sortableListViewOverview
@@ -173,14 +182,18 @@ namespace HtHistory.Pages
                 .SetSorter(10, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(11, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(12, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(13, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(14, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(15, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(16, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(13, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(14, UserControls.SortableListView.TagSorter<int>())
+                .SetSorter(15, UserControls.SortableListView.TagSorter<DateTime>())
+                .SetSorter(16, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(17, UserControls.SortableListView.TagSorter<long>())
                 .SetSorter(18, UserControls.SortableListView.TagSorter<long>())
                 .SetSorter(19, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(20, UserControls.SortableListView.TagSorter<long>());
+                .SetSorter(20, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(21, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(22, UserControls.SortableListView.TagSorter<long>())
+                .SetSorter(23, UserControls.SortableListView.TagSorter<long>());
+
 
             this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
             this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
@@ -386,6 +399,12 @@ namespace HtHistory.Pages
                     value = m.TotalItems.Sum(ma => ma.Goals.Count);
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
+                    // competitive items
+                    value = m.LeagueItems.Count + m.CupItems.Count + m.QualifierItems.Count;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                    value = m.LeagueItems.Sum(ma => ma.Goals.Count) + m.CupItems.Sum(ma => ma.Goals.Count) + m.QualifierItems.Sum(ma => ma.Goals.Count);
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
                     value = m.LeagueItems.Count;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
                     value = m.LeagueItems.Sum(ma => ma.Goals.Count);
@@ -418,6 +437,8 @@ namespace HtHistory.Pages
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((DateTime)value).ToShortDateString()) { Tag = value });
 
                     value = m.TotalItems.Sum(ma => ma.Minutes);
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                    value = m.LeagueItems.Sum(ma => ma.Minutes) + m.CupItems.Sum(ma => ma.Minutes) + m.QualifierItems.Sum(ma => ma.Minutes);
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
                     value = m.LeagueItems.Sum(ma => ma.Minutes);
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
@@ -531,6 +552,12 @@ namespace HtHistory.Pages
                 value = m.TotalItems.Sum(ma => ma.Goals.Count);
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
+                // competitive items
+                value = m.LeagueItems.Count + m.CupItems.Count + m.QualifierItems.Count;
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                value = m.LeagueItems.Sum(ma => ma.Goals.Count) + m.CupItems.Sum(ma => ma.Goals.Count) + m.QualifierItems.Sum(ma => ma.Goals.Count);
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
                 value = m.LeagueItems.Count;
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
                 value = m.LeagueItems.Sum(ma => ma.Goals.Count);
@@ -563,6 +590,8 @@ namespace HtHistory.Pages
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((DateTime)value).ToShortDateString()) { Tag = value });
 
                 value = m.TotalItems.Sum(ma => ma.Minutes);
+                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                value = m.LeagueItems.Sum(ma => ma.Minutes) + m.CupItems.Sum(ma => ma.Minutes) + m.QualifierItems.Sum(ma => ma.Minutes);
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
                 value = m.LeagueItems.Sum(ma => ma.Minutes);
                 item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
