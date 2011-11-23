@@ -1,0 +1,50 @@
+﻿HT-History by manuhell
+
++ added
+- removed
+C changed
+
+v0.1.0
+-----------------
++ short help
+
+v0.0.7
+-----------------
+C storing persitent data in AppData
+C auth is now in XML
+C only one full list "Players" in UI now
++ remembering last team id
++ proxy may work
++ Installer
++ copy to clipboard
+
+v.0.0.6
+-----------------
++ Page "Overview"
++ Matches played and goals by season
+
+v0.0.5
+-----------------
++ Page "Appearances"
+
+v0.0.4
+-----------------
++ Goal details list sortable
++ Match type at goal details list
++ Current players highlighted
++ Scorers sortable by name
+
+v0.0.3
+-----------------
++ Scorers sortable by columns (except by Name)
+
+v0.0.2
+-----------------
++ using OAuth access token of user
+
+v0.0.1
+-----------------
++ overall top scorers
++ scorers per opponent
++ list of all goals of specified scorer
++ storing downloaded chpp files in APP/data 
