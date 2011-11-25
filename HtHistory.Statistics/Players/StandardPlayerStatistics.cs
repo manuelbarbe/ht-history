@@ -17,9 +17,9 @@ namespace HtHistory.Statistics.Players
 
         private IEnumerable<MatchDetails> Matches { get; set; }
 
-        public IDictionary<Player, PlayerStatisticItem<MatchAppearance>> GetFor(uint teamId, bool addTeamItem = false)
+        public IDictionary<Player, IList<MatchAppearance>> GetMatchesOfPlayers(uint teamId, bool addTeamItem = false)
         {
-            IDictionary<Player, PlayerStatisticItem<MatchAppearance>> ret2 = new Dictionary<Player, PlayerStatisticItem<MatchAppearance>>();
+            IDictionary<Player, IList<MatchAppearance>> ret2 = new Dictionary<Player, IList<MatchAppearance>>();
            
             foreach (MatchDetails md in Matches.SafeEnum())
             {
@@ -41,10 +41,10 @@ namespace HtHistory.Statistics.Players
                 {
                     if (!ret2.ContainsKey(v.Key))
                     {
-                        ret2.Add(v.Key, new PlayerStatisticItem<MatchAppearance>(v.Key));
+                        ret2.Add(v.Key, new List<MatchAppearance>());
                     }
 
-                    ret2[v.Key].Add(v.Value, md.Date, md.Type);
+                    ret2[v.Key].Add(v.Value);
                 }
             }
 

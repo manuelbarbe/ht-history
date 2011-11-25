@@ -42,6 +42,19 @@ namespace HtHistory.UserControls
         /// <typeparam name="TagType">the type the tag will be casted to</typeparam>
         private class ListViewSubItemTagSorter<TagType> : IComparer<ListViewItem.ListViewSubItem>
         {
+            private IComparer<TagType> _comparer;
+
+            public ListViewSubItemTagSorter() : this (Comparer<TagType>.Default)
+            {
+            }
+
+            public ListViewSubItemTagSorter(IComparer<TagType> comparer)
+            {
+                if (comparer == null) throw new ArgumentNullException("comparer");
+
+                _comparer = comparer;
+            }
+
             public int Compare(ListViewItem.ListViewSubItem x, ListViewItem.ListViewSubItem y)
             {
                 if (x == null)
@@ -60,7 +73,31 @@ namespace HtHistory.UserControls
 
                 if (!(y.Tag is TagType)) return 1;
 
-                return Comparer<TagType>.Default.Compare((TagType)x.Tag, (TagType)y.Tag);
+                return _comparer.Compare((TagType)x.Tag, (TagType)y.Tag);
+            }
+        }
+
+        /// <summary>Predefined sorter for sorting by .Tag property of subitems
+        /// </summary>
+        private class ListViewSubItemTagSorter : IComparer<ListViewItem.ListViewSubItem>
+        {
+            private IComparer _comparer;
+
+            public ListViewSubItemTagSorter()
+                : this(Comparer.Default)
+            {
+            }
+
+            public ListViewSubItemTagSorter(IComparer comparer)
+            {
+                if (comparer == null) throw new ArgumentNullException("comparer");
+
+                _comparer = comparer;
+            }
+
+            public int Compare(ListViewItem.ListViewSubItem x, ListViewItem.ListViewSubItem y)
+            {
+                return _comparer.Compare(x.Tag, y.Tag);
             }
         }
 
@@ -87,6 +124,28 @@ namespace HtHistory.UserControls
         public static IComparer<ListViewItem.ListViewSubItem> TagSorter<TagType>()
         {
             return new ListViewSubItemTagSorter<TagType>();
+        }
+        /// <summary>Creates tag sorter instance
+        /// </summary>
+        /// <typeparam name="TagType"></typeparam>
+        /// <returns></returns>
+        public static IComparer<ListViewItem.ListViewSubItem> TagSorter<TagType>(IComparer<TagType> comparer)
+        {
+            return new ListViewSubItemTagSorter<TagType>(comparer);
+        }
+        /// <summary>Creates tag sorter instance
+        /// </summary>
+        /// <returns></returns>
+        public static IComparer<ListViewItem.ListViewSubItem> TagSorter()
+        {
+            return new ListViewSubItemTagSorter();
+        }
+        /// <summary>Creates tag sorter instance
+        /// </summary>
+        /// <returns></returns>
+        public static IComparer<ListViewItem.ListViewSubItem> TagSorter(IComparer comparer)
+        {
+            return new ListViewSubItemTagSorter(comparer);
         }
 
         #endregion

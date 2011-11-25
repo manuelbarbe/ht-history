@@ -43,12 +43,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MatchGetter.cs" />
+    <Compile Include="Generic2ObjectComparer.cs" />
+    <Compile Include="Players\IPlayerStatisticCalculator.cs" />
     <Compile Include="Players\MatchAppearance.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorBase.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorCompetitiveGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorCompetitiveMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorCompetitiveMinutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorCupGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorCupMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorCupMinutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorFirstMatch.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorFriendlyGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorFriendlyMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorFriendlyMinutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLastMatch.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLeagueGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLeagueMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLeagueMinutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorOtherGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorOtherMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorOtherMinutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPlayerId.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPlayerName.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorQualifierGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorQualifierMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorQualifierMinutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorTotalGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorTotalMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorTotalMinutes.cs" />
     <Compile Include="Players\StandardPlayerStatistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Players\PlayerStatisticItem.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Arena\" />
+    <Folder Include="Team\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HtHistory.Core\HtHistory.Core.csproj">
       <Project>{75B039ED-5C8F-4FCC-9AEE-BE0B9C073334}</Project>

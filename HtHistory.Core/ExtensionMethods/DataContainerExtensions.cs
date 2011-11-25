@@ -8,6 +8,57 @@ namespace HtHistory.Core.ExtensionMethods
 {
     public static class DataContainerExtensions
     {
+        public static bool IsLeagueMatch(this Match.MatchType t)
+        {
+            return t == Match.MatchType.ClubCompetitiveLeague;
+        }
+    
+        public static bool IsQualifierMatch(this Match.MatchType t)
+        {
+            return t == Match.MatchType.ClubCompetitiveQualifier;
+        }
+
+        public static bool IsCupMatch(this Match.MatchType t)
+        {
+            return t == Match.MatchType.ClubCompetitiveCup;
+        }
+
+        public static bool IsFriendlyMatch(this Match.MatchType t)
+        {
+            switch (t)
+            {
+                case Match.MatchType.ClubFriendly:
+                case Match.MatchType.ClubFriendlyCupRules:
+                case Match.MatchType.ClubFriendlyInternational:
+                case Match.MatchType.ClubFriendlyInternationalCupRules:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        
+        public static bool IsOtherSeniorMatch(this Match.MatchType t)
+        {
+            switch (t)
+            {
+                    case Match.MatchType.ClubCompetitiveInternational:
+                    case Match.MatchType.ClubCompetitiveInternationalCupRules:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        public static bool IsCompetitiveSeniorMatch(this Match.MatchType t)
+        {
+            return t.IsLeagueMatch() || t.IsCupMatch() || t.IsQualifierMatch();
+        }
+
+        public static bool IsNonSeniorMatch(this Match.MatchType t)
+        {
+            return !(t.IsLeagueMatch() || t.IsCupMatch() || t.IsQualifierMatch() || t.IsFriendlyMatch() || t.IsOtherSeniorMatch());  
+        }
+
         public static bool IsActive(this Lineup.LineupRole role)
         {
             return !(
