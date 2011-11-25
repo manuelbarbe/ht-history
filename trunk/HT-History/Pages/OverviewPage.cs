@@ -45,6 +45,7 @@ namespace HtHistory.Pages
             _stats.Add(new PlayerStatisticsCalculatorPlayerId());
             _stats.Add(new PlayerStatisticsCalculatorTotalMatches());
             _stats.Add(new PlayerStatisticsCalculatorTotalGoals());
+            _stats.Add(new PlayerStatisticsCalculatorTotalBestPlayer());
             _stats.Add(new PlayerStatisticsCalculatorTotalMinutes());
             _stats.Add(new PlayerStatisticsCalculatorCompetitiveMatches());
             _stats.Add(new PlayerStatisticsCalculatorCompetitiveGoals());
