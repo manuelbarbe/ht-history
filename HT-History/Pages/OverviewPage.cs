@@ -37,7 +37,7 @@ namespace HtHistory.Pages
         private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToCSVToolStripMenuItem;
 
-        private IList<IPlayerStatisticCalculator<IList<MatchAppearance>>> _stats = new List<IPlayerStatisticCalculator<IList<MatchAppearance>>>();
+        private IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> _stats = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
 
         private void InitializeComponent()
         {
@@ -77,58 +77,9 @@ namespace HtHistory.Pages
 
         private void InitializeDetailsLists()
         {
-
-            this.sortableListViewDetails1.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
-                new ColumnHeader() { Text = "TotMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "TotGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "ComMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "ComGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "LeaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "LeaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "CupMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "CupGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "QuaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "QuaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "FriMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "FriGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "OthMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "OthGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "TotMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "ComMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "LeaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "CupMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "QuaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "FriMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "OthMin", TextAlign = HorizontalAlignment.Center, Width = 55 }
-            });
-
-            sortableListViewDetails1
-                .SetSorter(1, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(2, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(3, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(4, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(5, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(6, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(7, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(8, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(9, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(10, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(11, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(12, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(13, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(14, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(15, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(16, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(17, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(18, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(19, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(20, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(21, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(22, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(23, UserControls.SortableListView.TagSorter<long>());
+            sortableListViewDetails1.Columns.Clear();
+            sortableListViewDetails1.Columns.Add(new ColumnHeader() { Text = "Season", TextAlign = HorizontalAlignment.Left, Width = 80 });
+            AddConfiguredColumns(sortableListViewDetails1);
 
             this.sortableListViewDetails2.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
@@ -164,70 +115,20 @@ namespace HtHistory.Pages
                 .SetSorter(5, UserControls.SortableListView.TagSorter<uint>());
         }
 
-        private void InitializeOverviewList()
+        private void AddConfiguredColumns(SortableListView listview)
         {
-            sortableListViewOverview.Columns.Clear();
-
             foreach (var s in _stats)
             {
                 var ch = new ColumnHeader() { Text = s.Abbreviation, TextAlign = HorizontalAlignment.Left, Width = 60, Tag = s };
-                sortableListViewOverview.Columns.Add(ch);
-                sortableListViewOverview.SetSorter(ch.Index, SortableListView.TagSorter(s.GetComparer()));
+                listview.Columns.Add(ch);
+                listview.SetSorter(ch.Index, SortableListView.TagSorter(s.GetComparer()));
             }
+        }
 
-/*
-            this.sortableListViewOverview.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
-                new ColumnHeader() { Text = "TotMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "TotGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "ComMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "ComGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "LeaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "LeaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "CupMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "CupGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "QuaMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "QuaGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "FriMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "FriGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "OthMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "OthGo", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "First", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Last", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "TotMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "ComMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "LeaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "CupMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "QuaMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "FriMin", TextAlign = HorizontalAlignment.Center, Width = 55 },
-                new ColumnHeader() { Text = "OthMin", TextAlign = HorizontalAlignment.Center, Width = 55 } 
-            });
-
-            sortableListViewOverview
-                .SetSorter(1, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(2, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(3, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(4, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(5, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(6, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(7, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(8, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(9, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(10, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(11, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(12, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(13, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(14, UserControls.SortableListView.TagSorter<int>())
-                .SetSorter(15, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(16, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(17, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(18, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(19, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(20, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(21, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(22, UserControls.SortableListView.TagSorter<long>())
-                .SetSorter(23, UserControls.SortableListView.TagSorter<long>());
-            */
+        private void InitializeOverviewList()
+        {
+            sortableListViewOverview.Columns.Clear();
+            AddConfiguredColumns(sortableListViewOverview);
 
             this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
             this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
@@ -281,7 +182,6 @@ namespace HtHistory.Pages
 
         private void FillDetailsGoals()
         {
-            /*
             try
             {
                 sortableListViewDetails3.Items.Clear();
@@ -289,12 +189,15 @@ namespace HtHistory.Pages
                 sortableListViewDetails3.SuspendLayout();
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
+                KeyValuePair<Player, IList<MatchAppearance>> sitem;
 
-                PlayerData sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerData;
+                if (sortableListViewOverview.SelectedItems[0].Tag is KeyValuePair<Player, IList<MatchAppearance>>)
+                {
+                    sitem = (KeyValuePair<Player, IList<MatchAppearance>>)sortableListViewOverview.SelectedItems[0].Tag;
+                }
+                else return;
 
-                if (sitem == null) return;
-
-                foreach (var v in sitem.TotalItems.SafeEnum())
+                foreach (var v in sitem.Value.SafeEnum())
                 {
                     foreach (Goal g in v.Goals.SafeEnum())
                     {
@@ -331,12 +234,10 @@ namespace HtHistory.Pages
             {
                 sortableListViewDetails3.ResumeLayout();
             }
-             * */
         }
 
         private void FillDetailsMatches()
         {
-            /*
             try
             {
                 sortableListViewDetails2.Items.Clear();
@@ -345,11 +246,15 @@ namespace HtHistory.Pages
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
 
-                PlayerData sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerData;
+                KeyValuePair<Player, IList<MatchAppearance>> sitem;
 
-                if (sitem == null) return;
+                if (sortableListViewOverview.SelectedItems[0].Tag is KeyValuePair<Player, IList<MatchAppearance>>)
+                {
+                    sitem = (KeyValuePair<Player, IList<MatchAppearance>>)sortableListViewOverview.SelectedItems[0].Tag;
+                }
+                else return;
 
-                foreach (MatchAppearance d in sitem.TotalItems)
+                foreach (MatchAppearance d in sitem.Value.SafeEnum())
                 {
                     ListViewItem item = new ListViewItem(d.Match.Date.ToShortDateString());
                     item.Tag = d.Match.Date;
@@ -392,37 +297,26 @@ namespace HtHistory.Pages
             {
                 sortableListViewDetails2.ResumeLayout();
             }
-             * */
         }
 
         private void FillDetailsSeason()
         {
-            /*
             try
             {
                 sortableListViewDetails1.Items.Clear();
 
                 if (sortableListViewOverview.SelectedItems.Count == 0) return;
+                
+                KeyValuePair<Player, IList<MatchAppearance>> sitem;
 
-                PlayerData sitem = sortableListViewOverview.SelectedItems[0].Tag as PlayerData;
-
-                if (sitem == null) return;
-
-                IDictionary<int, PlayerData> appearancesBySeason = new Dictionary<int, PlayerData>(); ;
-
-                foreach (MatchAppearance d in sitem.TotalItems)
+                if (sortableListViewOverview.SelectedItems[0].Tag is KeyValuePair<Player, IList<MatchAppearance>>)
                 {
-                    int season = new HtTime(d.Match.Date).Season;
-
-                    if (!appearancesBySeason.ContainsKey(season))
-                    {
-                        appearancesBySeason.Add(season, new PlayerStatisticItem<MatchAppearance>(d.Player));
-                    }
-
-                    appearancesBySeason[season].Add(d, d.Match.Date, d.Match.Type);
+                    sitem = (KeyValuePair<Player, IList<MatchAppearance>>)sortableListViewOverview.SelectedItems[0].Tag;
                 }
+                else return;
 
-
+                IDictionary<int, IEnumerable<MatchAppearance>> appearancesBySeason = sitem.Value.Split(m => new HtTime(m.Match.Date).Season);
+               
                 foreach (var v in appearancesBySeason)
                 {
                     var m = v.Value;
@@ -431,65 +325,23 @@ namespace HtHistory.Pages
                     item.Tag = m;
                     item.SubItems[0].Tag = item.Tag;
 
-                    object value = 0;
+                    bool firstCol = true;
+                    foreach (ColumnHeader ch in sortableListViewDetails1.Columns)
+                    {
+                        IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>;
+                        object value = (psc == null) ? "(invalid)" : psc.Calculate(v.Value);
 
-                    value = m.TotalItems.Count;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.TotalItems.Sum(ma => ma.Goals.Count);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                    // competitive items
-                    value = m.LeagueItems.Count + m.CupItems.Count + m.QualifierItems.Count;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.LeagueItems.Sum(ma => ma.Goals.Count) + m.CupItems.Sum(ma => ma.Goals.Count) + m.QualifierItems.Sum(ma => ma.Goals.Count);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                    value = m.LeagueItems.Count;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.LeagueItems.Sum(ma => ma.Goals.Count);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                    value = m.CupItems.Count;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.CupItems.Sum(ma => ma.Goals.Count);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                    value = m.QualifierItems.Count;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.QualifierItems.Sum(ma => ma.Goals.Count);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                    value = m.FriendlyItems.Count;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.FriendlyItems.Sum(ma => ma.Goals.Count);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                    value = m.OtherItems.Count;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.OtherItems.Sum(ma => ma.Goals.Count);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                    value = m.First;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((DateTime)value).ToShortDateString()) { Tag = value });
-
-                    value = m.Last;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((DateTime)value).ToShortDateString()) { Tag = value });
-
-                    value = m.TotalItems.Sum(ma => ma.Minutes);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.LeagueItems.Sum(ma => ma.Minutes) + m.CupItems.Sum(ma => ma.Minutes) + m.QualifierItems.Sum(ma => ma.Minutes);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.LeagueItems.Sum(ma => ma.Minutes);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.CupItems.Sum(ma => ma.Minutes);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.QualifierItems.Sum(ma => ma.Minutes);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.FriendlyItems.Sum(ma => ma.Minutes);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                    value = m.OtherItems.Sum(ma => ma.Minutes);
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
+                        if (firstCol)
+                        {
+                            firstCol = false;
+                            continue; //skip
+                        }
+                        else
+                        {
+                            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                        }
+                    }
+                    
                     sortableListViewDetails1.Items.Add(item);
                 }
 
@@ -498,7 +350,7 @@ namespace HtHistory.Pages
             {
                 MessageBox.Show(ex.ToString());
             }
-             * */
+
         }
 
         IDictionary<Player, IList<MatchAppearance>> GetForMatches(IEnumerable<MatchDetails> matches)
@@ -570,7 +422,7 @@ namespace HtHistory.Pages
                 Player player = pmd.Key;
                 if (player == null) continue;
 
-                ListViewItem item = new ListViewItem("manuhell") { Tag = player };
+                ListViewItem item = new ListViewItem("(invalid)") { Tag = pmd };
 
                 // highlight current players
                 if (data.CurrentPlayers.FirstOrDefault(p => (p.ID == player.ID)) != null)
@@ -587,7 +439,7 @@ namespace HtHistory.Pages
                 bool firstCol = true;
                 foreach (ColumnHeader ch in listView.Columns)
                 {
-                    IPlayerStatisticCalculator<IList<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IList<MatchAppearance>>;
+                    IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>;
                     object value = (psc == null) ? "(invalid)" : psc.Calculate(pmd.Value);
 
                     if (firstCol)
