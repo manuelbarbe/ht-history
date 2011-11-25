@@ -6,6 +6,7 @@ using HtHistory.Core.DataContainers;
 
 namespace HtHistory.Statistics
 {
+    /*
     public class PlayerStatisticItem<T>
     {
             public PlayerStatisticItem (Player player)
@@ -85,4 +86,5 @@ namespace HtHistory.Statistics
                     );
             }
     }
+     * */
 }

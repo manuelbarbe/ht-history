@@ -13,10 +13,7 @@ using HtHistory.Core.ExtensionMethods;
 using HtHistory.Export;
 using System.IO;
 using System.Collections;
-
-using PlayerData = HtHistory.Statistics.PlayerStatisticItem<HtHistory.Statistics.Players.MatchAppearance>;
-using IListData = System.Collections.Generic.IDictionary<HtHistory.Core.DataContainers.Player, HtHistory.Statistics.PlayerStatisticItem<HtHistory.Statistics.Players.MatchAppearance>>;
-using ListData = System.Collections.Generic.Dictionary<HtHistory.Core.DataContainers.Player, HtHistory.Statistics.PlayerStatisticItem<HtHistory.Statistics.Players.MatchAppearance>>;
+using HtHistory.UserControls;
 
 
 namespace HtHistory.Pages
@@ -26,7 +23,7 @@ namespace HtHistory.Pages
 
         private class ResultData
         {
-            public IListData Infos { get; set; }
+            public IDictionary<Player, IList<MatchAppearance>> Infos { get; set; }
             public IEnumerable<Player> CurrentPlayers { get; set; }
             public IEnumerable<MatchDetails> Matches { get; set; }
         }
@@ -40,8 +37,36 @@ namespace HtHistory.Pages
         private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToCSVToolStripMenuItem;
 
+        private IList<IPlayerStatisticCalculator<IList<MatchAppearance>>> _stats = new List<IPlayerStatisticCalculator<IList<MatchAppearance>>>();
+
         private void InitializeComponent()
         {
+            _stats.Add(new PlayerStatisticsCalculatorPlayerName());
+            _stats.Add(new PlayerStatisticsCalculatorPlayerId());
+            _stats.Add(new PlayerStatisticsCalculatorTotalMatches());
+            _stats.Add(new PlayerStatisticsCalculatorTotalGoals());
+            _stats.Add(new PlayerStatisticsCalculatorTotalMinutes());
+            _stats.Add(new PlayerStatisticsCalculatorCompetitiveMatches());
+            _stats.Add(new PlayerStatisticsCalculatorCompetitiveGoals());
+            _stats.Add(new PlayerStatisticsCalculatorCompetitiveMinutes());
+            _stats.Add(new PlayerStatisticsCalculatorLeagueMatches());
+            _stats.Add(new PlayerStatisticsCalculatorLeagueGoals());
+            _stats.Add(new PlayerStatisticsCalculatorLeagueMinutes());
+            _stats.Add(new PlayerStatisticsCalculatorCupMatches());
+            _stats.Add(new PlayerStatisticsCalculatorCupGoals());
+            _stats.Add(new PlayerStatisticsCalculatorCupMinutes());
+            _stats.Add(new PlayerStatisticsCalculatorQualifierMatches());
+            _stats.Add(new PlayerStatisticsCalculatorQualifierGoals());
+            _stats.Add(new PlayerStatisticsCalculatorQualifierMinutes());
+            _stats.Add(new PlayerStatisticsCalculatorFriendlyMatches());
+            _stats.Add(new PlayerStatisticsCalculatorFriendlyGoals());
+            _stats.Add(new PlayerStatisticsCalculatorFriendlyMinutes());
+            _stats.Add(new PlayerStatisticsCalculatorOtherMatches());
+            _stats.Add(new PlayerStatisticsCalculatorOtherGoals());
+            _stats.Add(new PlayerStatisticsCalculatorOtherMinutes());
+            _stats.Add(new PlayerStatisticsCalculatorFirstMatch());
+            _stats.Add(new PlayerStatisticsCalculatorLastMatch());
+
             InitializeContextMenu();
             InitializeTabs();
             InitializeOverviewList();
@@ -141,7 +166,16 @@ namespace HtHistory.Pages
 
         private void InitializeOverviewList()
         {
+            sortableListViewOverview.Columns.Clear();
 
+            foreach (var s in _stats)
+            {
+                var ch = new ColumnHeader() { Text = s.Abbreviation, TextAlign = HorizontalAlignment.Left, Width = 60, Tag = s };
+                sortableListViewOverview.Columns.Add(ch);
+                sortableListViewOverview.SetSorter(ch.Index, SortableListView.TagSorter(s.GetComparer()));
+            }
+
+/*
             this.sortableListViewOverview.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Name", TextAlign = HorizontalAlignment.Left, Width = 225 },
                 new ColumnHeader() { Text = "TotMa", TextAlign = HorizontalAlignment.Center, Width = 50 },
@@ -193,7 +227,7 @@ namespace HtHistory.Pages
                 .SetSorter(21, UserControls.SortableListView.TagSorter<long>())
                 .SetSorter(22, UserControls.SortableListView.TagSorter<long>())
                 .SetSorter(23, UserControls.SortableListView.TagSorter<long>());
-
+            */
 
             this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
             this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
@@ -247,6 +281,7 @@ namespace HtHistory.Pages
 
         private void FillDetailsGoals()
         {
+            /*
             try
             {
                 sortableListViewDetails3.Items.Clear();
@@ -296,10 +331,12 @@ namespace HtHistory.Pages
             {
                 sortableListViewDetails3.ResumeLayout();
             }
+             * */
         }
 
         private void FillDetailsMatches()
         {
+            /*
             try
             {
                 sortableListViewDetails2.Items.Clear();
@@ -355,10 +392,12 @@ namespace HtHistory.Pages
             {
                 sortableListViewDetails2.ResumeLayout();
             }
+             * */
         }
 
         private void FillDetailsSeason()
         {
+            /*
             try
             {
                 sortableListViewDetails1.Items.Clear();
@@ -459,12 +498,13 @@ namespace HtHistory.Pages
             {
                 MessageBox.Show(ex.ToString());
             }
+             * */
         }
 
-        IListData GetForMatches(IEnumerable<MatchDetails> matches)
+        IDictionary<Player, IList<MatchAppearance>> GetForMatches(IEnumerable<MatchDetails> matches)
         {
             StandardPlayerStatistics ts = new StandardPlayerStatistics(matches);
-            return ts.GetFor(Environment.Team == null ? 0 : Environment.Team.ID, true);
+            return ts.GetMatchesOfPlayers(Environment.Team == null ? 0 : Environment.Team.ID, true);
         }
 
         protected override void DoWork(object sender, DoWorkEventArgs e)
@@ -516,93 +556,51 @@ namespace HtHistory.Pages
                 comboBoxFilter.Items.Add(new TaggedObject(String.Format("Season {0}", season), season));
             }
 
-            IListData listData = data.Infos;
             ListView listView = sortableListViewOverview;
-
-            FillListView(data, listData, listView);  
+            FillListView(data, listView);  
         }
 
-        private static void FillListView(ResultData data, IListData listData, ListView listView)
+        private void FillListView(ResultData data, ListView listView)
         {
             listView.Tag = data;
-
             listView.Items.Clear();
 
-            foreach (PlayerData m in listData.Values)
+            foreach (var pmd in data.Infos)
             {
-                string name = (m.Player != null && m.Player.Name != null) ? m.Player.Name : Player.UnknownName;
-                ListViewItem item = new ListViewItem(name);
-                item.Tag = m;
-                item.SubItems[0].Tag = item.Tag;
+                Player player = pmd.Key;
+                if (player == null) continue;
 
-                if (m.Player != null && data.CurrentPlayers.FirstOrDefault(p => (p.ID == m.Player.ID)) != null)
+                ListViewItem item = new ListViewItem("manuhell") { Tag = player };
+
+                // highlight current players
+                if (data.CurrentPlayers.FirstOrDefault(p => (p.ID == player.ID)) != null)
                 {
                     item.Font = new Font(item.Font, FontStyle.Bold);
                 }
 
-                if (m.Player != null && m.Player.ID == 0)
+                // team dummy player
+                if (player.ID == 0)
                 {
                     item.BackColor = Color.Gray;
                 }
 
-                object value = 0;
+                bool firstCol = true;
+                foreach (ColumnHeader ch in listView.Columns)
+                {
+                    IPlayerStatisticCalculator<IList<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IList<MatchAppearance>>;
+                    object value = (psc == null) ? "(invalid)" : psc.Calculate(pmd.Value);
 
-                value = m.TotalItems.Count;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.TotalItems.Sum(ma => ma.Goals.Count);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                // competitive items
-                value = m.LeagueItems.Count + m.CupItems.Count + m.QualifierItems.Count;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.LeagueItems.Sum(ma => ma.Goals.Count) + m.CupItems.Sum(ma => ma.Goals.Count) + m.QualifierItems.Sum(ma => ma.Goals.Count);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                value = m.LeagueItems.Count;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.LeagueItems.Sum(ma => ma.Goals.Count);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                value = m.CupItems.Count;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.CupItems.Sum(ma => ma.Goals.Count);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                value = m.QualifierItems.Count;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.QualifierItems.Sum(ma => ma.Goals.Count);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                value = m.FriendlyItems.Count;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.FriendlyItems.Sum(ma => ma.Goals.Count);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                value = m.OtherItems.Count;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.OtherItems.Sum(ma => ma.Goals.Count);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-
-                value = m.First;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((DateTime)value).ToShortDateString()) { Tag = value });
-
-                value = m.Last;
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((DateTime)value).ToShortDateString()) { Tag = value });
-
-                value = m.TotalItems.Sum(ma => ma.Minutes);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.LeagueItems.Sum(ma => ma.Minutes) + m.CupItems.Sum(ma => ma.Minutes) + m.QualifierItems.Sum(ma => ma.Minutes);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.LeagueItems.Sum(ma => ma.Minutes);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.CupItems.Sum(ma => ma.Minutes);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.QualifierItems.Sum(ma => ma.Minutes);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.FriendlyItems.Sum(ma => ma.Minutes);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
-                value = m.OtherItems.Sum(ma => ma.Minutes);
-                item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                    if (firstCol)
+                    {
+                        item.Text = value.ToString();
+                        item.SubItems[0].Tag = value;
+                        firstCol = false;
+                    }
+                    else
+                    {
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                    }
+                }
 
                 listView.Items.Add(item);
             }
@@ -670,10 +668,10 @@ namespace HtHistory.Pages
 
                 IEnumerable<MatchDetails> md = to.Tag == null ? data.Matches : data.Matches.Where(m => new HtTime(m.Date).Season == (int)to.Tag);
 
-                IListData listData = GetForMatches(md);
+                IDictionary<Player, IList<MatchAppearance>> listData = GetForMatches(md);
                 ListView listView = sortableListViewOverview;
 
-                FillListView(data, listData, listView);
+                FillListView(new ResultData() { Infos = listData, CurrentPlayers = data.CurrentPlayers, Matches = data.Matches }, listView);
             }
         }
    }
