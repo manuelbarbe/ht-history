@@ -29,7 +29,7 @@ namespace HtHistory.Core.ExtensionMethods
 
         public static IDictionary<TKey, IEnumerable<TValue>> Split<TKey, TValue>(this IEnumerable<TValue> me, Func<TValue, TKey> keyFromValue) where TKey : IComparable<TKey>
         {
-            IDictionary<TKey, IList<TValue>> ret = new Dictionary<TKey, IList<TValue>>();
+            IDictionary<TKey, IEnumerable<TValue>> ret = new Dictionary<TKey, IEnumerable<TValue>>();
 
             foreach (TValue v in me.SafeEnum())
             {
@@ -40,10 +40,10 @@ namespace HtHistory.Core.ExtensionMethods
                     ret.Add(key, new List<TValue>());
                 }
 
-                ret[key].Add(v);
+                ((List<TValue>)ret[key]).Add(v);
             }
 
-            return (IDictionary<TKey, IEnumerable<TValue>>) ret;
+            return ret;
         }
 
         #endregion

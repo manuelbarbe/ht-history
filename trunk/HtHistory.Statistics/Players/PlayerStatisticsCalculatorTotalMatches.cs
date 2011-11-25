@@ -6,11 +6,13 @@ using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Statistics.Players
 {
-    public class PlayerStatisticsCalculatorTotalMatches : PlayerStatisticsCalculatorBase<IList<MatchAppearance>, int>
+    public class PlayerStatisticsCalculatorTotalMatches : PlayerStatisticsCalculatorBase<IEnumerable<MatchAppearance>, int>
     {
         public override string Name { get { return "Total matches"; } }
 
-        public override int Calculate(IList<MatchAppearance> matches)
+        public override string Abbreviation { get { return "TotMat"; } }
+
+        public override int Calculate(IEnumerable<MatchAppearance> matches)
         {
             return matches.Where(m => !m.Match.Type.IsNonSeniorMatch()).Count();
         }
