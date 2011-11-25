@@ -35,6 +35,7 @@ namespace HtHistory.Statistics.Players
                 AddDisappearedPlayers(teamId, thisMatchAppearances, md);
                 AddGoals(teamId, thisMatchAppearances, md);
                 AddReplacements(teamId, thisMatchAppearances, md);
+                AddBestPlayer(teamId, thisMatchAppearances, md);
 
                 // add items to return value
                 foreach (var v in thisMatchAppearances)
@@ -163,6 +164,25 @@ namespace HtHistory.Statistics.Players
                     AddPlayer(thisMatchAppearances, ev.PlayerId, Lineup.LineupRole.Unknown, md, null, null, ev.Minute);
                     // in player
                     AddPlayer(thisMatchAppearances, ev.OtherPlayerId, Lineup.LineupRole.Unknown, md, null, ev.Minute, null);
+                }
+            }
+        }
+
+        private void AddBestPlayer(uint teamId, IDictionary<Player, MatchAppearance> thisMatchAppearances, MatchDetails md)
+        {
+            foreach (MatchEvent ev in md.Events)
+            {
+                if (ev.TeamId != teamId) continue;
+
+                if (ev.Type == MatchEvent.MatchEventType.BestPlayer)
+                {
+                    Player player = new Player(ev.PlayerId, Player.UnknownName);
+
+                    if (thisMatchAppearances.ContainsKey(player))
+                    {
+                        thisMatchAppearances[player].BestPlayer = true;
+                    }
+           
                 }
             }
         }

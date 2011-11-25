@@ -14,7 +14,7 @@ namespace HtHistory.Statistics.Players
 
         public override int Calculate(IEnumerable<MatchAppearance> matches)
         {
-            return matches.Where(m => m.Match.Type.IsQualifierMatch()).Count();
+            return matches.Count(m => m.Match.Type.IsQualifierMatch());
         }
     }
 }

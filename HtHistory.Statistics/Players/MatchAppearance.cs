@@ -16,6 +16,7 @@ namespace HtHistory.Statistics.Players
         public uint? SubstituteOut { get; set; }
         public uint? YellowCarded { get; set; }
         public uint? RedCarded { get; set; }
+        public bool BestPlayer { get; set; }
 
         public uint Minutes
         {
