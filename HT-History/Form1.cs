@@ -14,6 +14,7 @@ using System.Reflection;
 using System.IO;
 using HtHistory.Core.DataBridges.CacheBridges;
 using HtHistory.Update;
+using System.Threading;
 
 namespace HtHistory
 {
@@ -40,7 +41,7 @@ namespace HtHistory
             InitializeComponent();
             Version v = Assembly.GetExecutingAssembly().GetName().Version;
             string version = String.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
-            this.Text = String.Format("HT-History by manuhell, {0}", version);   
+            this.Text = String.Format("HT-History by manuhell, {0}", version);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -60,6 +61,8 @@ namespace HtHistory
                 string team;
                 _settings.TryGetValue("team", out team);
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
+
+                ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
 
                 //UpdateTeam();
                 //UpdateOpponent();
@@ -140,7 +143,7 @@ namespace HtHistory
             SaveDo(() =>
             {
                 Environment.Team = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(uint.Parse(textBoxTeamId.Text));
-                labelTeamInfo.BeginInvoke((Action) delegate
+                labelTeamInfo.BeginInvoke((Action)delegate
                 {
                     labelTeamInfo.Text = Environment.Team.ToString();
                 });
@@ -174,7 +177,7 @@ namespace HtHistory
             if (e.KeyCode == Keys.Enter)
             {
                 //UpdateTeam();
-            } 
+            }
         }
 
         private void textBoxTeamId_Leave(object sender, EventArgs e)
@@ -200,7 +203,7 @@ namespace HtHistory
             SaveDo(() =>
                 {
                     _pwd.Show();
-                    
+
                     BackgroundWorker bgw = new BackgroundWorker();
                     bgw.DoWork += (s, e1) => { UpdateTeam(); UpdateOpponent(); };
                     bgw.RunWorkerCompleted += (s, e2) =>
@@ -228,7 +231,7 @@ namespace HtHistory
 
         private void offlineModeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveDo(()=>
+            SaveDo(() =>
             {
                 if (offlineModeToolStripMenuItem.Checked)
                 {
@@ -245,7 +248,7 @@ namespace HtHistory
 
         private void proxyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveDo(()=>
+            SaveDo(() =>
             {
                 using (WebProxyDialog diag = new WebProxyDialog())
                 {
@@ -326,24 +329,55 @@ namespace HtHistory
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            ThreadPool.QueueUserWorkItem(this.DoUpdateClickCallback);
+        }
+
+        private void DoUpdateStartCallback(object threadContext)
+        {
             IUpdater u = new UpdaterHttpFile(UpdateDirectory);
 
-            Version v = u.GetAvailableUpdateVersion(Assembly.GetExecutingAssembly().GetName().Version);
+            Version v = null;
+
+            try
+            {
+                v = u.GetAvailableUpdateVersion(Assembly.GetExecutingAssembly().GetName().Version);
+            }
+            catch { /* suppress */ }
+
             if (v != null)
             {
                 if (DialogResult.Yes ==
                     MessageBox.Show(String.Format("An update version {0} is available. Do you want to update now?", v),
-                                     "Confirm update",
-                                     MessageBoxButtons.YesNo))
+                                        "Confirm update",
+                                        MessageBoxButtons.YesNo))
                 {
-                    u.ApplyUpdate();
+                    SaveDo(() => u.ApplyUpdate());
                 }
             }
-            else
+        }
+
+        private void DoUpdateClickCallback(object threadContext)
+        {
+            SaveDo(() =>
             {
-                MessageBox.Show("no update available");
-            }
-            
+                IUpdater u = new UpdaterHttpFile(UpdateDirectory);
+
+                Version v = u.GetAvailableUpdateVersion(Assembly.GetExecutingAssembly().GetName().Version);
+                if (v == null)
+                {
+                    MessageBox.Show("no update available");
+                }
+                else
+                {
+                    if (DialogResult.Yes ==
+                        MessageBox.Show(String.Format("An update version {0} is available. Do you want to update now?", v),
+                                            "Confirm update",
+                                            MessageBoxButtons.YesNo))
+                    {
+                        u.ApplyUpdate();
+                    }
+                }
+            });
         }
     }
 }

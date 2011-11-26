@@ -26,34 +26,28 @@ namespace HtHistory.Update
         {
             Version ret = null;
 
-            try
-            {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(INFO_ADDRESS);
-                //request.Proxy = proxy;
-                request.Timeout = 10000; // 10 sec.
-                request.UserAgent = "HT-History";
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(INFO_ADDRESS);
+            //request.Proxy = proxy;
+            request.Timeout = 10000; // 10 sec.
+            request.UserAgent = "HT-History";
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 
-                if (response.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                string[] tokens = new StreamReader(response.GetResponseStream()).ReadLine().Split(';');
+                if (tokens.Length > 1)
                 {
-                    string[] tokens = new StreamReader(response.GetResponseStream()).ReadLine().Split(';');
-                    if (tokens.Length > 1)
+                    Version v = Version.Parse(tokens[0]);
+                    if (v > currentVersion)
                     {
-                        Version v = Version.Parse(tokens[0]);
-                        //if (v > currentVersion)
-                        {
-                            _updateUri = tokens[1];
-                            return v;
-                        }
+                        _updateUri = tokens[1];
+                        return v;
                     }
                 }
+                else throw new Exception("invalid update information received from server");
+            }
 
-                response.Close(); // should we do this in case of an exception, too?
-            }
-            catch
-            {
-                // suppress
-            }
+            response.Close(); // should we do this in case of an exception, too?
 
             return ret;
         }
