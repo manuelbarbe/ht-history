@@ -70,6 +70,12 @@
     <Compile Include="Dialogs\AuthorizeDialog.Designer.cs">
       <DependentUpon>AuthorizeDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ChooseColumnsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ChooseColumnsDialog.Designer.cs">
+      <DependentUpon>ChooseColumnsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\PlayerDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +130,8 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="TaggedObject.cs" />
+    <Compile Include="Update\IUpdater.cs" />
+    <Compile Include="Update\UpdaterHttpFile.cs" />
     <Compile Include="UserControls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -135,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="Dialogs\AuthorizeDialog.resx">
       <DependentUpon>AuthorizeDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ChooseColumnsDialog.resx">
+      <DependentUpon>ChooseColumnsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PlayerDetails.resx">
       <DependentUpon>PlayerDetails.cs</DependentUpon>

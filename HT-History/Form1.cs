@@ -13,6 +13,7 @@ using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
 using System.Reflection;
 using System.IO;
 using HtHistory.Core.DataBridges.CacheBridges;
+using HtHistory.Update;
 
 namespace HtHistory
 {
@@ -22,6 +23,7 @@ namespace HtHistory
         private static readonly string BaseDirectory;
         private static readonly string DataDirectory;
         private static readonly string SettingsFile;
+        private static readonly string UpdateDirectory;
 
         PleaseWaitDialog _pwd = new PleaseWaitDialog();
 
@@ -29,6 +31,7 @@ namespace HtHistory
         {
             BaseDirectory = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.ApplicationData), "HT-History");
             DataDirectory = Path.Combine(BaseDirectory, "data");
+            UpdateDirectory = Path.Combine(BaseDirectory, "update");
             SettingsFile = Path.Combine(BaseDirectory, "settings.xml");
         }
 
@@ -319,6 +322,28 @@ namespace HtHistory
 
             MessageBox.Show(builder.ToString(), "Short help");
 
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IUpdater u = new UpdaterHttpFile(UpdateDirectory);
+
+            Version v = u.GetAvailableUpdateVersion(Assembly.GetExecutingAssembly().GetName().Version);
+            if (v != null)
+            {
+                if (DialogResult.Yes ==
+                    MessageBox.Show(String.Format("An update version {0} is available. Do you want to update now?", v),
+                                     "Confirm update",
+                                     MessageBoxButtons.YesNo))
+                {
+                    u.ApplyUpdate();
+                }
+            }
+            else
+            {
+                MessageBox.Show("no update available");
+            }
+            
         }
     }
 }
