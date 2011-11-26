@@ -47,6 +47,7 @@
     <Compile Include="Players\IPlayerStatisticCalculator.cs" />
     <Compile Include="Players\MatchAppearance.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorBase.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorCompetitiveBestPlayer.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorTotalBestPlayer.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorCompetitiveGoals.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorCompetitiveMatches.cs" />

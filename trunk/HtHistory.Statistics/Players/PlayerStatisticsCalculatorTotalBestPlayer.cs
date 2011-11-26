@@ -8,7 +8,7 @@ namespace HtHistory.Statistics.Players
 {
     public class PlayerStatisticsCalculatorTotalBestPlayer : PlayerStatisticsCalculatorBase<IEnumerable<MatchAppearance>, int>
     {
-        public override string Name { get { return "Man of the Match"; } }
+        public override string Name { get { return "Man of the Match (all matches)"; } }
 
         public override string Abbreviation { get { return "TotMotM"; } }
 
