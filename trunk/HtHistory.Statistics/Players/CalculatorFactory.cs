@@ -40,6 +40,7 @@ namespace HtHistory.Statistics.Players
             }
 
             foreach (var c in _filteredCalculators) yield return new MatchFilterTotal(c);
+            foreach (var c in _filteredCalculators) yield return new MatchFilterCompetitive(c);
             foreach (var c in _filteredCalculators) yield return new MatchFilterLeague(c);
             foreach (var c in _filteredCalculators) yield return new MatchFilterCup(c);
             foreach (var c in _filteredCalculators) yield return new MatchFilterQualifier(c);

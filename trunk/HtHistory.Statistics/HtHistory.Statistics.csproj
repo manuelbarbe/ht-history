@@ -48,6 +48,7 @@
     <Compile Include="Players\IPlayerStatisticCalculator.cs" />
     <Compile Include="Players\MatchAppearance.cs" />
     <Compile Include="Players\MatchFilterBase.cs" />
+    <Compile Include="Players\MatchFilterCompetitive.cs" />
     <Compile Include="Players\MatchFilterCup.cs" />
     <Compile Include="Players\MatchFilterFriendly.cs" />
     <Compile Include="Players\MatchFilterLeague.cs" />
