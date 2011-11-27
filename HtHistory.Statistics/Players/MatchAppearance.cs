@@ -9,6 +9,7 @@ namespace HtHistory.Statistics.Players
     public class MatchAppearance
     {
         public Player Player { get; set; }
+        public Team TeamOfPlayer { get; set; }
         public MatchDetails Match { get; set; }
         public Lineup.LineupRole Role { get; set; }
         public IList<Goal> Goals { get; set; }
@@ -42,11 +43,12 @@ namespace HtHistory.Statistics.Players
             }
         }
 
-        public MatchAppearance(Player player, MatchDetails match, Lineup.LineupRole role)
+        public MatchAppearance(Player player, Team teamOfPlayer, MatchDetails match, Lineup.LineupRole role)
         {
-            if (player == null || match == null) throw new ArgumentNullException("player or match");
+            if (player == null || teamOfPlayer == null || match == null) throw new ArgumentNullException("player, team or match");
 
             Player = player;
+            TeamOfPlayer = teamOfPlayer;
             Match = match;
             Role = role;
             Goals = new List<Goal>();
