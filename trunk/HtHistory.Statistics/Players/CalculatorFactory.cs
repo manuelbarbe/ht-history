@@ -19,9 +19,15 @@ namespace HtHistory.Statistics.Players
             _standaloneCalculators.Add(new PlayerStatisticsCalculatorPlayerId());
 
             _filteredCalculators.Add(new PlayerStatisticsCalculatorMatches());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorWins());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorDraws());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorLosses());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorWins());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorGoals());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorMinutes());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorBestPlayer());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorYellowCards());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorRedCards());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorFirstMatch());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorLastMatch());
         }
@@ -33,15 +39,12 @@ namespace HtHistory.Statistics.Players
                 yield return c;
             }
 
-            foreach (var c in _filteredCalculators)
-            {
-                yield return new MatchFilterTotal(c);
-                yield return new MatchFilterLeague(c);
-                yield return new MatchFilterCup(c);
-                yield return new MatchFilterQualifier(c);
-                yield return new MatchFilterFriendly(c);
-                yield return new MatchFilterOther(c);
-            }
+            foreach (var c in _filteredCalculators) yield return new MatchFilterTotal(c);
+            foreach (var c in _filteredCalculators) yield return new MatchFilterLeague(c);
+            foreach (var c in _filteredCalculators) yield return new MatchFilterCup(c);
+            foreach (var c in _filteredCalculators) yield return new MatchFilterQualifier(c);
+            foreach (var c in _filteredCalculators) yield return new MatchFilterFriendly(c);
+            foreach (var c in _filteredCalculators) yield return new MatchFilterOther(c);
         }
 
     }

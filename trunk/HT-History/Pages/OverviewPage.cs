@@ -66,7 +66,8 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "In", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "Out", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "RedCard", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "YellowCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "RedCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
             });
 
             sortableListViewDetails2
@@ -259,6 +260,9 @@ namespace HtHistory.Pages
                     value = d.SubstituteOut;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
 
+                    value = d.YellowCarded;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
+
                     value = d.RedCarded;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
 
@@ -306,6 +310,7 @@ namespace HtHistory.Pages
                     {
                         IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>;
                         object value = (psc == null) ? "(invalid)" : psc.Calculate(v.Value);
+                        if (value == null) value = "-";
 
                         if (firstCol)
                         {
@@ -417,6 +422,7 @@ namespace HtHistory.Pages
                 {
                     IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>;
                     object value = (psc == null) ? "(invalid)" : psc.Calculate(pmd.Value);
+                    if (value == null) value = "-";
 
                     if (firstCol)
                     {

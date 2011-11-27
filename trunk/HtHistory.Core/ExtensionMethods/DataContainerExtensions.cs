@@ -76,6 +76,13 @@ namespace HtHistory.Core.ExtensionMethods
                 role == Lineup.LineupRole.SubstitutionForward_);
         }
 
+        public static bool IsYellowCard(this MatchEvent.MatchEventType type)
+        {
+            return
+                type == MatchEvent.MatchEventType.YellowCardCheating ||
+                type == MatchEvent.MatchEventType.YellowCardNastyPlay;
+        }
+
         public static bool IsRedCard(this MatchEvent.MatchEventType type)
         {
             return

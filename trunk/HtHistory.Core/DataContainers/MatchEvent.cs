@@ -218,9 +218,9 @@ namespace HtHistory.Core.DataContainers
     503 	Both teams break game (2 players remaining)
     504 	Home team breaks game (2 players remaining)
     505 	Away team breaks game (2 players remaining)
-    510 	Yellow card nasty play
-    511 	Yellow card cheating
-             */
+         * */
+            YellowCardNastyPlay = 510,
+            YellowCardCheating = 511,
             RedCardSecondWarningNastyPlay = 512,
             RedCardSecondWarningCheating = 513,
             RedCardWithoutWarning = 514,
