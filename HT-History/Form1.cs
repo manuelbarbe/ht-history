@@ -382,7 +382,12 @@ namespace HtHistory
 
         private void columnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(new [] { "1", "2" }, new [] {"3", "4", "5"} );
+            if (ccd.ShowDialog() == DialogResult.OK)
+            {
 
+
+            }
         }
     }
 }
