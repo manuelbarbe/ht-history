@@ -379,5 +379,10 @@ namespace HtHistory
                 }
             });
         }
+
+        private void columnsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

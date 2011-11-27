@@ -37,37 +37,11 @@ namespace HtHistory.Pages
         private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToCSVToolStripMenuItem;
 
-        private IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> _stats = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
+        private IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> _stats;
 
         private void InitializeComponent()
         {
-            _stats.Add(new PlayerStatisticsCalculatorPlayerName());
-            _stats.Add(new PlayerStatisticsCalculatorPlayerId());
-            _stats.Add(new PlayerStatisticsCalculatorTotalMatches());
-            _stats.Add(new PlayerStatisticsCalculatorTotalGoals());
-            _stats.Add(new PlayerStatisticsCalculatorTotalBestPlayer());
-            _stats.Add(new PlayerStatisticsCalculatorTotalMinutes());
-            _stats.Add(new PlayerStatisticsCalculatorCompetitiveMatches());
-            _stats.Add(new PlayerStatisticsCalculatorCompetitiveGoals());
-            _stats.Add(new PlayerStatisticsCalculatorCompetitiveBestPlayer());
-            _stats.Add(new PlayerStatisticsCalculatorCompetitiveMinutes());
-            _stats.Add(new PlayerStatisticsCalculatorLeagueMatches());
-            _stats.Add(new PlayerStatisticsCalculatorLeagueGoals());
-            _stats.Add(new PlayerStatisticsCalculatorLeagueMinutes());
-            _stats.Add(new PlayerStatisticsCalculatorCupMatches());
-            _stats.Add(new PlayerStatisticsCalculatorCupGoals());
-            _stats.Add(new PlayerStatisticsCalculatorCupMinutes());
-            _stats.Add(new PlayerStatisticsCalculatorQualifierMatches());
-            _stats.Add(new PlayerStatisticsCalculatorQualifierGoals());
-            _stats.Add(new PlayerStatisticsCalculatorQualifierMinutes());
-            _stats.Add(new PlayerStatisticsCalculatorFriendlyMatches());
-            _stats.Add(new PlayerStatisticsCalculatorFriendlyGoals());
-            _stats.Add(new PlayerStatisticsCalculatorFriendlyMinutes());
-            _stats.Add(new PlayerStatisticsCalculatorOtherMatches());
-            _stats.Add(new PlayerStatisticsCalculatorOtherGoals());
-            _stats.Add(new PlayerStatisticsCalculatorOtherMinutes());
-            _stats.Add(new PlayerStatisticsCalculatorFirstMatch());
-            _stats.Add(new PlayerStatisticsCalculatorLastMatch());
+            _stats = CalculatorFactory.GetAllCalulators();
 
             InitializeContextMenu();
             InitializeTabs();

@@ -48,9 +48,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.overviewPage1 = new HtHistory.Pages.OverviewPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.columnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -148,7 +149,7 @@
             // clearCacheToolStripMenuItem
             // 
             this.clearCacheToolStripMenuItem.Name = "clearCacheToolStripMenuItem";
-            this.clearCacheToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.clearCacheToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clearCacheToolStripMenuItem.Text = "Clear cache";
             this.clearCacheToolStripMenuItem.Click += new System.EventHandler(this.clearCacheToolStripMenuItem_Click);
             // 
@@ -156,7 +157,7 @@
             // 
             this.offlineModeToolStripMenuItem.Enabled = false;
             this.offlineModeToolStripMenuItem.Name = "offlineModeToolStripMenuItem";
-            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.offlineModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.offlineModeToolStripMenuItem.Text = "Work offline";
             this.offlineModeToolStripMenuItem.Visible = false;
             this.offlineModeToolStripMenuItem.Click += new System.EventHandler(this.offlineModeToolStripMenuItem_Click);
@@ -164,19 +165,20 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(136, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.proxyToolStripMenuItem});
+            this.proxyToolStripMenuItem,
+            this.columnsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -185,7 +187,7 @@
             // 
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
             this.proxyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.proxyToolStripMenuItem.Text = "Proxy";
+            this.proxyToolStripMenuItem.Text = "Proxy...";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.proxyToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
@@ -201,7 +203,7 @@
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.helpToolStripMenuItem.Text = "Short help";
+            this.helpToolStripMenuItem.Text = "Short help...";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // button1
@@ -237,14 +239,6 @@
             this.tabPage3.Text = "Players";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // overviewPage1
-            // 
-            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
-            this.overviewPage1.Name = "overviewPage1";
-            this.overviewPage1.Size = new System.Drawing.Size(903, 467);
-            this.overviewPage1.TabIndex = 0;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -261,6 +255,21 @@
             this.updateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.updateToolStripMenuItem.Text = "Update...";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // overviewPage1
+            // 
+            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
+            this.overviewPage1.Name = "overviewPage1";
+            this.overviewPage1.Size = new System.Drawing.Size(903, 467);
+            this.overviewPage1.TabIndex = 0;
+            // 
+            // columnsToolStripMenuItem
+            // 
+            this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.columnsToolStripMenuItem.Text = "Columns...";
+            this.columnsToolStripMenuItem.Click += new System.EventHandler(this.columnsToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -319,6 +328,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem columnsToolStripMenuItem;
     }
 }
 
