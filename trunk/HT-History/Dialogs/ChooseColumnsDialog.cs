@@ -35,6 +35,8 @@ namespace HtHistory.Dialogs
         {
             IList movingItems = new ArrayList();
 
+            listBoxRight.SelectedItems.Clear();
+
             foreach (object o in listBoxLeft.SelectedItems)
             {
                 movingItems.Add(o);
@@ -43,6 +45,7 @@ namespace HtHistory.Dialogs
             foreach(object o in movingItems)
             {
                 MoveItem(o, listBoxLeft.Items, listBoxRight.Items);
+                listBoxRight.SelectedItems.Add(o);
             }
         }
 

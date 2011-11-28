@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxLeft = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.buttonDown = new System.Windows.Forms.Button();
+            this.buttonUp = new System.Windows.Forms.Button();
+            this.buttonRemove = new System.Windows.Forms.Button();
             this.listBoxRight = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.buttonRemove = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonUp = new System.Windows.Forms.Button();
-            this.buttonDown = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,6 +70,17 @@
             this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.TabIndex = 0;
             // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAdd.Location = new System.Drawing.Point(278, 39);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(27, 23);
+            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.Text = "→";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -90,14 +101,35 @@
             this.listBoxLeft.Size = new System.Drawing.Size(259, 225);
             this.listBoxLeft.TabIndex = 0;
             // 
-            // label2
+            // buttonDown
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Selected columns:";
+            this.buttonDown.Location = new System.Drawing.Point(13, 153);
+            this.buttonDown.Name = "buttonDown";
+            this.buttonDown.Size = new System.Drawing.Size(26, 23);
+            this.buttonDown.TabIndex = 4;
+            this.buttonDown.Text = "↓";
+            this.buttonDown.UseVisualStyleBackColor = true;
+            this.buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
+            // 
+            // buttonUp
+            // 
+            this.buttonUp.Location = new System.Drawing.Point(13, 123);
+            this.buttonUp.Name = "buttonUp";
+            this.buttonUp.Size = new System.Drawing.Size(26, 23);
+            this.buttonUp.TabIndex = 3;
+            this.buttonUp.Text = "↑";
+            this.buttonUp.UseVisualStyleBackColor = true;
+            this.buttonUp.Click += new System.EventHandler(this.buttonUp_Click);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Location = new System.Drawing.Point(13, 67);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(26, 23);
+            this.buttonRemove.TabIndex = 2;
+            this.buttonRemove.Text = "←";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // listBoxRight
             // 
@@ -109,6 +141,15 @@
             this.listBoxRight.Name = "listBoxRight";
             this.listBoxRight.Size = new System.Drawing.Size(249, 225);
             this.listBoxRight.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(42, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(94, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Selected columns:";
             // 
             // button1
             // 
@@ -132,47 +173,6 @@
             this.button2.Text = "OK";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // buttonRemove
-            // 
-            this.buttonRemove.Location = new System.Drawing.Point(13, 67);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(26, 23);
-            this.buttonRemove.TabIndex = 2;
-            this.buttonRemove.Text = "←";
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.Location = new System.Drawing.Point(278, 39);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(27, 23);
-            this.buttonAdd.TabIndex = 2;
-            this.buttonAdd.Text = "→";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonUp
-            // 
-            this.buttonUp.Location = new System.Drawing.Point(13, 123);
-            this.buttonUp.Name = "buttonUp";
-            this.buttonUp.Size = new System.Drawing.Size(26, 23);
-            this.buttonUp.TabIndex = 3;
-            this.buttonUp.Text = "↑";
-            this.buttonUp.UseVisualStyleBackColor = true;
-            this.buttonUp.Click += new System.EventHandler(this.buttonUp_Click);
-            // 
-            // buttonDown
-            // 
-            this.buttonDown.Location = new System.Drawing.Point(13, 153);
-            this.buttonDown.Name = "buttonDown";
-            this.buttonDown.Size = new System.Drawing.Size(26, 23);
-            this.buttonDown.TabIndex = 4;
-            this.buttonDown.Text = "↓";
-            this.buttonDown.UseVisualStyleBackColor = true;
-            this.buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
-            // 
             // ChooseColumnsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,7 +182,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.splitContainer1);
             this.Name = "ChooseColumnsDialog";
-            this.Text = "ChooseColumnsDialog";
+            this.Text = "Select colums";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
