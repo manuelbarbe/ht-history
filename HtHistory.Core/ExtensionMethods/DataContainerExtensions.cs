@@ -51,7 +51,7 @@ namespace HtHistory.Core.ExtensionMethods
 
         public static bool IsCompetitiveSeniorMatch(this Match.MatchType t)
         {
-            return t.IsLeagueMatch() || t.IsCupMatch() || t.IsQualifierMatch();
+            return t.IsLeagueMatch() || t.IsCupMatch() || t.IsQualifierMatch() || t.IsOtherSeniorMatch();
         }
 
         public static bool IsNonSeniorMatch(this Match.MatchType t)
