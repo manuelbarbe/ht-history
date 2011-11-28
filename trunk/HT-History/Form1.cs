@@ -332,7 +332,8 @@ namespace HtHistory
                 .AppendLine("\t Lost: matches lost")
                 .AppendLine("- sort by clicking column headers")
                 .AppendLine("- select player and look at individual stats on the 3 tables at the bottom")
-                .AppendLine("- opt. right click main table and choose 'copy to clipboard'");
+                .AppendLine("- opt. select multiple players, right click and choose 'copy to clipboard'")
+                .AppendLine("- opt. select one player, right click and choose 'export to CSV'");
 
             MessageBox.Show(builder.ToString(), "Short help");
 
