@@ -315,7 +315,7 @@ namespace HtHistory
                 .AppendLine("- be patient, HT-History is downloading data from hattrick now")
                 .AppendLine("- browse your player list")
                 .AppendLine("\t Tot: total")
-                .AppendLine("\t Com: competitive (Lea + Cup + Qua)")
+                .AppendLine("\t Com: competitive (Lea + Cup + Qua + Oth)")
                 .AppendLine("\t Lea: league")
                 .AppendLine("\t Cup: cup")
                 .AppendLine("\t Qua: qualifier")
