@@ -22,7 +22,6 @@ namespace HtHistory.Statistics.Players
             _filteredCalculators.Add(new PlayerStatisticsCalculatorWins());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorDraws());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorLosses());
-            _filteredCalculators.Add(new PlayerStatisticsCalculatorWins());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorGoals());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorMinutes());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorBestPlayer());
