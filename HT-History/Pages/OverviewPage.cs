@@ -64,6 +64,8 @@ namespace HtHistory.Pages
                 InitializeSeasonsList();
                 FillListView(sortableListViewOverview.Tag as ResultData, sortableListViewOverview);
                 FillDetailsSeason();
+                FillDetailsMatches();
+                FillDetailsGoals();
             }
         }
 
@@ -133,11 +135,13 @@ namespace HtHistory.Pages
 
         private void AddConfiguredColumns(SortableListView listview)
         {
+            bool first = true;
             foreach (var s in _stats.SafeEnum())
             {
-                var ch = new ColumnHeader() { Text = s.Abbreviation, TextAlign = HorizontalAlignment.Left, Width = 60, Tag = s };
+                var ch = new ColumnHeader() { Text = s.Abbreviation, TextAlign = HorizontalAlignment.Left, Width = first ? 150 : 60, Tag = s };
                 listview.Columns.Add(ch);
                 listview.SetSorter(ch.Index, SortableListView.TagSorter(s.GetComparer()));
+                first = false;
             }
         }
 
