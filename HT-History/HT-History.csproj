@@ -198,9 +198,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\splash.jpg" />
-    <None Include="latest">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Content Include="version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
