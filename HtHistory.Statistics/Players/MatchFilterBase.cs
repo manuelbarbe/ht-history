@@ -43,5 +43,10 @@ namespace HtHistory.Statistics.Players
         {
             return _calc.GetComparer();
         }
+
+        public override string ToString()
+        {
+            return String.Format("{0} ({1})", Name, Abbreviation);
+        }
     }
 }

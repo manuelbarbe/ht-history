@@ -15,6 +15,8 @@ using System.IO;
 using HtHistory.Core.DataBridges.CacheBridges;
 using HtHistory.Update;
 using System.Threading;
+using HtHistory.Statistics.Players;
+using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory
 {
@@ -61,6 +63,8 @@ namespace HtHistory
                 string team;
                 _settings.TryGetValue("team", out team);
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
+
+                overviewPage1.Stats = LoadColumns();
 
                 ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
 
@@ -176,7 +180,7 @@ namespace HtHistory
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //UpdateTeam();
+                button1_Click(sender, e);
             }
         }
 
@@ -189,7 +193,7 @@ namespace HtHistory
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //UpdateOpponent();
+                button1_Click(sender, e);
             }
         }
 
@@ -380,13 +384,58 @@ namespace HtHistory
             });
         }
 
+        private IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> LoadColumns()
+        {   
+            string columnString;
+            if (_settings.ContainsKey("columns"))
+            {
+                columnString = _settings["columns"];
+            }
+            else
+            {
+                columnString = "Name;TotMat;TotGoa;TotWin;TotDraw;TotLost;TotMotM;TotRed;ComMat;ComGoa;LeaMat;LeaGoa;CupMat;CupGoa;QuaMat;QuaGoa;FriMat;FriGoa;TotFirst;TotLast";
+            }
+
+            foreach (string column in columnString.Split(';'))
+            {
+                foreach (var v in CalculatorFactory.GetAllCalulators())
+                {
+                    if (column == v.Identifier)
+                    {
+                        yield return v;
+                    }
+                }
+            }
+        }
+
+        private void SaveColumns(IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> columns)
+        {
+            StringBuilder b = new StringBuilder();
+
+            foreach (var v in columns)
+            {
+                b.Append(v.Identifier).Append(";");
+            }
+
+            _settings["columns"] = b.ToString();
+        }
+
         private void columnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(new [] { "1", "2" }, new [] {"3", "4", "5"} );
+            Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(overviewPage1.Stats), overviewPage1.Stats);
             if (ccd.ShowDialog() == DialogResult.OK)
             {
-
-
+                IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
+                foreach (object o in ccd.Right.SafeEnum())
+                {
+                    if (o is IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)
+                    {
+                        myList.Add((IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)o);
+                    }
+                }
+                
+                overviewPage1.Stats = myList;
+                SaveColumns(myList);
             }
         }
     }

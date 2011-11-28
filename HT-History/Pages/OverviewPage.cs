@@ -41,22 +41,56 @@ namespace HtHistory.Pages
 
         private void InitializeComponent()
         {
-            _stats = CalculatorFactory.GetAllCalulators();
+            //_stats = CalculatorFactory.GetAllCalulators();
 
             InitializeContextMenu();
             InitializeTabs();
             InitializeOverviewList();
-            InitializeDetailsLists();
+            AttachEventHandlerToOverviewList();
+            InitializeSeasonsList();
+            InitializeMatchList();
+            InitializeGoalsList();
 
             this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
         }
 
-        private void InitializeDetailsLists()
+        public IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> Stats
         {
-            sortableListViewDetails1.Columns.Clear();
-            sortableListViewDetails1.Columns.Add(new ColumnHeader() { Text = "Season", TextAlign = HorizontalAlignment.Left, Width = 80 });
-            AddConfiguredColumns(sortableListViewDetails1);
+            get { return _stats; }
+            set
+            {
+                _stats = value;
+                InitializeOverviewList();
+                InitializeSeasonsList();
+                FillListView(sortableListViewOverview.Tag as ResultData, sortableListViewOverview);
+                FillDetailsSeason();
+            }
+        }
 
+        private void InitializeOverviewList()
+        {
+            RemoveColumnsAndItems(sortableListViewOverview);
+            AddConfiguredColumns(sortableListViewOverview);
+        }
+
+        private void InitializeGoalsList()
+        {
+            this.sortableListViewDetails3.Columns.AddRange(new ColumnHeader[] {
+                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
+                new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
+                new ColumnHeader() { Text = "Scored", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "Minute", TextAlign = HorizontalAlignment.Center, Width = 50 }});
+
+            sortableListViewDetails3
+                .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
+                .SetSorter(1, UserControls.SortableListView.NullSorter)
+                .SetSorter(5, UserControls.SortableListView.TagSorter<uint>());
+        }
+
+        private void InitializeMatchList()
+        {
             this.sortableListViewDetails2.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
                 new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
@@ -77,24 +111,29 @@ namespace HtHistory.Pages
                 .SetSorter(6, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(7, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(8, UserControls.SortableListView.TagSorter<uint>());
+        }
 
-            this.sortableListViewDetails3.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
-                new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
-                new ColumnHeader() { Text = "Scored", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "Minute", TextAlign = HorizontalAlignment.Center, Width = 50 }});
+        private void InitializeSeasonsList()
+        {
+            RemoveColumnsAndItems(sortableListViewDetails1);
+            sortableListViewDetails1.Columns.Add(new ColumnHeader() { Text = "Season", TextAlign = HorizontalAlignment.Left, Width = 80 });
+            AddConfiguredColumns(sortableListViewDetails1);
+        }
 
-            sortableListViewDetails3
-                .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
-                .SetSorter(1, UserControls.SortableListView.NullSorter)
-                .SetSorter(5, UserControls.SortableListView.TagSorter<uint>());
+        private static void RemoveColumnsAndItems(SortableListView listView)
+        {
+            for (int i = 0; i < listView.Columns.Count; ++i)
+            {
+                listView.SetSorter(i, null);
+            }
+
+            listView.Items.Clear();
+            listView.Columns.Clear();
         }
 
         private void AddConfiguredColumns(SortableListView listview)
         {
-            foreach (var s in _stats)
+            foreach (var s in _stats.SafeEnum())
             {
                 var ch = new ColumnHeader() { Text = s.Abbreviation, TextAlign = HorizontalAlignment.Left, Width = 60, Tag = s };
                 listview.Columns.Add(ch);
@@ -102,11 +141,8 @@ namespace HtHistory.Pages
             }
         }
 
-        private void InitializeOverviewList()
+        private void AttachEventHandlerToOverviewList()
         {
-            sortableListViewOverview.Columns.Clear();
-            AddConfiguredColumns(sortableListViewOverview);
-
             this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
             this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
         }
@@ -395,10 +431,12 @@ namespace HtHistory.Pages
 
         private void FillListView(ResultData data, ListView listView)
         {
+            if (data == null || listView == null) return;
+
             listView.Tag = data;
             listView.Items.Clear();
 
-            foreach (var pmd in data.Infos)
+            foreach (var pmd in data.Infos.SafeEnum())
             {
                 Player player = pmd.Key;
                 if (player == null) continue;

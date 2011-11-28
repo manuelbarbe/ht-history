@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Dialogs
 {
@@ -19,12 +20,12 @@ namespace HtHistory.Dialogs
         {
             InitializeComponent();
 
-            foreach (object l in left)
+            foreach (object l in left.SafeEnum())
             {
                 listBoxLeft.Items.Add(l);
             }
 
-            foreach (object r in right)
+            foreach (object r in right.SafeEnum())
             {
                 listBoxRight.Items.Add(r);
             }

@@ -11,8 +11,8 @@ namespace HtHistory.Statistics.Players
         public abstract string Name { get; }
 
         public virtual string Abbreviation { get { return Name; } }
-        
-        public virtual string Identifier { get { return GetType().FullName; } }
+
+        public virtual string Identifier { get { return Abbreviation; } }
 
         public abstract Result Calculate(Source source);
 
@@ -31,5 +31,9 @@ namespace HtHistory.Statistics.Players
             return new Generic2ObjectComparer<Result>(GetComparer());
         }
 
+        public override string ToString()
+        {
+            return String.Format("{0} ({1})", Name, Abbreviation);
+        }
     }
 }
