@@ -13,6 +13,9 @@ namespace HtHistory.Statistics.Players
         private static IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> _filteredCalculators
             = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
 
+        private static IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> _allCalculators
+            = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
+
         static CalculatorFactory()
         {
             _standaloneCalculators.Add(new PlayerStatisticsCalculatorPlayerName());
@@ -29,9 +32,14 @@ namespace HtHistory.Statistics.Players
             _filteredCalculators.Add(new PlayerStatisticsCalculatorRedCards());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorFirstMatch());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorLastMatch());
+
+            foreach (var v in CreateAllCalulators())
+            {
+                _allCalculators.Add(v);
+            }
         }
 
-        public static IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> GetAllCalulators()
+        private static IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> CreateAllCalulators()
         {
             foreach (var c in _standaloneCalculators)
             {
@@ -47,5 +55,9 @@ namespace HtHistory.Statistics.Players
             foreach (var c in _filteredCalculators) yield return new MatchFilterOther(c);
         }
 
+        public static IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> GetAllCalulators()
+        {
+            return _allCalculators;
+        }
     }
 }

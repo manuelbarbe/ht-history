@@ -68,7 +68,8 @@ namespace HtHistory.Update
 			myWebClient.DownloadFile(_updateUri, updateFile);
 
             System.Diagnostics.Process.Start(updateFile);
-            System.Environment.Exit(0);
+            //System.Environment.Exit(0);
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
