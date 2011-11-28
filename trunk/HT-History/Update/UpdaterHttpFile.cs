@@ -10,7 +10,7 @@ namespace HtHistory.Update
     class UpdaterHttpFile : IUpdater
     {
         // this file contains something like "0.1.6.0;http://ht-history.googlecode.com/files/HtHistory%200.1.6.msi"
-        private readonly string INFO_ADDRESS = "http://ht-history.googlecode.com/files/latest";
+        private readonly string INFO_ADDRESS = "http://ht-history.googlecode.com/svn/trunk/HtHistory.Installer/latest";
 
         private string _updateDirectory = null;
         private string _updateUri = null;
