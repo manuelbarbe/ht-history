@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Players\PlayerStatisticsCalculatorDrawsPercentage.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLossesPercentage.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorWinsPercentage.cs" />
     <Compile Include="Printer\DoublePrinter.cs" />
     <Compile Include="Printer\IPrinter.cs" />
     <Compile Include="MatchGetter.cs" />
@@ -77,6 +80,7 @@
     <Compile Include="Players\PlayerStatisticsCalculatorWins.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorYellowCards.cs" />
     <Compile Include="Players\StandardPlayerStatistics.cs" />
+    <Compile Include="Printer\PercentagePrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Printer\ToStringPrinter.cs" />
   </ItemGroup>
