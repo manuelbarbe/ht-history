@@ -25,8 +25,11 @@ namespace HtHistory.Statistics.Players
             _filteredCalculators.Add(new PlayerStatisticsCalculatorSubstituteIn());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorSubstituteOut());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorWins());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorWinsPercentage());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorDraws());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorDrawsPercentage());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorLosses());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorLossesPercentage());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorGoals());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorGoalsPerMatch());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorGoalsPer90Minutes());

@@ -23,13 +23,9 @@ namespace HtHistory.Statistics.Players
                 new PlayerStatisticsCalculatorGoals().Calculate(matches) * 90 / minutesCnt;
         }
 
-        private static IFormatProvider _formatProvider;
         private static IPrinter _printer;
         static PlayerStatisticsCalculatorGoalsPer90Minutes()
         {
-            NumberFormatInfo nfi = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
-            nfi.NumberDecimalDigits = 2;
-            _formatProvider = nfi;
             _printer = new DoublePrinter();
         }
 

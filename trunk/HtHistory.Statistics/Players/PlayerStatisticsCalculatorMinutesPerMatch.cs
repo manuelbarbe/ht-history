@@ -23,13 +23,9 @@ namespace HtHistory.Statistics.Players
                 new PlayerStatisticsCalculatorMinutes().Calculate(matches) / matchesCnt;
         }
    
-        private static IFormatProvider _formatProvider;
         private static IPrinter _printer;
         static PlayerStatisticsCalculatorMinutesPerMatch()
         {
-            NumberFormatInfo nfi = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
-            nfi.NumberDecimalDigits = 2;
-            _formatProvider = nfi;
             _printer = new DoublePrinter();
         }
 
