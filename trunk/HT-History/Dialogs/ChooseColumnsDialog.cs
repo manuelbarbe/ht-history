@@ -126,5 +126,23 @@ namespace HtHistory.Dialogs
                 }
             }
         }
+
+        private void listBoxRight_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                buttonRemove_Click(sender, e);
+            }
+        }
+
+        private void listBoxRight_DoubleClick(object sender, EventArgs e)
+        {
+            buttonRemove_Click(sender, e);
+        }
+
+        private void listBoxLeft_DoubleClick(object sender, EventArgs e)
+        {
+            buttonAdd_Click(sender, e);
+        }
     }
 }
