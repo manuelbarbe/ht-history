@@ -14,5 +14,6 @@ namespace HtHistory.Statistics.Players
 
         object Calculate(Source source);
         IComparer GetComparer();
+        IPrinter GetPrinter();
     }
 }

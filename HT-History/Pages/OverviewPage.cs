@@ -14,6 +14,7 @@ using HtHistory.Export;
 using System.IO;
 using System.Collections;
 using HtHistory.UserControls;
+using System.Globalization;
 
 
 namespace HtHistory.Pages
@@ -354,7 +355,8 @@ namespace HtHistory.Pages
                     {
                         IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>;
                         object value = (psc == null) ? "(invalid)" : psc.Calculate(v.Value);
-                        if (value == null) value = "-";
+                        IPrinter fp = (psc == null) ? new ToStringPrinter<object>() : psc.GetPrinter();
+                        //if (value == null) value = "-";
 
                         if (firstCol)
                         {
@@ -363,7 +365,7 @@ namespace HtHistory.Pages
                         }
                         else
                         {
-                            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                            item.SubItems.Add(new ListViewItem.ListViewSubItem(item, fp.Print(value)) { Tag = value });
                         }
                     }
                     
@@ -468,17 +470,18 @@ namespace HtHistory.Pages
                 {
                     IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> psc = ch.Tag as IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>;
                     object value = (psc == null) ? "(invalid)" : psc.Calculate(pmd.Value);
-                    if (value == null) value = "-";
+                    IPrinter fp = (psc == null) ? new ToStringPrinter<object>() : psc.GetPrinter();
+                    //if (value == null) value = "-";
 
                     if (firstCol)
                     {
-                        item.Text = value.ToString();
+                        item.Text = fp.Print(value);
                         item.SubItems[0].Tag = value;
                         firstCol = false;
                     }
                     else
                     {
-                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, fp.Print(value)) { Tag = value });
                     }
                 }
 

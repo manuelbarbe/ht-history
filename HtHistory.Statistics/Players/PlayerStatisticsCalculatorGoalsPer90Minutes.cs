@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HtHistory.Core.ExtensionMethods;
+using System.Globalization;
 
 namespace HtHistory.Statistics.Players
 {
@@ -21,5 +22,20 @@ namespace HtHistory.Statistics.Players
             return (double)
                 new PlayerStatisticsCalculatorGoals().Calculate(matches) * 90 / minutesCnt;
         }
+
+        private static IFormatProvider _formatProvider;
+        private static IPrinter _printer;
+        static PlayerStatisticsCalculatorGoalsPer90Minutes()
+        {
+            NumberFormatInfo nfi = (NumberFormatInfo)CultureInfo.CurrentCulture.NumberFormat.Clone();
+            nfi.NumberDecimalDigits = 2;
+            _formatProvider = nfi;
+            _printer = new DoublePrinter();
+        }
+
+        public override IPrinter GetPrinter()
+        {
+            return _printer;
+        }    
     }
 }
