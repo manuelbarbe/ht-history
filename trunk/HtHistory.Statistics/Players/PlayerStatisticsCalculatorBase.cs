@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Globalization;
 
 namespace HtHistory.Statistics.Players
 {
@@ -16,7 +17,7 @@ namespace HtHistory.Statistics.Players
 
         public abstract Result Calculate(Source source);
 
-        public IComparer<Result> GetComparer()
+        public virtual IComparer<Result> GetComparer()
         {
             return System.Collections.Generic.Comparer<Result>.Default;
         }
@@ -34,6 +35,12 @@ namespace HtHistory.Statistics.Players
         public override string ToString()
         {
             return String.Format("{0} ({1})", Name, Abbreviation);
+        }
+
+        private IPrinter _printer = new ToStringPrinter<Result>();
+        public virtual IPrinter GetPrinter()
+        {
+            return _printer;
         }
     }
 }

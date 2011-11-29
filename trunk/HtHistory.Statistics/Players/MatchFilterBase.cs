@@ -48,5 +48,10 @@ namespace HtHistory.Statistics.Players
         {
             return String.Format("{0} ({1})", Name, Abbreviation);
         }
+
+        public IPrinter GetPrinter()
+        {
+            return _calc.GetPrinter();
+        }
     }
 }
