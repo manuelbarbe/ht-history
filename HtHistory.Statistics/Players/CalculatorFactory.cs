@@ -22,11 +22,16 @@ namespace HtHistory.Statistics.Players
             _standaloneCalculators.Add(new PlayerStatisticsCalculatorPlayerId());
 
             _filteredCalculators.Add(new PlayerStatisticsCalculatorMatches());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorSubstituteIn());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorSubstituteOut());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorWins());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorDraws());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorLosses());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorGoals());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorGoalsPerMatch());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorGoalsPer90Minutes());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorMinutes());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorMinutesPerMatch());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorBestPlayer());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorYellowCards());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorRedCards());

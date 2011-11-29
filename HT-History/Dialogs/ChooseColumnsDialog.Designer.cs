@@ -100,6 +100,7 @@
             this.listBoxLeft.Name = "listBoxLeft";
             this.listBoxLeft.Size = new System.Drawing.Size(259, 225);
             this.listBoxLeft.TabIndex = 0;
+            this.listBoxLeft.DoubleClick += new System.EventHandler(this.listBoxLeft_DoubleClick);
             // 
             // buttonDown
             // 
@@ -141,6 +142,8 @@
             this.listBoxRight.Name = "listBoxRight";
             this.listBoxRight.Size = new System.Drawing.Size(249, 225);
             this.listBoxRight.TabIndex = 1;
+            this.listBoxRight.DoubleClick += new System.EventHandler(this.listBoxRight_DoubleClick);
+            this.listBoxRight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxRight_KeyDown);
             // 
             // label2
             // 
