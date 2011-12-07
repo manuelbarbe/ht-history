@@ -42,8 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfOpponent.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfTeam.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionCentralDefender.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorDrawsPercentage.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionInnerMidfielder.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionKeeper.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorLossesPercentage.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionForward.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionUnknown.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionWinger.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionWingBack.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorWinsPercentage.cs" />
     <Compile Include="Printer\DoublePrinter.cs" />
     <Compile Include="Printer\IPrinter.cs" />

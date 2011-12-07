@@ -76,6 +76,75 @@ namespace HtHistory.Core.ExtensionMethods
                 role == Lineup.LineupRole.SubstitutionForward_);
         }
 
+        public static bool IsKeeper(this Lineup.LineupRole role)
+        {
+            return (
+                role == Lineup.LineupRole.Keeper ||
+                role == Lineup.LineupRole.Keeper_);
+        }
+
+        // TODO: behavior "extra defender"
+        public static bool IsCentralDefender(this Lineup.LineupRole role)
+        {
+            return (
+                role == Lineup.LineupRole.CentralDefenderLeft ||
+                role == Lineup.LineupRole.CentralDefenderMiddle ||
+                role == Lineup.LineupRole.CentralDefenderRight || 
+                role == Lineup.LineupRole.CentralDefender1_ ||
+                role == Lineup.LineupRole.CentralDefender2_);
+        }
+
+        public static bool IsWingBack(this Lineup.LineupRole role)
+        {
+            return (
+                role == Lineup.LineupRole.WingBackLeft ||
+                role == Lineup.LineupRole.WingBackRight ||
+                role == Lineup.LineupRole.WingBackLeft_ ||
+                role == Lineup.LineupRole.WingBackRight_);
+        }
+
+        // TODO: behavior "extra inner midfielder"
+        public static bool IsInnerMidfielder(this Lineup.LineupRole role)
+        {
+            return (
+                role == Lineup.LineupRole.InnerMidfieldLeft ||
+                role == Lineup.LineupRole.InnerMidfieldMiddle ||
+                role == Lineup.LineupRole.InnerMidfieldRight ||
+                role == Lineup.LineupRole.InnerMidfield1_ ||
+                role == Lineup.LineupRole.InnerMidfield2_);
+        }
+
+        public static bool IsWinger(this Lineup.LineupRole role)
+        {
+            return (
+                role == Lineup.LineupRole.WingerLeft ||
+                role == Lineup.LineupRole.WingerRight ||
+                role == Lineup.LineupRole.WingerLeft_ ||
+                role == Lineup.LineupRole.WingerRight_);
+        }
+
+        // TODO: behavior "extra forward"
+        public static bool IsForward(this Lineup.LineupRole role)
+        {
+            return (
+                role == Lineup.LineupRole.ForwardLeft ||
+                role == Lineup.LineupRole.ForwardMiddle ||
+                role == Lineup.LineupRole.ForwardRight ||
+                role == Lineup.LineupRole.Forward1_ ||
+                role == Lineup.LineupRole.Forward2_);
+        }
+
+        public static bool IsUnknownPosition(this Lineup.LineupRole role)
+        {
+            return (
+                role == Lineup.LineupRole.InjuredWithoutReplacement ||
+                role == Lineup.LineupRole.RedCardedPlayer ||
+                role == Lineup.LineupRole.ReplacedPlayer1 ||
+                role == Lineup.LineupRole.ReplacedPlayer2 ||
+                role == Lineup.LineupRole.ReplacedPlayer3 ||
+                role == Lineup.LineupRole.ReplacedPlayerN );
+        }
+
         public static bool IsYellowCard(this MatchEvent.MatchEventType type)
         {
             return
