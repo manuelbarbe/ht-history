@@ -13,6 +13,7 @@ namespace HtHistory.Statistics.Players
         public MatchDetails Match { get; set; }
         public Lineup.LineupRole Role { get; set; }
         public IList<Goal> Goals { get; set; }
+        public double? RatingStars { get; set; }
         public uint? SubstituteIn { get; set; }
         public uint? SubstituteOut { get; set; }
         public uint? YellowCarded { get; set; }
@@ -43,7 +44,7 @@ namespace HtHistory.Statistics.Players
             }
         }
 
-        public MatchAppearance(Player player, Team teamOfPlayer, MatchDetails match, Lineup.LineupRole role)
+        public MatchAppearance(Player player, Team teamOfPlayer, MatchDetails match, Lineup.LineupRole role, double? ratingStars = null)
         {
             if (player == null || teamOfPlayer == null || match == null) throw new ArgumentNullException("player, team or match");
 
@@ -51,6 +52,7 @@ namespace HtHistory.Statistics.Players
             TeamOfPlayer = teamOfPlayer;
             Match = match;
             Role = role;
+            RatingStars = ratingStars;
             Goals = new List<Goal>();
         }
     }

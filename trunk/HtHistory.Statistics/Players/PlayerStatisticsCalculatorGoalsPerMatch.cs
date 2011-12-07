@@ -26,7 +26,7 @@ namespace HtHistory.Statistics.Players
         private static IPrinter _printer;
         static PlayerStatisticsCalculatorGoalsPerMatch()
         {
-            _printer = new DoublePrinter();
+            _printer = new DoublePrinter2();
         }
 
         public override IPrinter GetPrinter()

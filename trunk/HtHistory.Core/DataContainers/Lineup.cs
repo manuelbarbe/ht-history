@@ -66,6 +66,7 @@ namespace HtHistory.Core.DataContainers
         {
             public Player Player { get; set; }
             public LineupRole Role { get; set; }
+            public double? RatingStars { get; set; }
         }
 
         public Lineup()

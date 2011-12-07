@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfOpponent.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfTeam.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMostStars.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorPositionCentralDefender.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorDrawsPercentage.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorPositionInnerMidfielder.cs" />
