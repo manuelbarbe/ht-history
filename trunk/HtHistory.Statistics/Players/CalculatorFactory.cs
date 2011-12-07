@@ -40,6 +40,16 @@ namespace HtHistory.Statistics.Players
             _filteredCalculators.Add(new PlayerStatisticsCalculatorRedCards());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorFirstMatch());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorLastMatch());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionKeeper());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionCentralDefender());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionWingBack());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionInnerMidfielder());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionWinger());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionForward());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionUnknown());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorGoalsOfTeam());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorGoalsOfOpponent());
+
 
             foreach (var v in CreateAllCalulators())
             {
