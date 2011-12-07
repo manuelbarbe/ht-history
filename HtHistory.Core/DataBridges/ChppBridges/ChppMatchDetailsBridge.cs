@@ -6,6 +6,7 @@ using HtHistory.Core.DataContainers;
 using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
 using System.Xml.Linq;
 using HtHistory.Core.ExtensionMethods;
+using System.Globalization;
 
 namespace HtHistory.Core.DataBridges.ChppBridges
 {
@@ -103,8 +104,15 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                     role = (Lineup.LineupRole)int.Parse(elPlayer.AssertElement("RoleID").Value);
                 }
 
+                double? stars = null;
+                XElement elRatingStars = elPlayer.Element("RatingStars");
+                if (elRatingStars != null && !string.IsNullOrEmpty(elRatingStars.Value))
+                {
+                    stars = double.Parse(elRatingStars.Value, CultureInfo.InvariantCulture);
+                }
+
                 Player player = MatchParserHelper.GetPlayer(elPlayer);
-                lineup.LineupItems.Add(new Lineup.LineupItem() { Role = role, Player = player });
+                lineup.LineupItems.Add(new Lineup.LineupItem() { Player = player, Role = role, RatingStars = stars });
             }
 
             return lineup;

@@ -106,7 +106,7 @@ namespace HtHistory.Statistics.Players
 
                 if (!ret.ContainsKey(item.Player))
                 {
-                    ret.Add(item.Player, new MatchAppearance(item.Player, myTeam, md, item.Role));
+                    ret.Add(item.Player, new MatchAppearance(item.Player, myTeam, md, item.Role, item.RatingStars));
                 }
                 else
                 {

@@ -106,6 +106,7 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "YellowCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
                 new ColumnHeader() { Text = "RedCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
                 new ColumnHeader() { Text = "MotM", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "Stars", TextAlign = HorizontalAlignment.Center, Width = 60 },
             });
 
             sortableListViewDetails2
@@ -114,7 +115,9 @@ namespace HtHistory.Pages
                 .SetSorter(5, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(6, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(7, UserControls.SortableListView.TagSorter<uint>())
-                .SetSorter(8, UserControls.SortableListView.TagSorter<uint>());
+                .SetSorter(8, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(9, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(11, UserControls.SortableListView.TagSorter<double>());
         }
 
         private void InitializeSeasonsList()
@@ -310,6 +313,9 @@ namespace HtHistory.Pages
 
                     value = d.BestPlayer;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, ((bool)value == true) ? "yes" : "-") { Tag = value });
+
+                    value = d.RatingStars;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
 
                     sortableListViewDetails2.Items.Add(item);
                 }
