@@ -64,8 +64,8 @@ namespace HtHistory
                 _settings.TryGetValue("team", out team);
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
 
-                overviewPage1.Stats = LoadColumns();
-
+                SetColumns(LoadColumns(), LoadExcludeForfaits());
+                
                 ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
 
                 //UpdateTeam();
@@ -430,7 +430,8 @@ namespace HtHistory
 
         private void columnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(overviewPage1.Stats), overviewPage1.Stats);
+            var shownRawColumns = LoadColumns(); // TODO: remove this painful Load()
+            Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(shownRawColumns), shownRawColumns);
             if (ccd.ShowDialog() == DialogResult.OK)
             {
                 IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
@@ -441,9 +442,65 @@ namespace HtHistory
                         myList.Add((IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)o);
                     }
                 }
-                
-                overviewPage1.Stats = myList;
+
                 SaveColumns(myList);
+                SetColumns(myList, LoadExcludeForfaits());
+            }
+        }
+
+        private void excludeForfaitsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveDo(() =>
+                {
+                    bool excluded = !excludeForfaitsToolStripMenuItem.Checked;
+                    ExcludeForfaits(excluded);
+                });
+        }
+
+        private bool LoadExcludeForfaits()
+        {
+            try
+            {
+                string strEx;
+                if (_settings.TryGetValue("excludeForfeits", out strEx))
+                {
+                    return bool.Parse(strEx);
+                }
+
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void SaveExcludeForfaits(bool excluded)
+        {
+            _settings["excludeForfeits"] = excluded.ToString();
+        }
+
+        private void ExcludeForfaits(bool excluded)
+        {
+            excludeForfaitsToolStripMenuItem.Checked = excluded;
+            SaveExcludeForfaits(excluded);
+            SetColumns(LoadColumns(), excluded); // TODO: remove this Load()
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            columnsToolStripMenuItem_Click(sender, e);
+        }
+
+        private void SetColumns(IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> raw_calcs, bool excludeForfeits)
+        {
+            if (excludeForfeits)
+            {
+                overviewPage1.Stats = raw_calcs.Select(rc => new MatchFilterNoForfaits(rc)).ToArray();
+            }
+            else
+            {
+                overviewPage1.Stats = raw_calcs;
             }
         }
     }
