@@ -5,6 +5,7 @@ using System.Text;
 using DevDefined.OAuth.Consumer;
 using DevDefined.OAuth.Framework;
 using System.IO;
+using System.Xml.Linq;
 
 namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
 {
@@ -62,7 +63,40 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
 
             string url = OAuthProtectedResourceUrl + "?" + parameters;
             IConsumerRequest request = _oAuthSession.Request().Get().ForUrl(url);
-            
+
+            string result = request.ToString();
+
+            if (result.Contains(@"chpperror.xml")) // <FileName>chpperror.xml</FileName>
+            {
+                int errorCode = -1;
+                string errorDescription = "unknown CHPP error";
+
+                try
+                {
+                    XDocument doc = XDocument.Load(new StringReader(result));
+                    XElement elRoot = doc.Root;
+
+                    if (elRoot != null)
+                    {
+                        XElement elErrorCode = elRoot.Element("ErrorCode");
+                        if (elErrorCode != null)
+                        {
+                            int.TryParse(elErrorCode.Value, out errorCode);
+                        }
+
+                        XElement elErrorDescription = elRoot.Element("Error");
+                        if (elErrorDescription != null && !string.IsNullOrEmpty(elErrorDescription.Value))
+                        {
+                            errorDescription = elErrorDescription.Value;
+                        }
+                    }
+                }
+                finally
+                {
+                    throw new ChppException(errorCode, errorDescription);
+                }
+            }
+
             return request.ToString();
         }
 
