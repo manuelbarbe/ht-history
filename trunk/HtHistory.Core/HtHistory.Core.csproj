@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBridges\CacheBridges\CacheMatchDetailsBridge.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppException.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppFilesystemAccessor.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppOnlineAccessor.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\IChppAccessor.cs" />
