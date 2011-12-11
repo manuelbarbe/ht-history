@@ -22,7 +22,7 @@ namespace HtHistory
 {
     public partial class Form1 : Form
     {
-        private Settings _settings = new Settings();
+        private ComfortSettings _settings = new ComfortSettings();
         private static readonly string BaseDirectory;
         private static readonly string DataDirectory;
         private static readonly string SettingsFile;
@@ -64,7 +64,7 @@ namespace HtHistory
                 _settings.TryGetValue("team", out team);
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
 
-                SetColumns(LoadColumns(), LoadExcludeForfaits());
+                SetColumns(LoadColumns(), _settings.ExcludeForfaits);
                 
                 ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
 
@@ -444,7 +444,7 @@ namespace HtHistory
                 }
 
                 SaveColumns(myList);
-                SetColumns(myList, LoadExcludeForfaits());
+                SetColumns(myList, _settings.ExcludeForfaits);
             }
         }
 
@@ -457,33 +457,10 @@ namespace HtHistory
                 });
         }
 
-        private bool LoadExcludeForfaits()
-        {
-            try
-            {
-                string strEx;
-                if (_settings.TryGetValue("excludeForfeits", out strEx))
-                {
-                    return bool.Parse(strEx);
-                }
-
-                return false;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private void SaveExcludeForfaits(bool excluded)
-        {
-            _settings["excludeForfeits"] = excluded.ToString();
-        }
-
         private void ExcludeForfaits(bool excluded)
         {
             excludeForfaitsToolStripMenuItem.Checked = excluded;
-            SaveExcludeForfaits(excluded);
+            _settings.ExcludeForfaits = excluded;
             SetColumns(LoadColumns(), excluded); // TODO: remove this Load()
         }
 

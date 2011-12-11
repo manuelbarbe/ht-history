@@ -46,6 +46,7 @@ namespace HtHistory.Statistics.Players
                 AddReplacements(myTeam, thisMatchAppearances, md);
                 AddBestPlayer(myTeam, thisMatchAppearances, md);
                 AddYellowCards(myTeam, thisMatchAppearances, md);
+                AddBruisedAndInjured(myTeam, thisMatchAppearances, md);
 
                 // add items to return value
                 foreach (var v in thisMatchAppearances)
@@ -214,6 +215,33 @@ namespace HtHistory.Statistics.Players
                         thisMatchAppearances[player].YellowCarded = ev.Minute;
                     }
 
+                }
+            }
+        }
+
+        private void AddBruisedAndInjured(Team myTeam, IDictionary<Player, MatchAppearance> thisMatchAppearances, MatchDetails md)
+        {
+            foreach (MatchEvent ev in md.Events)
+            {
+                if (ev.TeamId != myTeam.ID) continue;
+
+                if (ev.Type.IsBruised())
+                {
+                    Player player = new Player(ev.PlayerId, Player.UnknownName);
+
+                    if (thisMatchAppearances.ContainsKey(player))
+                    {
+                        thisMatchAppearances[player].Bruised = ev.Minute;
+                    }
+                }
+                else if (ev.Type.IsInjury())
+                {
+                    Player player = new Player(ev.PlayerId, Player.UnknownName);
+
+                    if (thisMatchAppearances.ContainsKey(player))
+                    {
+                        thisMatchAppearances[player].Injured = ev.Minute;
+                    }
                 }
             }
         }

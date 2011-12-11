@@ -101,10 +101,13 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
                 new ColumnHeader() { Text = "Position", TextAlign = HorizontalAlignment.Left, Width = 50 },
                 new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "In", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "Out", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "YellowCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
                 new ColumnHeader() { Text = "RedCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "Bruised", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "Injured", TextAlign = HorizontalAlignment.Center, Width = 60 },
                 new ColumnHeader() { Text = "MotM", TextAlign = HorizontalAlignment.Center, Width = 60 },
                 new ColumnHeader() { Text = "Stars", TextAlign = HorizontalAlignment.Center, Width = 60 },
             });
@@ -117,7 +120,10 @@ namespace HtHistory.Pages
                 .SetSorter(7, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(8, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(9, UserControls.SortableListView.TagSorter<uint>())
-                .SetSorter(11, UserControls.SortableListView.TagSorter<double>());
+                .SetSorter(10, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(11, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(12, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(14, UserControls.SortableListView.TagSorter<double>());
         }
 
         private void InitializeSeasonsList()
@@ -299,6 +305,9 @@ namespace HtHistory.Pages
                     value = d.Minutes;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
+                    value = d.Goals.Count;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
                     value = d.SubstituteIn;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-" ) { Tag = value });
 
@@ -309,6 +318,12 @@ namespace HtHistory.Pages
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
 
                     value = d.RedCarded;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
+
+                    value = d.Bruised;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
+
+                    value = d.Injured;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
 
                     value = d.BestPlayer;
