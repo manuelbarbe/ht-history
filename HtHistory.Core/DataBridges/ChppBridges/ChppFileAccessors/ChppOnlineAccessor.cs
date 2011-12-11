@@ -97,7 +97,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
                 }
             }
 
-            return request.ToString();
+            return result;
         }
 
 
