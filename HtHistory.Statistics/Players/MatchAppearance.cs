@@ -16,9 +16,12 @@ namespace HtHistory.Statistics.Players
         public double? RatingStars { get; set; }
         public uint? SubstituteIn { get; set; }
         public uint? SubstituteOut { get; set; }
+        public uint? Bruised { get; set; }
+        public uint? Injured { get; set; }
         public uint? YellowCarded { get; set; }
         public uint? RedCarded { get; set; }
         public bool BestPlayer { get; set; }
+
 
         public uint Minutes
         {

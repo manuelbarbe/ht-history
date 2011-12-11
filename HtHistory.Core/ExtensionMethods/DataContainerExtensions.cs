@@ -160,6 +160,24 @@ namespace HtHistory.Core.ExtensionMethods
                 type == MatchEvent.MatchEventType.RedCardWithoutWarning;
         }
 
+        public static bool IsInjury(this MatchEvent.MatchEventType type)
+        {
+            return
+                type == MatchEvent.MatchEventType.ModeratelyInjuredLeavesField ||
+                type == MatchEvent.MatchEventType.BadlyInjuredLeavesField ||
+                type == MatchEvent.MatchEventType.InjuredAndNoReplacementExists ||
+                type == MatchEvent.MatchEventType.InjuredAfterFoulAndExits ||
+                type == MatchEvent.MatchEventType.InjuredAfterFoulAndNoReplacementExists ||
+                type == MatchEvent.MatchEventType.KeeperInjuredFieldPlayerHasToTakeHisPlace;
+        }
+
+        public static bool IsBruised(this MatchEvent.MatchEventType type)
+        {
+            return
+                type == MatchEvent.MatchEventType.InjuredButKeepsPlaying ||
+                type == MatchEvent.MatchEventType.InjuredAfterFoulButContinues;
+        }
+
         public static bool IsSubstitution(this MatchEvent.MatchEventType type)
         {
             return
