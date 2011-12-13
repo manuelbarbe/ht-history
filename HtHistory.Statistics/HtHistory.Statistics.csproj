@@ -44,8 +44,10 @@
   <ItemGroup>
     <Compile Include="Players\MatchFilterNoForfaits.cs" />
     <Compile Include="Players\MatchFilterSeason.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorBruised.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfOpponent.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfTeam.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorInjured.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorMostStars.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorPositionCentralDefender.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorDrawsPercentage.cs" />
