@@ -76,6 +76,7 @@
             this.sortableListViewOverview.HideSelection = false;
             this.sortableListViewOverview.Location = new System.Drawing.Point(0, 0);
             this.sortableListViewOverview.Name = "sortableListViewOverview";
+            this.sortableListViewOverview.ShowItemToolTips = true;
             this.sortableListViewOverview.Size = new System.Drawing.Size(750, 234);
             this.sortableListViewOverview.TabIndex = 0;
             this.sortableListViewOverview.UseCompatibleStateImageBehavior = false;

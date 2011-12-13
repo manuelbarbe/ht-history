@@ -473,6 +473,7 @@ namespace HtHistory.Pages
                 if (player == null) continue;
 
                 ListViewItem item = new ListViewItem("(invalid)") { Tag = pmd };
+                item.ToolTipText = pmd.Key.ToString();
 
                 // highlight current players
                 if (data.CurrentPlayers.FirstOrDefault(p => (p.ID == player.ID)) != null)
