@@ -38,6 +38,8 @@ namespace HtHistory.Statistics.Players
             _filteredCalculators.Add(new PlayerStatisticsCalculatorBestPlayer());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorYellowCards());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorRedCards());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorBruised());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorInjured());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorFirstMatch());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorLastMatch());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorPositionKeeper());
