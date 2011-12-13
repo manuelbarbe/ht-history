@@ -64,7 +64,7 @@ namespace HtHistory
                 _settings.TryGetValue("team", out team);
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
 
-                SetColumns(LoadColumns(), _settings.ExcludeForfaits);
+                SetColumns(_settings.Columns, _settings.ExcludeForfaits);
                 
                 ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
 
@@ -392,45 +392,9 @@ namespace HtHistory
             });
         }
 
-        private IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> LoadColumns()
-        {   
-            string columnString;
-            if (_settings.ContainsKey("columns"))
-            {
-                columnString = _settings["columns"];
-            }
-            else
-            {
-                columnString = "Name;TotMat;TotGoa;TotWin;TotDraw;TotLost;TotMotM;TotRed;ComMat;ComGoa;LeaMat;LeaGoa;CupMat;CupGoa;QuaMat;QuaGoa;FriMat;FriGoa;TotFirst;TotLast";
-            }
-
-            foreach (string column in columnString.Split(';'))
-            {
-                foreach (var v in CalculatorFactory.GetAllCalulators())
-                {
-                    if (column == v.Identifier)
-                    {
-                        yield return v;
-                    }
-                }
-            }
-        }
-
-        private void SaveColumns(IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> columns)
-        {
-            StringBuilder b = new StringBuilder();
-
-            foreach (var v in columns)
-            {
-                b.Append(v.Identifier).Append(";");
-            }
-
-            _settings["columns"] = b.ToString();
-        }
-
         private void columnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var shownRawColumns = LoadColumns(); // TODO: remove this painful Load()
+            var shownRawColumns = _settings.Columns;
             Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(shownRawColumns), shownRawColumns);
             if (ccd.ShowDialog() == DialogResult.OK)
             {
@@ -443,8 +407,7 @@ namespace HtHistory
                     }
                 }
 
-                SaveColumns(myList);
-                SetColumns(myList, _settings.ExcludeForfaits);
+                SetColumns((_settings.Columns = myList), _settings.ExcludeForfaits);
             }
         }
 
@@ -452,16 +415,9 @@ namespace HtHistory
         {
             SaveDo(() =>
                 {
-                    bool excluded = !excludeForfaitsToolStripMenuItem.Checked;
-                    ExcludeForfaits(excluded);
+                    bool excluded = excludeForfaitsToolStripMenuItem.Checked = !excludeForfaitsToolStripMenuItem.Checked;
+                    SetColumns(_settings.Columns, (_settings.ExcludeForfaits = excluded)); // TODO: remove this Load()
                 });
-        }
-
-        private void ExcludeForfaits(bool excluded)
-        {
-            excludeForfaitsToolStripMenuItem.Checked = excluded;
-            _settings.ExcludeForfaits = excluded;
-            SetColumns(LoadColumns(), excluded); // TODO: remove this Load()
         }
 
         private void button2_Click(object sender, EventArgs e)

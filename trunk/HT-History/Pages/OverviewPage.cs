@@ -116,7 +116,7 @@ namespace HtHistory.Pages
                 .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
                 .SetSorter(1, UserControls.SortableListView.NullSorter)
                 .SetSorter(5, UserControls.SortableListView.TagSorter<uint>())
-                .SetSorter(6, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(6, UserControls.SortableListView.TagSorter<int>())
                 .SetSorter(7, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(8, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(9, UserControls.SortableListView.TagSorter<uint>())
