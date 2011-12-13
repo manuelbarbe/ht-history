@@ -64,6 +64,7 @@ namespace HtHistory
                 _settings.TryGetValue("team", out team);
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
 
+                excludeForfaitsToolStripMenuItem.Checked = _settings.ExcludeForfaits;
                 SetColumns(_settings.Columns, _settings.ExcludeForfaits);
                 
                 ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
