@@ -12,8 +12,8 @@ namespace HtHistory.Settings
     public class ComfortSettings : Settings
     {
         private readonly string StringColumnSetDefault = "Name;ID;TotMat;TotGoa;ComMat;ComGoa;LeaMat;LeaGoa;CupMat;CupGoa;QuaMat;QuaGoa;FriMat;FriGoa;TotFirst;TotLast";
-        private readonly string StringColumnSetTotal = "Name;ID;TotMat;TotGoa;TotGpM;TotWin;TotDraw;TotLost";
-        private readonly string StringColumnSetComp = "Name;ID;ComMat;ComGoa;ComGpM;ComWin;ComDraw;ComLost";
+        private readonly string StringColumnSetTotal = "Name;ID;TotStars;TotMat;TotGoa;TotGpM;TotGp90Min;TotMin;TotMpM;TotMotM;TotIn;TotOut;TotBru;TotInj;TotYellow;TotRed;TotFirst;TotLast;TotWin;TotWin%;TotDraw;TotDraw%;TotLost;TotLos%;";
+        private readonly string StringColumnSetComp = "Name;ID;ComStars;ComMat;ComGoa;ComGpM;ComGp90Min;ComMin;ComMpM;ComMotM;ComIn;ComOut;ComBru;ComInj;ComYellow;ComRed;ComFirst;ComLast;ComWin;ComWin%;ComDraw;ComDraw%;ComLost;ComLos%;";
 
         public bool ExcludeForfaits
         {
