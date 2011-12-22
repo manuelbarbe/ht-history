@@ -22,9 +22,9 @@ namespace HtHistory.Core.DataBridges.ChppBridges
             DateTime curMonthStart = startDate;
             Team team = null;
 
-            // 5 minute grid
+            // 15 minute grid
             endDate = endDate.AddSeconds(-endDate.Second);
-            endDate = endDate.AddMinutes(-(endDate.Minute % 5));
+            endDate = endDate.AddMinutes(-(endDate.Minute % 15));
 
             while (curMonthStart < endDate)
             {

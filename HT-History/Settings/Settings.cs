@@ -17,7 +17,7 @@ namespace HtHistory.Settings
 
         public Settings(string filepath) { Load(filepath); }
 
-        public void Load(string filepath)
+        public virtual void Load(string filepath)
         {
             XDocument doc = XDocument.Load(filepath);
             
@@ -58,7 +58,7 @@ namespace HtHistory.Settings
             }
         }
 
-        public void Save(string filepath)
+        public virtual void Save(string filepath)
         {   
             XDocument doc = new XDocument(
             new XDeclaration("1.0", "utf-8", "yes"),
