@@ -268,6 +268,7 @@
             // 
             // comboBoxColumnSets
             // 
+            this.comboBoxColumnSets.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxColumnSets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxColumnSets.FormattingEnabled = true;
             this.comboBoxColumnSets.Location = new System.Drawing.Point(628, 7);

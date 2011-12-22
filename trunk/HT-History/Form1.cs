@@ -462,9 +462,6 @@ namespace HtHistory
                         _settings.ColumnSets.Add(set);
                         _settings.ActiveColumnSet = set;
 
-                        _settings.ColumnSets = _settings.ColumnSets; // TODO: force save another way
-                        _settings.ActiveColumnSet = _settings.ActiveColumnSet; // TODO: force save another way
-
                         RefreshColumnSetComboBox();
 
                         SetColumns(_settings.ActiveColumnSet, _settings.ExcludeForfaits);

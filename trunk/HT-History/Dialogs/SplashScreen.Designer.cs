@@ -73,9 +73,9 @@
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
             this.labelVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelVersion.ForeColor = System.Drawing.Color.White;
-            this.labelVersion.Location = new System.Drawing.Point(356, 247);
+            this.labelVersion.Location = new System.Drawing.Point(347, 247);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(50, 19);
+            this.labelVersion.Size = new System.Drawing.Size(59, 19);
             this.labelVersion.TabIndex = 2;
             this.labelVersion.Text = "version";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
