@@ -56,7 +56,7 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
 
           <Component Id='Licenses' Guid='223B6A9A-0BA6-4FFE-BEA8-88C1E0F733F0'>
             <File Id='MITLicense' Name='MIT_License.rtf' DiskId='1' Source='MIT_License.rtf' KeyPath='yes' />
-            <File Id='GPLv3License' Name='COPYING' DiskId='1' Source='COPYING' KeyPath='yes' />
+            <!--<File Id='GPLv3License' Name='COPYING' DiskId='1' Source='COPYING' KeyPath='yes' />-->
           </Component>
 
         </Directory>
