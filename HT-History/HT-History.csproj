@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColumnSet.cs" />
     <Compile Include="Settings\ComfortSettings.cs" />
     <Compile Include="ControlExtensions.cs" />
     <Compile Include="Dialogs\AuthorizeDialog.cs">

@@ -51,9 +51,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.comboBoxColumnSets = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.overviewPage1 = new HtHistory.Pages.OverviewPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -254,6 +255,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.comboBoxColumnSets);
             this.tabPage3.Controls.Add(this.button2);
             this.tabPage3.Controls.Add(this.overviewPage1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -263,6 +265,27 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Players";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxColumnSets
+            // 
+            this.comboBoxColumnSets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxColumnSets.FormattingEnabled = true;
+            this.comboBoxColumnSets.Location = new System.Drawing.Point(628, 7);
+            this.comboBoxColumnSets.Name = "comboBoxColumnSets";
+            this.comboBoxColumnSets.Size = new System.Drawing.Size(208, 21);
+            this.comboBoxColumnSets.TabIndex = 16;
+            this.comboBoxColumnSets.SelectedIndexChanged += new System.EventHandler(this.comboBoxColumnSets_SelectedIndexChanged);
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(842, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(61, 23);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "columns";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // overviewPage1
             // 
@@ -282,17 +305,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(93, 58);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(828, 6);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "columns";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form1
             // 
@@ -354,6 +366,7 @@
         private System.Windows.Forms.ToolStripMenuItem columnsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excludeForfaitsToolStripMenuItem;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBoxColumnSets;
     }
 }
 

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace HtHistory
+namespace HtHistory.Settings
 {
     using Columns = IEnumerable<HtHistory.Statistics.Players.IPlayerStatisticCalculator<IEnumerable<HtHistory.Statistics.Players.MatchAppearance>>>;
     using HtHistory.Statistics.Players;
 
     public class ComfortSettings : Settings
     {
+        private readonly string StringColumnSetDefault = "Name;ID;TotMat;TotGoa;ComMat;ComGoa;LeaMat;LeaGoa;CupMat;CupGoa;QuaMat;QuaGoa;FriMat;FriGoa;TotFirst;TotLast";
+        private readonly string StringColumnSetTotal = "Name;ID;TotMat;TotGoa;TotGpM;TotWin;TotDraw;TotLost";
+        private readonly string StringColumnSetComp = "Name;ID;ComMat;ComGoa;ComGpM;ComWin;ComDraw;ComLost";
+
         public bool ExcludeForfaits
         {
             get
@@ -34,54 +38,138 @@ namespace HtHistory
             }
         }
 
-        private Columns _columns = null;
-        public Columns Columns
+        private Columns String2Columns(string columnString)
+        {
+            foreach (string column in columnString.Split(';'))
+            {
+                foreach (var v in CalculatorFactory.GetAllCalulators())
+                {
+                    if (column == v.Identifier)
+                    {
+                        yield return v;
+                    }
+                }
+            }
+        }
+
+        private string Columns2String(Columns columns)
+        {
+            StringBuilder b = new StringBuilder();
+
+            foreach (var v in columns)
+            {
+                b.Append(v.Identifier).Append(";");
+            }
+
+            return b.ToString();
+        }
+
+        private ColumnSet _activeColumnSet;
+        public ColumnSet ActiveColumnSet
         {
             get
             {
-                if (_columns == null)
+                if (_activeColumnSet == null)
                 {
-                    IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> list = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>(); 
-                    string columnString;
-                    if (this.ContainsKey("columns"))
+                    string stringColumnSet;
+                    if (ContainsKey("activeColumnSet"))
                     {
-                        columnString = this["columns"];
+                        stringColumnSet = this["activeColumnSet"];
+                        if (ColumnSets.FirstOrDefault(cs => cs.Name == stringColumnSet) == null)
+                        {
+                            stringColumnSet = "Default";
+                        }
                     }
                     else
                     {
-                        columnString = "Name;TotMat;TotGoa;TotWin;TotDraw;TotLost;TotMotM;TotRed;ComMat;ComGoa;LeaMat;LeaGoa;CupMat;CupGoa;QuaMat;QuaGoa;FriMat;FriGoa;TotFirst;TotLast";
+                        stringColumnSet = "Default";
                     }
 
-                    foreach (string column in columnString.Split(';'))
+                    _activeColumnSet = ColumnSets.FirstOrDefault(cs => cs.Name == stringColumnSet);
+
+                    if (_activeColumnSet == null)
                     {
-                        foreach (var v in CalculatorFactory.GetAllCalulators())
-                        {
-                            if (column == v.Identifier)
-                            {
-                                list.Add(v);
-                            }
-                        }
+                        throw new Exception("The active column set is unknown. This should not happen.");
                     }
-
-                    _columns = list;
                 }
-                return _columns;
+                return _activeColumnSet;
             }
             set
             {
-                StringBuilder b = new StringBuilder();
-
-                foreach (var v in value)
+                if (value == null) throw new ArgumentNullException("ActiveColumnSet");
+                if (!ColumnSets.Contains(value))
                 {
-                    b.Append(v.Identifier).Append(";");
+                    throw new Exception("Cannot set an unknown colums set active");
                 }
 
-                this["columns"] = b.ToString();
+                this["activeColumnSet"] = value.Name;
 
-                _columns = value;
+                _activeColumnSet = value;
             }
-
         }
 
+        private IList<ColumnSet> _columnSets;
+        public IList<ColumnSet> ColumnSets
+        {
+            get
+            {
+                if (_columnSets == null)
+                {
+                    IList<ColumnSet> tempColSet = new List<ColumnSet>();
+                    foreach (var v in this)
+                    {
+                        // be backward compatible:
+                        if (v.Key.Equals("columns"))
+                        {
+                            tempColSet.Add(new ColumnSet("Custom", String2Columns(v.Value)));
+                        }
+
+                        if (v.Key.StartsWith("columns:"))
+                        {
+                            string setName = v.Key.Substring("columns:".Length);
+                            if (setName.Length > 0)
+                            {
+                                tempColSet.Add(new ColumnSet(setName, String2Columns(v.Value)));
+                            }
+                        }  
+                    }
+
+                    AddIfNotPresent(tempColSet, "Default", StringColumnSetDefault);
+                    AddIfNotPresent(tempColSet, "Total", StringColumnSetTotal);
+                    AddIfNotPresent(tempColSet, "Competitive", StringColumnSetComp);
+
+                    _columnSets = tempColSet;
+                }
+                return _columnSets;
+            }
+            set
+            {
+                _columnSets = value;
+
+                // clear entrys
+                for (int i = this.Count-1; i >= 0; --i)
+                {
+                   var v = this.ElementAt(i);
+                   if (v.Key != null && v.Key.StartsWith("columns:"))
+                   {
+                       this.Remove(v.Key);
+                   }
+                }
+
+                // set new entries
+                foreach (var v in value)
+                {
+                    this.Add("columns:" + v.Name, Columns2String(v.Columns));
+                }
+            }
+        }
+
+        private void AddIfNotPresent(IList<ColumnSet> sets, string name, string columns)
+        {
+            if (sets.FirstOrDefault(cs => cs.Name == name) == null)
+            {
+                sets.Add(new ColumnSet(name, String2Columns(columns)));
+            }
+        }
     }
 }

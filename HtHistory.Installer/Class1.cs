@@ -9,7 +9,7 @@ namespace HtHistory.Installer
     {
         static void Main()
         {
-            HtHistory.Settings s;
+            HtHistory.Settings.Settings s;
         }
     }
 }

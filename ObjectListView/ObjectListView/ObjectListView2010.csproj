@@ -149,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CustomDictionary.xml" />
+    <None Include="COPYING">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\sort-descending.png" />
     <None Include="Resources\sort-ascending.png" />
     <None Include="Resources\filter.png" />
