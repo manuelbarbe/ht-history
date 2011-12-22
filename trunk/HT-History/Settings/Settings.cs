@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 using System.Xml.Linq;
 using System.IO;
 
-namespace HtHistory
+namespace HtHistory.Settings
 {
     public class Settings : Dictionary<string, string>
     {

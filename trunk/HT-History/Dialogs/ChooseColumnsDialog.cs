@@ -15,8 +15,9 @@ namespace HtHistory.Dialogs
     {
         public IEnumerable Left { get { return listBoxLeft.Items; } }
         public IEnumerable Right { get { return listBoxRight.Items; } }
+        public string MyName { get { return textBoxName.Text; } }
 
-        public ChooseColumnsDialog(IEnumerable left, IEnumerable right)
+        public ChooseColumnsDialog(IEnumerable left, IEnumerable right, string name = null)
         {
             InitializeComponent();
 
@@ -28,6 +29,15 @@ namespace HtHistory.Dialogs
             foreach (object r in right.SafeEnum())
             {
                 listBoxRight.Items.Add(r);
+            }
+
+            if (name == null)
+            {
+                labelName.Visible = textBoxName.Visible = false;
+            }
+            else
+            {
+                textBoxName.Text = name;
             }
         }
 

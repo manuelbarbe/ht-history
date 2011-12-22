@@ -17,6 +17,9 @@ using HtHistory.Update;
 using System.Threading;
 using HtHistory.Statistics.Players;
 using HtHistory.Core.ExtensionMethods;
+using HtHistory.Settings;
+
+using Columns = System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.IPlayerStatisticCalculator<System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.MatchAppearance>>>;
 
 namespace HtHistory
 {
@@ -65,8 +68,10 @@ namespace HtHistory
                 if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
 
                 excludeForfaitsToolStripMenuItem.Checked = _settings.ExcludeForfaits;
-                SetColumns(_settings.Columns, _settings.ExcludeForfaits);
-                
+                SetColumns(_settings.ActiveColumnSet, _settings.ExcludeForfaits);
+
+                RefreshColumnSetComboBox();
+
                 ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
 
                 //UpdateTeam();
@@ -76,6 +81,21 @@ namespace HtHistory
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void RefreshColumnSetComboBox()
+        {
+            comboBoxColumnSets.Items.Clear();
+            foreach (var v in _settings.ColumnSets)
+            {
+                comboBoxColumnSets.Items.Add(v);
+            }
+            if (comboBoxColumnSets.Items.Count > 0)
+            {
+                comboBoxColumnSets.SelectedItem = _settings.ActiveColumnSet;
+            }
+
+            comboBoxColumnSets.Items.Add(new TaggedObject("<<create new>>", (Action)delegate() { CreateNewColumnSet(); }));
         }
 
         private void SetOnlineMode()
@@ -395,21 +415,61 @@ namespace HtHistory
 
         private void columnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var shownRawColumns = _settings.Columns;
-            Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(shownRawColumns), shownRawColumns);
-            if (ccd.ShowDialog() == DialogResult.OK)
-            {
-                IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
-                foreach (object o in ccd.Right.SafeEnum())
+            SaveDo(() =>
                 {
-                    if (o is IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)
+                    var shownRawColumns = _settings.ActiveColumnSet.Columns;
+                    Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(shownRawColumns), shownRawColumns, _settings.ActiveColumnSet.Name);
+                    if (ccd.ShowDialog() == DialogResult.OK)
                     {
-                        myList.Add((IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)o);
-                    }
-                }
+                        IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
+                        foreach (object o in ccd.Right.SafeEnum())
+                        {
+                            if (o is IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)
+                            {
+                                myList.Add((IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)o);
+                            }
+                        }
 
-                SetColumns((_settings.Columns = myList), _settings.ExcludeForfaits);
-            }
+                        _settings.ActiveColumnSet.Name = ccd.MyName;
+                        _settings.ActiveColumnSet.Columns = myList;
+                        _settings.ColumnSets = _settings.ColumnSets; // TODO: force save another way
+                        _settings.ActiveColumnSet = _settings.ActiveColumnSet; // TODO: force save another way
+
+                        RefreshColumnSetComboBox();
+
+                        SetColumns(_settings.ActiveColumnSet, _settings.ExcludeForfaits);
+                    }
+                });
+        }
+
+        private void CreateNewColumnSet()
+        {
+            SaveDo(() =>
+                {
+                    Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators(), null, String.Format("Custom set #{0}", comboBoxColumnSets.Items.Count + 1));
+                    if (ccd.ShowDialog() == DialogResult.OK)
+                    {
+                        IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
+                        foreach (object o in ccd.Right.SafeEnum())
+                        {
+                            if (o is IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)
+                            {
+                                myList.Add((IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)o);
+                            }
+                        }
+
+                        ColumnSet set = new ColumnSet(ccd.MyName, myList);
+                        _settings.ColumnSets.Add(set);
+                        _settings.ActiveColumnSet = set;
+
+                        _settings.ColumnSets = _settings.ColumnSets; // TODO: force save another way
+                        _settings.ActiveColumnSet = _settings.ActiveColumnSet; // TODO: force save another way
+
+                        RefreshColumnSetComboBox();
+
+                        SetColumns(_settings.ActiveColumnSet, _settings.ExcludeForfaits);
+                    }
+                });
         }
 
         private void excludeForfaitsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -417,7 +477,7 @@ namespace HtHistory
             SaveDo(() =>
                 {
                     bool excluded = excludeForfaitsToolStripMenuItem.Checked = !excludeForfaitsToolStripMenuItem.Checked;
-                    SetColumns(_settings.Columns, (_settings.ExcludeForfaits = excluded)); // TODO: remove this Load()
+                    SetColumns(_settings.ActiveColumnSet, (_settings.ExcludeForfaits = excluded)); // TODO: remove this Load()
                 });
         }
 
@@ -426,15 +486,32 @@ namespace HtHistory
             columnsToolStripMenuItem_Click(sender, e);
         }
 
-        private void SetColumns(IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> raw_calcs, bool excludeForfeits)
+        private void SetColumns(ColumnSet set, bool excludeForfeits)
         {
             if (excludeForfeits)
             {
-                overviewPage1.Stats = raw_calcs.Select(rc => new MatchFilterNoForfaits(rc)).ToArray();
+                overviewPage1.Stats = set.Columns.Select(rc => new MatchFilterNoForfaits(rc)).ToArray();
             }
             else
             {
-                overviewPage1.Stats = raw_calcs;
+                overviewPage1.Stats = set.Columns;
+            }
+        }
+
+        private void comboBoxColumnSets_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ColumnSet cs = comboBoxColumnSets.SelectedItem as ColumnSet;
+            if (cs != null)
+            {
+                SetColumns((_settings.ActiveColumnSet = cs), _settings.ExcludeForfaits);
+                columnsToolStripMenuItem.Enabled = button2.Enabled = cs.Name != "Default";
+            }
+
+            TaggedObject to = comboBoxColumnSets.SelectedItem as TaggedObject;
+            if (to != null)
+            {
+                Action a = to.Tag as Action;
+                if (a != null) a();
             }
         }
     }

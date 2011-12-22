@@ -12,7 +12,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors
     public class ChppOnlineAccessor : IChppAccessor
     {
         private const string OAuthConsumerKey = "F5HcynlPU6EUkBr7Sl7BOU";
-        private const string OAuthConsumerSecret = "";
+        private const string OAuthConsumerSecret = "FnHwc2wYj5j9vddHAxmdOp9PIGD4DdP5WQbA4hWufC6";
         private const string OAuthRequestTokenUrl = "https://chpp.hattrick.org/oauth/request_token.ashx";
         private const string OAuthAuthorizeUrl = "https://chpp.hattrick.org/oauth/authorize.aspx";
         private const string OAuthAccessTokenUrl = "https://chpp.hattrick.org/oauth/access_token.ashx";
