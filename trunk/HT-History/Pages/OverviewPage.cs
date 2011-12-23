@@ -533,9 +533,10 @@ namespace HtHistory.Pages
                     Table table = TableFromListView(sortableListViewOverview);
                     using (Stream stream = File.OpenWrite(safeFileDialog.FileName))
                     {
-                        using (StreamWriter wr = new StreamWriter(stream, Encoding.ASCII))
+                        using (StreamWriter wr = new StreamWriter(stream, Encoding.UTF8))
                         {
-                            new TableExporterCSV(",").Export(table, wr);
+                            //wr.Write((char)0xFEFF); // BOM
+                            new TableExporterCSV(";").Export(table, wr);
                         }
                     }
                 }
