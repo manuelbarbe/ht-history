@@ -531,7 +531,7 @@ namespace HtHistory.Pages
                 if (safeFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     Table table = TableFromListView(sortableListViewOverview);
-                    using (Stream stream = File.OpenWrite(safeFileDialog.FileName))
+                    using (FileStream stream = new FileStream(safeFileDialog.FileName, FileMode.Create))
                     {
                         using (StreamWriter wr = new StreamWriter(stream, Encoding.UTF8))
                         {
