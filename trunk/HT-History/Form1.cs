@@ -53,7 +53,7 @@ namespace HtHistory
         {
             try
             {
-                if (File.Exists(SettingsFile))
+                //if (File.Exists(SettingsFile))
                 {
                     SaveDo(() =>
                     {
