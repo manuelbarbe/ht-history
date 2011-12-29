@@ -8,6 +8,7 @@ namespace HtHistory.Settings
 {
     using Columns = IEnumerable<HtHistory.Statistics.Players.IPlayerStatisticCalculator<IEnumerable<HtHistory.Statistics.Players.MatchAppearance>>>;
     using HtHistory.Statistics.Players;
+    using System.IO;
 
     public class ComfortSettings : Settings
     {
@@ -136,18 +137,24 @@ namespace HtHistory.Settings
         }
         private void SaveActiveColumnSet()
         {
-            if (!ColumnSets.Contains(ActiveColumnSet))
+            if (ActiveColumnSet != null)
             {
-                throw new Exception("Cannot set an unknown colums set active");
-            }
+                if (!ColumnSets.Contains(ActiveColumnSet))
+                {
+                    throw new Exception("Cannot set an unknown colums set active");
+                }
 
-            this["activeColumnSet"] = ActiveColumnSet.Name;
+                this["activeColumnSet"] = ActiveColumnSet.Name;
+            }
         }
 
 
         public override void Load(string filepath)
         {
-            base.Load(filepath);
+            if (File.Exists(filepath))
+            {
+                base.Load(filepath);
+            }
 
             LoadColumnSets();
             LoadActiveColumnSet();
