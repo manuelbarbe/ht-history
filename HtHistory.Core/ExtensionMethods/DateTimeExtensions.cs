@@ -7,8 +7,22 @@ namespace HtHistory.Core.ExtensionMethods
 {
     public static class DateTimeExtensions
     {
-        private static readonly TimeZoneInfo CET = TimeZoneInfo.FromSerializedString("W. Europe Standard Time;60;(UTC+01:00) Amsterdam, Berlin, Bern, Rom, Stockholm, Wien;Mitteleuropäische Zeit;Mitteleuropäische Sommerzeit;[01:01:0001;12:31:9999;60;[0;02:00:00;3;5;0;];[0;03:00:00;10;5;0;];];");
-       
+        private static readonly TimeZoneInfo CET = TimeZoneInfo.CreateCustomTimeZone(
+			"HT Sweden time",
+			new TimeSpan(1, 0, 0),
+			"HT Sweden time",
+			"HT Sweden time",
+			"HT Sweden time", 
+			new TimeZoneInfo.AdjustmentRule[]
+				{TimeZoneInfo.AdjustmentRule.CreateAdjustmentRule(
+					new DateTime(1, 1, 1),
+					new DateTime(9999, 12, 31),
+					new TimeSpan(1, 0, 0),
+					TimeZoneInfo.TransitionTime.CreateFloatingDateRule(new DateTime(1, 1, 1, 2, 0, 0), 3, 5, DayOfWeek.Sunday),
+					TimeZoneInfo.TransitionTime.CreateFloatingDateRule(new DateTime(1, 1, 1, 3, 0, 0), 10, 5, DayOfWeek.Sunday))
+				},
+			true);
+			
         public static DateTime ToHtTime(this DateTime localTime)
         {
             return TimeZoneInfo.ConvertTimeFromUtc(DateTime.Now.ToUniversalTime(), CET);
