@@ -35,6 +35,8 @@ namespace HtHistory.Core.DataContainers
             }
         }
 
+        public Crowd Visitors { get; set; }
+
         public IEnumerable<Goal> Goals { get; set; }
         public IEnumerable<MatchEvent> Events { get; set; }
 
@@ -43,6 +45,9 @@ namespace HtHistory.Core.DataContainers
 
         public Lineup HomeStartingLineup { get; set; }
         public Lineup AwayStartingLineup { get; set; }
+
+        public Ratings HomeRatings { get; set; }
+        public Ratings AwayRatings { get; set; }
 
     }
 }

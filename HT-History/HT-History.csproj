@@ -64,6 +64,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColumnSet.cs" />
+    <Compile Include="Pages\MatchesPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\MatchesPage.Designer.cs">
+      <DependentUpon>MatchesPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings\ComfortSettings.cs" />
     <Compile Include="ControlExtensions.cs" />
     <Compile Include="Dialogs\AuthorizeDialog.cs">
@@ -132,6 +138,12 @@
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="TaggedObject.cs" />
+    <Compile Include="Tasks\BaseTask.cs" />
+    <Compile Include="Tasks\GetMatchesTask.cs" />
+    <Compile Include="Tasks\GetPlayersTask.cs" />
+    <Compile Include="Tasks\ITask.cs" />
+    <Compile Include="Tasks\NullTask.cs" />
+    <Compile Include="Tasks\PleaseWaitTaskDecorator.cs" />
     <Compile Include="Update\IUpdater.cs" />
     <Compile Include="Update\UpdaterHttpFile.cs" />
     <Compile Include="UserControls\SortableListView.cs">
@@ -158,6 +170,9 @@
     <EmbeddedResource Include="Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MatchesPage.resx">
+      <DependentUpon>MatchesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\OverviewDetailsPage.resx">
       <DependentUpon>OverviewDetailsPage.cs</DependentUpon>
