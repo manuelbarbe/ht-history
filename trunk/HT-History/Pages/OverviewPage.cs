@@ -15,6 +15,7 @@ using System.IO;
 using System.Collections;
 using HtHistory.UserControls;
 using System.Globalization;
+using HtHistory.Tasks;
 
 
 namespace HtHistory.Pages
@@ -22,7 +23,7 @@ namespace HtHistory.Pages
     public class OverviewPage : OverviewDetailsPage
     {
 
-        private class ResultData
+        public class ResultData
         {
             public IDictionary<Player, IList<MatchAppearance>> Infos { get; set; }
             public IEnumerable<Player> CurrentPlayers { get; set; }
@@ -407,15 +408,23 @@ namespace HtHistory.Pages
             return ts.GetMatchesOfPlayers(Environment.Team == null ? 0 : Environment.Team.ID, true);
         }
 
-        protected override void DoWork(object sender, DoWorkEventArgs e)
-        {
-            IEnumerable<MatchDetails> matches = new MatchGetter(
+        protected void DoWork(object sender, DoWorkEventArgs e)
+        {/*
+            DataSourceMatches dataSourceMatches = new DataSourceMatches(
                                 Environment.Team == null ? 0 : Environment.Team.ID,
-                                Environment.Opponent == null ? 0 : Environment.Opponent.ID,
                                 Environment.DataBridgeFactory.TeamDetailsBridge,
                                 Environment.DataBridgeFactory.MatchArchiveBridge,
                                 Environment.DataBridgeFactory.MatchDetailsBridge);
        
+            dataSourceMatches.ProgressChanged += (dummy, args) => ((BackgroundWorker)sender).ReportProgress(args.ProgressPercentage, args.UserState);
+            IEnumerable<MatchDetails> matches = dataSourceMatches.GetData();
+
+            uint opponentId = Environment.Opponent == null ? 0 : Environment.Opponent.ID;
+            if (opponentId != 0)
+            {
+                matches = matches.Where(m => (opponentId == m.HomeTeam.ID || opponentId == m.AwayTeam.ID));
+            }
+
             IEnumerable<Player> currentPlayers = new List<Player>();
             try
             {
@@ -432,9 +441,10 @@ namespace HtHistory.Pages
                 CurrentPlayers = currentPlayers,
                 Matches = matches 
             };
+          * */
         }
 
-        protected override void ShowResult(object sender, RunWorkerCompletedEventArgs e)
+        public void ShowResult(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
             {
@@ -464,6 +474,8 @@ namespace HtHistory.Pages
         {
             if (data == null || listView == null) return;
 
+            if (data.Infos == null) data.Infos = GetForMatches(data.Matches);
+
             listView.Tag = data;
             listView.Items.Clear();
 
@@ -476,7 +488,8 @@ namespace HtHistory.Pages
                 item.ToolTipText = pmd.Key.ToString();
 
                 // highlight current players
-                if (data.CurrentPlayers.FirstOrDefault(p => (p.ID == player.ID)) != null)
+                if (data.CurrentPlayers != null &&
+                    data.CurrentPlayers.FirstOrDefault(p => (p.ID == player.ID)) != null)
                 {
                     item.Font = new Font(item.Font, FontStyle.Bold);
                 }

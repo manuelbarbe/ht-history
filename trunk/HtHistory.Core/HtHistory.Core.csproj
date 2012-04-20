@@ -60,7 +60,9 @@
     <Compile Include="DataBridges\IDataBridge.cs" />
     <Compile Include="DataBridges\IMatchArchiveBridge.cs" />
     <Compile Include="DataBridges\IMatchDetailsBridge.cs" />
+    <Compile Include="DataContainers\Crowd.cs" />
     <Compile Include="DataContainers\Goal.cs" />
+    <Compile Include="DataContainers\HatStats.cs" />
     <Compile Include="DataContainers\HtNamedObject.cs" />
     <Compile Include="DataContainers\HtObject.cs" />
     <Compile Include="DataContainers\HtTime.cs" />
@@ -71,9 +73,11 @@
     <Compile Include="DataContainers\MatchEvent.cs" />
     <Compile Include="DataContainers\Player.cs" />
     <Compile Include="DataContainers\PlayerDetails.cs" />
+    <Compile Include="DataContainers\Ratings.cs" />
     <Compile Include="DataContainers\Score.cs" />
     <Compile Include="DataContainers\Team.cs" />
     <Compile Include="DataContainers\TeamDetails.cs" />
+    <Compile Include="DataContainers\Types.cs" />
     <Compile Include="DataContainers\User.cs" />
     <Compile Include="ExtensionMethods\DataContainerExtensions.cs" />
     <Compile Include="ExtensionMethods\DateTimeExtensions.cs" />

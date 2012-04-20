@@ -14,28 +14,6 @@ namespace HtHistory.Pages
         public OverviewDetailsPage()
         {
             InitializeComponent();
-
-            Box = new PleaseWaitDialog();
-            Worker = new BackgroundWorker();
-            Worker.DoWork += DoWork;
-            Worker.RunWorkerCompleted += (s, e) => { if (Box.Visible) Box.Hide(); ShowResult(s, e); };
         }
-
-        protected BackgroundWorker Worker { get; set; }
-        protected PleaseWaitDialog Box { get; set; }
-
-        public virtual void StartWorking()
-        {
-            if (!Worker.IsBusy)
-            {
-                Box.Show();
-                Worker.RunWorkerAsync();
-            }
-        }
-
-        protected abstract void DoWork(object sender, DoWorkEventArgs e);
- 
-        protected abstract void ShowResult(object sender, RunWorkerCompletedEventArgs e);
-
     }
 }

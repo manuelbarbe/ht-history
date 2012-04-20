@@ -20,6 +20,8 @@ using HtHistory.Core.ExtensionMethods;
 using HtHistory.Settings;
 
 using Columns = System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.IPlayerStatisticCalculator<System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.MatchAppearance>>>;
+using HtHistory.Tasks;
+using HtHistory.Pages;
 
 namespace HtHistory
 {
@@ -230,7 +232,27 @@ namespace HtHistory
                     _pwd.Show();
 
                     BackgroundWorker bgw = new BackgroundWorker();
-                    bgw.DoWork += (s, e1) => { UpdateTeam(); UpdateOpponent(); };
+                    
+                    uint teamId = Convert.ToUInt32(textBoxTeamId.Text);
+
+                    ITask getMatchesTask = new PleaseWaitTaskDecorator(
+                                                new GetMatchesTask( teamId,
+                                                                    Environment.DataBridgeFactory.TeamDetailsBridge,
+                                                                    Environment.DataBridgeFactory.MatchArchiveBridge,
+                                                                    Environment.DataBridgeFactory.MatchDetailsBridge));
+
+                    ITask getPlayersTask = new PleaseWaitTaskDecorator(
+                                                new GetPlayersTask( teamId,
+                                                                    Environment.DataBridgeFactory.PlayersBridge));
+
+                    bgw.DoWork += (s, e1) =>
+                        {
+                            UpdateTeam();
+                            UpdateOpponent();
+                            getMatchesTask.Do();
+                            getPlayersTask.Do();
+                        };
+
                     bgw.RunWorkerCompleted += (s, e2) =>
                         {
                             _pwd.Hide();
@@ -240,8 +262,18 @@ namespace HtHistory
                             }
                             else
                             {
-                                if (overviewPage1.Visible)
-                                    overviewPage1.StartWorking();
+                                SaveDo(() =>
+                                {
+                                    overviewPage1.ShowResult(this, new RunWorkerCompletedEventArgs(
+                                                                    new OverviewPage.ResultData()
+                                                                    {
+                                                                        Matches = (IEnumerable<MatchDetails>)getMatchesTask.Result,
+                                                                        CurrentPlayers = (IEnumerable<Player>)getPlayersTask.Result
+
+                                                                    }, null, false));
+
+                                    matchesPage1.ShowMatches((IEnumerable<MatchDetails>)getMatchesTask.Result, teamId);
+                                });
                             }
                         };
 

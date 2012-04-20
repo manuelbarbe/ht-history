@@ -53,11 +53,14 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.comboBoxColumnSets = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.matchesPage1 = new HtHistory.Pages.MatchesPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -247,6 +250,7 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(15, 136);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -288,14 +292,16 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // overviewPage1
+            // tabPage1
             // 
-            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
-            this.overviewPage1.Name = "overviewPage1";
-            this.overviewPage1.Size = new System.Drawing.Size(903, 467);
-            this.overviewPage1.Stats = null;
-            this.overviewPage1.TabIndex = 0;
+            this.tabPage1.Controls.Add(this.matchesPage1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(909, 473);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Matches";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -306,6 +312,23 @@
             this.pictureBox1.Size = new System.Drawing.Size(93, 58);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // overviewPage1
+            // 
+            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
+            this.overviewPage1.Name = "overviewPage1";
+            this.overviewPage1.Size = new System.Drawing.Size(903, 467);
+            this.overviewPage1.Stats = null;
+            this.overviewPage1.TabIndex = 0;
+            // 
+            // matchesPage1
+            // 
+            this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchesPage1.Location = new System.Drawing.Point(3, 3);
+            this.matchesPage1.Name = "matchesPage1";
+            this.matchesPage1.Size = new System.Drawing.Size(903, 467);
+            this.matchesPage1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -333,6 +356,7 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -368,6 +392,8 @@
         private System.Windows.Forms.ToolStripMenuItem excludeForfaitsToolStripMenuItem;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBoxColumnSets;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Pages.MatchesPage matchesPage1;
     }
 }
 

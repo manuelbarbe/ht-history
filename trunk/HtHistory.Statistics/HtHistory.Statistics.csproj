@@ -61,7 +61,6 @@
     <Compile Include="Players\PlayerStatisticsCalculatorWinsPercentage.cs" />
     <Compile Include="Printer\DoublePrinter.cs" />
     <Compile Include="Printer\IPrinter.cs" />
-    <Compile Include="MatchGetter.cs" />
     <Compile Include="Generic2ObjectComparer.cs" />
     <Compile Include="Players\CalculatorFactory.cs" />
     <Compile Include="Players\IPlayerStatisticCalculator.cs" />
