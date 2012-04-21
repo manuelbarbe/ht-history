@@ -42,6 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Filters\Matches\IMatchFilter.cs" />
+    <Compile Include="Filters\Matches\MatchFilterUnionSet.cs" />
+    <Compile Include="Filters\Matches\MatchFilterSeason.cs" />
+    <Compile Include="Filters\Matches\MatchFilterAway.cs" />
+    <Compile Include="Filters\Matches\MatchFilterHome.cs" />
+    <Compile Include="Filters\Matches\MatchFilterNull.cs" />
+    <Compile Include="Filters\Matches\MatchFilterTeam.cs" />
     <Compile Include="Players\MatchFilterNoForfaits.cs" />
     <Compile Include="Players\MatchFilterSeason.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorBruised.cs" />
