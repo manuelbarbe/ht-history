@@ -25,6 +25,7 @@ namespace HtHistory.Pages
 
         public class ResultData
         {
+            public uint TeamId { get; set; }
             public IDictionary<Player, IList<MatchAppearance>> Infos { get; set; }
             public IEnumerable<Player> CurrentPlayers { get; set; }
             public IEnumerable<MatchDetails> Matches { get; set; }
@@ -402,10 +403,10 @@ namespace HtHistory.Pages
 
         }
 
-        IDictionary<Player, IList<MatchAppearance>> GetForMatches(IEnumerable<MatchDetails> matches)
+        IDictionary<Player, IList<MatchAppearance>> GetForMatches(uint teamId, IEnumerable<MatchDetails> matches)
         {
             StandardPlayerStatistics ts = new StandardPlayerStatistics(matches);
-            return ts.GetMatchesOfPlayers(Environment.Team == null ? 0 : Environment.Team.ID, true);
+            return ts.GetMatchesOfPlayers(teamId, true);
         }
 
         protected void DoWork(object sender, DoWorkEventArgs e)
@@ -474,7 +475,7 @@ namespace HtHistory.Pages
         {
             if (data == null || listView == null) return;
 
-            if (data.Infos == null) data.Infos = GetForMatches(data.Matches);
+            if (data.Infos == null) data.Infos = GetForMatches(data.TeamId, data.Matches);
 
             listView.Tag = data;
             listView.Items.Clear();
@@ -586,8 +587,9 @@ namespace HtHistory.Pages
                 sortableListViewDetails3.Items.Clear();
 
                 IEnumerable<MatchDetails> md = to.Tag == null ? data.Matches : data.Matches.Where(m => new HtTime(m.Date).Season == (int)to.Tag);
+                uint teamId = data.TeamId;
 
-                IDictionary<Player, IList<MatchAppearance>> listData = GetForMatches(md);
+                IDictionary<Player, IList<MatchAppearance>> listData = GetForMatches(teamId, md);
                 ListView listView = sortableListViewOverview;
 
                 FillListView(new ResultData() { Infos = listData, CurrentPlayers = data.CurrentPlayers, Matches = data.Matches }, listView);

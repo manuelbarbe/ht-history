@@ -2,32 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.ExtensionMethods;
 using HtHistory.Core.DataContainers;
+using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Statistics.Filters.Matches
 {
-    public class MatchFilterUnionSet : IMatchFilter
+    public class MatchFilterIntersectionSet : IMatchFilter
     {
         private IEnumerable<IMatchFilter> _filters;
 
-        public MatchFilterUnionSet(IEnumerable<IMatchFilter> filters)
+        public MatchFilterIntersectionSet(IEnumerable<IMatchFilter> filters)
         {
             _filters = filters ?? new List<IMatchFilter>();
         }
 
         public IEnumerable<MatchDetails> Filter(IEnumerable<MatchDetails> input)
         {
-            if (_filters == null || _filters.Count() == 0) return input;
-
-            IEnumerable<MatchDetails> resultSet = new MatchDetails[0];
+            IEnumerable<MatchDetails> resultSet = input;
 
             foreach (IMatchFilter filter in _filters.SafeEnum())
             {
-                resultSet = resultSet.Union(filter.Filter(input));
+                resultSet = resultSet.Intersect(filter.Filter(input));
             }
 
             return resultSet;
         }
+
     }
 }

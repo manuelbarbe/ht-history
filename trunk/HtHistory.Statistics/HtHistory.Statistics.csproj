@@ -43,6 +43,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filters\Matches\IMatchFilter.cs" />
+    <Compile Include="Filters\Matches\MatchFilterCompetitive.cs" />
+    <Compile Include="Filters\Matches\MatchFilterCup.cs" />
+    <Compile Include="Filters\Matches\MatchFilterFriendly.cs" />
+    <Compile Include="Filters\Matches\MatchFilterGeneric.cs" />
+    <Compile Include="Filters\Matches\MatchFilterIntersectionSet.cs" />
+    <Compile Include="Filters\Matches\MatchFilterLeague.cs" />
+    <Compile Include="Filters\Matches\MatchFilterMastersOther.cs" />
+    <Compile Include="Filters\Matches\MatchFilterNeutral.cs" />
+    <Compile Include="Filters\Matches\MatchFilterNoForfaits.cs" />
+    <Compile Include="Filters\Matches\MatchFilterQualifier.cs" />
     <Compile Include="Filters\Matches\MatchFilterUnionSet.cs" />
     <Compile Include="Filters\Matches\MatchFilterSeason.cs" />
     <Compile Include="Filters\Matches\MatchFilterAway.cs" />

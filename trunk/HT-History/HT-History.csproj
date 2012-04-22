@@ -146,6 +146,12 @@
     <Compile Include="Tasks\PleaseWaitTaskDecorator.cs" />
     <Compile Include="Update\IUpdater.cs" />
     <Compile Include="Update\UpdaterHttpFile.cs" />
+    <Compile Include="UserControls\MatchFilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\MatchFilterControl.Designer.cs">
+      <DependentUpon>MatchFilterControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\SortableListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\WebProxyDialog.resx">
       <DependentUpon>WebProxyDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\MatchFilterControl.resx">
+      <DependentUpon>MatchFilterControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

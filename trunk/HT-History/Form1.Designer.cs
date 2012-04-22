@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxTeamId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxOppId = new System.Windows.Forms.TextBox();
             this.labelTeamInfo = new System.Windows.Forms.Label();
             this.labelOpponentInfo = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,7 +40,6 @@
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proxyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.columnsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excludeForfaitsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,49 +52,13 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overviewPage1 = new HtHistory.Pages.OverviewPage();
             this.matchesPage1 = new HtHistory.Pages.MatchesPage();
+            this.matchFilterControl = new HtHistory.UserControls.MatchFilterControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // textBoxTeamId
-            // 
-            this.textBoxTeamId.Location = new System.Drawing.Point(146, 37);
-            this.textBoxTeamId.Name = "textBoxTeamId";
-            this.textBoxTeamId.Size = new System.Drawing.Size(100, 20);
-            this.textBoxTeamId.TabIndex = 1;
-            this.textBoxTeamId.Text = "332944";
-            this.textBoxTeamId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxTeamId_KeyDown);
-            this.textBoxTeamId.Leave += new System.EventHandler(this.textBoxTeamId_Leave);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Enter your team ID:";
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(12, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 33);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Enter opponent team ID (0 = all opponents)";
-            // 
-            // textBoxOppId
-            // 
-            this.textBoxOppId.Location = new System.Drawing.Point(146, 65);
-            this.textBoxOppId.Name = "textBoxOppId";
-            this.textBoxOppId.Size = new System.Drawing.Size(100, 20);
-            this.textBoxOppId.TabIndex = 2;
-            this.textBoxOppId.Text = "0";
-            this.textBoxOppId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxOppId_KeyDown);
-            this.textBoxOppId.Leave += new System.EventHandler(this.textBoxOppId_Leave);
             // 
             // labelTeamInfo
             // 
@@ -184,8 +143,7 @@
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.proxyToolStripMenuItem,
-            this.columnsToolStripMenuItem,
-            this.excludeForfaitsToolStripMenuItem});
+            this.columnsToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -193,23 +151,16 @@
             // proxyToolStripMenuItem
             // 
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.proxyToolStripMenuItem.Text = "Proxy...";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.proxyToolStripMenuItem_Click);
             // 
             // columnsToolStripMenuItem
             // 
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.columnsToolStripMenuItem.Text = "Columns...";
             this.columnsToolStripMenuItem.Click += new System.EventHandler(this.columnsToolStripMenuItem_Click);
-            // 
-            // excludeForfaitsToolStripMenuItem
-            // 
-            this.excludeForfaitsToolStripMenuItem.Name = "excludeForfaitsToolStripMenuItem";
-            this.excludeForfaitsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.excludeForfaitsToolStripMenuItem.Text = "Exclude forfeits";
-            this.excludeForfaitsToolStripMenuItem.Click += new System.EventHandler(this.excludeForfaitsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -236,7 +187,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(171, 96);
+            this.button1.Location = new System.Drawing.Point(102, 130);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 13;
@@ -251,10 +202,10 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Location = new System.Drawing.Point(15, 136);
+            this.tabControl1.Location = new System.Drawing.Point(15, 159);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(917, 499);
+            this.tabControl1.Size = new System.Drawing.Size(917, 476);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage3
@@ -265,7 +216,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(909, 473);
+            this.tabPage3.Size = new System.Drawing.Size(909, 450);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Players";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -298,7 +249,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(909, 473);
+            this.tabPage1.Size = new System.Drawing.Size(909, 450);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Matches";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -318,7 +269,7 @@
             this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overviewPage1.Location = new System.Drawing.Point(3, 3);
             this.overviewPage1.Name = "overviewPage1";
-            this.overviewPage1.Size = new System.Drawing.Size(903, 467);
+            this.overviewPage1.Size = new System.Drawing.Size(903, 444);
             this.overviewPage1.Stats = null;
             this.overviewPage1.TabIndex = 0;
             // 
@@ -327,26 +278,30 @@
             this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.matchesPage1.Location = new System.Drawing.Point(3, 3);
             this.matchesPage1.Name = "matchesPage1";
-            this.matchesPage1.Size = new System.Drawing.Size(903, 467);
+            this.matchesPage1.Size = new System.Drawing.Size(903, 444);
             this.matchesPage1.TabIndex = 0;
+            // 
+            // matchFilterControl
+            // 
+            this.matchFilterControl.Location = new System.Drawing.Point(22, 40);
+            this.matchFilterControl.Name = "matchFilterControl";
+            this.matchFilterControl.Size = new System.Drawing.Size(775, 113);
+            this.matchFilterControl.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleGoldenrod;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(944, 647);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.labelOpponentInfo);
             this.Controls.Add(this.labelTeamInfo);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxOppId);
-            this.Controls.Add(this.textBoxTeamId);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.matchFilterControl);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label5);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -365,10 +320,6 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxTeamId;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxOppId;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelTeamInfo;
         private System.Windows.Forms.Label labelOpponentInfo;
@@ -389,11 +340,11 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem columnsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem excludeForfaitsToolStripMenuItem;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox comboBoxColumnSets;
         private System.Windows.Forms.TabPage tabPage1;
         private Pages.MatchesPage matchesPage1;
+        private UserControls.MatchFilterControl matchFilterControl;
     }
 }
 
