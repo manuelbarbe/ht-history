@@ -34,7 +34,7 @@ namespace HtHistory.Tasks
         {
             //if (_pl == null)
             {
-                _pl = _pb.GetPlayers(Environment.Team.ID);
+                _pl = _pb.GetPlayers(TeamId);
             }
 
             return _pl;

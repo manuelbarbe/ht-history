@@ -22,6 +22,7 @@ using HtHistory.Settings;
 using Columns = System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.IPlayerStatisticCalculator<System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.MatchAppearance>>>;
 using HtHistory.Tasks;
 using HtHistory.Pages;
+using HtHistory.Core;
 
 namespace HtHistory
 {
@@ -32,6 +33,8 @@ namespace HtHistory
         private static readonly string DataDirectory;
         private static readonly string SettingsFile;
         private static readonly string UpdateDirectory;
+
+        private uint _teamId = 0;
 
         PleaseWaitDialog _pwd = new PleaseWaitDialog();
 
@@ -65,18 +68,24 @@ namespace HtHistory
 
                 SetOnlineMode();
 
-                string team;
-                _settings.TryGetValue("team", out team);
-                if (!string.IsNullOrEmpty(team)) textBoxTeamId.Text = team;
+                try
+                {
+                    string team;
+                    _settings.TryGetValue("team", out team);
+                    if (!string.IsNullOrEmpty(team)) _teamId = uint.Parse(team);
+                }
+                catch
+                {
+                    HtLog.Error("Cannot parse team id"); 
+                }
 
-                excludeForfaitsToolStripMenuItem.Checked = _settings.ExcludeForfaits;
-                SetColumns(_settings.ActiveColumnSet, _settings.ExcludeForfaits);
+                SetColumns(_settings.ActiveColumnSet);
 
                 RefreshColumnSetComboBox();
 
                 ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
 
-                //UpdateTeam();
+                UpdateTeam();
                 //UpdateOpponent();
             }
             catch (Exception ex)
@@ -167,62 +176,11 @@ namespace HtHistory
 
         private void UpdateTeam()
         {
-            SaveDo(() =>
-            {
-                Environment.Team = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(uint.Parse(textBoxTeamId.Text));
-                labelTeamInfo.BeginInvoke((Action)delegate
+            SaveDo(()=>
                 {
-                    labelTeamInfo.Text = Environment.Team.ToString();
+                    TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(0); // TODO
+                    matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
                 });
-            });
-        }
-
-        private void UpdateOpponent()
-        {
-            SaveDo(() =>
-            {
-                if (textBoxOppId.Text == string.Empty)
-                {
-                    Environment.Opponent = null;
-                }
-                else
-                {
-                    uint oppId = uint.Parse(textBoxOppId.Text);
-                    if (oppId <= 0) Environment.Opponent = null;
-                    else Environment.Opponent = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(oppId);
-                }
-
-                labelOpponentInfo.BeginInvoke((Action)delegate
-                {
-                    labelOpponentInfo.Text = Environment.Opponent != null ? Environment.Opponent.ToString() : "all teams";
-                });
-            });
-        }
-
-        private void textBoxTeamId_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button1_Click(sender, e);
-            }
-        }
-
-        private void textBoxTeamId_Leave(object sender, EventArgs e)
-        {
-            //UpdateTeam();
-        }
-
-        private void textBoxOppId_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button1_Click(sender, e);
-            }
-        }
-
-        private void textBoxOppId_Leave(object sender, EventArgs e)
-        {
-            //UpdateOpponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -232,23 +190,19 @@ namespace HtHistory
                     _pwd.Show();
 
                     BackgroundWorker bgw = new BackgroundWorker();
-                    
-                    uint teamId = Convert.ToUInt32(textBoxTeamId.Text);
 
                     ITask getMatchesTask = new PleaseWaitTaskDecorator(
-                                                new GetMatchesTask( teamId,
+                                                new GetMatchesTask( _teamId,
                                                                     Environment.DataBridgeFactory.TeamDetailsBridge,
                                                                     Environment.DataBridgeFactory.MatchArchiveBridge,
                                                                     Environment.DataBridgeFactory.MatchDetailsBridge));
 
                     ITask getPlayersTask = new PleaseWaitTaskDecorator(
-                                                new GetPlayersTask( teamId,
+                                                new GetPlayersTask( _teamId,
                                                                     Environment.DataBridgeFactory.PlayersBridge));
 
                     bgw.DoWork += (s, e1) =>
                         {
-                            UpdateTeam();
-                            UpdateOpponent();
                             getMatchesTask.Do();
                             getPlayersTask.Do();
                         };
@@ -264,15 +218,18 @@ namespace HtHistory
                             {
                                 SaveDo(() =>
                                 {
+                                    IEnumerable<MatchDetails> matches = matchFilterControl.GetFilter().Filter((IEnumerable<MatchDetails>)getMatchesTask.Result);
+
                                     overviewPage1.ShowResult(this, new RunWorkerCompletedEventArgs(
                                                                     new OverviewPage.ResultData()
                                                                     {
-                                                                        Matches = (IEnumerable<MatchDetails>)getMatchesTask.Result,
+                                                                        TeamId = _teamId,
+                                                                        Matches = matches,
                                                                         CurrentPlayers = (IEnumerable<Player>)getPlayersTask.Result
 
                                                                     }, null, false));
 
-                                    matchesPage1.ShowMatches((IEnumerable<MatchDetails>)getMatchesTask.Result, teamId);
+                                    matchesPage1.ShowMatches(matches, _teamId);
                                 });
                             }
                         };
@@ -341,7 +298,7 @@ namespace HtHistory
         {
             try
             {
-                _settings["team"] = textBoxTeamId.Text;
+                _settings["team"] = _teamId.ToString();
                 _settings.Save(SettingsFile);
             }
             catch
@@ -469,7 +426,7 @@ namespace HtHistory
 
                         RefreshColumnSetComboBox();
 
-                        SetColumns(_settings.ActiveColumnSet, _settings.ExcludeForfaits);
+                        SetColumns(_settings.ActiveColumnSet);
                     }
                 });
         }
@@ -496,17 +453,8 @@ namespace HtHistory
 
                         RefreshColumnSetComboBox();
 
-                        SetColumns(_settings.ActiveColumnSet, _settings.ExcludeForfaits);
+                        SetColumns(_settings.ActiveColumnSet);
                     }
-                });
-        }
-
-        private void excludeForfaitsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveDo(() =>
-                {
-                    bool excluded = excludeForfaitsToolStripMenuItem.Checked = !excludeForfaitsToolStripMenuItem.Checked;
-                    SetColumns(_settings.ActiveColumnSet, (_settings.ExcludeForfaits = excluded)); // TODO: remove this Load()
                 });
         }
 
@@ -515,16 +463,9 @@ namespace HtHistory
             columnsToolStripMenuItem_Click(sender, e);
         }
 
-        private void SetColumns(ColumnSet set, bool excludeForfeits)
+        private void SetColumns(ColumnSet set)
         {
-            if (excludeForfeits)
-            {
-                overviewPage1.Stats = set.Columns.Select(rc => new MatchFilterNoForfaits(rc)).ToArray();
-            }
-            else
-            {
-                overviewPage1.Stats = set.Columns;
-            }
+            overviewPage1.Stats = set.Columns;
         }
 
         private void comboBoxColumnSets_SelectedIndexChanged(object sender, EventArgs e)
@@ -532,7 +473,7 @@ namespace HtHistory
             ColumnSet cs = comboBoxColumnSets.SelectedItem as ColumnSet;
             if (cs != null)
             {
-                SetColumns((_settings.ActiveColumnSet = cs), _settings.ExcludeForfaits);
+                SetColumns((_settings.ActiveColumnSet = cs));
                 columnsToolStripMenuItem.Enabled = button2.Enabled = cs.Name != "Default";
             }
 

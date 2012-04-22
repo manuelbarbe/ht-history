@@ -17,7 +17,7 @@ namespace HtHistory.Pages
         {
             InitializeComponent();
             this.sortableListViewMatches.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 100 },
+                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 90 },
                 new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
                 new ColumnHeader() { Text = "Opponent", TextAlign = HorizontalAlignment.Left, Width = 220 },
                 new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
