@@ -88,7 +88,7 @@ namespace HtHistory
                 {
                     HtLog.Error("Cannot parse team id");
                 }
-                ChangeTeam();
+                ChangeTeam(ref _teamId);
 
                 matchFilterControl.FilterChanged += UpdateAll;
 
@@ -177,61 +177,6 @@ namespace HtHistory
                     else SetOnlineMode();
                 }
             });
-        }
-
-        private void UpdateTeam(uint teamId)
-        {
-            SaveDo(()=>
-                {
-                    TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(teamId); // TODO
-                    matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
-                });
-        }
-
-        private void UpdateMatches(uint teamId)
-        {
-            SaveDo(() =>
-                {
-                    _pwd.Show();
-
-                    BackgroundWorker bgw = new BackgroundWorker();
-
-                    ITask getMatchesTask = new PleaseWaitTaskDecorator(
-                                                new GetMatchesTask( teamId,
-                                                                    Environment.DataBridgeFactory.TeamDetailsBridge,
-                                                                    Environment.DataBridgeFactory.MatchArchiveBridge,
-                                                                    Environment.DataBridgeFactory.MatchDetailsBridge));
-
-                    ITask getPlayersTask = new PleaseWaitTaskDecorator(
-                                                new GetPlayersTask( teamId,
-                                                                    Environment.DataBridgeFactory.PlayersBridge));
-
-                    bgw.DoWork += (s, e1) =>
-                        {
-                            getMatchesTask.Do();
-                            getPlayersTask.Do();
-                        };
-
-                    bgw.RunWorkerCompleted += (s, e2) =>
-                        {
-                            _pwd.Hide();
-                            if (e2.Error != null)
-                            {
-                                MessageBox.Show(e2.Error.ToString());
-                            }
-                            else
-                            {
-                                SaveDo(() =>
-                                {
-                                    _matches = (IEnumerable<MatchDetails>)getMatchesTask.Result;
-                                    _players = (IEnumerable<Player>)getPlayersTask.Result;
-                                    UpdateAll(this, new EventArgs());
-                                });
-                            }
-                        };
-
-                    bgw.RunWorkerAsync();
-                });
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -483,33 +428,88 @@ namespace HtHistory
 
         private void UpdateAll(object sender, EventArgs e)
         {
+            IEnumerable<MatchDetails> matches = matchFilterControl.GetFilter().Filter(_matches);
+
             overviewPage1.ShowResult(this, new RunWorkerCompletedEventArgs(
                                                                    new OverviewPage.ResultData()
                                                                    {
                                                                        TeamId = _teamId,
-                                                                       Matches = matchFilterControl.GetFilter().Filter(_matches),
+                                                                       Matches = matches,
                                                                        CurrentPlayers = _players,
 
                                                                    }, null, false));
 
-            matchesPage1.ShowMatches(_matches, _teamId);
+            matchesPage1.ShowMatches(matches, _teamId);
         }
 
-        private void ChangeTeam()
+        private void UpdateTeam(ref uint teamId)
         {
-            TeamIdDialog tid = new TeamIdDialog(_teamId);
+            TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(teamId);
+            matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
+            teamId = td.ID;
+        }
+
+        private void UpdateMatches(uint teamId)
+        {
+            _pwd.Show();
+
+            BackgroundWorker bgw = new BackgroundWorker();
+
+            ITask getMatchesTask = new PleaseWaitTaskDecorator(
+                                        new GetMatchesTask(teamId,
+                                                            Environment.DataBridgeFactory.TeamDetailsBridge,
+                                                            Environment.DataBridgeFactory.MatchArchiveBridge,
+                                                            Environment.DataBridgeFactory.MatchDetailsBridge));
+
+            ITask getPlayersTask = new PleaseWaitTaskDecorator(
+                                        new GetPlayersTask(teamId,
+                                                            Environment.DataBridgeFactory.PlayersBridge));
+
+            bgw.DoWork += (s, e1) =>
+            {
+                getMatchesTask.Do();
+                getPlayersTask.Do();
+            };
+
+            bgw.RunWorkerCompleted += (s, e2) =>
+            {
+                _pwd.Hide();
+                if (e2.Error != null)
+                {
+                    MessageBox.Show(e2.Error.ToString());
+                }
+                else
+                {
+                    SaveDo(() =>
+                    {
+                        _matches = (IEnumerable<MatchDetails>)getMatchesTask.Result;
+                        _players = (IEnumerable<Player>)getPlayersTask.Result;
+                        UpdateAll(this, new EventArgs());
+                    });
+                }
+            };
+
+            bgw.RunWorkerAsync();
+        }
+
+        private void ChangeTeam(ref uint teamId)
+        {
+            TeamIdDialog tid = new TeamIdDialog(teamId);
             if (DialogResult.OK == tid.ShowDialog())
             {
-                _teamId = tid.TeamId;
+                teamId = tid.TeamId;
             }
 
-            UpdateTeam(_teamId);
-            UpdateMatches(_teamId);
+            UpdateTeam(ref teamId);
+            UpdateMatches(teamId);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeTeam();
+            SaveDo(() =>
+            {
+                ChangeTeam(ref _teamId); // TODO: error handling
+            });
         }
     }
 }

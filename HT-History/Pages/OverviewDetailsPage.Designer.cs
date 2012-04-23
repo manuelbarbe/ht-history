@@ -37,8 +37,6 @@
             this.sortableListViewDetails2 = new HtHistory.UserControls.SortableListView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.sortableListViewDetails3 = new HtHistory.UserControls.SortableListView();
-            this.comboBoxFilter = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -160,30 +158,10 @@
             this.sortableListViewDetails3.UseCompatibleStateImageBehavior = false;
             this.sortableListViewDetails3.View = System.Windows.Forms.View.Details;
             // 
-            // comboBoxFilter
-            // 
-            this.comboBoxFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFilter.FormattingEnabled = true;
-            this.comboBoxFilter.Location = new System.Drawing.Point(51, 4);
-            this.comboBoxFilter.Name = "comboBoxFilter";
-            this.comboBoxFilter.Size = new System.Drawing.Size(189, 21);
-            this.comboBoxFilter.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Filter:";
-            // 
             // OverviewDetailsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBoxFilter);
             this.Controls.Add(this.splitContainer1);
             this.Name = "OverviewDetailsPage";
             this.Size = new System.Drawing.Size(750, 500);
@@ -196,7 +174,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -211,8 +188,6 @@
         protected UserControls.SortableListView sortableListViewDetails2;
         protected System.Windows.Forms.TabPage tabPage3;
         protected UserControls.SortableListView sortableListViewDetails3;
-        protected System.Windows.Forms.ComboBox comboBoxFilter;
-        private System.Windows.Forms.Label label1;
         
     }
 }
