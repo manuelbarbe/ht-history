@@ -122,5 +122,19 @@ namespace HtHistory.UserControls
 
         #endregion
 
+        #region FILTER CHANGED EVENTS
+
+        public event EventHandler FilterChanged;
+
+        private void RaiseFilterChanged(object sender, EventArgs e)
+        {
+            if (FilterChanged != null)
+            {
+                FilterChanged(this, new EventArgs());
+            }
+        }
+
+        #endregion
+
     }
 }

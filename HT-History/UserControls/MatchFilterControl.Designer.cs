@@ -77,6 +77,7 @@
             this.textBoxOpponentId.Size = new System.Drawing.Size(104, 20);
             this.textBoxOpponentId.TabIndex = 2;
             this.textBoxOpponentId.Text = "0";
+            this.textBoxOpponentId.TextChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
             // label3
             // 
@@ -101,6 +102,7 @@
             this.listBoxVenue.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxVenue.Size = new System.Drawing.Size(120, 56);
             this.listBoxVenue.TabIndex = 4;
+            this.listBoxVenue.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
             // label4
             // 
@@ -120,6 +122,7 @@
             this.listBoxSeason.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxSeason.Size = new System.Drawing.Size(144, 95);
             this.listBoxSeason.TabIndex = 6;
+            this.listBoxSeason.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
             // label5
             // 
@@ -140,6 +143,7 @@
             this.checkBoxForfait.TabIndex = 8;
             this.checkBoxForfait.Text = "excluded";
             this.checkBoxForfait.UseVisualStyleBackColor = true;
+            this.checkBoxForfait.CheckedChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
             // label6
             // 
@@ -167,6 +171,7 @@
             this.listBoxType.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxType.Size = new System.Drawing.Size(120, 95);
             this.listBoxType.TabIndex = 10;
+            this.listBoxType.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
             // MatchFilterControl
             // 

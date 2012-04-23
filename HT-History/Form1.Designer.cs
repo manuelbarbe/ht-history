@@ -48,10 +48,10 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.comboBoxColumnSets = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.matchesPage1 = new HtHistory.Pages.MatchesPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.matchFilterControl = new HtHistory.UserControls.MatchFilterControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -187,11 +187,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(102, 130);
+            this.button1.Location = new System.Drawing.Point(102, 119);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(90, 34);
             this.button1.TabIndex = 13;
-            this.button1.Text = "refresh";
+            this.button1.Text = "change team\r\n/ refresh";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -243,6 +243,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // overviewPage1
+            // 
+            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
+            this.overviewPage1.Name = "overviewPage1";
+            this.overviewPage1.Size = new System.Drawing.Size(903, 444);
+            this.overviewPage1.Stats = null;
+            this.overviewPage1.TabIndex = 0;
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.matchesPage1);
@@ -254,6 +263,14 @@
             this.tabPage1.Text = "Matches";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // matchesPage1
+            // 
+            this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchesPage1.Location = new System.Drawing.Point(3, 3);
+            this.matchesPage1.Name = "matchesPage1";
+            this.matchesPage1.Size = new System.Drawing.Size(903, 444);
+            this.matchesPage1.TabIndex = 0;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -263,23 +280,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(93, 58);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            // 
-            // overviewPage1
-            // 
-            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
-            this.overviewPage1.Name = "overviewPage1";
-            this.overviewPage1.Size = new System.Drawing.Size(903, 444);
-            this.overviewPage1.Stats = null;
-            this.overviewPage1.TabIndex = 0;
-            // 
-            // matchesPage1
-            // 
-            this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchesPage1.Location = new System.Drawing.Point(3, 3);
-            this.matchesPage1.Name = "matchesPage1";
-            this.matchesPage1.Size = new System.Drawing.Size(903, 444);
-            this.matchesPage1.TabIndex = 0;
             // 
             // matchFilterControl
             // 

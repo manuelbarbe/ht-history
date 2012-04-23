@@ -23,6 +23,7 @@ using Columns = System.Collections.Generic.IEnumerable<HtHistory.Statistics.Play
 using HtHistory.Tasks;
 using HtHistory.Pages;
 using HtHistory.Core;
+using HtHistory.Dialogs;
 
 namespace HtHistory
 {
@@ -35,6 +36,8 @@ namespace HtHistory
         private static readonly string UpdateDirectory;
 
         private uint _teamId = 0;
+        IEnumerable<MatchDetails> _matches = new List<MatchDetails>();
+        IEnumerable<Player> _players = new List<Player>();
 
         PleaseWaitDialog _pwd = new PleaseWaitDialog();
 
@@ -68,6 +71,13 @@ namespace HtHistory
 
                 SetOnlineMode();
 
+                SetColumns(_settings.ActiveColumnSet);
+
+                RefreshColumnSetComboBox();
+
+                ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
+
+
                 try
                 {
                     string team;
@@ -76,17 +86,12 @@ namespace HtHistory
                 }
                 catch
                 {
-                    HtLog.Error("Cannot parse team id"); 
+                    HtLog.Error("Cannot parse team id");
                 }
+                ChangeTeam();
 
-                SetColumns(_settings.ActiveColumnSet);
+                matchFilterControl.FilterChanged += UpdateAll;
 
-                RefreshColumnSetComboBox();
-
-                ThreadPool.QueueUserWorkItem(this.DoUpdateStartCallback);
-
-                UpdateTeam();
-                //UpdateOpponent();
             }
             catch (Exception ex)
             {
@@ -174,16 +179,16 @@ namespace HtHistory
             });
         }
 
-        private void UpdateTeam()
+        private void UpdateTeam(uint teamId)
         {
             SaveDo(()=>
                 {
-                    TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(0); // TODO
+                    TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(teamId); // TODO
                     matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
                 });
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void UpdateMatches(uint teamId)
         {
             SaveDo(() =>
                 {
@@ -192,13 +197,13 @@ namespace HtHistory
                     BackgroundWorker bgw = new BackgroundWorker();
 
                     ITask getMatchesTask = new PleaseWaitTaskDecorator(
-                                                new GetMatchesTask( _teamId,
+                                                new GetMatchesTask( teamId,
                                                                     Environment.DataBridgeFactory.TeamDetailsBridge,
                                                                     Environment.DataBridgeFactory.MatchArchiveBridge,
                                                                     Environment.DataBridgeFactory.MatchDetailsBridge));
 
                     ITask getPlayersTask = new PleaseWaitTaskDecorator(
-                                                new GetPlayersTask( _teamId,
+                                                new GetPlayersTask( teamId,
                                                                     Environment.DataBridgeFactory.PlayersBridge));
 
                     bgw.DoWork += (s, e1) =>
@@ -218,18 +223,9 @@ namespace HtHistory
                             {
                                 SaveDo(() =>
                                 {
-                                    IEnumerable<MatchDetails> matches = matchFilterControl.GetFilter().Filter((IEnumerable<MatchDetails>)getMatchesTask.Result);
-
-                                    overviewPage1.ShowResult(this, new RunWorkerCompletedEventArgs(
-                                                                    new OverviewPage.ResultData()
-                                                                    {
-                                                                        TeamId = _teamId,
-                                                                        Matches = matches,
-                                                                        CurrentPlayers = (IEnumerable<Player>)getPlayersTask.Result
-
-                                                                    }, null, false));
-
-                                    matchesPage1.ShowMatches(matches, _teamId);
+                                    _matches = (IEnumerable<MatchDetails>)getMatchesTask.Result;
+                                    _players = (IEnumerable<Player>)getPlayersTask.Result;
+                                    UpdateAll(this, new EventArgs());
                                 });
                             }
                         };
@@ -483,6 +479,37 @@ namespace HtHistory
                 Action a = to.Tag as Action;
                 if (a != null) a();
             }
+        }
+
+        private void UpdateAll(object sender, EventArgs e)
+        {
+            overviewPage1.ShowResult(this, new RunWorkerCompletedEventArgs(
+                                                                   new OverviewPage.ResultData()
+                                                                   {
+                                                                       TeamId = _teamId,
+                                                                       Matches = matchFilterControl.GetFilter().Filter(_matches),
+                                                                       CurrentPlayers = _players,
+
+                                                                   }, null, false));
+
+            matchesPage1.ShowMatches(_matches, _teamId);
+        }
+
+        private void ChangeTeam()
+        {
+            TeamIdDialog tid = new TeamIdDialog(_teamId);
+            if (DialogResult.OK == tid.ShowDialog())
+            {
+                _teamId = tid.TeamId;
+            }
+
+            UpdateTeam(_teamId);
+            UpdateMatches(_teamId);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangeTeam();
         }
     }
 }

@@ -75,7 +75,7 @@ namespace HtHistory.Pages
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
                     value = (d.Visitors != null) ? d.Visitors.Total : null;
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
 
                     value = (teamId == d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Total : ((HatStats)d.AwayRatings).Total;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
