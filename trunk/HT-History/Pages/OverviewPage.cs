@@ -53,8 +53,6 @@ namespace HtHistory.Pages
             InitializeSeasonsList();
             InitializeMatchList();
             InitializeGoalsList();
-
-            this.comboBoxFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxFilter_SelectedIndexChanged);
         }
 
         public IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> Stats
@@ -457,18 +455,7 @@ namespace HtHistory.Pages
             sortableListViewDetails2.Items.Clear();
             sortableListViewDetails3.Items.Clear();
 
-            comboBoxFilter.Items.Clear();
-          
-            ResultData data = (ResultData)e.Result;
-
-            comboBoxFilter.Items.Add(new TaggedObject("all seasons"));
-            foreach (int season in data.Matches.Select(m => new HtTime(m.Date).Season).Distinct().OrderBy( i => i))
-            {
-                comboBoxFilter.Items.Add(new TaggedObject(String.Format("Season {0}", season), season));
-            }
-
-            ListView listView = sortableListViewOverview;
-            FillListView(data, listView);  
+            FillListView((ResultData)e.Result, sortableListViewOverview);  
         }
 
         private void FillListView(ResultData data, ListView listView)
@@ -571,29 +558,6 @@ namespace HtHistory.Pages
                     (lvsi) => lvsi.Text).ToArray()).ToArray();
 
             return table;
-        }
-
-        private void comboBoxFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxFilter.SelectedItem == null) return;
-
-            ResultData data = sortableListViewOverview.Tag as ResultData;
-            TaggedObject to = comboBoxFilter.SelectedItem as TaggedObject;
-
-            if (data != null && to != null)
-            {
-                sortableListViewDetails1.Items.Clear();
-                sortableListViewDetails2.Items.Clear();
-                sortableListViewDetails3.Items.Clear();
-
-                IEnumerable<MatchDetails> md = to.Tag == null ? data.Matches : data.Matches.Where(m => new HtTime(m.Date).Season == (int)to.Tag);
-                uint teamId = data.TeamId;
-
-                IDictionary<Player, IList<MatchAppearance>> listData = GetForMatches(teamId, md);
-                ListView listView = sortableListViewOverview;
-
-                FillListView(new ResultData() { Infos = listData, CurrentPlayers = data.CurrentPlayers, Matches = data.Matches }, listView);
-            }
         }
    }
 }
