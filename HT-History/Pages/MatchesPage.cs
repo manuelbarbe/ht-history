@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using HtHistory.Core.DataContainers;
 using HtHistory.Core.ExtensionMethods;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace HtHistory.Pages
 {
@@ -16,6 +17,11 @@ namespace HtHistory.Pages
         public MatchesPage()
         {
             InitializeComponent();
+            InitializeList();
+        }
+
+        private void InitializeList()
+        {
             this.sortableListViewMatches.Columns.AddRange(new ColumnHeader[] {
                 new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 90 },
                 new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
@@ -41,6 +47,33 @@ namespace HtHistory.Pages
 
         public void ShowMatches(IEnumerable<MatchDetails> details, uint teamId)
         {
+            FillList(details, teamId);
+            FillChart(details, teamId);
+        }
+
+        private void FillChart(IEnumerable<MatchDetails> details, uint teamId)
+        {
+            chartHatstats.Series.Clear();
+
+            //Series hatStats = new Series("Hatstats");
+            Series defStats = new Series("Defense") { ChartType = SeriesChartType.StackedColumn };
+            Series midStats = new Series("Midfield") { ChartType = SeriesChartType.StackedColumn };
+            Series attStats = new Series("Attack") { ChartType = SeriesChartType.StackedColumn };
+            foreach (MatchDetails d in details.SafeEnum().OrderBy(d => d.Date))
+            {
+                HatStats hs = (teamId == d.HomeTeam.ID) ? (HatStats)d.HomeRatings : (HatStats)d.AwayRatings;
+                defStats.Points.AddY(hs.LeftDefense + hs.RightDefense + hs.CentralDefense);
+                midStats.Points.AddY(hs.Midfield);
+                attStats.Points.AddY(hs.LeftAttack + hs.RightAttack + hs.CentralAttack);
+            }
+
+            chartHatstats.Series.Add(defStats);
+            chartHatstats.Series.Add(midStats);
+            chartHatstats.Series.Add(attStats);
+        }
+
+        private void FillList(IEnumerable<MatchDetails> details, uint teamId)
+        {
             try
             {
                 sortableListViewMatches.Items.Clear();
@@ -58,10 +91,10 @@ namespace HtHistory.Pages
 
                     value = new HtTime(d.Date);
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
-                    
+
                     value = (teamId != d.HomeTeam.ID) ? d.HomeTeam : d.AwayTeam;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, (value != null) ? value.ToString() : "-") { Tag = value });
-                    
+
                     value = d.Type;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
