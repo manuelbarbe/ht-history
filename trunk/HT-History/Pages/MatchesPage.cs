@@ -28,11 +28,11 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "Opponent", TextAlign = HorizontalAlignment.Left, Width = 220 },
                 new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
                 new ColumnHeader() { Text = "Venue", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 70 },
-                new ColumnHeader() { Text = "OppGoals", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Text = "OppGoals", TextAlign = HorizontalAlignment.Center, Width = 70 },
                 new ColumnHeader() { Text = "Visitors", TextAlign = HorizontalAlignment.Right, Width = 50 },
-                new ColumnHeader() { Text = "Hatstats", TextAlign = HorizontalAlignment.Center, Width = 70 },
-                new ColumnHeader() { Text = "OppHatstats", TextAlign = HorizontalAlignment.Center, Width = 100 },
+                new ColumnHeader() { Text = "Hatstats", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "OppHatstats", TextAlign = HorizontalAlignment.Center, Width = 70 },
             });
 
             sortableListViewMatches
@@ -62,9 +62,22 @@ namespace HtHistory.Pages
             foreach (MatchDetails d in details.SafeEnum().OrderBy(d => d.Date))
             {
                 HatStats hs = (teamId == d.HomeTeam.ID) ? (HatStats)d.HomeRatings : (HatStats)d.AwayRatings;
-                defStats.Points.AddY(hs.LeftDefense + hs.RightDefense + hs.CentralDefense);
-                midStats.Points.AddY(hs.Midfield);
-                attStats.Points.AddY(hs.LeftAttack + hs.RightAttack + hs.CentralAttack);
+                //defStats.Points.AddY(hs.LeftDefense + hs.RightDefense + hs.CentralDefense);
+                //midStats.Points.AddY(hs.Midfield);
+                //attStats.Points.AddY(hs.LeftAttack + hs.RightAttack + hs.CentralAttack);
+
+                string tooltip = new StringBuilder()
+                    .AppendLine(new HtTime(d.Date).ToString())
+                    .AppendLine(d.ToString())
+                    .Append("Hatstats: ").AppendLine(hs.Total.ToString())
+                    .Append("Defense:  ").AppendLine((hs.LeftDefense + hs.RightDefense + hs.CentralDefense).ToString())
+                    .Append("Midfield: ").AppendLine(hs.Midfield.ToString())
+                    .Append("Attack:   ").AppendLine((hs.LeftAttack + hs.RightAttack + hs.CentralAttack).ToString())
+                    .ToString();
+
+                defStats.Points.Add(hs.LeftDefense + hs.RightDefense + hs.CentralDefense).ToolTip = tooltip;
+                midStats.Points.Add(hs.Midfield).ToolTip = tooltip;
+                attStats.Points.Add(hs.LeftAttack + hs.RightAttack + hs.CentralAttack).ToolTip = tooltip;
             }
 
             chartHatstats.Series.Add(defStats);
