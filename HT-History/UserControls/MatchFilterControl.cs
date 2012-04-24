@@ -41,7 +41,7 @@ namespace HtHistory.UserControls
             listBoxVenue.Items.Add(new TaggedObject("All", new MatchFilterNull()));
             listBoxVenue.Items.Add(new TaggedObject("Home", new MatchFilterHome(teamId)));
             listBoxVenue.Items.Add(new TaggedObject("Away", new MatchFilterAway(teamId)));
-            listBoxVenue.Items.Add(new TaggedObject("Neutral", new MatchFilterNeutral()));
+            //listBoxVenue.Items.Add(new TaggedObject("Neutral", new MatchFilterNeutral()));
             listBoxVenue.SelectedIndex = 0;
             listBoxVenue.ResumeLayout();
         }

@@ -64,13 +64,11 @@ namespace HtHistory.Pages
                 string htts = new HtTime(d.Date).ToString();
                 
                 HatStats hs = (teamId == d.HomeTeam.ID) ? (HatStats)d.HomeRatings : (HatStats)d.AwayRatings;
-                //defStats.Points.AddY(hs.LeftDefense + hs.RightDefense + hs.CentralDefense);
-                //midStats.Points.AddY(hs.Midfield);
-                //attStats.Points.AddY(hs.LeftAttack + hs.RightAttack + hs.CentralAttack);
-
+                
                 string tooltip = new StringBuilder()
                     .AppendLine(htts)
                     .AppendLine(d.ToString())
+                    .AppendLine(d.Type.ToString())
                     .Append("Hatstats: ").AppendLine(hs.Total.ToString())
                     .Append("Defense:  ").AppendLine((hs.LeftDefense + hs.RightDefense + hs.CentralDefense).ToString())
                     .Append("Midfield: ").AppendLine(hs.Midfield.ToString())

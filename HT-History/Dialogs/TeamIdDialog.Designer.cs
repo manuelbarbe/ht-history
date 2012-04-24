@@ -40,7 +40,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(197, 101);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 0;
+            this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
@@ -60,7 +60,7 @@
             this.textBoxTeamId.Location = new System.Drawing.Point(21, 58);
             this.textBoxTeamId.Name = "textBoxTeamId";
             this.textBoxTeamId.Size = new System.Drawing.Size(251, 20);
-            this.textBoxTeamId.TabIndex = 2;
+            this.textBoxTeamId.TabIndex = 0;
             this.textBoxTeamId.Text = "0";
             // 
             // label1
