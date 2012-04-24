@@ -61,13 +61,15 @@ namespace HtHistory.Pages
             Series attStats = new Series("Attack") { ChartType = SeriesChartType.StackedColumn };
             foreach (MatchDetails d in details.SafeEnum().OrderBy(d => d.Date))
             {
+                string htts = new HtTime(d.Date).ToString();
+                
                 HatStats hs = (teamId == d.HomeTeam.ID) ? (HatStats)d.HomeRatings : (HatStats)d.AwayRatings;
                 //defStats.Points.AddY(hs.LeftDefense + hs.RightDefense + hs.CentralDefense);
                 //midStats.Points.AddY(hs.Midfield);
                 //attStats.Points.AddY(hs.LeftAttack + hs.RightAttack + hs.CentralAttack);
 
                 string tooltip = new StringBuilder()
-                    .AppendLine(new HtTime(d.Date).ToString())
+                    .AppendLine(htts)
                     .AppendLine(d.ToString())
                     .Append("Hatstats: ").AppendLine(hs.Total.ToString())
                     .Append("Defense:  ").AppendLine((hs.LeftDefense + hs.RightDefense + hs.CentralDefense).ToString())
@@ -75,7 +77,9 @@ namespace HtHistory.Pages
                     .Append("Attack:   ").AppendLine((hs.LeftAttack + hs.RightAttack + hs.CentralAttack).ToString())
                     .ToString();
 
-                defStats.Points.Add(hs.LeftDefense + hs.RightDefense + hs.CentralDefense).ToolTip = tooltip;
+                DataPoint point = defStats.Points.Add(hs.LeftDefense + hs.RightDefense + hs.CentralDefense);
+                point.ToolTip = tooltip;
+                point.AxisLabel = htts;
                 midStats.Points.Add(hs.Midfield).ToolTip = tooltip;
                 attStats.Points.Add(hs.LeftAttack + hs.RightAttack + hs.CentralAttack).ToolTip = tooltip;
             }
