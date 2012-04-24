@@ -39,5 +39,6 @@ namespace HtHistory.Dialogs
                 _teamId = 0;
             }
         }
+
     }
 }
