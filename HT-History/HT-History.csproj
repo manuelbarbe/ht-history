@@ -268,10 +268,6 @@
       <Project>{00DD84C0-55D5-4B61-AECF-F4F840A6893A}</Project>
       <Name>HtHistory.Statistics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ObjectListView\ObjectListView\ObjectListView2010.csproj">
-      <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
-      <Name>ObjectListView2010</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
