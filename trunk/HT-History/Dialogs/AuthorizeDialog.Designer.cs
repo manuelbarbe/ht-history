@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizeDialog));
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "AuthorizeDialog";
             this.Text = "Authorization required";

@@ -32,7 +32,13 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "OppGoals", TextAlign = HorizontalAlignment.Center, Width = 70 },
                 new ColumnHeader() { Text = "Visitors", TextAlign = HorizontalAlignment.Right, Width = 50 },
                 new ColumnHeader() { Text = "Hatstats", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "Defense", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "Midfield", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "Attack", TextAlign = HorizontalAlignment.Center, Width = 60 },
                 new ColumnHeader() { Text = "OppHatstats", TextAlign = HorizontalAlignment.Center, Width = 70 },
+                new ColumnHeader() { Text = "OppDefense", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "OppMidfield", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Text = "OppAttack", TextAlign = HorizontalAlignment.Center, Width = 60 },
             });
 
             sortableListViewMatches
@@ -42,7 +48,13 @@ namespace HtHistory.Pages
                 .SetSorter(6, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(7, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(8, UserControls.SortableListView.TagSorter<uint>())
-                .SetSorter(9, UserControls.SortableListView.TagSorter<uint>());
+                .SetSorter(9, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(10, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(11, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(12, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(13, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(14, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(15, UserControls.SortableListView.TagSorter<uint>());
         }
 
         public void ShowMatches(IEnumerable<MatchDetails> details, uint teamId)
@@ -70,16 +82,16 @@ namespace HtHistory.Pages
                     .AppendLine(d.ToString())
                     .AppendLine(d.Type.ToString())
                     .Append("Hatstats: ").AppendLine(hs.Total.ToString())
-                    .Append("Defense:  ").AppendLine((hs.LeftDefense + hs.RightDefense + hs.CentralDefense).ToString())
+                    .Append("Defense:  ").AppendLine(hs.Defense.ToString())
                     .Append("Midfield: ").AppendLine(hs.Midfield.ToString())
-                    .Append("Attack:   ").AppendLine((hs.LeftAttack + hs.RightAttack + hs.CentralAttack).ToString())
+                    .Append("Attack:   ").AppendLine(hs.Attack.ToString())
                     .ToString();
 
-                DataPoint point = defStats.Points.Add(hs.LeftDefense + hs.RightDefense + hs.CentralDefense);
+                DataPoint point = defStats.Points.Add(hs.Defense);
                 point.ToolTip = tooltip;
                 point.AxisLabel = htts;
                 midStats.Points.Add(hs.Midfield).ToolTip = tooltip;
-                attStats.Points.Add(hs.LeftAttack + hs.RightAttack + hs.CentralAttack).ToolTip = tooltip;
+                attStats.Points.Add(hs.Attack).ToolTip = tooltip;
             }
 
             chartHatstats.Series.Add(defStats);
@@ -128,7 +140,26 @@ namespace HtHistory.Pages
                     value = (teamId == d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Total : ((HatStats)d.AwayRatings).Total;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
+                    value = (teamId == d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Defense : ((HatStats)d.AwayRatings).Defense;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = (teamId == d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Midfield : ((HatStats)d.AwayRatings).Midfield;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = (teamId == d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Attack : ((HatStats)d.AwayRatings).Attack;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+
                     value = (teamId != d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Total : ((HatStats)d.AwayRatings).Total;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = (teamId != d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Defense : ((HatStats)d.AwayRatings).Defense;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = (teamId != d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Midfield : ((HatStats)d.AwayRatings).Midfield;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = (teamId != d.HomeTeam.ID) ? ((HatStats)d.HomeRatings).Attack : ((HatStats)d.AwayRatings).Attack;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
                     sortableListViewMatches.Items.Add(item);

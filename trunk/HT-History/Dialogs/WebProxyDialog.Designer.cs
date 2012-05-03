@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WebProxyDialog));
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -99,6 +100,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.buttonCancel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "WebProxyDialog";
             this.Text = "WebProxyDialog";
             this.Load += new System.EventHandler(this.WebProxyDialog_Load);

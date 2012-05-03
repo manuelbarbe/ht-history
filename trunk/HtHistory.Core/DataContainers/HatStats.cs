@@ -30,6 +30,8 @@ namespace HtHistory.Core.DataContainers
         }
 
         public uint Total { get { return Midfield + LeftDefense + RightDefense + CentralDefense + LeftAttack + RightAttack + CentralAttack; } }
+        public uint Defense { get { return LeftDefense + RightDefense + CentralDefense; } }
+        public uint Attack { get { return LeftAttack + RightAttack + CentralAttack; } }
 
     }
 }
