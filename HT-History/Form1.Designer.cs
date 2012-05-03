@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.labelTeamInfo = new System.Windows.Forms.Label();
             this.labelOpponentInfo = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearCacheToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,10 +48,13 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.comboBoxColumnSets = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.overviewPage1 = new HtHistory.Pages.OverviewPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.matchesPage1 = new HtHistory.Pages.MatchesPage();
+            this.tabPageTransfers = new System.Windows.Forms.TabPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.matchesPage1 = new HtHistory.Pages.MatchesPage();
             this.matchFilterControl = new HtHistory.UserControls.MatchFilterControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -77,16 +80,6 @@
             this.labelOpponentInfo.Name = "labelOpponentInfo";
             this.labelOpponentInfo.Size = new System.Drawing.Size(0, 13);
             this.labelOpponentInfo.TabIndex = 6;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(825, 95);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "- under development -";
             // 
             // menuStrip1
             // 
@@ -166,7 +159,9 @@
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripMenuItem,
-            this.updateToolStripMenuItem});
+            this.updateToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.aboutToolStripMenuItem.Text = "Help";
@@ -174,14 +169,14 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.helpToolStripMenuItem.Text = "Short help...";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.updateToolStripMenuItem.Text = "Update...";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
@@ -202,6 +197,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPageTransfers);
             this.tabControl1.Location = new System.Drawing.Point(15, 169);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -243,6 +239,50 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.matchesPage1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(909, 440);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Matches";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPageTransfers
+            // 
+            this.tabPageTransfers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageTransfers.Name = "tabPageTransfers";
+            this.tabPageTransfers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageTransfers.Size = new System.Drawing.Size(909, 440);
+            this.tabPageTransfers.TabIndex = 4;
+            this.tabPageTransfers.Text = "Transfers";
+            this.tabPageTransfers.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::HtHistory.Images.ht_history_ball;
+            this.pictureBox1.Location = new System.Drawing.Point(844, 58);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(78, 75);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
+            // aboutToolStripMenuItem1
+            // 
+            this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem1.Text = "About...";
+            this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
+            // 
             // overviewPage1
             // 
             this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -252,37 +292,18 @@
             this.overviewPage1.Stats = null;
             this.overviewPage1.TabIndex = 0;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.matchesPage1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(909, 450);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Matches";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
             // matchesPage1
             // 
             this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.matchesPage1.Location = new System.Drawing.Point(3, 3);
             this.matchesPage1.Name = "matchesPage1";
-            this.matchesPage1.Size = new System.Drawing.Size(903, 444);
+            this.matchesPage1.Size = new System.Drawing.Size(903, 434);
             this.matchesPage1.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::HtHistory.Images.chpp;
-            this.pictureBox1.Location = new System.Drawing.Point(832, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(93, 58);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
             // 
             // matchFilterControl
             // 
+            this.matchFilterControl.BackColor = System.Drawing.Color.Transparent;
+            this.matchFilterControl.ForeColor = System.Drawing.Color.White;
             this.matchFilterControl.Location = new System.Drawing.Point(22, 40);
             this.matchFilterControl.Name = "matchFilterControl";
             this.matchFilterControl.Size = new System.Drawing.Size(775, 113);
@@ -292,7 +313,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.AliceBlue;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(10)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(944, 647);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
@@ -301,7 +322,7 @@
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.matchFilterControl);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label5);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -320,10 +341,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label labelTeamInfo;
         private System.Windows.Forms.Label labelOpponentInfo;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clearCacheToolStripMenuItem;
@@ -345,6 +364,10 @@
         private System.Windows.Forms.TabPage tabPage1;
         private Pages.MatchesPage matchesPage1;
         private UserControls.MatchFilterControl matchFilterControl;
+        private System.Windows.Forms.TabPage tabPageTransfers;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
     }
 }
 

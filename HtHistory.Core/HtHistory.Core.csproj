@@ -52,6 +52,7 @@
     <Compile Include="DataBridges\ChppBridges\ChppMatchDetailsBridge.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppPlayersBridge.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppTeamDetailsBridge.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppTransferHistoryBridge.cs" />
     <Compile Include="DataBridges\DataBridgeFactory.cs" />
     <Compile Include="DataBridges\IDataBridgeFactory.cs" />
     <Compile Include="DataBridges\IPlayersBridge.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="DataBridges\IDataBridge.cs" />
     <Compile Include="DataBridges\IMatchArchiveBridge.cs" />
     <Compile Include="DataBridges\IMatchDetailsBridge.cs" />
+    <Compile Include="DataBridges\ITransferHistoryBridge.cs" />
     <Compile Include="DataContainers\Crowd.cs" />
     <Compile Include="DataContainers\Goal.cs" />
     <Compile Include="DataContainers\HatStats.cs" />
@@ -71,12 +73,15 @@
     <Compile Include="DataContainers\MatchArchive.cs" />
     <Compile Include="DataContainers\MatchDetails.cs" />
     <Compile Include="DataContainers\MatchEvent.cs" />
+    <Compile Include="DataContainers\Money.cs" />
     <Compile Include="DataContainers\Player.cs" />
     <Compile Include="DataContainers\PlayerDetails.cs" />
     <Compile Include="DataContainers\Ratings.cs" />
     <Compile Include="DataContainers\Score.cs" />
     <Compile Include="DataContainers\Team.cs" />
     <Compile Include="DataContainers\TeamDetails.cs" />
+    <Compile Include="DataContainers\Transfer.cs" />
+    <Compile Include="DataContainers\TransferHistory.cs" />
     <Compile Include="DataContainers\Types.cs" />
     <Compile Include="DataContainers\User.cs" />
     <Compile Include="ExtensionMethods\DataContainerExtensions.cs" />

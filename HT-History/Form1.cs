@@ -511,5 +511,10 @@ namespace HtHistory
                 ChangeTeam(ref _teamId); // TODO: error handling
             });
         }
+
+        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog();
+        }
     }
 }

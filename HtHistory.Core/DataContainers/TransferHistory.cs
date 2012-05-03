@@ -6,9 +6,9 @@ using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Core.DataContainers
 {
-    public class MatchArchive : IEnumerable<Match>
+    public class TransferHistory : IEnumerable<Transfer>
     {
-        public MatchArchive(Team team, DateTime from, DateTime to)
+        public TransferHistory(Team team, DateTime from, DateTime to)
         {
             if (team == null) throw new ArgumentNullException("team");
             Team = team;
@@ -20,11 +20,11 @@ namespace HtHistory.Core.DataContainers
         public virtual DateTime From { get; set; }
         public virtual DateTime To { get; set; }
 
-        public virtual IEnumerable<Match> Matches { get; set; }
+        public virtual IEnumerable<Transfer> Transfers { get; set; }
 
-        public virtual IEnumerator<Match> GetEnumerator()
+        public virtual IEnumerator<Transfer> GetEnumerator()
         {
-            return Matches.SafeEnum().GetEnumerator();
+            return Transfers.SafeEnum().GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
