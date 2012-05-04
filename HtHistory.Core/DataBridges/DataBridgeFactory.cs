@@ -30,5 +30,11 @@ namespace HtHistory.Core.DataBridges
             get;
             set;
         }
+
+        public ITransferHistoryBridge TransfersBridge
+        {
+            get;
+            set;
+        }
     }
 }

@@ -26,5 +26,10 @@ namespace HtHistory.Core.DataContainers
             Seller = seller;
             Price = price;
         }
+
+        public override string ToString()
+        {
+            return string.Format("{4}: {0} from {1} to {2} for {3}", Player, Seller, Buyer, Price, new HtTime(Date));
+        }
     }
 }

@@ -11,5 +11,6 @@ namespace HtHistory.Core.DataBridges
         IMatchDetailsBridge MatchDetailsBridge { get; }
         ITeamDetailsBridge TeamDetailsBridge { get; }
         IPlayersBridge PlayersBridge { get; }
+        ITransferHistoryBridge TransfersBridge { get; }
     }
 }
