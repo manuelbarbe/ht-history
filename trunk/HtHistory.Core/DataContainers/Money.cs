@@ -34,7 +34,7 @@ namespace HtHistory.Core.DataContainers
 
         public override string ToString()
         {
-            return String.Format("{0:1.0} {1}", _amount, _currency.Name);
+            return String.Format("{0:0.} {1}", _amount, _currency.Name);
         }
 
         public int CompareTo(Money other)

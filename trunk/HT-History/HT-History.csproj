@@ -82,6 +82,12 @@
     <Compile Include="Pages\MatchesPage.Designer.cs">
       <DependentUpon>MatchesPage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\TransfersPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\TransfersPage.Designer.cs">
+      <DependentUpon>TransfersPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Settings\ComfortSettings.cs" />
     <Compile Include="ControlExtensions.cs" />
     <Compile Include="Dialogs\AuthorizeDialog.cs">
@@ -153,6 +159,7 @@
     <Compile Include="Tasks\BaseTask.cs" />
     <Compile Include="Tasks\GetMatchesTask.cs" />
     <Compile Include="Tasks\GetPlayersTask.cs" />
+    <Compile Include="Tasks\GetTransfersTask.cs" />
     <Compile Include="Tasks\ITask.cs" />
     <Compile Include="Tasks\NullTask.cs" />
     <Compile Include="Tasks\PleaseWaitTaskDecorator.cs" />
@@ -206,6 +213,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PleaseWaitDialog.resx">
       <DependentUpon>PleaseWaitDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\TransfersPage.resx">
+      <DependentUpon>TransfersPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

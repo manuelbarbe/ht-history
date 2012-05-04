@@ -38,6 +38,7 @@ namespace HtHistory
         private uint _teamId = 0;
         IEnumerable<MatchDetails> _matches = new List<MatchDetails>();
         IEnumerable<Player> _players = new List<Player>();
+        TransferHistory _transfers = null;
 
         PleaseWaitDialog _pwd = new PleaseWaitDialog();
 
@@ -147,6 +148,7 @@ namespace HtHistory
             dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
             dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
             dbf.PlayersBridge = new ChppPlayersBridge(accessor);
+            dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
             Environment.DataBridgeFactory = dbf;
         }
 
@@ -158,6 +160,7 @@ namespace HtHistory
             dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
             dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
             dbf.PlayersBridge = new ChppPlayersBridge(accessor);
+            dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
             Environment.DataBridgeFactory = dbf;
         }
 
@@ -440,6 +443,8 @@ namespace HtHistory
                                                                    }, null, false));
 
             matchesPage1.ShowMatches(matches, _teamId);
+
+            transfersPage1.ShowTransfers(_transfers);
         }
 
         private void UpdateTeam(ref uint teamId)
@@ -465,10 +470,15 @@ namespace HtHistory
                                         new GetPlayersTask(teamId,
                                                             Environment.DataBridgeFactory.PlayersBridge));
 
+            ITask getTransfersTask = new PleaseWaitTaskDecorator(
+                                        new GetTransfersTask(teamId,
+                                                              Environment.DataBridgeFactory.TransfersBridge));
+
             bgw.DoWork += (s, e1) =>
             {
                 getMatchesTask.Do();
                 getPlayersTask.Do();
+                getTransfersTask.Do();
             };
 
             bgw.RunWorkerCompleted += (s, e2) =>
@@ -484,6 +494,7 @@ namespace HtHistory
                     {
                         _matches = (IEnumerable<MatchDetails>)getMatchesTask.Result;
                         _players = (IEnumerable<Player>)getPlayersTask.Result;
+                        _transfers = (TransferHistory)getTransfersTask.Result;
                         UpdateAll(this, new EventArgs());
                     });
                 }
