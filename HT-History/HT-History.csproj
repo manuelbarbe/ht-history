@@ -49,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ht-history_ball.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -257,6 +260,7 @@
     <None Include="Resources\HtHistory_high500.png" />
     <None Include="Resources\HtHistory_small.png" />
     <None Include="Resources\ht-history_ball.gif" />
+    <Content Include="ht-history_ball.ico" />
     <Content Include="version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
