@@ -67,6 +67,8 @@ namespace HtHistory.Pages
         {
             chartHatstats.Series.Clear();
 
+            chartHatstats.SuspendLayout();
+
             //Series hatStats = new Series("Hatstats");
             Series defStats = new Series("Defense") { ChartType = SeriesChartType.StackedColumn };
             Series midStats = new Series("Midfield") { ChartType = SeriesChartType.StackedColumn };
@@ -97,6 +99,8 @@ namespace HtHistory.Pages
             chartHatstats.Series.Add(defStats);
             chartHatstats.Series.Add(midStats);
             chartHatstats.Series.Add(attStats);
+
+            chartHatstats.ResumeLayout();
         }
 
         private void FillList(IEnumerable<MatchDetails> details, uint teamId)

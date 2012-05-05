@@ -259,37 +259,7 @@ namespace HtHistory
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            StringBuilder builder = new StringBuilder()
-                .AppendLine("What you should do:")
-                .AppendLine()
-                .AppendLine("- enter your team id")
-                .AppendLine("- opt. enter an opponent team id (only matches against that team included)")
-                .AppendLine("- opt. select columns by clicking Settings->Columns...")
-                .AppendLine("- click refresh")
-                .AppendLine("- be patient, HT-History is downloading data from hattrick now")
-                .AppendLine("- browse your player list")
-                .AppendLine("\t Tot: total")
-                .AppendLine("\t Com: competitive (Lea + Cup + Qua + Oth)")
-                .AppendLine("\t Lea: league")
-                .AppendLine("\t Cup: cup")
-                .AppendLine("\t Qua: qualifier")
-                .AppendLine("\t Fri: friendly")
-                .AppendLine("\t Oth: other match types")
-                .AppendLine("\t Ma: matches")
-                .AppendLine("\t Go: goals")
-                .AppendLine("\t Min: minutes")
-                .AppendLine("\t MotM: Man of the match")
-                .AppendLine("\t Yellow: yellow cards")
-                .AppendLine("\t Red: red cards")
-                .AppendLine("\t Win: matches won")
-                .AppendLine("\t Draw: matches drawn")
-                .AppendLine("\t Lost: matches lost")
-                .AppendLine("- sort by clicking column headers")
-                .AppendLine("- select player and look at individual stats on the 3 tables at the bottom")
-                .AppendLine("- opt. select multiple players, right click and choose 'copy to clipboard'")
-                .AppendLine("- opt. select one player, right click and choose 'export to CSV'");
-
-            MessageBox.Show(builder.ToString(), "Short help");
+            MessageBox.Show("Help is currently not available", "Short help");
 
         }
 

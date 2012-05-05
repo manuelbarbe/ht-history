@@ -57,7 +57,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                     Player player = MatchParserHelper.GetPlayer(elTransfer.AssertElement("Player"));
                     Team buyer = MatchParserHelper.GetTeam(elTransfer.AssertElement("Buyer"), "Buyer");
                     Team seller = MatchParserHelper.GetTeam(elTransfer.AssertElement("Seller"), "Seller");
-                    Money price = new Money(double.Parse(elTransfer.AssertElement("Price").Value), Money.Currency.SEK);
+                    Money price = new Money(double.Parse(elTransfer.AssertElement("Price").Value), Currency.SEK);
 
                     transfers.Add( new Transfer(id, date, player, buyer, seller, price) );
                 }
