@@ -34,7 +34,9 @@ namespace HtHistory.Tasks
         {
             //if (_pl == null)
             {
+                ReportProgress(10, "Getting complete transfer history");
                 _th = _thb.GetTransfers(TeamId);
+                ReportProgress(100, "done");
             }
 
             return _th;
