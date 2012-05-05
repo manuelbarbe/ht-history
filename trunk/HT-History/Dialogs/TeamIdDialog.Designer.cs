@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeamIdDialog));
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
             this.textBoxTeamId = new System.Windows.Forms.TextBox();
@@ -68,9 +69,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 26);
+            this.label1.Size = new System.Drawing.Size(255, 26);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Please enter the ID of team  you are interested in.\r\n0 defaults to your team.";
+            this.label1.Text = "Please enter the ID of the team you are interested in.\r\n0 defaults to your team.";
             // 
             // TeamIdDialog
             // 
@@ -84,6 +85,7 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TeamIdDialog";
             this.Text = "Choose Team";
             this.ResumeLayout(false);

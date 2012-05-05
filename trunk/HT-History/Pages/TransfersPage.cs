@@ -73,9 +73,9 @@ namespace HtHistory.Pages
 
                 StringBuilder toolBuilder = new StringBuilder("Season ").Append(season).AppendLine()
                     .Append("Number of buys: ").Append(noBuys).AppendLine()
-                    .Append("Amount of buys: ").AppendLine(string.Format("{0:0,0.}", amountBuys))
+                    .Append("Amount of buys: ").AppendLine(string.Format("{0:0,0.} SEK", amountBuys))
                     .Append("Number of sales: ").Append(noSales).AppendLine()
-                    .Append("Amount of sales: ").AppendLine(string.Format("{0:0,0.}", amountSales));
+                    .Append("Amount of sales: ").AppendLine(string.Format("{0:0,0.} SEK", amountSales));
 
                 boughtSeries.Points.Add(new DataPoint(season, amountBuys) { ToolTip = toolBuilder.ToString() });
                 soldSeries.Points.Add(new DataPoint(season, amountSales) { ToolTip = toolBuilder.ToString() });
@@ -98,6 +98,9 @@ namespace HtHistory.Pages
 
             foreach (Transfer t in th.Transfers.SafeEnum())
             {
+                // TODO: handle players which are "bought" and "sold" correctly
+                if (t.Seller.ID == t.Buyer.ID) continue;
+
                 ListViewItem item = new ListViewItem(t.Date.ToShortDateString());
                 item.Tag = t.Date;
                 item.SubItems[0].Tag = item.Tag;
