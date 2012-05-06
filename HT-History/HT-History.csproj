@@ -260,7 +260,11 @@
     <None Include="Resources\HtHistory_high500.png" />
     <None Include="Resources\HtHistory_small.png" />
     <None Include="Resources\ht-history_ball.gif" />
-    <Content Include="ht-history_ball.ico" />
+    <Content Include="ht-history_ball.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Icon1.ico" />
+    <None Include="Resources\ht-history_ball.ico" />
     <Content Include="version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

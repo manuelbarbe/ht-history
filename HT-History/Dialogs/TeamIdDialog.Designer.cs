@@ -85,7 +85,7 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = Images.ht_history_ball1;
             this.Name = "TeamIdDialog";
             this.Text = "Choose Team";
             this.ResumeLayout(false);

@@ -106,7 +106,7 @@
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = Images.ht_history_ball1;
             this.MaximizeBox = false;
             this.Name = "AuthorizeDialog";
             this.Text = "Authorization required";
