@@ -38,17 +38,12 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
                 team = MatchParserHelper.GetTeam(doc.Root.AssertElement("Team"), string.Empty);
 
-                XElement elStats = doc.Root.AssertElement("Stats");
-                uint numberOfBuys = uint.Parse(elStats.AssertElement("NumberOfBuys").Value);
-                uint numberOfSales = uint.Parse(elStats.AssertElement("NumberOfSales").Value);
-
-                numberOfPages = (numberOfBuys + numberOfSales + 24) / 25;
-
                 XElement elTransfers = doc.Root.AssertElement("Transfers");
+                numberOfPages = uint.Parse(elTransfers.AssertElement("Pages").Value);
                 DateTime startDate = DateTime.Parse(elTransfers.AssertElement("StartDate").Value);
                 DateTime endDate = DateTime.Parse(elTransfers.AssertElement("EndDate").Value);
-                if (startDate < from) from = startDate;
-                if (endDate > to) to = endDate;
+                if (startDate < from && startDate != DateTime.MinValue) from = startDate;
+                if (endDate > to && endDate != DateTime.MaxValue) to = endDate;
 
                 foreach (XElement elTransfer in elTransfers.Elements("Transfer"))
                 {

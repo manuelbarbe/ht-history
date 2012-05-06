@@ -60,13 +60,6 @@ namespace HtHistory {
             }
         }
         
-        internal static System.Drawing.Bitmap chpp {
-            get {
-                object obj = ResourceManager.GetObject("chpp", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap ht_history_ball {
             get {
                 object obj = ResourceManager.GetObject("ht_history_ball", resourceCulture);
@@ -74,16 +67,16 @@ namespace HtHistory {
             }
         }
         
-        internal static System.Drawing.Bitmap HtHistory {
+        internal static System.Drawing.Icon ht_history_ball1 {
             get {
-                object obj = ResourceManager.GetObject("HtHistory", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("ht_history_ball1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap HtHistory_high500 {
+        internal static System.Drawing.Bitmap HtHistory {
             get {
-                object obj = ResourceManager.GetObject("HtHistory_high500", resourceCulture);
+                object obj = ResourceManager.GetObject("HtHistory", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -98,13 +91,6 @@ namespace HtHistory {
         internal static System.Drawing.Bitmap HtHistory_withtext3 {
             get {
                 object obj = ResourceManager.GetObject("HtHistory_withtext3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap splash {
-            get {
-                object obj = ResourceManager.GetObject("splash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

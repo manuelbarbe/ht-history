@@ -91,7 +91,7 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
       <RemoveExistingProducts Before="InstallInitialize" />
     </InstallExecuteSequence>
     
-    <Icon Id="HtHistoryIcon.exe" SourceFile="HT-History.exe" />
+    <Icon Id="HtHistoryIcon.exe" SourceFile="ht-history_ball.ico" />
 
     <!--<UIRef Id="WixUI_Mondo" />-->
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />

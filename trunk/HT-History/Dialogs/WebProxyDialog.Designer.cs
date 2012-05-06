@@ -100,7 +100,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.buttonCancel);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = Images.ht_history_ball1;
             this.Name = "WebProxyDialog";
             this.Text = "WebProxyDialog";
             this.Load += new System.EventHandler(this.WebProxyDialog_Load);
