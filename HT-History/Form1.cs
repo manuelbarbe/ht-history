@@ -424,17 +424,31 @@ namespace HtHistory
             teamId = td.ID;
         }
 
-        private void UpdateMatches(uint teamId)
+        private void UpdateMatches(uint teamId, DateTime? startDate, DateTime? endDate)
         {
             _pwd.Show();
 
             BackgroundWorker bgw = new BackgroundWorker();
 
-            ITask getMatchesTask = new PleaseWaitTaskDecorator(
+            ITask getMatchesTask;
+
+            if (startDate != null && endDate != null)
+            {
+                getMatchesTask = new PleaseWaitTaskDecorator(
+                                        new GetMatchesTask(teamId,
+                                                            startDate,
+                                                            endDate,
+                                                            Environment.DataBridgeFactory.MatchArchiveBridge,
+                                                            Environment.DataBridgeFactory.MatchDetailsBridge));
+            }
+            else
+            {
+                getMatchesTask = new PleaseWaitTaskDecorator(
                                         new GetMatchesTask(teamId,
                                                             Environment.DataBridgeFactory.TeamDetailsBridge,
                                                             Environment.DataBridgeFactory.MatchArchiveBridge,
                                                             Environment.DataBridgeFactory.MatchDetailsBridge));
+            }
 
             ITask getPlayersTask = new PleaseWaitTaskDecorator(
                                         new GetPlayersTask(teamId,
@@ -479,10 +493,10 @@ namespace HtHistory
             if (DialogResult.OK == tid.ShowDialog())
             {
                 teamId = tid.TeamId;
+                UpdateTeam(ref teamId);
+                UpdateMatches(teamId, tid.StartDate, tid.EndDate);
             }
 
-            UpdateTeam(ref teamId);
-            UpdateMatches(teamId);
         }
 
         private void button1_Click(object sender, EventArgs e)
