@@ -63,6 +63,13 @@ namespace HtHistory.Dialogs
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            if (radioButtonPeriod.Checked && StartDate > EndDate)
+            {
+                MessageBox.Show("Typically the start date is not after the end date. Please try again.");
+                DialogResult = DialogResult.None;
+                return;
+            }
+
             try
             {
                 _teamId = uint.Parse(textBoxTeamId.Text);
@@ -83,6 +90,11 @@ namespace HtHistory.Dialogs
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             ShowHideDates(radioButtonPeriod.Checked);
+        }
+
+        private void TeamIdDialog_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (DialogResult == DialogResult.None) e.Cancel = true;
         }
 
     }

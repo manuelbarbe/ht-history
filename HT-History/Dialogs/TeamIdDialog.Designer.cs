@@ -156,6 +156,7 @@
             this.Icon = global::HtHistory.Images.ht_history_ball1;
             this.Name = "TeamIdDialog";
             this.Text = "Choose Team";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TeamIdDialog_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
