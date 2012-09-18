@@ -6,6 +6,7 @@ using System.IO;
 using HtHistory.Core.ExtensionMethods;
 using HtHistory.Core.DataContainers;
 using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
+using System.Globalization;
 
 namespace HtHistory.Core.DataBridges.ChppBridges
 {
@@ -33,8 +34,8 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
                 string url = new StringBuilder("file=matchesarchive&version=1.1")
                                         .Append("&teamID=").Append(teamId)
-                                        .Append("&FirstMatchDate=").Append(curMonthStart.ToString("yyyy-MM-dd HH:mm:ss"))
-                                        .Append("&LastMatchDate=").Append(curMonthEnd.ToString("yyyy-MM-dd HH:mm:ss")).ToString();
+                                        .Append("&FirstMatchDate=").Append(curMonthStart.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture))
+                                        .Append("&LastMatchDate=").Append(curMonthEnd.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)).ToString();
                 
                 XDocument doc = XDocument.Load(ChppAccessor.GetDataReader(url, DataFlags.Static));
 
@@ -53,6 +54,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                 curMonthStart = curMonthEnd.AddSeconds(1);
             }
 
+            // TODO: team may be null here (if endDate < startDate)
             MatchArchive ar = new MatchArchive(team, startDate, endDate);
             ar.Matches = matches;
 
