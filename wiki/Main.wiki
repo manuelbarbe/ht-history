@@ -1,19 +1,17 @@
 #summary Main ht-history help page
 
-Install
+[Install]
 
-Start
+[Start]
 
-Authorize
+[Choose team]
 
-Choose team
+[Match filter]
 
-Use match filter
+[Players stats]
+[Columns]
+[Export]
 
-Player stats
-Columns
-Export
+[Matches stats]
 
-Match stats
-
-Transfer stats
+[Transfers stats]
