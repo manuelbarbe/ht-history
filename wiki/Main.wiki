@@ -4,14 +4,12 @@
 
 [Start]
 
-[Choose team]
+[Choose_team]
 
-[Match filter]
+[Match_filter]
 
-[Players stats]
-[Columns]
-[Export]
+[Players]
 
-[Matches stats]
+[Matches]
 
-[Transfers stats]
+[Transfers]
