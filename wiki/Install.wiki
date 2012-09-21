@@ -1,15 +1,15 @@
 #summary How to install HT-History
 
 = Windows =
-# Download the latest Windows installer package (.msi) from http://code.google.com/p/ht-history/downloads/list
-# Double click it in Windows explorer
-# Follow the instructions of the installer
-# If the installer complains about missing .NET 4.0 framework, install it from here: http://www.microsoft.com/en-us/download/details.aspx?id=17851
-# Find a shortcut named 'HT-History' on your Desktop
+ # Download the latest Windows installer package (.msi) from http://code.google.com/p/ht-history/downloads/list
+ # Double click it in Windows explorer
+ # Follow the instructions of the installer
+ # If the installer complains about missing .NET 4.0 framework, install it from here: http://www.microsoft.com/en-us/download/details.aspx?id=17851
+ # Find a shortcut named 'HT-History' on your Desktop
 
 
 = Linux / Mac = 
-- Install mono-complete
-- Download the latest binary archive (.tar.gz)
-- Extract it
-- Change to the extracted directory and call: mono HT-History.exe
+ # Install mono-complete
+ # Download the latest binary archive (.tar.gz)
+ # Extract it
+ # Change to the extracted directory and call: mono HT-History.exe
