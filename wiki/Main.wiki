@@ -6,6 +6,8 @@
 
 [Choose_team]
 
+[Main_screen]
+
 [Match_filter]
 
 [Players]
