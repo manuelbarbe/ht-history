@@ -9,7 +9,7 @@
 
 = Choose team =
 
-= Use match filter
+= Use match filter =
 
 = Player stats =
 == Columns ==
