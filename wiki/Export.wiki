@@ -1,0 +1,7 @@
+#summary How to export data
+
+The [Players] stats page allows you to export all shown columns. To do so, you have to select players (use CTRL) and right-click the selection.
+
+[http://ht-history.googlecode.com/svn/wiki/Export.png]
+
+You are then able to export to a CSV file or copy as HT board code to the clipboard. If you select only one single player, the complete list is exported instead. 
