@@ -5,9 +5,9 @@ The main screen has three main panels:
  # The [Match_filter] (yellow)
  # The tab control to change statistics types (red)
  # The tab page where the selected statistics are presented (blue). Available statistics are:
- * [Players]
- * [Matches]
- * [Transfers]
+   * [Players]
+   * [Matches]
+   * [Transfers]
  
 
 [http://ht-history.googlecode.com/svn/wiki/Main_screen_areas.png]
