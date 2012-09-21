@@ -2,7 +2,7 @@
 
 At startup and after clicking the button "Change team", HT-History asks you to input a team ID:
 
-http://code.google.com/p/ht-history/source/browse/wiki/Choose_team.png
+http://ht-history.googlecode.com/svn/wiki/Choose_team.png
 
 HT-History will gather stats only for the input team ID.
 
