@@ -1,0 +1,14 @@
+#summary How to start
+
+Please see platform dependent application installation and start here: [Install]
+
+ # Once the application is started, it asks you to authorize its access to Hattrick.
+ # Click the link in the appearing dialog.
+ # Your browser should open and show a Hattrick page asking for your credentials.
+ # Input them and click OK
+ # Copy the appearing authorization code to the clipboard
+ # Change back to HT-History
+ # Paste the copied authorization code and click OK
+ # HT-History asks you about a team ID: [Choose_team]
+
+
