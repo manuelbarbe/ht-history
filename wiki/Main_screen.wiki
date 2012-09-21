@@ -1,0 +1,9 @@
+#summary How is the main screen structured
+
+
+The main screen has three main panels:
+ # The [Match_filter] (yellow)
+ # The tab control to change statistics types (red)
+ # The tab page where the selected statistics are presented (blue)
+
+[http://ht-history.googlecode.com/svn/wiki/Main_screen_areas.png]
