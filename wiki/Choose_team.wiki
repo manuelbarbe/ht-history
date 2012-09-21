@@ -1,0 +1,9 @@
+#summary How to use the "Choose team" dialog
+
+At startup and after clicking the button "Change team", HT-History asks you to input a team ID:
+
+http://code.google.com/p/ht-history/source/browse/wiki/Choose_team.png
+
+HT-History will gather stats only for the input team ID.
+
+Additionally you are able to select the time period of interest. Only statistics matches within the selected period are evaluated. Please note that this has no effect to transfer statistics.
