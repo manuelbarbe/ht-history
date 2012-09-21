@@ -1,0 +1,20 @@
+#summary Main ht-history help page
+
+= Install =
+
+= Start =
+
+
+= Authorize = 
+
+= Choose team =
+
+= Use match filter
+
+= Player stats =
+== Columns ==
+== Export ==
+
+= Match stats =
+
+= Transfer stats =
