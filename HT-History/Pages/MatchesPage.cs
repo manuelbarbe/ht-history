@@ -30,6 +30,7 @@ namespace HtHistory.Pages
                 new ColumnHeader() { Text = "Venue", TextAlign = HorizontalAlignment.Left, Width = 50 },
                 new ColumnHeader() { Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "OppGoals", TextAlign = HorizontalAlignment.Center, Width = 70 },
+                new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
                 new ColumnHeader() { Text = "Visitors", TextAlign = HorizontalAlignment.Right, Width = 50 },
                 new ColumnHeader() { Text = "Hatstats", TextAlign = HorizontalAlignment.Center, Width = 60 },
                 new ColumnHeader() { Text = "Defense", TextAlign = HorizontalAlignment.Center, Width = 60 },
@@ -54,7 +55,8 @@ namespace HtHistory.Pages
                 .SetSorter(12, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(13, UserControls.SortableListView.TagSorter<uint>())
                 .SetSorter(14, UserControls.SortableListView.TagSorter<uint>())
-                .SetSorter(15, UserControls.SortableListView.TagSorter<uint>());
+                .SetSorter(15, UserControls.SortableListView.TagSorter<uint>())
+                .SetSorter(16, UserControls.SortableListView.TagSorter<uint>());
         }
 
         public void ShowMatches(IEnumerable<MatchDetails> details, uint teamId)
@@ -136,6 +138,9 @@ namespace HtHistory.Pages
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
                     value = (teamId != d.HomeTeam.ID) ? d.FinalScore.HomeGoals : d.FinalScore.AwayGoals;
+                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
+
+                    value = d.Minutes;
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, value.ToString()) { Tag = value });
 
                     value = (d.Visitors != null) ? d.Visitors.Total : null;
