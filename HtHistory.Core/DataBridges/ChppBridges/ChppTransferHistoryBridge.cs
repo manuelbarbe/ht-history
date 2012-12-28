@@ -43,7 +43,12 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                 DateTime startDate = DateTime.Parse(elTransfers.AssertElement("StartDate").Value);
                 DateTime endDate = DateTime.Parse(elTransfers.AssertElement("EndDate").Value);
                 if (startDate < from && startDate != DateTime.MinValue) from = startDate;
-                if (endDate > to && endDate != DateTime.MaxValue) to = endDate;
+                // ORIGINAL IMPLEMENTATION OF NEXT LINE:
+                //if (endDate > to && endDate != DateTime.MaxValue) to = endDate;
+                // REASON FOR CHANGE:
+                // DateTime.MaxValue contains additional nanosecond ticks, so it does not equal DateTime(9999,12,31,23,59,59)
+                // For simplicity, we deduct one day from this max value and assert that the returned value is smaller than this
+                if (endDate > to && endDate < DateTime.MaxValue.AddDays(-1)) to = endDate;
 
                 foreach (XElement elTransfer in elTransfers.Elements("Transfer"))
                 {
