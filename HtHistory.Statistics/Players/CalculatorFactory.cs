@@ -53,6 +53,7 @@ namespace HtHistory.Statistics.Players
             _filteredCalculators.Add(new PlayerStatisticsCalculatorGoalsOfOpponent());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorMostStars());
             _filteredCalculators.Add(new PlayerStatisticsCalculatorHattricks());
+            _filteredCalculators.Add(new PlayerStatisticsCalculatorMaxMinutesWithoutGoal());
 
 
             foreach (var v in CreateAllCalulators())
