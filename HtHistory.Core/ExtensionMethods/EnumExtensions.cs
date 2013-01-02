@@ -33,6 +33,11 @@ namespace HtHistory.Core.ExtensionMethods
             }
         }
 
+        public static void ForEach<T>(this IEnumerable<T> e, Action<T> action)
+        {
+            foreach (T t in e) action(t);
+        }
+
         #endregion
 
 
