@@ -35,7 +35,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.playerChartPage1 = new HtHistory.Pages.PlayerChartPage();
+
             this.SuspendLayout();
             // 
             // label1
@@ -99,19 +99,13 @@
             this.label6.Size = new System.Drawing.Size(107, 13);
             this.label6.TabIndex = 5;
             this.label6.Text = "Total matches/goals:";
-            // 
-            // playerChartPage1
-            // 
-            this.playerChartPage1.Location = new System.Drawing.Point(8, 215);
-            this.playerChartPage1.Name = "playerChartPage1";
-            this.playerChartPage1.Size = new System.Drawing.Size(487, 197);
-            this.playerChartPage1.TabIndex = 6;
+ 
             // 
             // PlayerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.playerChartPage1);
+            
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -135,6 +129,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private Pages.PlayerChartPage playerChartPage1;
     }
 }
