@@ -30,7 +30,13 @@ namespace HtHistory
             thread.Start();
             Thread.Sleep(2000);
             _splashScreen.BeginInvoke((Action) (() => _splashScreen.Close()) );
-
+			
+			//TODO: this is crappy
+			if (Utils.IsRunningOnMono())
+			{
+				System.Net.ServicePointManager.ServerCertificateValidationCallback += delegate { return true; };
+			}
+				
             Application.Run(new Form1());
         }
     }
