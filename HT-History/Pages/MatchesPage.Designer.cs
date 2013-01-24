@@ -32,9 +32,10 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-           // 
+            // 
             // chartHatstats
             // 
+            this.chartHatstats = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartArea1.Name = "ChartArea1";
             this.chartHatstats.ChartAreas.Add(chartArea1);
             this.chartHatstats.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -52,7 +53,7 @@
 #endif
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sortableListViewMatches = new HtHistory.UserControls.SortableListView();
-            this.chartHatstats = new System.Windows.Forms.DataVisualization.Charting.Chart();
+
 #if !MONO            
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 #endif            

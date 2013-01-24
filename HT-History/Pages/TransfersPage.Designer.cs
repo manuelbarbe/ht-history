@@ -32,10 +32,11 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-
+            
 			// 
             // chartBySeason
             // 
+            this.chartBySeason = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartArea1.Name = "ChartArea1";
             this.chartBySeason.ChartAreas.Add(chartArea1);
             this.chartBySeason.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -52,9 +53,10 @@
             this.chartBySeason.Text = "chart1";
 
 #endif
+            this.comboBoxCurrency = new System.Windows.Forms.ComboBox();
+            this.comboBoxCurrency.SelectedIndexChanged += this.comboBoxCurrency_SelectedIndexChanged;
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sortableListViewTransfers = new HtHistory.UserControls.SortableListView();
-            this.chartBySeason = new System.Windows.Forms.DataVisualization.Charting.Chart();
 #if !MONO            
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 #endif            
@@ -75,22 +77,25 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.comboBoxCurrency);
             this.splitContainer1.Panel1.Controls.Add(this.sortableListViewTransfers);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.chartBySeason);
-            this.splitContainer1.Size = new System.Drawing.Size(379, 173);
-            this.splitContainer1.SplitterDistance = 126;
+            this.splitContainer1.Size = new System.Drawing.Size(517, 315);
+            this.splitContainer1.SplitterDistance = 229;
             this.splitContainer1.TabIndex = 0;
             // 
             // sortableListViewTransfers
             // 
-            this.sortableListViewTransfers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sortableListViewTransfers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.sortableListViewTransfers.FullRowSelect = true;
-            this.sortableListViewTransfers.Location = new System.Drawing.Point(0, 0);
+            this.sortableListViewTransfers.Location = new System.Drawing.Point(0, 31);
             this.sortableListViewTransfers.Name = "sortableListViewTransfers";
-            this.sortableListViewTransfers.Size = new System.Drawing.Size(379, 126);
+            this.sortableListViewTransfers.Size = new System.Drawing.Size(517, 198);
             this.sortableListViewTransfers.TabIndex = 0;
             this.sortableListViewTransfers.UseCompatibleStateImageBehavior = false;
             this.sortableListViewTransfers.View = System.Windows.Forms.View.Details;
@@ -101,7 +106,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
             this.Name = "TransfersPage";
-            this.Size = new System.Drawing.Size(379, 173);
+            this.Size = new System.Drawing.Size(517, 315);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
 #if !MONO            
@@ -120,5 +125,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private UserControls.SortableListView sortableListViewTransfers;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartBySeason;
+        private System.Windows.Forms.ComboBox comboBoxCurrency;
     }
 }

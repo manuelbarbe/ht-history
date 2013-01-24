@@ -17,9 +17,19 @@ namespace HtHistory.Pages
         public TransfersPage()
         {
             InitializeComponent();
+            InitializeCurrencies();
             InitializeList();
         }
 
+        private void InitializeCurrencies()
+        {
+            comboBoxCurrency.Items.Clear();
+            foreach (Currency c in Currency.GetAll().SafeEnum())
+            {
+                comboBoxCurrency.Items.Add(c);
+            }
+            if (comboBoxCurrency.Items.Count > 0) comboBoxCurrency.SelectedIndex = 0;
+        }
 
         private void InitializeList()
         {
@@ -40,17 +50,34 @@ namespace HtHistory.Pages
 
         public void ShowTransfers(TransferHistory th)
         {
+            AdjustCurrency(th);
             FillList(th);
             FillChart(th);
+        }
+
+        private void AdjustCurrency(TransferHistory th)
+        {
+            Currency newCurrency = comboBoxCurrency.SelectedItem as Currency;
+            if (newCurrency != null)
+            {
+                foreach (Transfer t in th.SafeEnum())
+                {
+                    t.Price.ConvertTo(newCurrency);
+                }
+            }
         }
 
         private void FillChart(TransferHistory th)
         {
 #if !MONO
             chartBySeason.Series.Clear();
+            chartBySeason.ResetAutoValues();
             if (th == null || th.Team == null) return;
 
             chartBySeason.SuspendLayout();
+            
+            // attach the shown data to the chart
+            chartBySeason.Tag = th;
 
             Series boughtSeries = new Series("Bought") { ChartType = SeriesChartType.Column };
             Series soldSeries = new Series("Sold") { ChartType = SeriesChartType.Column };
@@ -67,18 +94,25 @@ namespace HtHistory.Pages
                 int noBuys = buys.Count();
                 int noSales = sales.Count();
 
-                // TODO: do some Money calculation (not double)
-                double amountBuys = buys.Sum(t => t.Price.Amount);
-                double amountSales = sales.Sum(t => t.Price.Amount);
+                Money amountBuys = new Money(0);
+                Money amountSales = new Money(0);
+
+                // ORIGINAL IMPLEMENTATION:
+                //buys.ForEach(t => amountBuys += t.Price);
+                //sales.ForEach(t => amountSales += t.Price);
+                // REASON FOR CHANGE:
+                // The transfer price should be right-hand-side to avoid showing the initial currency of amountBuys/Sales
+                buys.ForEach(t => amountBuys = t.Price + amountBuys);   
+                sales.ForEach(t => amountSales = t.Price + amountSales);
 
                 StringBuilder toolBuilder = new StringBuilder("Season ").Append(season).AppendLine()
                     .Append("Number of buys: ").Append(noBuys).AppendLine()
-                    .Append("Amount of buys: ").AppendLine(string.Format("{0:0,0.} SEK", amountBuys))
+                    .Append("Amount of buys: ").AppendLine(amountBuys.ToString())
                     .Append("Number of sales: ").Append(noSales).AppendLine()
-                    .Append("Amount of sales: ").AppendLine(string.Format("{0:0,0.} SEK", amountSales));
+                    .Append("Amount of sales: ").AppendLine(amountSales.ToString());
 
-                boughtSeries.Points.Add(new DataPoint(season, amountBuys) { ToolTip = toolBuilder.ToString() });
-                soldSeries.Points.Add(new DataPoint(season, amountSales) { ToolTip = toolBuilder.ToString() });
+                boughtSeries.Points.Add(new DataPoint(season, amountBuys.Amount) { ToolTip = toolBuilder.ToString() });
+                soldSeries.Points.Add(new DataPoint(season, amountSales.Amount) { ToolTip = toolBuilder.ToString() });
             }
 
             chartBySeason.Series.Add(boughtSeries);
@@ -94,6 +128,9 @@ namespace HtHistory.Pages
             if (th == null || th.Team == null) return;
 
             sortableListViewTransfers.SuspendLayout();
+
+            //attach the shown data to the list
+            sortableListViewTransfers.Tag = th;
 
             uint teamId = th.Team.ID;
 
@@ -127,6 +164,16 @@ namespace HtHistory.Pages
             }
 
             sortableListViewTransfers.ResumeLayout();
+        }
+
+        private void comboBoxCurrency_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            //Update Transfers
+            TransferHistory th = sortableListViewTransfers.Tag as TransferHistory;
+            if (null != th)
+            {
+                ShowTransfers(th);
+            }
         }
     }
 }
