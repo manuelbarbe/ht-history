@@ -76,8 +76,11 @@
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
+#if !MONO
+			//TODO: check why this is not working with mono
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+#endif      
+			this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PleaseWaitDialog";
             this.Text = "Work in progress...";
