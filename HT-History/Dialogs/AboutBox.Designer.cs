@@ -32,8 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.SuspendLayout();
+#if !MONO
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+#endif            
+			this.SuspendLayout();
             // 
             // button1
             // 
@@ -104,8 +106,10 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AboutBox";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.ResumeLayout(false);
+#if !MONO
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+#endif            
+			this.ResumeLayout(false);
             this.PerformLayout();
 
         }
