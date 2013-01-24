@@ -46,7 +46,7 @@ namespace HtHistory.Pages
 
         private void FillChart(TransferHistory th)
         {
-
+#if !MONO
             chartBySeason.Series.Clear();
             if (th == null || th.Team == null) return;
 
@@ -85,7 +85,8 @@ namespace HtHistory.Pages
             chartBySeason.Series.Add(soldSeries);
 
             chartBySeason.ResumeLayout();
-        }
+#endif
+		}
 
         private void FillList(TransferHistory th)
         {
