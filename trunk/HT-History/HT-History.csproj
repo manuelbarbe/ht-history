@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,9 +10,6 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HtHistory</RootNamespace>
     <AssemblyName>HT-History</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -137,12 +134,6 @@
     <Compile Include="Pages\OverviewPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Pages\PlayerChartPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Pages\PlayerChartPage.Designer.cs">
-      <DependentUpon>PlayerChartPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\PleaseWaitDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,9 +202,6 @@
     <EmbeddedResource Include="Pages\OverviewDetailsPage.resx">
       <DependentUpon>OverviewDetailsPage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\PlayerChartPage.resx">
-      <DependentUpon>PlayerChartPage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PleaseWaitDialog.resx">
       <DependentUpon>PleaseWaitDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -249,6 +237,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chpp.png" />
