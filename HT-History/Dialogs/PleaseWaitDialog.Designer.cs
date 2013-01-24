@@ -51,7 +51,12 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.Location = new System.Drawing.Point(15, 28);
             this.progressBar1.Name = "progressBar1";
+#if MONO
+            // check reason for this
+            this.progressBar1.Size = new System.Drawing.Size(148, 16);
+#else
             this.progressBar1.Size = new System.Drawing.Size(163, 16);
+#endif
             this.progressBar1.TabIndex = 1;
             // 
             // labelStatus
@@ -59,7 +64,12 @@
             this.labelStatus.AutoSize = true;
             this.labelStatus.BackColor = System.Drawing.Color.Transparent;
             this.labelStatus.ForeColor = System.Drawing.Color.White;
+#if MONO
+            // check reason for this
+            this.labelStatus.Location = new System.Drawing.Point(12, 164);
+#else
             this.labelStatus.Location = new System.Drawing.Point(12, 184);
+#endif
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(0, 13);
             this.labelStatus.TabIndex = 2;
