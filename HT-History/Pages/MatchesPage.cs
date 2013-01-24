@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using HtHistory.Core.DataContainers;
 using HtHistory.Core.ExtensionMethods;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Diagnostics;
 
 namespace HtHistory.Pages
 {
@@ -62,11 +63,13 @@ namespace HtHistory.Pages
         public void ShowMatches(IEnumerable<MatchDetails> details, uint teamId)
         {
             FillList(details, teamId);
-            FillChart(details, teamId);
+			FillChart(details, teamId);
         }
-
+		
+		[Conditional ("SHOW_CHARTS")]
         private void FillChart(IEnumerable<MatchDetails> details, uint teamId)
         {
+#if !MONO
             chartHatstats.Series.Clear();
 
             chartHatstats.SuspendLayout();
@@ -103,6 +106,7 @@ namespace HtHistory.Pages
             chartHatstats.Series.Add(attStats);
 
             chartHatstats.ResumeLayout();
+#endif
         }
 
         private void FillList(IEnumerable<MatchDetails> details, uint teamId)
