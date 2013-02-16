@@ -268,8 +268,10 @@ namespace HtHistory
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Help is currently not available", "Short help");
-
+            SaveDo(() =>
+            {
+                System.Diagnostics.Process.Start("http://code.google.com/p/ht-history/wiki/Main");
+            });
         }
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)

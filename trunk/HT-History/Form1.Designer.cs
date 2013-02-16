@@ -50,22 +50,20 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.comboBoxColumnSets = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPageTransfers = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.matchesPage1 = new HtHistory.Pages.MatchesPage();
-            this.matchFilterControl = new HtHistory.UserControls.MatchFilterControl();
+            this.tabPageTransfers = new System.Windows.Forms.TabPage();
             this.transfersPage1 = new HtHistory.Pages.TransfersPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.matchFilterControl = new HtHistory.UserControls.MatchFilterControl();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageTransfers.SuspendLayout();
-#if !MONO            
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-#endif            
-			this.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
             // labelTeamInfo
             // 
@@ -173,26 +171,26 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
-            this.helpToolStripMenuItem.Text = "Short help...";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.helpToolStripMenuItem.Text = "Help...";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.updateToolStripMenuItem.Text = "Update...";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(134, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(137, 22);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.aboutToolStripMenuItem1.Text = "About...";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
@@ -255,6 +253,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // overviewPage1
+            // 
+            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
+            this.overviewPage1.Name = "overviewPage1";
+            this.overviewPage1.Size = new System.Drawing.Size(903, 434);
+            this.overviewPage1.Stats = null;
+            this.overviewPage1.TabIndex = 0;
+            // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.matchesPage1);
@@ -265,6 +272,14 @@
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Matches";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // matchesPage1
+            // 
+            this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchesPage1.Location = new System.Drawing.Point(3, 3);
+            this.matchesPage1.Name = "matchesPage1";
+            this.matchesPage1.Size = new System.Drawing.Size(903, 434);
+            this.matchesPage1.TabIndex = 0;
             // 
             // tabPageTransfers
             // 
@@ -277,6 +292,14 @@
             this.tabPageTransfers.Text = "Transfers";
             this.tabPageTransfers.UseVisualStyleBackColor = true;
             // 
+            // transfersPage1
+            // 
+            this.transfersPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transfersPage1.Location = new System.Drawing.Point(3, 3);
+            this.transfersPage1.Name = "transfersPage1";
+            this.transfersPage1.Size = new System.Drawing.Size(903, 434);
+            this.transfersPage1.TabIndex = 0;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -288,23 +311,6 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // overviewPage1
-            // 
-            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
-            this.overviewPage1.Name = "overviewPage1";
-            this.overviewPage1.Size = new System.Drawing.Size(903, 434);
-            this.overviewPage1.Stats = null;
-            this.overviewPage1.TabIndex = 0;
-            // 
-            // matchesPage1
-            // 
-            this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchesPage1.Location = new System.Drawing.Point(3, 3);
-            this.matchesPage1.Name = "matchesPage1";
-            this.matchesPage1.Size = new System.Drawing.Size(903, 434);
-            this.matchesPage1.TabIndex = 0;
-            // 
             // matchFilterControl
             // 
             this.matchFilterControl.BackColor = System.Drawing.Color.Transparent;
@@ -313,14 +319,6 @@
             this.matchFilterControl.Name = "matchFilterControl";
             this.matchFilterControl.Size = new System.Drawing.Size(775, 113);
             this.matchFilterControl.TabIndex = 0;
-            // 
-            // transfersPage1
-            // 
-            this.transfersPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transfersPage1.Location = new System.Drawing.Point(3, 3);
-            this.transfersPage1.Name = "transfersPage1";
-            this.transfersPage1.Size = new System.Drawing.Size(903, 434);
-            this.transfersPage1.TabIndex = 0;
             // 
             // Form1
             // 
@@ -347,10 +345,8 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPageTransfers.ResumeLayout(false);
-#if !MONO
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-#endif            
-			this.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
             this.PerformLayout();
 
         }
