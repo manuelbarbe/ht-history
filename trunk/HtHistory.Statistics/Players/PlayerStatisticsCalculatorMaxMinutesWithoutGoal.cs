@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HtHistory.Statistics.Types;
 
 namespace HtHistory.Statistics.Players
 {
-    public class PlayerStatisticsCalculatorMaxMinutesWithoutGoal : PlayerStatisticsCalculatorBase<IEnumerable<MatchAppearance>, uint>
+    public class PlayerStatisticsCalculatorMaxMinutesWithoutGoal :
+        PlayerStatisticsCalculatorBase<IEnumerable<MatchAppearance>, TimeIntervalValue<uint> >
     {
         public override string Abbreviation
         {   
@@ -17,29 +19,37 @@ namespace HtHistory.Statistics.Players
             get { return "Consecutive minutes without goal"; }
         }
 
-        public override uint Calculate(IEnumerable<MatchAppearance> source)
+        public override TimeIntervalValue<uint> Calculate(IEnumerable<MatchAppearance> source)
         {
-            uint curMinutes = 0;
-            uint maxMinutes = 0;
+            TimeIntervalValue<uint> cur = new TimeIntervalValue<uint>() { Value = 0 };
+            TimeIntervalValue<uint> max = new TimeIntervalValue<uint>() { Value = 0 };
+            
             IEnumerable<MatchAppearance> sortedMatches = source.OrderBy(m => m.Match.Date);
             foreach (var v in sortedMatches)
             {
+                if (cur.Interval == null) cur.Interval = new TimeInterval(v.Match.Date, v.Match.Date);
+                cur.Interval.End = v.Match.Date;
+
                 if (v.Goals.Count == 0)
                 {
-                    curMinutes += v.Minutes;
+                    cur.Value += v.Minutes;
                 }
                 else
                 {
                     //TODO: handle minutes between goals in same match
-                    curMinutes += (v.Goals.Min(g => g.Minute) - (v.SubstituteIn ?? 0));
-                    if (curMinutes > maxMinutes) maxMinutes = curMinutes;
-                    curMinutes = (v.SubstituteOut ?? v.Match.Minutes) - v.Goals.Max(g => g.Minute);
+                    cur.Value += (v.Goals.Min(g => g.Minute) - (v.SubstituteIn ?? 0));
+                    if (cur.Value > max.Value) max = cur;
+                    cur = new TimeIntervalValue<uint>()
+                    {
+                        Value = (v.SubstituteOut ?? v.Match.Minutes) - v.Goals.Max(g => g.Minute),
+                        Interval = new TimeInterval(v.Match.Date, v.Match.Date)
+                    };
                 }
             }
 
-            if (curMinutes > maxMinutes) maxMinutes = curMinutes;
+            if (cur.Value > max.Value) max = cur;
 
-            return maxMinutes;
+            return max;
         }
     }
 }
