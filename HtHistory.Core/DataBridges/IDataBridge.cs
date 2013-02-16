@@ -5,8 +5,9 @@ using System.Text;
 
 namespace HtHistory.Core.DataBridges
 {
-    interface IDataBridge<T>
+    public interface IDataBridge<T>
     {
         T Get(uint id);
+        void Set(uint id, T t);
     }
 }

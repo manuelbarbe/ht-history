@@ -11,11 +11,10 @@ namespace HtHistory.Core.DataBridges.ProxyBridges
         private IDataBridge<T> _second;
 
         /// <summary>
-        /// Creates a chain of data bridges
+        /// 
         /// </summary>
-        /// <param name="first">First part of chain. It is queried first.
-        /// If this fails it updated with the result from 'second'</param>
-        /// <param name="second">Second part of chain. Is queried if 'first' fails.</param>
+        /// <param name="first"></param>
+        /// <param name="second"></param>
         public FallthroughBridge(IDataBridge<T> first, IDataBridge<T> second)
         {
             if (first == null || second == null) throw new ArgumentNullException("first or second");
