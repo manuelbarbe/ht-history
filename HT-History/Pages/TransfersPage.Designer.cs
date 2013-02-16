@@ -53,9 +53,20 @@
             this.chartBySeason.Text = "chart1";
 
 #endif
+            this.label1 = new System.Windows.Forms.Label();
+
+			// 
+            // comboBoxCurrency
+            //
             this.comboBoxCurrency = new System.Windows.Forms.ComboBox();
 			this.comboBoxCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxCurrency.Location = new System.Drawing.Point(58, 6);
+            this.comboBoxCurrency.Name = "comboBoxCurrency";
+            this.comboBoxCurrency.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCurrency.TabIndex = 0;
             this.comboBoxCurrency.SelectedIndexChanged += this.comboBoxCurrency_SelectedIndexChanged;
+			
+			
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sortableListViewTransfers = new HtHistory.UserControls.SortableListView();
 #if !MONO            
@@ -78,6 +89,7 @@
             // 
             // splitContainer1.Panel1
             // 
+			this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.comboBoxCurrency);
             this.splitContainer1.Panel1.Controls.Add(this.sortableListViewTransfers);
             // 
@@ -100,7 +112,16 @@
             this.sortableListViewTransfers.TabIndex = 0;
             this.sortableListViewTransfers.UseCompatibleStateImageBehavior = false;
             this.sortableListViewTransfers.View = System.Windows.Forms.View.Details;
+			// 
+            // label1
             // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Currency:";
+			// 
             // TransfersPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,5 +148,6 @@
         private UserControls.SortableListView sortableListViewTransfers;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartBySeason;
         private System.Windows.Forms.ComboBox comboBoxCurrency;
+		private System.Windows.Forms.Label label1;
     }
 }
