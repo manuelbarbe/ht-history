@@ -62,7 +62,9 @@
             this.tabPage3.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPageTransfers.SuspendLayout();
+#if !MONO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+#endif
             this.SuspendLayout();
             // 
             // labelTeamInfo
@@ -345,7 +347,9 @@
             this.tabPage3.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPageTransfers.ResumeLayout(false);
+#if !MONO
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+#endif
             this.ResumeLayout(false);
             this.PerformLayout();
 
