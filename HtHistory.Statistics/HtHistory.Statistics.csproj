@@ -59,13 +59,20 @@
     <Compile Include="Filters\Matches\MatchFilterHome.cs" />
     <Compile Include="Filters\Matches\MatchFilterNull.cs" />
     <Compile Include="Filters\Matches\MatchFilterTeam.cs" />
+    <Compile Include="Players\MatchFilterPositionCentralDefender.cs" />
+    <Compile Include="Players\MatchFilterPositionForward.cs" />
+    <Compile Include="Players\MatchFilterPositionGoalkeeper.cs" />
     <Compile Include="Players\MatchFilterNoForfaits.cs" />
+    <Compile Include="Players\MatchFilterPositionInnerMidfield.cs" />
+    <Compile Include="Players\MatchFilterPositionWingBack.cs" />
+    <Compile Include="Players\MatchFilterPositionWinger.cs" />
     <Compile Include="Players\MatchFilterSeason.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorBruised.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfOpponent.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfTeam.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorHattricks.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorInjured.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutGoal.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorMostStars.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorPositionCentralDefender.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorDrawsPercentage.cs" />
@@ -114,10 +121,10 @@
     <Compile Include="Printer\PercentagePrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Printer\ToStringPrinter.cs" />
+    <Compile Include="Team\TeamOfTheSeason.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arena\" />
-    <Folder Include="Team\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HtHistory.Core\HtHistory.Core.csproj">
