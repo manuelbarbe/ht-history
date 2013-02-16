@@ -24,6 +24,8 @@ using HtHistory.Tasks;
 using HtHistory.Pages;
 using HtHistory.Core;
 using HtHistory.Dialogs;
+using HtHistory.Core.DataBridges.ProxyBridges;
+using HtHistory.Core.DataBridges.DatabaseBridges;
 
 namespace HtHistory
 {
@@ -145,7 +147,11 @@ namespace HtHistory
             IChppAccessor accessor = new ChppFilesystemAccessor(DataDirectory, new ChppOnlineAccessor(token, tokenSecret, proxy));
             DataBridgeFactory dbf = new DataBridgeFactory();
             dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
-            dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
+            dbf.MatchDetailsBridge =    new BridgeChain<MatchDetails>(
+                                            new CacheBridge<MatchDetails>(),
+                                            new BridgeChain<MatchDetails>(
+                                                new DatabaseMatchDetailsBridge(),
+                                                new ChppMatchDetailsBridge(accessor)));
             dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
             dbf.PlayersBridge = new ChppPlayersBridge(accessor);
             dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
@@ -157,8 +163,11 @@ namespace HtHistory
             IChppAccessor accessor = new ChppFilesystemAccessor(DataDirectory);
             DataBridgeFactory dbf = new DataBridgeFactory();
             dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
-            dbf.MatchDetailsBridge = new CacheMatchDetailsBridge(new ChppMatchDetailsBridge(accessor));
-            dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
+            dbf.MatchDetailsBridge = new BridgeChain<MatchDetails>(
+                                            new CacheBridge<MatchDetails>(),
+                                            new BridgeChain<MatchDetails>(
+                                                new DatabaseMatchDetailsBridge(),
+                                                new ChppMatchDetailsBridge(accessor))); dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
             dbf.PlayersBridge = new ChppPlayersBridge(accessor);
             dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
             Environment.DataBridgeFactory = dbf;
