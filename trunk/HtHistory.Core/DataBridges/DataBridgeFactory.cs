@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using HtHistory.Core.DataContainers;
 
 namespace HtHistory.Core.DataBridges
 {
@@ -13,7 +14,7 @@ namespace HtHistory.Core.DataBridges
             set;
         }
 
-        public IMatchDetailsBridge MatchDetailsBridge
+        public IDataBridge<MatchDetails> MatchDetailsBridge
         {
             get;
             set;

@@ -153,5 +153,15 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
             return lineup;
         }
+
+        public MatchDetails Get(uint id)
+        {
+            return GetMatchDetails(id);
+        }
+
+        public void Set(uint id, MatchDetails t)
+        {
+            throw new InvalidOperationException("Cannot set anything on CHPP servers");
+        }
     }
 }
