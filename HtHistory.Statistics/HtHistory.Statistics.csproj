@@ -122,6 +122,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Printer\ToStringPrinter.cs" />
     <Compile Include="Team\TeamOfTheSeason.cs" />
+    <Compile Include="Types\TimeInterval.cs" />
+    <Compile Include="Types\TimeIntervalValue.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arena\" />
