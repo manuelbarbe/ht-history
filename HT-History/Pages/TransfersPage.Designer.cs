@@ -54,6 +54,7 @@
 
 #endif
             this.comboBoxCurrency = new System.Windows.Forms.ComboBox();
+			this.comboBoxCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCurrency.SelectedIndexChanged += this.comboBoxCurrency_SelectedIndexChanged;
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sortableListViewTransfers = new HtHistory.UserControls.SortableListView();
