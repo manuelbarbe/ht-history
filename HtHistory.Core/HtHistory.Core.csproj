@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBridges\CacheBridges\CacheMatchDetailsBridge.cs" />
+    <Compile Include="Auth\Password.cs" />
+    <Compile Include="Auth\User.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppException.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppFilesystemAccessor.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppOnlineAccessor.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="DataBridges\ChppBridges\ChppPlayersBridge.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppTeamDetailsBridge.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppTransferHistoryBridge.cs" />
+    <Compile Include="DataBridges\DatabaseBridges\DatabaseMatchDetailsBridge.cs" />
     <Compile Include="DataBridges\DataBridgeFactory.cs" />
     <Compile Include="DataBridges\IDataBridgeFactory.cs" />
     <Compile Include="DataBridges\IPlayersBridge.cs" />
@@ -62,6 +64,9 @@
     <Compile Include="DataBridges\IMatchArchiveBridge.cs" />
     <Compile Include="DataBridges\IMatchDetailsBridge.cs" />
     <Compile Include="DataBridges\ITransferHistoryBridge.cs" />
+    <Compile Include="DataBridges\ProxyBridges\BridgeChain.cs" />
+    <Compile Include="DataBridges\CacheBridges\CacheBridge.cs" />
+    <Compile Include="DataBridges\ProxyBridges\FalltroughBridge.cs" />
     <Compile Include="DataContainers\Crowd.cs" />
     <Compile Include="DataContainers\Goal.cs" />
     <Compile Include="DataContainers\HatStats.cs" />
@@ -89,10 +94,10 @@
     <Compile Include="ExtensionMethods\EnumExtensions.cs" />
     <Compile Include="ExtensionMethods\XContainerExtensions.cs" />
     <Compile Include="HtLog.cs" />
+    <Compile Include="PersistentObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DataBridges\DatabaseBridges\" />
     <Folder Include="DataBridges\FilesystemBridges\" />
     <Folder Include="externals\" />
   </ItemGroup>
