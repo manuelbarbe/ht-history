@@ -92,7 +92,7 @@ namespace HtHistory
                     HtLog.Error("Cannot parse team id");
                 }
                 ChangeTeam(ref _teamId);
-
+				
                 matchFilterControl.FilterChanged += UpdateAll;
 
             }
@@ -437,7 +437,7 @@ namespace HtHistory
 
         private void UpdateMatches(uint teamId, DateTime? startDate, DateTime? endDate)
         {
-            _pwd.Show();
+            //_pwd.Show();
 
             BackgroundWorker bgw = new BackgroundWorker();
 
@@ -478,7 +478,7 @@ namespace HtHistory
 
             bgw.RunWorkerCompleted += (s, e2) =>
             {
-                _pwd.Hide();
+                //_pwd.Hide();
                 if (e2.Error != null)
                 {
                     MessageBox.Show(e2.Error.ToString());
