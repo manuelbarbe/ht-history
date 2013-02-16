@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataBridges\CacheBridges\CacheMatchDetailsBridge.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppException.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppFilesystemAccessor.cs" />
     <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppOnlineAccessor.cs" />
@@ -87,11 +86,17 @@
     <Compile Include="ExtensionMethods\XContainerExtensions.cs" />
     <Compile Include="HtLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataBridges\ProxyBridges\BridgeChain.cs" />
+    <Compile Include="DataBridges\ProxyBridges\FalltroughBridge.cs" />
+    <Compile Include="DataBridges\CacheBridges\CacheBridge.cs" />
+    <Compile Include="DataBridges\DatabaseBridges\DatabaseMatchDetailsBridge.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBridges\DatabaseBridges\" />
     <Folder Include="DataBridges\FilesystemBridges\" />
     <Folder Include="externals\" />
+    <Folder Include="DataBridges\ProxyBridges\" />
+    <Folder Include="DataBridges\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DevDefined.OAuth\src\DevDefined.OAuth\DevDefined.OAuth.csproj">
