@@ -72,7 +72,8 @@
     <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfTeam.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorHattricks.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorInjured.cs" />
-    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutGoal.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutPlayerGoal.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutOppGoal.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorMostStars.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorPositionCentralDefender.cs" />
     <Compile Include="Players\PlayerStatisticsCalculatorDrawsPercentage.cs" />
