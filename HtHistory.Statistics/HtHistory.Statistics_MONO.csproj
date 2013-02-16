@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00DD84C0-55D5-4B61-AECF-F4F840A6893A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HtHistory.Statistics</RootNamespace>
+    <AssemblyName>HtHistory.Statistics</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Filters\Matches\IMatchFilter.cs" />
+    <Compile Include="Filters\Matches\MatchFilterCompetitive.cs" />
+    <Compile Include="Filters\Matches\MatchFilterCup.cs" />
+    <Compile Include="Filters\Matches\MatchFilterFriendly.cs" />
+    <Compile Include="Filters\Matches\MatchFilterGeneric.cs" />
+    <Compile Include="Filters\Matches\MatchFilterIntersectionSet.cs" />
+    <Compile Include="Filters\Matches\MatchFilterLeague.cs" />
+    <Compile Include="Filters\Matches\MatchFilterMastersOther.cs" />
+    <Compile Include="Filters\Matches\MatchFilterNeutral.cs" />
+    <Compile Include="Filters\Matches\MatchFilterNoForfaits.cs" />
+    <Compile Include="Filters\Matches\MatchFilterQualifier.cs" />
+    <Compile Include="Filters\Matches\MatchFilterUnionSet.cs" />
+    <Compile Include="Filters\Matches\MatchFilterSeason.cs" />
+    <Compile Include="Filters\Matches\MatchFilterAway.cs" />
+    <Compile Include="Filters\Matches\MatchFilterHome.cs" />
+    <Compile Include="Filters\Matches\MatchFilterNull.cs" />
+    <Compile Include="Filters\Matches\MatchFilterTeam.cs" />
+    <Compile Include="Players\MatchFilterNoForfaits.cs" />
+    <Compile Include="Players\MatchFilterSeason.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorBruised.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfOpponent.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorGoalsOfTeam.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorHattricks.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorInjured.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMostStars.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionCentralDefender.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorDrawsPercentage.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionInnerMidfielder.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionKeeper.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLossesPercentage.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionForward.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionUnknown.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionWinger.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPositionWingBack.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorWinsPercentage.cs" />
+    <Compile Include="Printer\DoublePrinter.cs" />
+    <Compile Include="Printer\IPrinter.cs" />
+    <Compile Include="Generic2ObjectComparer.cs" />
+    <Compile Include="Players\CalculatorFactory.cs" />
+    <Compile Include="Players\IPlayerStatisticCalculator.cs" />
+    <Compile Include="Players\MatchAppearance.cs" />
+    <Compile Include="Players\MatchFilterBase.cs" />
+    <Compile Include="Players\MatchFilterCompetitive.cs" />
+    <Compile Include="Players\MatchFilterCup.cs" />
+    <Compile Include="Players\MatchFilterFriendly.cs" />
+    <Compile Include="Players\MatchFilterLeague.cs" />
+    <Compile Include="Players\MatchFilterOther.cs" />
+    <Compile Include="Players\MatchFilterQualifier.cs" />
+    <Compile Include="Players\MatchFilterTotal.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorBase.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorBestPlayer.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorDraws.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorGoals.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorGoalsPer90Minutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorGoalsPerMatch.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLosses.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMatches.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMinutes.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorFirstMatch.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorLastMatch.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMinutesPerMatch.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPlayerId.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorPlayerName.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorRedCards.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorSubstituteIn.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorSubstituteOut.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorWins.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorYellowCards.cs" />
+    <Compile Include="Players\StandardPlayerStatistics.cs" />
+    <Compile Include="Printer\PercentagePrinter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Printer\ToStringPrinter.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutGoal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Arena\" />
+    <Folder Include="Team\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HtHistory.Core\HtHistory.Core_MONO.csproj">
+      <Project>{75B039ED-5C8F-4FCC-9AEE-BE0B9C073334}</Project>
+      <Name>HtHistory.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
