@@ -111,16 +111,28 @@
     <Compile Include="Printer\PercentagePrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Printer\ToStringPrinter.cs" />
-    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutGoal.cs" />
+    <Compile Include="Types\TimeInterval.cs" />
+    <Compile Include="Types\TimeIntervalValue.cs" />
+    <Compile Include="Team\TeamOfTheSeason.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutOppGoal.cs" />
+    <Compile Include="Players\PlayerStatisticsCalculatorMaxMinutesWithoutPlayerGoal.cs" />
+    <Compile Include="Players\MatchFilterPositionCentralDefender.cs" />
+    <Compile Include="Players\MatchFilterPositionForward.cs" />
+    <Compile Include="Players\MatchFilterPositionGoalkeeper.cs" />
+    <Compile Include="Players\MatchFilterPositionInnerMidfield.cs" />
+    <Compile Include="Players\MatchFilterPositionWingBack.cs" />
+    <Compile Include="Players\MatchFilterPositionWinger.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arena\" />
     <Folder Include="Team\" />
+    <Folder Include="Types\" />
+    <Folder Include="Players\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HtHistory.Core\HtHistory.Core_MONO.csproj">
       <Project>{75B039ED-5C8F-4FCC-9AEE-BE0B9C073334}</Project>
-      <Name>HtHistory.Core</Name>
+      <Name>HtHistory.Core_MONO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
