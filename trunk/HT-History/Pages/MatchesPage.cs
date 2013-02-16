@@ -66,7 +66,6 @@ namespace HtHistory.Pages
 			FillChart(details, teamId);
         }
 		
-		[Conditional ("SHOW_CHARTS")]
         private void FillChart(IEnumerable<MatchDetails> details, uint teamId)
         {
 #if !MONO
