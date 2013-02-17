@@ -42,7 +42,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE; MONO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -283,11 +283,11 @@
   <ItemGroup>
     <ProjectReference Include="..\HtHistory.Core\HtHistory.Core_MONO.csproj">
       <Project>{75B039ED-5C8F-4FCC-9AEE-BE0B9C073334}</Project>
-      <Name>HtHistory.Core</Name>
+      <Name>HtHistory.Core_MONO</Name>
     </ProjectReference>
     <ProjectReference Include="..\HtHistory.Statistics\HtHistory.Statistics_MONO.csproj">
       <Project>{00DD84C0-55D5-4B61-AECF-F4F840A6893A}</Project>
-      <Name>HtHistory.Statistics</Name>
+      <Name>HtHistory.Statistics_MONO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
