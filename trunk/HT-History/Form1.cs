@@ -149,9 +149,9 @@ namespace HtHistory
             dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
             dbf.MatchDetailsBridge =    new BridgeChain<MatchDetails>(
                                             new CacheBridge<MatchDetails>(),
-                                            new BridgeChain<MatchDetails>(
-                                                new DatabaseMatchDetailsBridge(),
-                                                new ChppMatchDetailsBridge(accessor)));
+                                            //new BridgeChain<MatchDetails>(
+                                                //new DatabaseMatchDetailsBridge(),
+                                                new ChppMatchDetailsBridge(accessor));
             dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
             dbf.PlayersBridge = new ChppPlayersBridge(accessor);
             dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
@@ -165,9 +165,10 @@ namespace HtHistory
             dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
             dbf.MatchDetailsBridge = new BridgeChain<MatchDetails>(
                                             new CacheBridge<MatchDetails>(),
-                                            new BridgeChain<MatchDetails>(
-                                                new DatabaseMatchDetailsBridge(),
-                                                new ChppMatchDetailsBridge(accessor))); dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
+                                            //new BridgeChain<MatchDetails>(
+                                                //new DatabaseMatchDetailsBridge(),
+                                                new ChppMatchDetailsBridge(accessor));
+			dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
             dbf.PlayersBridge = new ChppPlayersBridge(accessor);
             dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
             Environment.DataBridgeFactory = dbf;
