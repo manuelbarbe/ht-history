@@ -13,7 +13,8 @@ namespace HtHistory.Core.DataContainers
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(this, obj)) return true;
+			if (obj == null) return false;
+			if (ReferenceEquals(this, obj)) return true;
 
             return this.GetType().Equals(obj.GetType()) && ID.Equals((obj as HtObject).ID);
 
