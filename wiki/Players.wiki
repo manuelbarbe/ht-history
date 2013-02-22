@@ -4,7 +4,7 @@ The player statistics are the main part of HT-History. They are presented as a l
 
 Each stat for the player is shown in a column. There are a couple of columns/stats available. Since showing all of them would be very confusing, only a few of them are shown at once.
 
-http://ht-history.googlecode.com/svn/wiki/Match_filter.png
+http://ht-history.googlecode.com/svn/wiki/ColumnsAndRows.png
 
 Which ones are shown is defined by the 'column set'. The column set can be changed by the dropdown box in the upper right area.
 
@@ -14,3 +14,9 @@ New column set can be created there as well by selecting the "create new" option
 
 http://ht-history.googlecode.com/svn/wiki/ColumnsButton.png
 http://ht-history.googlecode.com/svn/wiki/ConfigureColumns.png
+
+
+After selecting a player, addittional information about him can be found in the lower area:
+- Stats per season
+- All matches played
+- All goals
