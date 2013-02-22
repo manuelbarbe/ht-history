@@ -16,6 +16,10 @@ http://ht-history.googlecode.com/svn/wiki/ConfigureColumns.png
 
 
 After selecting a player, addittional information about him can be found in the lower area:
-- Stats per season
-- All matches played
-- All goals
+# Stats per season
+# All matches played
+# All goals
+
+http://ht-history.googlecode.com/svn/wiki/PlayerStatsSeason.png
+http://ht-history.googlecode.com/svn/wiki/PlayerStatsMatches.png
+http://ht-history.googlecode.com/svn/wiki/PlayerStatsGoals.png
