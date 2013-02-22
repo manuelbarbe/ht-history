@@ -12,7 +12,6 @@ http://ht-history.googlecode.com/svn/wiki/ChooseColumnsSet.png
 
 New column set can be created there as well by selecting the "create new" option. All column sets - except the 'Default' set - can be configured by clicking the 'Columns' button.
 
-http://ht-history.googlecode.com/svn/wiki/ColumnsButton.png
 http://ht-history.googlecode.com/svn/wiki/ConfigureColumns.png
 
 
