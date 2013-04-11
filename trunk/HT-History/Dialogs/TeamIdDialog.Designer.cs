@@ -34,8 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.radioButtonOwner = new System.Windows.Forms.RadioButton();
             this.radioButtonPeriod = new System.Windows.Forms.RadioButton();
-            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.noTr_dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.noTr_dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.labelFrom = new System.Windows.Forms.Label();
             this.labelTo = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -101,21 +101,21 @@
             this.radioButtonPeriod.UseVisualStyleBackColor = true;
             this.radioButtonPeriod.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
-            // dateTimePickerFrom
+            // noTr_dateTimePickerFrom
             // 
-            this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(53, 146);
-            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(174, 20);
-            this.dateTimePickerFrom.TabIndex = 6;
+            this.noTr_dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.noTr_dateTimePickerFrom.Location = new System.Drawing.Point(53, 146);
+            this.noTr_dateTimePickerFrom.Name = "noTr_dateTimePickerFrom";
+            this.noTr_dateTimePickerFrom.Size = new System.Drawing.Size(174, 20);
+            this.noTr_dateTimePickerFrom.TabIndex = 6;
             // 
-            // dateTimePickerTo
+            // noTr_dateTimePickerTo
             // 
-            this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTo.Location = new System.Drawing.Point(53, 172);
-            this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(174, 20);
-            this.dateTimePickerTo.TabIndex = 7;
+            this.noTr_dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.noTr_dateTimePickerTo.Location = new System.Drawing.Point(53, 172);
+            this.noTr_dateTimePickerTo.Name = "noTr_dateTimePickerTo";
+            this.noTr_dateTimePickerTo.Size = new System.Drawing.Size(174, 20);
+            this.noTr_dateTimePickerTo.TabIndex = 7;
             // 
             // labelFrom
             // 
@@ -144,8 +144,8 @@
             this.ClientSize = new System.Drawing.Size(241, 250);
             this.Controls.Add(this.labelTo);
             this.Controls.Add(this.labelFrom);
-            this.Controls.Add(this.dateTimePickerTo);
-            this.Controls.Add(this.dateTimePickerFrom);
+            this.Controls.Add(this.noTr_dateTimePickerTo);
+            this.Controls.Add(this.noTr_dateTimePickerFrom);
             this.Controls.Add(this.radioButtonPeriod);
             this.Controls.Add(this.radioButtonOwner);
             this.Controls.Add(this.label1);
@@ -170,8 +170,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonOwner;
         private System.Windows.Forms.RadioButton radioButtonPeriod;
-        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
-        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private System.Windows.Forms.DateTimePicker noTr_dateTimePickerFrom;
+        private System.Windows.Forms.DateTimePicker noTr_dateTimePickerTo;
         private System.Windows.Forms.Label labelFrom;
         private System.Windows.Forms.Label labelTo;
     }

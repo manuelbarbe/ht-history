@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -157,8 +157,14 @@
     <Compile Include="Tasks\ITask.cs" />
     <Compile Include="Tasks\NullTask.cs" />
     <Compile Include="Tasks\PleaseWaitTaskDecorator.cs" />
+    <Compile Include="Translation\DecoratingTranslator.cs" />
+    <Compile Include="Translation\FallbackTranslator.cs" />
+    <Compile Include="Translation\ITranslator.cs" />
+    <Compile Include="Translation\NullTranslator.cs" />
     <Compile Include="Update\IUpdater.cs" />
     <Compile Include="Update\UpdaterHttpFile.cs" />
+    <Compile Include="UserControls\ControlExtensions.cs" />
+    <Compile Include="DoNotTranslate.cs" />
     <Compile Include="UserControls\MatchFilterControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -26,6 +26,8 @@ using HtHistory.Core;
 using HtHistory.Dialogs;
 using HtHistory.Core.DataBridges.ProxyBridges;
 using HtHistory.Core.DataBridges.DatabaseBridges;
+using HtHistory.Translation;
+using HtHistory.UserControls;
 
 namespace HtHistory
 {
@@ -58,6 +60,8 @@ namespace HtHistory
             Version v = Assembly.GetExecutingAssembly().GetName().Version;
             string version = String.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
             this.Text = String.Format("HT-History by manuhell, {0}", version);
+            this.Translate(Environment.Translator);
+            menuStrip.Translate(Environment.Translator);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -128,6 +132,7 @@ namespace HtHistory
             {
                 using (AuthorizeDialog authDlg = new AuthorizeDialog())
                 {
+                    authDlg.Translate(Environment.Translator);
                     DialogResult res = authDlg.ShowDialog();
                     if (res != DialogResult.OK)
                     {
@@ -220,6 +225,7 @@ namespace HtHistory
             {
                 using (WebProxyDialog diag = new WebProxyDialog())
                 {
+                    diag.Translate(Environment.Translator);
                     string proxy;
                     _settings.TryGetValue("proxy", out proxy);
                     diag.WebProxyUri = proxy ?? string.Empty;
@@ -334,6 +340,7 @@ namespace HtHistory
                 {
                     var shownRawColumns = _settings.ActiveColumnSet.Columns;
                     Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(shownRawColumns), shownRawColumns, _settings.ActiveColumnSet.Name);
+                    ccd.Translate(Environment.Translator);
                     if (ccd.ShowDialog() == DialogResult.OK)
                     {
                         IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
@@ -362,6 +369,7 @@ namespace HtHistory
             SaveDo(() =>
                 {
                     Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators(), null, String.Format("Custom set #{0}", comboBoxColumnSets.Items.Count + 1));
+                    ccd.Translate(Environment.Translator);
                     if (ccd.ShowDialog() == DialogResult.OK)
                     {
                         IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
@@ -502,6 +510,7 @@ namespace HtHistory
         private void ChangeTeam(ref uint teamId)
         {
             TeamIdDialog tid = new TeamIdDialog(teamId);
+            tid.Translate(Environment.Translator, true);
             if (DialogResult.OK == tid.ShowDialog())
             {
                 teamId = tid.TeamId;
@@ -521,7 +530,9 @@ namespace HtHistory
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new AboutBox().ShowDialog();
+            AboutBox box = new AboutBox();
+            box.Translate(Environment.Translator);
+            box.ShowDialog();
         }
     }
 }
