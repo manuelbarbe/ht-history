@@ -16,10 +16,10 @@ namespace HtHistory.Dialogs
         {
             InitializeComponent();
             textBoxTeamId.Text = teamId.ToString();
-            dateTimePickerFrom.MaxDate =
-            dateTimePickerTo.MaxDate =
-            dateTimePickerTo.Value =
-            dateTimePickerTo.Value = DateTime.Now.ToHtTime();
+            noTr_dateTimePickerFrom.MaxDate =
+            noTr_dateTimePickerTo.MaxDate =
+            noTr_dateTimePickerTo.Value =
+            noTr_dateTimePickerTo.Value = DateTime.Now.ToHtTime();
             ShowHideDates(radioButtonPeriod.Checked);
         }
 
@@ -39,7 +39,7 @@ namespace HtHistory.Dialogs
             {
                 if (radioButtonPeriod.Checked)
                 {
-                    DateTime dt = dateTimePickerFrom.Value;
+                    DateTime dt = noTr_dateTimePickerFrom.Value;
                     return new DateTime(dt.Year, dt.Month, dt.Day, 0, 0, 0);
                 }
                 return null;
@@ -52,9 +52,9 @@ namespace HtHistory.Dialogs
             {
                 if (radioButtonPeriod.Checked)
                 {
-                    DateTime dt = dateTimePickerTo.Value;
+                    DateTime dt = noTr_dateTimePickerTo.Value;
                     DateTime dt2 = new DateTime(dt.Year, dt.Month, dt.Day, 23, 59, 59);
-                    if (dt2 > dateTimePickerTo.MaxDate) return dateTimePickerTo.MaxDate;
+                    if (dt2 > noTr_dateTimePickerTo.MaxDate) return noTr_dateTimePickerTo.MaxDate;
                     else return dt2;
                 }
                 return null;
@@ -83,8 +83,8 @@ namespace HtHistory.Dialogs
 
         private void ShowHideDates(bool show)
         {
-            dateTimePickerFrom.Enabled =
-            dateTimePickerTo.Enabled = show;
+            noTr_dateTimePickerFrom.Enabled =
+            noTr_dateTimePickerTo.Enabled = show;
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)

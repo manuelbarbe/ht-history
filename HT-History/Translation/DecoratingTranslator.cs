@@ -15,7 +15,7 @@ namespace HtHistory.Translation
 
         public DecoratingTranslator(ITranslator decoratee, string decoration)
         {
-            if (decoratee != null) throw new ArgumentNullException("decoratee");
+            if (decoratee == null) throw new ArgumentNullException("decoratee");
             _decoratee = decoratee;
             _decoration = decoration; // null is ok here
         }

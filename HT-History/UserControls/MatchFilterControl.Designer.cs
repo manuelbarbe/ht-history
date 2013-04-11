@@ -28,37 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelTeamId = new System.Windows.Forms.Label();
+            this.labelOppId = new System.Windows.Forms.Label();
             this.textBoxTeamId = new System.Windows.Forms.TextBox();
             this.textBoxOpponentId = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelVenue = new System.Windows.Forms.Label();
             this.listBoxVenue = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.labelSeason = new System.Windows.Forms.Label();
             this.listBoxSeason = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelForfaits = new System.Windows.Forms.Label();
             this.checkBoxForfait = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelType = new System.Windows.Forms.Label();
             this.listBoxType = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // label1
+            // labelTeamId
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Team ID:\r\n";
+            this.labelTeamId.AutoSize = true;
+            this.labelTeamId.Location = new System.Drawing.Point(3, 10);
+            this.labelTeamId.Name = "labelTeamId";
+            this.labelTeamId.Size = new System.Drawing.Size(51, 13);
+            this.labelTeamId.TabIndex = 0;
+            this.labelTeamId.Text = "Team ID:\r\n";
             // 
-            // label2
+            // labelOppId
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 26);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Opponent ID:\r\n( 0 = all )";
+            this.labelOppId.AutoSize = true;
+            this.labelOppId.Location = new System.Drawing.Point(3, 45);
+            this.labelOppId.Name = "labelOppId";
+            this.labelOppId.Size = new System.Drawing.Size(71, 26);
+            this.labelOppId.TabIndex = 1;
+            this.labelOppId.Text = "Opponent ID:\r\n( 0 = all )";
             // 
             // textBoxTeamId
             // 
@@ -79,18 +79,20 @@
             this.textBoxOpponentId.Text = "0";
             this.textBoxOpponentId.TextChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
-            // label3
+            // labelVenue
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(382, 10);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Venue:";
+            this.labelVenue.AutoSize = true;
+            this.labelVenue.Location = new System.Drawing.Point(382, 10);
+            this.labelVenue.Name = "labelVenue";
+            this.labelVenue.Size = new System.Drawing.Size(41, 13);
+            this.labelVenue.TabIndex = 3;
+            this.labelVenue.Text = "Venue:";
             // 
             // listBoxVenue
             // 
+            this.listBoxVenue.BackColor = System.Drawing.Color.White;
             this.listBoxVenue.Enabled = false;
+            this.listBoxVenue.ForeColor = System.Drawing.Color.Black;
             this.listBoxVenue.FormattingEnabled = true;
             this.listBoxVenue.Items.AddRange(new object[] {
             "All",
@@ -102,40 +104,38 @@
             this.listBoxVenue.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxVenue.Size = new System.Drawing.Size(120, 56);
             this.listBoxVenue.TabIndex = 4;
-			this.listBoxVenue.ForeColor = System.Drawing.Color.Black;
-			this.listBoxVenue.BackColor = System.Drawing.Color.White;
             this.listBoxVenue.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
-            // label4
+            // labelSeason
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(569, 10);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Season:";
+            this.labelSeason.AutoSize = true;
+            this.labelSeason.Location = new System.Drawing.Point(569, 10);
+            this.labelSeason.Name = "labelSeason";
+            this.labelSeason.Size = new System.Drawing.Size(46, 13);
+            this.labelSeason.TabIndex = 5;
+            this.labelSeason.Text = "Season:";
             // 
             // listBoxSeason
             // 
+            this.listBoxSeason.BackColor = System.Drawing.Color.White;
             this.listBoxSeason.Enabled = false;
+            this.listBoxSeason.ForeColor = System.Drawing.Color.Black;
             this.listBoxSeason.FormattingEnabled = true;
             this.listBoxSeason.Location = new System.Drawing.Point(621, 7);
             this.listBoxSeason.Name = "listBoxSeason";
             this.listBoxSeason.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxSeason.Size = new System.Drawing.Size(144, 95);
             this.listBoxSeason.TabIndex = 6;
-			this.listBoxSeason.ForeColor = System.Drawing.Color.Black;
-			this.listBoxSeason.BackColor = System.Drawing.Color.White;
-			this.listBoxSeason.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
+            this.listBoxSeason.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
-            // label5
+            // labelForfaits
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(382, 82);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Forfaits:";
+            this.labelForfaits.AutoSize = true;
+            this.labelForfaits.Location = new System.Drawing.Point(382, 82);
+            this.labelForfaits.Name = "labelForfaits";
+            this.labelForfaits.Size = new System.Drawing.Size(44, 13);
+            this.labelForfaits.TabIndex = 7;
+            this.labelForfaits.Text = "Forfaits:";
             // 
             // checkBoxForfait
             // 
@@ -149,18 +149,20 @@
             this.checkBoxForfait.UseVisualStyleBackColor = true;
             this.checkBoxForfait.CheckedChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
-            // label6
+            // labelType
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(202, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Type:";
+            this.labelType.AutoSize = true;
+            this.labelType.Location = new System.Drawing.Point(202, 10);
+            this.labelType.Name = "labelType";
+            this.labelType.Size = new System.Drawing.Size(34, 13);
+            this.labelType.TabIndex = 9;
+            this.labelType.Text = "Type:";
             // 
             // listBoxType
             // 
+            this.listBoxType.BackColor = System.Drawing.Color.White;
             this.listBoxType.Enabled = false;
+            this.listBoxType.ForeColor = System.Drawing.Color.Black;
             this.listBoxType.FormattingEnabled = true;
             this.listBoxType.Items.AddRange(new object[] {
             "All",
@@ -175,26 +177,24 @@
             this.listBoxType.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxType.Size = new System.Drawing.Size(120, 95);
             this.listBoxType.TabIndex = 10;
-   			this.listBoxType.ForeColor = System.Drawing.Color.Black;
-			this.listBoxType.BackColor = System.Drawing.Color.White;
-			this.listBoxType.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
+            this.listBoxType.SelectedIndexChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
             // MatchFilterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listBoxType);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.labelType);
             this.Controls.Add(this.checkBoxForfait);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.labelForfaits);
             this.Controls.Add(this.listBoxSeason);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.labelSeason);
             this.Controls.Add(this.listBoxVenue);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelVenue);
             this.Controls.Add(this.textBoxOpponentId);
             this.Controls.Add(this.textBoxTeamId);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelOppId);
+            this.Controls.Add(this.labelTeamId);
             this.Name = "MatchFilterControl";
             this.Size = new System.Drawing.Size(777, 113);
             this.ResumeLayout(false);
@@ -204,17 +204,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelTeamId;
+        private System.Windows.Forms.Label labelOppId;
         private System.Windows.Forms.TextBox textBoxTeamId;
         private System.Windows.Forms.TextBox textBoxOpponentId;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelVenue;
         private System.Windows.Forms.ListBox listBoxVenue;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label labelSeason;
         private System.Windows.Forms.ListBox listBoxSeason;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelForfaits;
         private System.Windows.Forms.CheckBox checkBoxForfait;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelType;
         private System.Windows.Forms.ListBox listBoxType;
     }
 }
