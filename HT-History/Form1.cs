@@ -74,6 +74,7 @@ namespace HtHistory
                 {
                     Environment.Translator = t;
                     this.Translate(t);
+                    this.menuStrip.Translate(t);
                 }
             }
         }

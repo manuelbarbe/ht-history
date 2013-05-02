@@ -37,8 +37,8 @@
             this.labelSeason = new System.Windows.Forms.Label();
             this.listBoxSeason = new System.Windows.Forms.ListBox();
             this.labelForfaits = new System.Windows.Forms.Label();
-            this.checkBoxForfait = new System.Windows.Forms.CheckBox();
-            this.labelType = new System.Windows.Forms.Label();
+            this.checkBoxForfaitsExcluded = new System.Windows.Forms.CheckBox();
+            this.labelMatchType = new System.Windows.Forms.Label();
             this.listBoxType = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -137,26 +137,26 @@
             this.labelForfaits.TabIndex = 7;
             this.labelForfaits.Text = "Forfaits:";
             // 
-            // checkBoxForfait
+            // checkBoxForfaitsExcluded
             // 
-            this.checkBoxForfait.AutoSize = true;
-            this.checkBoxForfait.Enabled = false;
-            this.checkBoxForfait.Location = new System.Drawing.Point(432, 81);
-            this.checkBoxForfait.Name = "checkBoxForfait";
-            this.checkBoxForfait.Size = new System.Drawing.Size(69, 17);
-            this.checkBoxForfait.TabIndex = 8;
-            this.checkBoxForfait.Text = "excluded";
-            this.checkBoxForfait.UseVisualStyleBackColor = true;
-            this.checkBoxForfait.CheckedChanged += new System.EventHandler(this.RaiseFilterChanged);
+            this.checkBoxForfaitsExcluded.AutoSize = true;
+            this.checkBoxForfaitsExcluded.Enabled = false;
+            this.checkBoxForfaitsExcluded.Location = new System.Drawing.Point(432, 81);
+            this.checkBoxForfaitsExcluded.Name = "checkBoxForfaitsExcluded";
+            this.checkBoxForfaitsExcluded.Size = new System.Drawing.Size(69, 17);
+            this.checkBoxForfaitsExcluded.TabIndex = 8;
+            this.checkBoxForfaitsExcluded.Text = "excluded";
+            this.checkBoxForfaitsExcluded.UseVisualStyleBackColor = true;
+            this.checkBoxForfaitsExcluded.CheckedChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
-            // labelType
+            // labelMatchType
             // 
-            this.labelType.AutoSize = true;
-            this.labelType.Location = new System.Drawing.Point(202, 10);
-            this.labelType.Name = "labelType";
-            this.labelType.Size = new System.Drawing.Size(34, 13);
-            this.labelType.TabIndex = 9;
-            this.labelType.Text = "Type:";
+            this.labelMatchType.AutoSize = true;
+            this.labelMatchType.Location = new System.Drawing.Point(202, 10);
+            this.labelMatchType.Name = "labelMatchType";
+            this.labelMatchType.Size = new System.Drawing.Size(34, 13);
+            this.labelMatchType.TabIndex = 9;
+            this.labelMatchType.Text = "Type:";
             // 
             // listBoxType
             // 
@@ -184,8 +184,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listBoxType);
-            this.Controls.Add(this.labelType);
-            this.Controls.Add(this.checkBoxForfait);
+            this.Controls.Add(this.labelMatchType);
+            this.Controls.Add(this.checkBoxForfaitsExcluded);
             this.Controls.Add(this.labelForfaits);
             this.Controls.Add(this.listBoxSeason);
             this.Controls.Add(this.labelSeason);
@@ -213,8 +213,8 @@
         private System.Windows.Forms.Label labelSeason;
         private System.Windows.Forms.ListBox listBoxSeason;
         private System.Windows.Forms.Label labelForfaits;
-        private System.Windows.Forms.CheckBox checkBoxForfait;
-        private System.Windows.Forms.Label labelType;
+        private System.Windows.Forms.CheckBox checkBoxForfaitsExcluded;
+        private System.Windows.Forms.Label labelMatchType;
         private System.Windows.Forms.ListBox listBoxType;
     }
 }

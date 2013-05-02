@@ -15,7 +15,7 @@ namespace HtHistory.Dialogs
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
             Version v = Assembly.GetExecutingAssembly().GetName().Version;
-            this.labelVersion.Text = String.Format("Version {0}.{1}.{2}", v.Major, v.Minor, v.Build);
+            this.noTr_labelVersion.Text = String.Format("Version {0}.{1}.{2}", v.Major, v.Minor, v.Build);
         }
 
         #region Assembly Attribute Accessors
