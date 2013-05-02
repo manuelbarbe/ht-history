@@ -31,7 +31,7 @@
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
             this.noTr_textBoxTeamId = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelInsertTeamId = new System.Windows.Forms.Label();
             this.radioButtonOwner = new System.Windows.Forms.RadioButton();
             this.radioButtonPeriod = new System.Windows.Forms.RadioButton();
             this.noTr_dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
@@ -63,20 +63,20 @@
             // 
             // noTr_textBoxTeamId
             // 
-            this.noTr_textBoxTeamId.Location = new System.Drawing.Point(13, 57);
+            this.noTr_textBoxTeamId.Location = new System.Drawing.Point(13, 64);
             this.noTr_textBoxTeamId.Name = "noTr_textBoxTeamId";
             this.noTr_textBoxTeamId.Size = new System.Drawing.Size(214, 20);
             this.noTr_textBoxTeamId.TabIndex = 0;
             this.noTr_textBoxTeamId.Text = "0";
             // 
-            // label1
+            // labelInsertTeamId
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 26);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Please enter the ID of the team you are\r\ninterested in. 0 defaults to your team.";
+            this.labelInsertTeamId.Location = new System.Drawing.Point(12, 14);
+            this.labelInsertTeamId.Name = "labelInsertTeamId";
+            this.labelInsertTeamId.Size = new System.Drawing.Size(215, 46);
+            this.labelInsertTeamId.TabIndex = 3;
+            this.labelInsertTeamId.Text = "Please enter the ID of the team you are\r\ninterested in. 0 defaults to your team.";
+            this.labelInsertTeamId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // radioButtonOwner
             // 
@@ -119,21 +119,21 @@
             // 
             // labelFrom
             // 
-            this.labelFrom.AutoSize = true;
-            this.labelFrom.Location = new System.Drawing.Point(23, 148);
+            this.labelFrom.Location = new System.Drawing.Point(2, 146);
             this.labelFrom.Name = "labelFrom";
-            this.labelFrom.Size = new System.Drawing.Size(27, 13);
+            this.labelFrom.Size = new System.Drawing.Size(45, 18);
             this.labelFrom.TabIndex = 8;
             this.labelFrom.Text = "from";
+            this.labelFrom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelTo
             // 
-            this.labelTo.AutoSize = true;
-            this.labelTo.Location = new System.Drawing.Point(32, 174);
+            this.labelTo.Location = new System.Drawing.Point(5, 174);
             this.labelTo.Name = "labelTo";
-            this.labelTo.Size = new System.Drawing.Size(16, 13);
+            this.labelTo.Size = new System.Drawing.Size(42, 13);
             this.labelTo.TabIndex = 8;
             this.labelTo.Text = "to";
+            this.labelTo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // TeamIdDialog
             // 
@@ -148,7 +148,7 @@
             this.Controls.Add(this.noTr_dateTimePickerFrom);
             this.Controls.Add(this.radioButtonPeriod);
             this.Controls.Add(this.radioButtonOwner);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelInsertTeamId);
             this.Controls.Add(this.noTr_textBoxTeamId);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
@@ -167,7 +167,7 @@
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.TextBox noTr_textBoxTeamId;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelInsertTeamId;
         private System.Windows.Forms.RadioButton radioButtonOwner;
         private System.Windows.Forms.RadioButton radioButtonPeriod;
         private System.Windows.Forms.DateTimePicker noTr_dateTimePickerFrom;

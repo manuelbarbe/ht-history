@@ -29,13 +29,11 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.labelVersion = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-#if !MONO
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-#endif            
-			this.SuspendLayout();
+            this.noTr_labelProductName = new System.Windows.Forms.Label();
+            this.noTr_labelVersion = new System.Windows.Forms.Label();
+            this.noTr_labelCreators = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.SuspendLayout();
             // 
             // button1
             // 
@@ -57,34 +55,34 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // noTr_labelProductName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(223, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 31);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "HT-History";
+            this.noTr_labelProductName.AutoSize = true;
+            this.noTr_labelProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noTr_labelProductName.Location = new System.Drawing.Point(223, 16);
+            this.noTr_labelProductName.Name = "noTr_labelProductName";
+            this.noTr_labelProductName.Size = new System.Drawing.Size(146, 31);
+            this.noTr_labelProductName.TabIndex = 2;
+            this.noTr_labelProductName.Text = "HT-History";
             // 
-            // labelVersion
+            // noTr_labelVersion
             // 
-            this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(229, 51);
-            this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(41, 13);
-            this.labelVersion.TabIndex = 3;
-            this.labelVersion.Text = "version";
+            this.noTr_labelVersion.AutoSize = true;
+            this.noTr_labelVersion.Location = new System.Drawing.Point(229, 51);
+            this.noTr_labelVersion.Name = "noTr_labelVersion";
+            this.noTr_labelVersion.Size = new System.Drawing.Size(41, 13);
+            this.noTr_labelVersion.TabIndex = 3;
+            this.noTr_labelVersion.Text = "version";
             // 
-            // label2
+            // noTr_labelCreators
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(226, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(191, 48);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Software by manuhell\r\n\r\nLogo by harrymoon (from flickr)";
+            this.noTr_labelCreators.AutoSize = true;
+            this.noTr_labelCreators.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noTr_labelCreators.Location = new System.Drawing.Point(226, 107);
+            this.noTr_labelCreators.Name = "noTr_labelCreators";
+            this.noTr_labelCreators.Size = new System.Drawing.Size(191, 48);
+            this.noTr_labelCreators.TabIndex = 4;
+            this.noTr_labelCreators.Text = "Software by manuhell\r\n\r\nLogo by harrymoon (from flickr)";
             // 
             // AboutBox
             // 
@@ -92,9 +90,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 272);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labelVersion);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.noTr_labelCreators);
+            this.Controls.Add(this.noTr_labelVersion);
+            this.Controls.Add(this.noTr_labelProductName);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -106,10 +104,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AboutBox";
-#if !MONO
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-#endif            
-			this.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.ResumeLayout(false);
             this.PerformLayout();
 
         }
@@ -118,9 +114,9 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label labelVersion;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label noTr_labelProductName;
+        private System.Windows.Forms.Label noTr_labelVersion;
+        private System.Windows.Forms.Label noTr_labelCreators;
 
     }
 }

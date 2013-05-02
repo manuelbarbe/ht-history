@@ -3,7 +3,38 @@
   <Creator>manuhell</Creator>
   <Language>Deutsch</Language>
   <Translations>
+    <Translation id="Form1">HT-History</Translation>
+    <Translation id="fileToolStripMenuItem">&amp;Datei</Translation>
+    <Translation id="settingsToolStripMenuItem">&amp;Einstellungen</Translation>
+    <Translation id="aboutToolStripMenuItem">&amp;Über</Translation>
+    <Translation id="clearCacheToolStripMenuItem">Cache löschen...</Translation>
+    <Translation id="exitToolStripMenuItem">Beenden</Translation>
+    <Translation id="proxyToolStripMenuItem">Proxy konfigurieren...</Translation>
+    <Translation id="columnsToolStripMenuItem">Spalten definieren...</Translation>
+    <Translation id="languageToolStripMenuItem">Sprache</Translation>
+    <Translation id="helpToolStripMenuItem">Hilfe</Translation>
+    <Translation id="updateToolStripMenuItem">Auf Updates prüfen</Translation>
+    <Translation id="aboutHtHistoryToolStripMenuItem">Über HT-History...</Translation>
+    <Translation id="labelTeamId">Team-ID</Translation>
+    <Translation id="labelOppId">Gegner-ID</Translation>
+    <Translation id="labelMatchType">Wettbewerb</Translation>
+    <Translation id="labelVenue">Ort</Translation>
+    <Translation id="labelForfaits">Walkovers</Translation>
+    <Translation id="checkBoxForfaitsExcluded">nicht berücksichtigt</Translation>
+    <Translation id="labelSeason">Saison</Translation>
+    <Translation id="buttonRefresh">Aktualisieren</Translation>
+    <Translation id="buttonCancel">Abbrechen</Translation>
+    <Translation id="buttonOk">OK</Translation>
+    <Translation id="TeamIdDialog">OK</Translation>
+    <Translation id="labelInsertTeamId">Bitte geben Sie die Team-ID ein. 0 wählt automatisch das Team des CHPP-Benutzers.</Translation>
+    <Translation id="labelFrom">von:</Translation>
+    <Translation id="labelTo">bis:</Translation>
+    <Translation id="AboutBox">Über HT-History</Translation>
+    <Translation id="WebProxyDialog">Proxy-Konfiguration</Translation>
+    <Translation id="labelEnterProxyUri">Bitte geben Sie die URI des Proxys ein:</Translation>
+    <Translation id="buttonTestProxy">Testen</Translation>
     <Translation id="radioButtonOwner">Derzeitiger Manager</Translation>
+    <Translation id="radioButtonPeriod">Definierter Zeitraum</Translation>
     <Translation id="label1">Das Dach, das Dach, das Dach brennt. Wir brauchen hier kein Wasser, lass das Dach doch einfach brennen.</Translation>
   </Translations>
 </HtHistoryTranslation>

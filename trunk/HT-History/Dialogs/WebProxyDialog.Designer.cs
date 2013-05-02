@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.buttonOK = new System.Windows.Forms.Button();
+            this.buttonOk = new System.Windows.Forms.Button();
             this.labelEnterProxyUri = new System.Windows.Forms.Label();
             this.noTr_textBoxProxyURI = new System.Windows.Forms.TextBox();
-            this.buttonTest = new System.Windows.Forms.Button();
+            this.buttonTestProxy = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCancel
@@ -46,17 +46,17 @@
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // buttonOK
+            // buttonOk
             // 
-            this.buttonOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(214, 117);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(75, 23);
-            this.buttonOK.TabIndex = 1;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOk.Location = new System.Drawing.Point(214, 117);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.TabIndex = 1;
+            this.buttonOk.Text = "OK";
+            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.Click += new System.EventHandler(this.buttonOK_Click);
             // 
             // labelEnterProxyUri
             // 
@@ -76,28 +76,28 @@
             this.noTr_textBoxProxyURI.Size = new System.Drawing.Size(273, 20);
             this.noTr_textBoxProxyURI.TabIndex = 3;
             // 
-            // buttonTest
+            // buttonTestProxy
             // 
-            this.buttonTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonTest.Location = new System.Drawing.Point(295, 43);
-            this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(75, 23);
-            this.buttonTest.TabIndex = 4;
-            this.buttonTest.Text = "Test";
-            this.buttonTest.UseVisualStyleBackColor = true;
-            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
+            this.buttonTestProxy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTestProxy.Location = new System.Drawing.Point(295, 43);
+            this.buttonTestProxy.Name = "buttonTestProxy";
+            this.buttonTestProxy.Size = new System.Drawing.Size(75, 23);
+            this.buttonTestProxy.TabIndex = 4;
+            this.buttonTestProxy.Text = "Test";
+            this.buttonTestProxy.UseVisualStyleBackColor = true;
+            this.buttonTestProxy.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // WebProxyDialog
             // 
-            this.AcceptButton = this.buttonOK;
+            this.AcceptButton = this.buttonOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(382, 152);
-            this.Controls.Add(this.buttonTest);
+            this.Controls.Add(this.buttonTestProxy);
             this.Controls.Add(this.noTr_textBoxProxyURI);
             this.Controls.Add(this.labelEnterProxyUri);
-            this.Controls.Add(this.buttonOK);
+            this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.Icon = global::HtHistory.Images.ht_history_ball1;
             this.Name = "WebProxyDialog";
@@ -111,9 +111,9 @@
         #endregion
 
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.Button buttonOK;
+        private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Label labelEnterProxyUri;
         private System.Windows.Forms.TextBox noTr_textBoxProxyURI;
-        private System.Windows.Forms.Button buttonTest;
+        private System.Windows.Forms.Button buttonTestProxy;
     }
 }

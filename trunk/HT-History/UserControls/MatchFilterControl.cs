@@ -72,7 +72,7 @@ namespace HtHistory.UserControls
             listBoxType.Enabled = true;
             listBoxVenue.Enabled = true;
             noTr_textBoxOpponentId.Enabled = true;
-            checkBoxForfait.Enabled = true;
+            checkBoxForfaitsExcluded.Enabled = true;
         }
 
         #endregion
@@ -115,7 +115,7 @@ namespace HtHistory.UserControls
             intersectionFilters.Add(GetFilterFromTaggedObjects(listBoxType.SelectedItems));
             intersectionFilters.Add(GetFilterFromTaggedObjects(listBoxSeason.SelectedItems));
 
-            if (checkBoxForfait.Checked) intersectionFilters.Add(new MatchFilterNoForfaits());
+            if (checkBoxForfaitsExcluded.Checked) intersectionFilters.Add(new MatchFilterNoForfaits());
 
             return new MatchFilterIntersectionSet(intersectionFilters);
         }
