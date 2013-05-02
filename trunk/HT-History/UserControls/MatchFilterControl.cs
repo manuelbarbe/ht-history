@@ -63,7 +63,7 @@ namespace HtHistory.UserControls
 
         public void Prepare(uint teamId, DateTime from, DateTime to)
         {
-            textBoxTeamId.Text = teamId.ToString();
+            noTr_textBoxTeamId.Text = teamId.ToString();
             InitializeVenue(teamId);
             InitializeSeasons(new HtTime(from).Season, new HtTime(to).Season);
             InitializeType();
@@ -71,7 +71,7 @@ namespace HtHistory.UserControls
             listBoxSeason.Enabled = true;
             listBoxType.Enabled = true;
             listBoxVenue.Enabled = true;
-            textBoxOpponentId.Enabled = true;
+            noTr_textBoxOpponentId.Enabled = true;
             checkBoxForfait.Enabled = true;
         }
 
@@ -106,7 +106,7 @@ namespace HtHistory.UserControls
             IList<IMatchFilter> intersectionFilters = new List<IMatchFilter>();
 
             uint opponentId;
-            if (uint.TryParse(textBoxOpponentId.Text, out opponentId))
+            if (uint.TryParse(noTr_textBoxOpponentId.Text, out opponentId))
             {
                 intersectionFilters.Add(new MatchFilterTeam(opponentId));
             }

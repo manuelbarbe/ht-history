@@ -64,6 +64,20 @@ namespace HtHistory
             menuStrip.Translate(Environment.Translator);
         }
 
+        public void OnLanguageChanged(object sender, EventArgs e)
+        {
+            ToolStripMenuItem item = sender as ToolStripMenuItem;
+            if (item != null)
+            {
+                ITranslator t = item.Tag as ITranslator;
+                if (t != null)
+                {
+                    Environment.Translator = t;
+                    this.Translate(t);
+                }
+            }
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             try
@@ -74,6 +88,14 @@ namespace HtHistory
                     {
                         _settings.Load(SettingsFile);
                     });
+                }
+
+                languageToolStripMenuItem.DropDownItems.Clear();
+                foreach (ITranslator translator in Translation.TranslatorFactory.CreateTranslators().SafeEnum())
+                {
+                    ToolStripMenuItem item = new ToolStripMenuItem(translator.ToString(), null, OnLanguageChanged);
+                    item.Tag = translator;
+                    languageToolStripMenuItem.DropDownItems.Add(item);
                 }
 
                 SetOnlineMode();
@@ -437,11 +459,19 @@ namespace HtHistory
             transfersPage1.ShowTransfers(_transfers);
         }
 
-        private void UpdateTeam(ref uint teamId)
+        private void UpdateTeam(ref uint teamId, DateTime? startDate, DateTime? endDate)
         {
-            TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(teamId);
-            matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
-            teamId = td.ID;
+            //ugly hack ahead
+            if (startDate == null || endDate == null)
+            { // get data from CHPP
+                TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(teamId);
+                matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
+                teamId = td.ID;
+            }
+            else
+            { // use date specified by user input
+                matchFilterControl.Prepare(teamId, startDate.Value, endDate.Value);
+            }
         }
 
         private void UpdateMatches(uint teamId, DateTime? startDate, DateTime? endDate)
@@ -514,7 +544,7 @@ namespace HtHistory
             if (DialogResult.OK == tid.ShowDialog())
             {
                 teamId = tid.TeamId;
-                UpdateTeam(ref teamId);
+                UpdateTeam(ref teamId, tid.StartDate, tid.EndDate);
                 UpdateMatches(teamId, tid.StartDate, tid.EndDate);
             }
 
