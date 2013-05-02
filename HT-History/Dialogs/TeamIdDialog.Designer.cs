@@ -30,7 +30,7 @@
         {
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
-            this.textBoxTeamId = new System.Windows.Forms.TextBox();
+            this.noTr_textBoxTeamId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButtonOwner = new System.Windows.Forms.RadioButton();
             this.radioButtonPeriod = new System.Windows.Forms.RadioButton();
@@ -61,13 +61,13 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // textBoxTeamId
+            // noTr_textBoxTeamId
             // 
-            this.textBoxTeamId.Location = new System.Drawing.Point(13, 57);
-            this.textBoxTeamId.Name = "textBoxTeamId";
-            this.textBoxTeamId.Size = new System.Drawing.Size(214, 20);
-            this.textBoxTeamId.TabIndex = 0;
-            this.textBoxTeamId.Text = "0";
+            this.noTr_textBoxTeamId.Location = new System.Drawing.Point(13, 57);
+            this.noTr_textBoxTeamId.Name = "noTr_textBoxTeamId";
+            this.noTr_textBoxTeamId.Size = new System.Drawing.Size(214, 20);
+            this.noTr_textBoxTeamId.TabIndex = 0;
+            this.noTr_textBoxTeamId.Text = "0";
             // 
             // label1
             // 
@@ -149,7 +149,7 @@
             this.Controls.Add(this.radioButtonPeriod);
             this.Controls.Add(this.radioButtonOwner);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxTeamId);
+            this.Controls.Add(this.noTr_textBoxTeamId);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -166,7 +166,7 @@
 
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.TextBox textBoxTeamId;
+        private System.Windows.Forms.TextBox noTr_textBoxTeamId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonOwner;
         private System.Windows.Forms.RadioButton radioButtonPeriod;

@@ -161,6 +161,8 @@
     <Compile Include="Translation\FallbackTranslator.cs" />
     <Compile Include="Translation\ITranslator.cs" />
     <Compile Include="Translation\NullTranslator.cs" />
+    <Compile Include="Translation\TranslatorFactory.cs" />
+    <Compile Include="Translation\XmlTranslator.cs" />
     <Compile Include="Update\IUpdater.cs" />
     <Compile Include="Update\UpdaterHttpFile.cs" />
     <Compile Include="UserControls\ControlExtensions.cs" />
@@ -260,6 +262,9 @@
     </Content>
     <None Include="Resources\Icon1.ico" />
     <None Include="Resources\ht-history_ball.ico" />
+    <Content Include="Locales\de.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

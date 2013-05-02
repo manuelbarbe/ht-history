@@ -23,7 +23,7 @@ namespace HtHistory
         {
             try
             {
-                IWebProxy proxy = string.IsNullOrEmpty(textBoxProxyURI.Text) ? null : new WebProxy(new Uri(textBoxProxyURI.Text));
+                IWebProxy proxy = string.IsNullOrEmpty(noTr_textBoxProxyURI.Text) ? null : new WebProxy(new Uri(noTr_textBoxProxyURI.Text));
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://www.google.com");
                 request.Proxy = proxy;
                 request.Timeout = 10000; // 10 sec.
@@ -40,12 +40,12 @@ namespace HtHistory
 
         private void WebProxyDialog_Load(object sender, EventArgs e)
         {
-            textBoxProxyURI.Text = WebProxyUri ?? string.Empty;
+            noTr_textBoxProxyURI.Text = WebProxyUri ?? string.Empty;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            WebProxyUri = textBoxProxyURI.Text;
+            WebProxyUri = noTr_textBoxProxyURI.Text;
         }
     }
 }

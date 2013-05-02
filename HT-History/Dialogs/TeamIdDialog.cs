@@ -15,7 +15,7 @@ namespace HtHistory.Dialogs
         public TeamIdDialog(uint teamId = 0)
         {
             InitializeComponent();
-            textBoxTeamId.Text = teamId.ToString();
+            noTr_textBoxTeamId.Text = teamId.ToString();
             noTr_dateTimePickerFrom.MaxDate =
             noTr_dateTimePickerTo.MaxDate =
             noTr_dateTimePickerTo.Value =
@@ -72,7 +72,7 @@ namespace HtHistory.Dialogs
 
             try
             {
-                _teamId = uint.Parse(textBoxTeamId.Text);
+                _teamId = uint.Parse(noTr_textBoxTeamId.Text);
             }
             catch
             {

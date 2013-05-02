@@ -30,8 +30,8 @@
         {
             this.labelTeamId = new System.Windows.Forms.Label();
             this.labelOppId = new System.Windows.Forms.Label();
-            this.textBoxTeamId = new System.Windows.Forms.TextBox();
-            this.textBoxOpponentId = new System.Windows.Forms.TextBox();
+            this.noTr_textBoxTeamId = new System.Windows.Forms.TextBox();
+            this.noTr_textBoxOpponentId = new System.Windows.Forms.TextBox();
             this.labelVenue = new System.Windows.Forms.Label();
             this.listBoxVenue = new System.Windows.Forms.ListBox();
             this.labelSeason = new System.Windows.Forms.Label();
@@ -60,24 +60,24 @@
             this.labelOppId.TabIndex = 1;
             this.labelOppId.Text = "Opponent ID:\r\n( 0 = all )";
             // 
-            // textBoxTeamId
+            // noTr_textBoxTeamId
             // 
-            this.textBoxTeamId.Enabled = false;
-            this.textBoxTeamId.Location = new System.Drawing.Point(80, 7);
-            this.textBoxTeamId.Name = "textBoxTeamId";
-            this.textBoxTeamId.Size = new System.Drawing.Size(104, 20);
-            this.textBoxTeamId.TabIndex = 2;
-            this.textBoxTeamId.Text = "0";
+            this.noTr_textBoxTeamId.Enabled = false;
+            this.noTr_textBoxTeamId.Location = new System.Drawing.Point(80, 7);
+            this.noTr_textBoxTeamId.Name = "noTr_textBoxTeamId";
+            this.noTr_textBoxTeamId.Size = new System.Drawing.Size(104, 20);
+            this.noTr_textBoxTeamId.TabIndex = 2;
+            this.noTr_textBoxTeamId.Text = "0";
             // 
-            // textBoxOpponentId
+            // noTr_textBoxOpponentId
             // 
-            this.textBoxOpponentId.Enabled = false;
-            this.textBoxOpponentId.Location = new System.Drawing.Point(80, 51);
-            this.textBoxOpponentId.Name = "textBoxOpponentId";
-            this.textBoxOpponentId.Size = new System.Drawing.Size(104, 20);
-            this.textBoxOpponentId.TabIndex = 2;
-            this.textBoxOpponentId.Text = "0";
-            this.textBoxOpponentId.TextChanged += new System.EventHandler(this.RaiseFilterChanged);
+            this.noTr_textBoxOpponentId.Enabled = false;
+            this.noTr_textBoxOpponentId.Location = new System.Drawing.Point(80, 51);
+            this.noTr_textBoxOpponentId.Name = "noTr_textBoxOpponentId";
+            this.noTr_textBoxOpponentId.Size = new System.Drawing.Size(104, 20);
+            this.noTr_textBoxOpponentId.TabIndex = 2;
+            this.noTr_textBoxOpponentId.Text = "0";
+            this.noTr_textBoxOpponentId.TextChanged += new System.EventHandler(this.RaiseFilterChanged);
             // 
             // labelVenue
             // 
@@ -191,8 +191,8 @@
             this.Controls.Add(this.labelSeason);
             this.Controls.Add(this.listBoxVenue);
             this.Controls.Add(this.labelVenue);
-            this.Controls.Add(this.textBoxOpponentId);
-            this.Controls.Add(this.textBoxTeamId);
+            this.Controls.Add(this.noTr_textBoxOpponentId);
+            this.Controls.Add(this.noTr_textBoxTeamId);
             this.Controls.Add(this.labelOppId);
             this.Controls.Add(this.labelTeamId);
             this.Name = "MatchFilterControl";
@@ -206,8 +206,8 @@
 
         private System.Windows.Forms.Label labelTeamId;
         private System.Windows.Forms.Label labelOppId;
-        private System.Windows.Forms.TextBox textBoxTeamId;
-        private System.Windows.Forms.TextBox textBoxOpponentId;
+        private System.Windows.Forms.TextBox noTr_textBoxTeamId;
+        private System.Windows.Forms.TextBox noTr_textBoxOpponentId;
         private System.Windows.Forms.Label labelVenue;
         private System.Windows.Forms.ListBox listBoxVenue;
         private System.Windows.Forms.Label labelSeason;

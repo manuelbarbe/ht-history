@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PleaseWaitDialog));
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelPleaseBePatient = new System.Windows.Forms.Label();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.labelStatus = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // labelPleaseBePatient
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Please be patient.";
+            this.labelPleaseBePatient.AutoSize = true;
+            this.labelPleaseBePatient.BackColor = System.Drawing.Color.Transparent;
+            this.labelPleaseBePatient.ForeColor = System.Drawing.Color.White;
+            this.labelPleaseBePatient.Location = new System.Drawing.Point(12, 9);
+            this.labelPleaseBePatient.Name = "labelPleaseBePatient";
+            this.labelPleaseBePatient.Size = new System.Drawing.Size(92, 13);
+            this.labelPleaseBePatient.TabIndex = 0;
+            this.labelPleaseBePatient.Text = "Please be patient.";
             // 
             // progressBar1
             // 
@@ -51,12 +51,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.Location = new System.Drawing.Point(15, 28);
             this.progressBar1.Name = "progressBar1";
-#if MONO
-            // check reason for this
-            this.progressBar1.Size = new System.Drawing.Size(148, 16);
-#else
             this.progressBar1.Size = new System.Drawing.Size(163, 16);
-#endif
             this.progressBar1.TabIndex = 1;
             // 
             // labelStatus
@@ -64,12 +59,7 @@
             this.labelStatus.AutoSize = true;
             this.labelStatus.BackColor = System.Drawing.Color.Transparent;
             this.labelStatus.ForeColor = System.Drawing.Color.White;
-#if MONO
-            // check reason for this
-            this.labelStatus.Location = new System.Drawing.Point(12, 164);
-#else
             this.labelStatus.Location = new System.Drawing.Point(12, 184);
-#endif
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(0, 13);
             this.labelStatus.TabIndex = 2;
@@ -84,13 +74,10 @@
             this.ControlBox = false;
             this.Controls.Add(this.labelStatus);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelPleaseBePatient);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-#if !MONO
-			//TODO: check why this is not working with mono
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-#endif      
-			this.MaximizeBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PleaseWaitDialog";
             this.Text = "Work in progress...";
@@ -101,7 +88,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPleaseBePatient;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label labelStatus;
     }

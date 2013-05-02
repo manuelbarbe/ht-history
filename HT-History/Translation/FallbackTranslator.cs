@@ -15,7 +15,7 @@ namespace HtHistory.Translation
 
         public FallbackTranslator(ITranslator defaultTranslator, ITranslator fallback)
         {
-            if (_defaultTranslator == null) throw new ArgumentNullException("defaultTranslator");
+            if (defaultTranslator == null) throw new ArgumentNullException("defaultTranslator");
             _defaultTranslator = defaultTranslator;
             _fallback = fallback;
         }
@@ -41,6 +41,11 @@ namespace HtHistory.Translation
                 res = _fallback.TryTranslate(metaname, out translation);
             }
             return res;
+        }
+
+        public override string ToString()
+        {
+            return _defaultTranslator.ToString();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace HtHistory.UserControls
                 string metaname = control.Name;
 
                 Control parent = control.Parent;
-                while (parent != null)
+                while (false)// (parent != null)
                 {
                     metaname = string.Format("{0}.{1}", parent.Name, metaname);
                     parent = parent.Parent;
@@ -41,7 +41,7 @@ namespace HtHistory.UserControls
             string metaname = item.Name;
 
             ToolStripItem parent = item.OwnerItem;
-            while (parent != null)
+            while (false)// (parent != null)
             {
                 metaname = string.Format("{0}.{1}", parent.Name, metaname);
                 parent = parent.OwnerItem;

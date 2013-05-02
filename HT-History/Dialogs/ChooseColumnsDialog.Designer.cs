@@ -28,24 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseColumnsDialog));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelAvailableColumns = new System.Windows.Forms.Label();
             this.listBoxLeft = new System.Windows.Forms.ListBox();
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonUp = new System.Windows.Forms.Button();
             this.buttonRemove = new System.Windows.Forms.Button();
             this.listBoxRight = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.labelSelectedColumns = new System.Windows.Forms.Label();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonOk = new System.Windows.Forms.Button();
             this.labelName = new System.Windows.Forms.Label();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-#if !MONO
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-#endif            
-			this.splitContainer1.Panel1.SuspendLayout();
+            this.noTr_textBoxName = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +58,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.buttonAdd);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.labelAvailableColumns);
             this.splitContainer1.Panel1.Controls.Add(this.listBoxLeft);
             // 
             // splitContainer1.Panel2
@@ -70,7 +67,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.buttonUp);
             this.splitContainer1.Panel2.Controls.Add(this.buttonRemove);
             this.splitContainer1.Panel2.Controls.Add(this.listBoxRight);
-            this.splitContainer1.Panel2.Controls.Add(this.label2);
+            this.splitContainer1.Panel2.Controls.Add(this.labelSelectedColumns);
             this.splitContainer1.Size = new System.Drawing.Size(627, 271);
             this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.TabIndex = 0;
@@ -87,14 +84,14 @@
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // label1
+            // labelAvailableColumns
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(95, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Available columns:";
+            this.labelAvailableColumns.AutoSize = true;
+            this.labelAvailableColumns.Location = new System.Drawing.Point(13, 13);
+            this.labelAvailableColumns.Name = "labelAvailableColumns";
+            this.labelAvailableColumns.Size = new System.Drawing.Size(95, 13);
+            this.labelAvailableColumns.TabIndex = 1;
+            this.labelAvailableColumns.Text = "Available columns:";
             // 
             // listBoxLeft
             // 
@@ -154,36 +151,36 @@
             this.listBoxRight.DoubleClick += new System.EventHandler(this.listBoxRight_DoubleClick);
             this.listBoxRight.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxRight_KeyDown);
             // 
-            // label2
+            // labelSelectedColumns
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(42, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Selected columns:";
+            this.labelSelectedColumns.AutoSize = true;
+            this.labelSelectedColumns.Location = new System.Drawing.Point(42, 13);
+            this.labelSelectedColumns.Name = "labelSelectedColumns";
+            this.labelSelectedColumns.Size = new System.Drawing.Size(94, 13);
+            this.labelSelectedColumns.TabIndex = 0;
+            this.labelSelectedColumns.Text = "Selected columns:";
             // 
-            // button1
+            // buttonCancel
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Location = new System.Drawing.Point(540, 277);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Cancel";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(540, 277);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 1;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonOk
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button2.Location = new System.Drawing.Point(446, 277);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "OK";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.buttonOk.Location = new System.Drawing.Point(446, 277);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.TabIndex = 2;
+            this.buttonOk.Text = "OK";
+            this.buttonOk.UseVisualStyleBackColor = true;
             // 
             // labelName
             // 
@@ -195,35 +192,33 @@
             this.labelName.TabIndex = 3;
             this.labelName.Text = "Name:";
             // 
-            // textBoxName
+            // noTr_textBoxName
             // 
-            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxName.Location = new System.Drawing.Point(57, 278);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(215, 20);
-            this.textBoxName.TabIndex = 4;
+            this.noTr_textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.noTr_textBoxName.Location = new System.Drawing.Point(57, 278);
+            this.noTr_textBoxName.Name = "noTr_textBoxName";
+            this.noTr_textBoxName.Size = new System.Drawing.Size(215, 20);
+            this.noTr_textBoxName.TabIndex = 4;
             // 
             // ChooseColumnsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 306);
-            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.noTr_textBoxName);
             this.Controls.Add(this.labelName);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonOk);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.splitContainer1);
-            this.Icon = Images.ht_history_ball1;
+            this.Icon = global::HtHistory.Images.ht_history_ball1;
             this.Name = "ChooseColumnsDialog";
             this.Text = "Select colums";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
-#if !MONO
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-#endif
-			this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,17 +227,17 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelAvailableColumns;
         private System.Windows.Forms.ListBox listBoxLeft;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelSelectedColumns;
         private System.Windows.Forms.ListBox listBoxRight;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDown;
         private System.Windows.Forms.Button buttonUp;
         private System.Windows.Forms.Label labelName;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox noTr_textBoxName;
     }
 }

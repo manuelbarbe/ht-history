@@ -42,8 +42,8 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.aboutHtHistoryToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.aboutHtHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPagePlayers = new System.Windows.Forms.TabPage();
             this.comboBoxColumnSets = new System.Windows.Forms.ComboBox();
@@ -55,6 +55,7 @@
             this.transfersPage1 = new HtHistory.Pages.TransfersPage();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.matchFilterControl = new HtHistory.UserControls.MatchFilterControl();
+            this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPagePlayers.SuspendLayout();
@@ -118,7 +119,8 @@
             // 
             this.settingsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.proxyToolStripMenuItem,
-            this.columnsToolStripMenuItem});
+            this.columnsToolStripMenuItem,
+            this.languageToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
             this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.settingsToolStripMenuItem.Text = "Settings";
@@ -126,14 +128,14 @@
             // proxyToolStripMenuItem
             // 
             this.proxyToolStripMenuItem.Name = "proxyToolStripMenuItem";
-            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.proxyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.proxyToolStripMenuItem.Text = "Proxy...";
             this.proxyToolStripMenuItem.Click += new System.EventHandler(this.proxyToolStripMenuItem_Click);
             // 
             // columnsToolStripMenuItem
             // 
             this.columnsToolStripMenuItem.Name = "columnsToolStripMenuItem";
-            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.columnsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.columnsToolStripMenuItem.Text = "Columns...";
             this.columnsToolStripMenuItem.Click += new System.EventHandler(this.columnsToolStripMenuItem_Click);
             // 
@@ -143,7 +145,7 @@
             this.helpToolStripMenuItem,
             this.updateToolStripMenuItem,
             this.toolStripSeparator2,
-            this.aboutHtHistoryToolStripMenuItem1});
+            this.aboutHtHistoryToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.aboutToolStripMenuItem.Text = "About";
@@ -167,22 +169,22 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(175, 6);
             // 
-            // aboutHtHistoryToolStripMenuItem1
+            // aboutHtHistoryToolStripMenuItem
             // 
-            this.aboutHtHistoryToolStripMenuItem1.Name = "aboutHtHistoryToolStripMenuItem1";
-            this.aboutHtHistoryToolStripMenuItem1.Size = new System.Drawing.Size(178, 22);
-            this.aboutHtHistoryToolStripMenuItem1.Text = "About HT-History...";
-            this.aboutHtHistoryToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            this.aboutHtHistoryToolStripMenuItem.Name = "aboutHtHistoryToolStripMenuItem";
+            this.aboutHtHistoryToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.aboutHtHistoryToolStripMenuItem.Text = "About HT-History...";
+            this.aboutHtHistoryToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
-            // button1
+            // buttonRefresh
             // 
-            this.button1.Location = new System.Drawing.Point(102, 119);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 34);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "change team\r\n/ refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRefresh.Location = new System.Drawing.Point(102, 119);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(90, 34);
+            this.buttonRefresh.TabIndex = 13;
+            this.buttonRefresh.Text = "change team\r\n/ refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.button1_Click);
             // 
             // tabControl1
             // 
@@ -300,6 +302,12 @@
             this.matchFilterControl.Size = new System.Drawing.Size(775, 113);
             this.matchFilterControl.TabIndex = 0;
             // 
+            // languageToolStripMenuItem
+            // 
+            this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
+            this.languageToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.languageToolStripMenuItem.Text = "Language";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,7 +315,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(10)))), ((int)(((byte)(0)))));
             this.ClientSize = new System.Drawing.Size(944, 647);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.matchFilterControl);
             this.Controls.Add(this.pictureBox1);
@@ -336,7 +344,7 @@
         private System.Windows.Forms.ToolStripMenuItem clearCacheToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ToolStripMenuItem offlineModeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
@@ -355,8 +363,9 @@
         private System.Windows.Forms.TabPage tabPageTransfers;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem aboutHtHistoryToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem aboutHtHistoryToolStripMenuItem;
         private Pages.TransfersPage transfersPage1;
+        private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
     }
 }
 
