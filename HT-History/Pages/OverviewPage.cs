@@ -164,9 +164,9 @@ namespace HtHistory.Pages
 
         private void InitializeTabs()
         {
-            tabPage1.Text = "Seasons";
-            tabPage2.Text = "Matches";
-            tabPage3.Text = "Goals";
+            tabPagePlayerSeasons.Text = "Seasons";
+            tabPagePlayerMatches.Text = "Matches";
+            tabPagePlayerGoals.Text = "Goals";
         }
 
         private void InitializeContextMenu()

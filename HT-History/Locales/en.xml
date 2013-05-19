@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HtHistoryTranslation version="1.0">
+  <Creator>manuhell</Creator>
+  <Language>English</Language>
+  <Translations>
+    <Translation id="Form1">HT-History</Translation>
+    <Translation id="fileToolStripMenuItem">&amp;File</Translation>
+    <Translation id="settingsToolStripMenuItem">&amp;Settings</Translation>
+    <Translation id="aboutToolStripMenuItem">&amp;About</Translation>
+    <Translation id="clearCacheToolStripMenuItem">Clear cache...</Translation>
+    <Translation id="exitToolStripMenuItem">Exit</Translation>
+    <Translation id="proxyToolStripMenuItem">Proxy settings...</Translation>
+    <Translation id="columnsToolStripMenuItem">Columns...</Translation>
+    <Translation id="languageToolStripMenuItem">Language</Translation>
+    <Translation id="helpToolStripMenuItem">Help</Translation>
+    <Translation id="updateToolStripMenuItem">Check for updates</Translation>
+    <Translation id="aboutHtHistoryToolStripMenuItem">About HT-History...</Translation>
+    <Translation id="labelTeamId">Team-ID</Translation>
+    <Translation id="labelOppId">Opponent-ID
+    (0=all)</Translation>
+    <Translation id="labelMatchType">Type</Translation>
+    <Translation id="labelVenue">Venue</Translation>
+    <Translation id="labelForfaits">Forfeits</Translation>
+    <Translation id="checkBoxForfaitsExcluded">not included</Translation>
+    <Translation id="labelSeason">Season</Translation>
+    <Translation id="buttonRefresh">Refresh</Translation>
+    <Translation id="buttonCancel">Cancel</Translation>
+    <Translation id="buttonOk">OK</Translation>
+    <Translation id="TeamIdDialog">Choose team</Translation>
+    <Translation id="labelInsertTeamId">Please insert your team ID. 0 defaults to your team.</Translation>
+    <Translation id="labelFrom">from:</Translation>
+    <Translation id="labelTo">to:</Translation>
+    <Translation id="AboutBox">About HT-History</Translation>
+    <Translation id="WebProxyDialog">Proxy settings</Translation>
+    <Translation id="labelEnterProxyUri">Please insert the proxy URI:</Translation>
+    <Translation id="buttonTestProxy">Test</Translation>
+    <Translation id="radioButtonOwner">Current manager</Translation>
+    <Translation id="radioButtonPeriod">Specify time period (HT-Time)</Translation>
+    <Translation id="tabPageTransfers">Transfers</Translation>
+    <Translation id="tabPageMatches">Match archive</Translation>
+    <Translation id="tabPagePlayers">Players</Translation>
+    <Translation id="tabPagePlayerSeasons">Seasons</Translation>
+    <Translation id="tabPagePlayerGoals">Goals</Translation>
+    <Translation id="tabPagePlayerMatches">Matches</Translation>
+    <Translation id="labelCurrency">Currency:</Translation>
+    <Translation id="buttonColumns">Columns</Translation>
+  </Translations>
+</HtHistoryTranslation>

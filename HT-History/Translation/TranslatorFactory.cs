@@ -10,9 +10,33 @@ namespace HtHistory.Translation
 {
     public class TranslatorFactory
     {
-        public static IEnumerable<ITranslator> CreateTranslators()
+        public static IEnumerable<ITranslator> Translators { get; private set; }
+        public static ITranslator DefaultTranslator { get; private set; }
+
+        static TranslatorFactory()
         {
-            yield return new DecoratingTranslator(new NullTranslator(), "%%");
+            Translators = CreateTranslators();
+            DefaultTranslator = ChooseDefaultTranslator(Translators);
+        }
+
+        private static ITranslator ChooseDefaultTranslator(IEnumerable<ITranslator> translators)
+        {
+            // "English" is default
+            ITranslator defaultTranslator = translators.FirstOrDefault(t => t.ToString().Equals("English"));
+            if (defaultTranslator == null)
+            { // if "English is not found, choose the first one
+                defaultTranslator = translators.FirstOrDefault();
+                if (defaultTranslator == null)
+                { //if no translator is present, do not translate at all
+                    defaultTranslator = new NullTranslator();
+                }
+            }
+            return defaultTranslator;
+        }
+
+        private static IEnumerable<ITranslator> CreateTranslators()
+        {
+            //yield return new DecoratingTranslator(new NullTranslator(), "%%");
 
             string transDir = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Locales");
             foreach (string file in Directory.GetFiles(transDir, "*.xml"))

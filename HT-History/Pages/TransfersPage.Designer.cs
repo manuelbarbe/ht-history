@@ -28,15 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-#if !MONO			
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            
-			// 
+            this.chartBySeason = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.labelCurrency = new System.Windows.Forms.Label();
+            this.comboBoxCurrency = new System.Windows.Forms.ComboBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.sortableListViewTransfers = new HtHistory.UserControls.SortableListView();
+            ((System.ComponentModel.ISupportInitialize)(this.chartBySeason)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.SuspendLayout();
+            // 
             // chartBySeason
             // 
-            this.chartBySeason = new System.Windows.Forms.DataVisualization.Charting.Chart();
             chartArea1.Name = "ChartArea1";
             this.chartBySeason.ChartAreas.Add(chartArea1);
             this.chartBySeason.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -48,37 +56,26 @@
             series1.Legend = "Legend1";
             series1.Name = "Series1";
             this.chartBySeason.Series.Add(series1);
-            this.chartBySeason.Size = new System.Drawing.Size(379, 43);
+            this.chartBySeason.Size = new System.Drawing.Size(517, 82);
             this.chartBySeason.TabIndex = 0;
             this.chartBySeason.Text = "chart1";
-
-#endif
-            this.label1 = new System.Windows.Forms.Label();
-
-			// 
+            // 
+            // labelCurrency
+            // 
+            this.labelCurrency.AutoSize = true;
+            this.labelCurrency.Location = new System.Drawing.Point(3, 9);
+            this.labelCurrency.Name = "labelCurrency";
+            this.labelCurrency.Size = new System.Drawing.Size(52, 13);
+            this.labelCurrency.TabIndex = 1;
+            this.labelCurrency.Text = "Currency:";
+            // 
             // comboBoxCurrency
-            //
-            this.comboBoxCurrency = new System.Windows.Forms.ComboBox();
-			this.comboBoxCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.comboBoxCurrency.Location = new System.Drawing.Point(58, 6);
+            // 
+            this.comboBoxCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCurrency.Location = new System.Drawing.Point(94, 6);
             this.comboBoxCurrency.Name = "comboBoxCurrency";
             this.comboBoxCurrency.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCurrency.TabIndex = 0;
-            this.comboBoxCurrency.SelectedIndexChanged += this.comboBoxCurrency_SelectedIndexChanged;
-			
-			
-			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.sortableListViewTransfers = new HtHistory.UserControls.SortableListView();
-#if !MONO            
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-#endif            
-			this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-#if !MONO      
-			((System.ComponentModel.ISupportInitialize)(this.chartBySeason)).BeginInit();
-#endif            
-			this.SuspendLayout();
             // 
             // splitContainer1
             // 
@@ -89,7 +86,7 @@
             // 
             // splitContainer1.Panel1
             // 
-			this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.labelCurrency);
             this.splitContainer1.Panel1.Controls.Add(this.comboBoxCurrency);
             this.splitContainer1.Panel1.Controls.Add(this.sortableListViewTransfers);
             // 
@@ -112,16 +109,7 @@
             this.sortableListViewTransfers.TabIndex = 0;
             this.sortableListViewTransfers.UseCompatibleStateImageBehavior = false;
             this.sortableListViewTransfers.View = System.Windows.Forms.View.Details;
-			// 
-            // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Currency:";
-			// 
             // TransfersPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,16 +117,13 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "TransfersPage";
             this.Size = new System.Drawing.Size(517, 315);
+            ((System.ComponentModel.ISupportInitialize)(this.chartBySeason)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
-#if !MONO            
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-#endif            
-			this.splitContainer1.ResumeLayout(false);
-#if !MONO    
-			((System.ComponentModel.ISupportInitialize)(this.chartBySeason)).EndInit();
-#endif            
-			this.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.ResumeLayout(false);
 
         }
 
@@ -148,6 +133,6 @@
         private UserControls.SortableListView sortableListViewTransfers;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartBySeason;
         private System.Windows.Forms.ComboBox comboBoxCurrency;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label labelCurrency;
     }
 }

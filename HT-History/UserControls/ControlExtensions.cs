@@ -38,16 +38,21 @@ namespace HtHistory.UserControls
 
         public static void Translate(this ToolStripMenuItem item, ITranslator translator, bool recursive = true)
         {
-            string metaname = item.Name;
-
-            ToolStripItem parent = item.OwnerItem;
-            while (false)// (parent != null)
+            // Ok, here we go with an ugly convention:
+            // If the name starts with "noTr_", the control is not going to be translated.
+            // (This does not apply to all sub controls automatically)
+            if (!item.Name.StartsWith("noTr_"))
             {
-                metaname = string.Format("{0}.{1}", parent.Name, metaname);
-                parent = parent.OwnerItem;
-            }
-            item.Text = translator.Translate(metaname);
+                string metaname = item.Name;
 
+                ToolStripItem parent = item.OwnerItem;
+                while (false)// (parent != null)
+                {
+                    metaname = string.Format("{0}.{1}", parent.Name, metaname);
+                    parent = parent.OwnerItem;
+                }
+                item.Text = translator.Translate(metaname);
+            }
             if (recursive)
             {
                 foreach (object subobj in item.DropDownItems)
@@ -62,7 +67,14 @@ namespace HtHistory.UserControls
         public static void Translate(this ToolStrip strip, ITranslator translator, bool recursive = true)
         {
             Control control = strip;
-            control.Translate(translator, recursive);
+
+            // Ok, here we go with an ugly convention:
+            // If the name starts with "noTr_", the control is not going to be translated.
+            // (This does not apply to all sub controls automatically)
+            if (!control.Name.StartsWith("noTr_"))
+            {
+                control.Translate(translator, recursive);
+            }
 
             if (recursive)
             {

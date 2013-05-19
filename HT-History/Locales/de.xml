@@ -16,7 +16,8 @@
     <Translation id="updateToolStripMenuItem">Auf Updates prüfen</Translation>
     <Translation id="aboutHtHistoryToolStripMenuItem">Über HT-History...</Translation>
     <Translation id="labelTeamId">Team-ID</Translation>
-    <Translation id="labelOppId">Gegner-ID</Translation>
+    <Translation id="labelOppId">Gegner-ID
+    (0=alle)</Translation>
     <Translation id="labelMatchType">Wettbewerb</Translation>
     <Translation id="labelVenue">Ort</Translation>
     <Translation id="labelForfaits">Walkovers</Translation>
@@ -25,7 +26,7 @@
     <Translation id="buttonRefresh">Aktualisieren</Translation>
     <Translation id="buttonCancel">Abbrechen</Translation>
     <Translation id="buttonOk">OK</Translation>
-    <Translation id="TeamIdDialog">OK</Translation>
+    <Translation id="TeamIdDialog">Team auswählen</Translation>
     <Translation id="labelInsertTeamId">Bitte geben Sie die Team-ID ein. 0 wählt automatisch das Team des CHPP-Benutzers.</Translation>
     <Translation id="labelFrom">von:</Translation>
     <Translation id="labelTo">bis:</Translation>
@@ -34,7 +35,14 @@
     <Translation id="labelEnterProxyUri">Bitte geben Sie die URI des Proxys ein:</Translation>
     <Translation id="buttonTestProxy">Testen</Translation>
     <Translation id="radioButtonOwner">Derzeitiger Manager</Translation>
-    <Translation id="radioButtonPeriod">Definierter Zeitraum</Translation>
-    <Translation id="label1">Das Dach, das Dach, das Dach brennt. Wir brauchen hier kein Wasser, lass das Dach doch einfach brennen.</Translation>
+    <Translation id="radioButtonPeriod">Definierter Zeitraum (HT-Zeit)</Translation>
+    <Translation id="tabPageTransfers">Transfers</Translation>
+    <Translation id="tabPageMatches">Spielarchiv</Translation>
+    <Translation id="tabPagePlayers">Spieler</Translation>
+    <Translation id="tabPagePlayerSeasons">Saisons</Translation>
+    <Translation id="tabPagePlayerGoals">Tore</Translation>
+    <Translation id="tabPagePlayerMatches">Spiele</Translation>
+    <Translation id="labelCurrency">Währung:</Translation>
+    <Translation id="buttonColumns">Spalten</Translation>
   </Translations>
 </HtHistoryTranslation>

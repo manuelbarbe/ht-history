@@ -12,7 +12,7 @@ namespace HtHistory
     {
         public static IDataBridgeFactory DataBridgeFactory { get; set; }
 
-        private static ITranslator _translator = new DecoratingTranslator(new NullTranslator(), "%%");
-        public static ITranslator Translator { get { return _translator; } set { _translator = value; } }
+        //private static ITranslator _translator = new DecoratingTranslator(new NullTranslator(), "%%");
+        //public static ITranslator Translator { get { return _translator; } set { _translator = value; } }
     }
 }
