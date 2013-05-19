@@ -44,6 +44,7 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutHtHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPagePlayers = new System.Windows.Forms.TabPage();
@@ -150,6 +151,7 @@
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripMenuItem,
             this.updateToolStripMenuItem,
+            this.whatsNewToolStripMenuItem,
             this.toolStripSeparator2,
             this.aboutHtHistoryToolStripMenuItem});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
@@ -181,6 +183,13 @@
             this.aboutHtHistoryToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.aboutHtHistoryToolStripMenuItem.Text = "About HT-History...";
             this.aboutHtHistoryToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // whatsNewToolStripMenuItem
+            // 
+            this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.whatsNewToolStripMenuItem.Text = "What\'s new...";
+            this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemWhatsNew_Click);
             // 
             // buttonRefresh
             // 
@@ -247,7 +256,7 @@
             this.tabPageMatches.Location = new System.Drawing.Point(4, 22);
             this.tabPageMatches.Name = "tabPageMatches";
             this.tabPageMatches.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMatches.Size = new System.Drawing.Size(909, 448);
+            this.tabPageMatches.Size = new System.Drawing.Size(849, 448);
             this.tabPageMatches.TabIndex = 3;
             this.tabPageMatches.Text = "Matches";
             this.tabPageMatches.UseVisualStyleBackColor = true;
@@ -258,7 +267,7 @@
             this.tabPageTransfers.Location = new System.Drawing.Point(4, 22);
             this.tabPageTransfers.Name = "tabPageTransfers";
             this.tabPageTransfers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageTransfers.Size = new System.Drawing.Size(909, 448);
+            this.tabPageTransfers.Size = new System.Drawing.Size(849, 448);
             this.tabPageTransfers.TabIndex = 4;
             this.tabPageTransfers.Text = "Transfers";
             this.tabPageTransfers.UseVisualStyleBackColor = true;
@@ -288,7 +297,7 @@
             this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.matchesPage1.Location = new System.Drawing.Point(3, 3);
             this.matchesPage1.Name = "matchesPage1";
-            this.matchesPage1.Size = new System.Drawing.Size(903, 442);
+            this.matchesPage1.Size = new System.Drawing.Size(843, 442);
             this.matchesPage1.TabIndex = 0;
             // 
             // transfersPage1
@@ -296,7 +305,7 @@
             this.transfersPage1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.transfersPage1.Location = new System.Drawing.Point(3, 3);
             this.transfersPage1.Name = "transfersPage1";
-            this.transfersPage1.Size = new System.Drawing.Size(903, 442);
+            this.transfersPage1.Size = new System.Drawing.Size(843, 442);
             this.transfersPage1.TabIndex = 0;
             // 
             // matchFilterControl
@@ -366,6 +375,7 @@
         private System.Windows.Forms.ToolStripMenuItem aboutHtHistoryToolStripMenuItem;
         private Pages.TransfersPage transfersPage1;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whatsNewToolStripMenuItem;
     }
 }
 
