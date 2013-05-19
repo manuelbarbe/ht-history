@@ -33,6 +33,8 @@ namespace HtHistory
 {
     public partial class Form1 : Form
     {
+        private ITranslator _translator = TranslatorFactory.DefaultTranslator;
+
         private ComfortSettings _settings = new ComfortSettings();
         private static readonly string BaseDirectory;
         private static readonly string DataDirectory;
@@ -60,8 +62,8 @@ namespace HtHistory
             Version v = Assembly.GetExecutingAssembly().GetName().Version;
             string version = String.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
             this.Text = String.Format("HT-History by manuhell, {0}", version);
-            this.Translate(Environment.Translator);
-            menuStrip.Translate(Environment.Translator);
+            this.Translate(_translator);
+            menuStrip.Translate(_translator);
         }
 
         public void OnLanguageChanged(object sender, EventArgs e)
@@ -72,7 +74,7 @@ namespace HtHistory
                 ITranslator t = item.Tag as ITranslator;
                 if (t != null)
                 {
-                    Environment.Translator = t;
+                    _translator = t;
                     this.Translate(t);
                     this.menuStrip.Translate(t);
                 }
@@ -92,10 +94,11 @@ namespace HtHistory
                 }
 
                 languageToolStripMenuItem.DropDownItems.Clear();
-                foreach (ITranslator translator in Translation.TranslatorFactory.CreateTranslators().SafeEnum())
+                foreach (ITranslator translator in Translation.TranslatorFactory.Translators.SafeEnum())
                 {
                     ToolStripMenuItem item = new ToolStripMenuItem(translator.ToString(), null, OnLanguageChanged);
                     item.Tag = translator;
+                    item.Name = "noTr_" + Guid.NewGuid().ToString();
                     languageToolStripMenuItem.DropDownItems.Add(item);
                 }
 
@@ -155,7 +158,7 @@ namespace HtHistory
             {
                 using (AuthorizeDialog authDlg = new AuthorizeDialog())
                 {
-                    authDlg.Translate(Environment.Translator);
+                    authDlg.Translate(_translator);
                     DialogResult res = authDlg.ShowDialog();
                     if (res != DialogResult.OK)
                     {
@@ -248,7 +251,7 @@ namespace HtHistory
             {
                 using (WebProxyDialog diag = new WebProxyDialog())
                 {
-                    diag.Translate(Environment.Translator);
+                    diag.Translate(_translator);
                     string proxy;
                     _settings.TryGetValue("proxy", out proxy);
                     diag.WebProxyUri = proxy ?? string.Empty;
@@ -363,7 +366,7 @@ namespace HtHistory
                 {
                     var shownRawColumns = _settings.ActiveColumnSet.Columns;
                     Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(shownRawColumns), shownRawColumns, _settings.ActiveColumnSet.Name);
-                    ccd.Translate(Environment.Translator);
+                    ccd.Translate(_translator);
                     if (ccd.ShowDialog() == DialogResult.OK)
                     {
                         IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
@@ -392,7 +395,7 @@ namespace HtHistory
             SaveDo(() =>
                 {
                     Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators(), null, String.Format("Custom set #{0}", comboBoxColumnSets.Items.Count + 1));
-                    ccd.Translate(Environment.Translator);
+                    ccd.Translate(_translator);
                     if (ccd.ShowDialog() == DialogResult.OK)
                     {
                         IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
@@ -431,7 +434,7 @@ namespace HtHistory
             if (cs != null)
             {
                 SetColumns((_settings.ActiveColumnSet = cs));
-                columnsToolStripMenuItem.Enabled = button2.Enabled = cs.Name != "Default";
+                columnsToolStripMenuItem.Enabled = buttonColumns.Enabled = cs.Name != "Default";
             }
 
             TaggedObject to = comboBoxColumnSets.SelectedItem as TaggedObject;
@@ -541,7 +544,7 @@ namespace HtHistory
         private void ChangeTeam(ref uint teamId)
         {
             TeamIdDialog tid = new TeamIdDialog(teamId);
-            tid.Translate(Environment.Translator, true);
+            tid.Translate(_translator, true);
             if (DialogResult.OK == tid.ShowDialog())
             {
                 teamId = tid.TeamId;
@@ -562,7 +565,7 @@ namespace HtHistory
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AboutBox box = new AboutBox();
-            box.Translate(Environment.Translator);
+            box.Translate(_translator);
             box.ShowDialog();
         }
     }

@@ -31,22 +31,20 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.sortableListViewOverview = new HtHistory.UserControls.SortableListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPagePlayerSeasons = new System.Windows.Forms.TabPage();
             this.sortableListViewDetails1 = new HtHistory.UserControls.SortableListView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPagePlayerMatches = new System.Windows.Forms.TabPage();
             this.sortableListViewDetails2 = new HtHistory.UserControls.SortableListView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPagePlayerGoals = new System.Windows.Forms.TabPage();
             this.sortableListViewDetails3 = new HtHistory.UserControls.SortableListView();
-#if !MONO 
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-#endif            
-			this.splitContainer1.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabPagePlayerSeasons.SuspendLayout();
+            this.tabPagePlayerMatches.SuspendLayout();
+            this.tabPagePlayerGoals.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -84,9 +82,9 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPagePlayerSeasons);
+            this.tabControl1.Controls.Add(this.tabPagePlayerMatches);
+            this.tabControl1.Controls.Add(this.tabPagePlayerGoals);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -94,16 +92,16 @@
             this.tabControl1.Size = new System.Drawing.Size(750, 231);
             this.tabControl1.TabIndex = 1;
             // 
-            // tabPage1
+            // tabPagePlayerSeasons
             // 
-            this.tabPage1.Controls.Add(this.sortableListViewDetails1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(742, 205);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPagePlayerSeasons.Controls.Add(this.sortableListViewDetails1);
+            this.tabPagePlayerSeasons.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePlayerSeasons.Name = "tabPagePlayerSeasons";
+            this.tabPagePlayerSeasons.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePlayerSeasons.Size = new System.Drawing.Size(742, 205);
+            this.tabPagePlayerSeasons.TabIndex = 0;
+            this.tabPagePlayerSeasons.Text = "tabPage1";
+            this.tabPagePlayerSeasons.UseVisualStyleBackColor = true;
             // 
             // sortableListViewDetails1
             // 
@@ -116,16 +114,16 @@
             this.sortableListViewDetails1.UseCompatibleStateImageBehavior = false;
             this.sortableListViewDetails1.View = System.Windows.Forms.View.Details;
             // 
-            // tabPage2
+            // tabPagePlayerMatches
             // 
-            this.tabPage2.Controls.Add(this.sortableListViewDetails2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(742, 205);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPagePlayerMatches.Controls.Add(this.sortableListViewDetails2);
+            this.tabPagePlayerMatches.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePlayerMatches.Name = "tabPagePlayerMatches";
+            this.tabPagePlayerMatches.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePlayerMatches.Size = new System.Drawing.Size(742, 205);
+            this.tabPagePlayerMatches.TabIndex = 1;
+            this.tabPagePlayerMatches.Text = "tabPage2";
+            this.tabPagePlayerMatches.UseVisualStyleBackColor = true;
             // 
             // sortableListViewDetails2
             // 
@@ -138,16 +136,16 @@
             this.sortableListViewDetails2.UseCompatibleStateImageBehavior = false;
             this.sortableListViewDetails2.View = System.Windows.Forms.View.Details;
             // 
-            // tabPage3
+            // tabPagePlayerGoals
             // 
-            this.tabPage3.Controls.Add(this.sortableListViewDetails3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(742, 205);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPagePlayerGoals.Controls.Add(this.sortableListViewDetails3);
+            this.tabPagePlayerGoals.Location = new System.Drawing.Point(4, 22);
+            this.tabPagePlayerGoals.Name = "tabPagePlayerGoals";
+            this.tabPagePlayerGoals.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPagePlayerGoals.Size = new System.Drawing.Size(742, 205);
+            this.tabPagePlayerGoals.TabIndex = 2;
+            this.tabPagePlayerGoals.Text = "tabPage3";
+            this.tabPagePlayerGoals.UseVisualStyleBackColor = true;
             // 
             // sortableListViewDetails3
             // 
@@ -169,14 +167,12 @@
             this.Size = new System.Drawing.Size(750, 500);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
-#if !MONO
-			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-#endif            
-			this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
+            this.tabPagePlayerSeasons.ResumeLayout(false);
+            this.tabPagePlayerMatches.ResumeLayout(false);
+            this.tabPagePlayerGoals.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -187,10 +183,10 @@
         protected UserControls.SortableListView sortableListViewDetails1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TabControl tabControl1;
-        protected System.Windows.Forms.TabPage tabPage1;
-        protected System.Windows.Forms.TabPage tabPage2;
+        protected System.Windows.Forms.TabPage tabPagePlayerSeasons;
+        protected System.Windows.Forms.TabPage tabPagePlayerMatches;
         protected UserControls.SortableListView sortableListViewDetails2;
-        protected System.Windows.Forms.TabPage tabPage3;
+        protected System.Windows.Forms.TabPage tabPagePlayerGoals;
         protected UserControls.SortableListView sortableListViewDetails3;
         
     }
