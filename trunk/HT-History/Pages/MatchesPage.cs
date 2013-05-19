@@ -23,24 +23,25 @@ namespace HtHistory.Pages
 
         private void InitializeList()
         {
+            
             this.sortableListViewMatches.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 90 },
-                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Opponent", TextAlign = HorizontalAlignment.Left, Width = 220 },
-                new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
-                new ColumnHeader() { Text = "Venue", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "OppGoals", TextAlign = HorizontalAlignment.Center, Width = 70 },
-                new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "Visitors", TextAlign = HorizontalAlignment.Right, Width = 50 },
-                new ColumnHeader() { Text = "Hatstats", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Defense", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Midfield", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Attack", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "OppHatstats", TextAlign = HorizontalAlignment.Center, Width = 70 },
-                new ColumnHeader() { Text = "OppDefense", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "OppMidfield", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "OppAttack", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderMatchDate", Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 90 },
+                new ColumnHeader() { Name = "columnHeaderMatchWeek", Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderMatchOpponent", Text = "Opponent", TextAlign = HorizontalAlignment.Left, Width = 220 },
+                new ColumnHeader() { Name = "columnHeaderMatchType", Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
+                new ColumnHeader() { Name = "columnHeaderMatchVenue", Text = "Venue", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderMatchGoals", Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderMatchOppGoals", Text = "OppGoals", TextAlign = HorizontalAlignment.Center, Width = 70 },
+                new ColumnHeader() { Name = "columnHeaderMatchMinutes", Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderMatchVisitors", Text = "Visitors", TextAlign = HorizontalAlignment.Right, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderMatchHatstats", Text = "Hatstats", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderMatchDefense", Text = "Defense", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderMatchMidfield", Text = "Midfield", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderMatchAttack", Text = "Attack", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderMatchOppHatstats", Text = "OppHatstats", TextAlign = HorizontalAlignment.Center, Width = 70 },
+                new ColumnHeader() { Name = "columnHeaderMatchOppDefense", Text = "OppDefense", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderMatchOppMidfield", Text = "OppMidfield", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderMatchOppAttack", Text = "OppAttack", TextAlign = HorizontalAlignment.Center, Width = 60 },
             });
 
             sortableListViewMatches

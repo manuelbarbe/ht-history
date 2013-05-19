@@ -76,6 +76,7 @@
             this.comboBoxCurrency.Name = "comboBoxCurrency";
             this.comboBoxCurrency.Size = new System.Drawing.Size(121, 21);
             this.comboBoxCurrency.TabIndex = 0;
+            this.comboBoxCurrency.SelectedIndexChanged += new System.EventHandler(this.comboBoxCurrency_SelectedIndexChanged);
             // 
             // splitContainer1
             // 
