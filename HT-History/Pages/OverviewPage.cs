@@ -79,12 +79,12 @@ namespace HtHistory.Pages
         private void InitializeGoalsList()
         {
             this.sortableListViewDetails3.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
-                new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
-                new ColumnHeader() { Text = "Scored", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "Minute", TextAlign = HorizontalAlignment.Center, Width = 50 }});
+                new ColumnHeader() { Name="columnHeaderPlayerGoalDate", Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Name="columnHeaderPlayerGoalWeek", Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Name="columnHeaderPlayerGoalType", Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
+                new ColumnHeader() { Name="columnHeaderPlayerGoalMatch", Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
+                new ColumnHeader() { Name="columnHeaderPlayerGoalScored", Text = "Scored", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Name="columnHeaderPlayerGoalMinute", Text = "Minute", TextAlign = HorizontalAlignment.Center, Width = 50 }});
 
             sortableListViewDetails3
                 .SetSorter(0, UserControls.SortableListView.TagSorter<DateTime>())
@@ -95,21 +95,21 @@ namespace HtHistory.Pages
         private void InitializeMatchList()
         {
             this.sortableListViewDetails2.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
-                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
-                new ColumnHeader() { Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
-                new ColumnHeader() { Text = "Position", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "In", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "Out", TextAlign = HorizontalAlignment.Center, Width = 50 },
-                new ColumnHeader() { Text = "YellowCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "RedCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Bruised", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Injured", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "MotM", TextAlign = HorizontalAlignment.Center, Width = 60 },
-                new ColumnHeader() { Text = "Stars", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchDate", Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchWeek", Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchType", Text = "Type", TextAlign = HorizontalAlignment.Left, Width = 150 },  
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchMatch", Text = "Match", TextAlign = HorizontalAlignment.Left, Width = 220 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchPosition", Text = "Position", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchMinutes", Text = "Minutes", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchGoals", Text = "Goals", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchIn", Text = "In", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchOut", Text = "Out", TextAlign = HorizontalAlignment.Center, Width = 50 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchYellowCard", Text = "YellowCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchRedCard", Text = "RedCard", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchBruised", Text = "Bruised", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchInjured", Text = "Injured", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchMotM", Text = "MotM", TextAlign = HorizontalAlignment.Center, Width = 60 },
+                new ColumnHeader() { Name = "columnHeaderPlayerMatchStars", Text = "Stars", TextAlign = HorizontalAlignment.Center, Width = 60 },
             });
 
             sortableListViewDetails2
@@ -149,7 +149,12 @@ namespace HtHistory.Pages
             bool first = true;
             foreach (var s in _stats.SafeEnum())
             {
-                var ch = new ColumnHeader() { Text = s.Abbreviation, TextAlign = HorizontalAlignment.Left, Width = first ? 150 : 60, Tag = s };
+                var ch = new ColumnHeader() {
+                    Name = string.Format("playerStatShort_{0}", s.Identifier),
+                    Text = s.Abbreviation,
+                    TextAlign = HorizontalAlignment.Left,
+                    Width = first ? 150 : 60,
+                    Tag = s };
                 listview.Columns.Add(ch);
                 listview.SetSorter(ch.Index, SortableListView.TagSorter(s.GetComparer()));
                 first = false;

@@ -44,6 +44,7 @@ namespace HtHistory.Translation
                 ITranslator t = null;
                 try
                 {
+                    // TODO: english should be fallback!!
                      t = new FallbackTranslator(new XmlTranslator(File.OpenRead(file)), new NullTranslator());
                 }
                 catch (Exception ex)

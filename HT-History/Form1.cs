@@ -426,6 +426,7 @@ namespace HtHistory
         private void SetColumns(ColumnSet set)
         {
             overviewPage1.Stats = set.Columns;
+            overviewPage1.Translate(_translator);
         }
 
         private void comboBoxColumnSets_SelectedIndexChanged(object sender, EventArgs e)

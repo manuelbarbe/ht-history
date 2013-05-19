@@ -34,12 +34,12 @@ namespace HtHistory.Pages
         private void InitializeList()
         {
             this.sortableListViewTransfers.Columns.AddRange(new ColumnHeader[] {
-                new ColumnHeader() { Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 90 },
-                new ColumnHeader() { Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "B/S", TextAlign = HorizontalAlignment.Left, Width = 50 },
-                new ColumnHeader() { Text = "Player", TextAlign = HorizontalAlignment.Left, Width = 220 },
-                new ColumnHeader() { Text = "Team", TextAlign = HorizontalAlignment.Left, Width = 220 },  
-                new ColumnHeader() { Text = "Price", TextAlign = HorizontalAlignment.Left, Width = 100 },
+                new ColumnHeader() { Name ="columnHeaderTransferDate", Text = "Date", TextAlign = HorizontalAlignment.Left, Width = 90 },
+                new ColumnHeader() { Name ="columnHeaderTransferWeek", Text = "Week", TextAlign = HorizontalAlignment.Left, Width = 50 },
+                new ColumnHeader() { Name ="columnHeaderTransferBoughtSold", Text = "B/S", TextAlign = HorizontalAlignment.Left, Width = 80 },
+                new ColumnHeader() { Name ="columnHeaderTransferPlayer", Text = "Player", TextAlign = HorizontalAlignment.Left, Width = 220 },
+                new ColumnHeader() { Name ="columnHeaderTransferTeam", Text = "Team", TextAlign = HorizontalAlignment.Left, Width = 220 },  
+                new ColumnHeader() { Name ="columnHeaderTransferPrice", Text = "Price", TextAlign = HorizontalAlignment.Left, Width = 100 },
             });
 
             sortableListViewTransfers

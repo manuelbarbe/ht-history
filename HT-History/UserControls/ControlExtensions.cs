@@ -31,12 +31,28 @@ namespace HtHistory.UserControls
             {
                 foreach (Control child in control.Controls)
                 {
-                    child.Translate(translator, recursive); // recursive should be "true" here, hehe.
+                    ListView lv = child as ListView;
+                    if (lv != null)
+                    {
+                        lv.Translate(translator, recursive);
+                    }
+                    else
+                    {
+                        ToolStrip ts = child as ToolStrip;
+                        if (ts != null)
+                        {
+                            ts.Translate(translator, recursive);
+                        }
+                        else
+                        {
+                            child.Translate(translator, recursive); // recursive should be "true" here, hehe.
+                        }
+                    }
                 }
             }
         }
 
-        public static void Translate(this ToolStripMenuItem item, ITranslator translator, bool recursive = true)
+        private static void Translate(this ToolStripMenuItem item, ITranslator translator, bool recursive = true)
         {
             // Ok, here we go with an ugly convention:
             // If the name starts with "noTr_", the control is not going to be translated.
@@ -64,7 +80,7 @@ namespace HtHistory.UserControls
 
         }
 
-        public static void Translate(this ToolStrip strip, ITranslator translator, bool recursive = true)
+        private static void Translate(this ToolStrip strip, ITranslator translator, bool recursive = true)
         {
             Control control = strip;
 
@@ -82,6 +98,28 @@ namespace HtHistory.UserControls
                 {
                     ToolStripMenuItem subitem = subobj as ToolStripMenuItem;
                     if (subitem != null) subitem.Translate(translator, recursive);
+                }
+            }
+        }
+
+        private static void Translate(this ListView lv, ITranslator translator, bool recursive = true)
+        {
+            Control control = lv;
+
+            // Ok, here we go with an ugly convention:
+            // If the name starts with "noTr_", the control is not going to be translated.
+            // (This does not apply to all sub controls automatically)
+            if (!control.Name.StartsWith("noTr_"))
+            {
+                control.Translate(translator, recursive);
+            }
+
+            if (recursive)
+            {
+                foreach (object column in lv.Columns)
+                {
+                    ColumnHeader ch = column as ColumnHeader;
+                    if (ch != null) ch.Text = translator.Translate(ch.Name);
                 }
             }
         }
