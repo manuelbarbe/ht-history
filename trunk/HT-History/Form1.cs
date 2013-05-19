@@ -59,11 +59,17 @@ namespace HtHistory
         public Form1()
         {
             InitializeComponent();
-            Version v = Assembly.GetExecutingAssembly().GetName().Version;
-            string version = String.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
+            string version = GetVersionString();
             this.Text = String.Format("HT-History by manuhell, {0}", version);
             this.Translate(_translator);
             menuStrip.Translate(_translator);
+        }
+
+        private static string GetVersionString()
+        {
+            Version v = Assembly.GetExecutingAssembly().GetName().Version;
+            string version = String.Format("v{0}.{1}.{2}", v.Major, v.Minor, v.Build);
+            return version;
         }
 
         public void OnLanguageChanged(object sender, EventArgs e)
@@ -124,6 +130,15 @@ namespace HtHistory
                 ChangeTeam(ref _teamId);
 				
                 matchFilterControl.FilterChanged += UpdateAll;
+
+
+                
+                string lastVersion;
+                if (!_settings.TryGetValue("lastVersion", out lastVersion) || lastVersion != GetVersionString())
+                {
+                    ShowWhatsNewBox();
+                    _settings["lastVersion"] = GetVersionString();
+                }
 
             }
             catch (Exception ex)
@@ -566,6 +581,18 @@ namespace HtHistory
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             AboutBox box = new AboutBox();
+            box.Translate(_translator);
+            box.ShowDialog();
+        }
+
+        private void toolStripMenuItemWhatsNew_Click(object sender, EventArgs e)
+        {
+            ShowWhatsNewBox();
+        }
+
+        private void ShowWhatsNewBox()
+        {
+            WhatsNewBox box = new WhatsNewBox();
             box.Translate(_translator);
             box.ShowDialog();
         }

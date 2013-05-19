@@ -14,6 +14,7 @@
     <Translation id="languageToolStripMenuItem">Sprache</Translation>
     <Translation id="helpToolStripMenuItem">Hilfe</Translation>
     <Translation id="updateToolStripMenuItem">Auf Updates prüfen</Translation>
+    <Translation id="whatsNewToolStripMenuItem">Was ist neu...</Translation>
     <Translation id="aboutHtHistoryToolStripMenuItem">Über HT-History...</Translation>
     <Translation id="labelTeamId">Team-ID</Translation>
     <Translation id="labelOppId">Gegner-ID
@@ -44,6 +45,7 @@
     <Translation id="labelFrom">von:</Translation>
     <Translation id="labelTo">bis:</Translation>
     <Translation id="AboutBox">Über HT-History</Translation>
+    <Translation id="WhatsNewBox">Was ist neu</Translation>
     <Translation id="WebProxyDialog">Proxy-Konfiguration</Translation>
     <Translation id="labelEnterProxyUri">Bitte geben Sie die URI des Proxys ein:</Translation>
     <Translation id="buttonTestProxy">Testen</Translation>

@@ -76,6 +76,12 @@
     <Compile Include="Dialogs\TeamIdDialog.Designer.cs">
       <DependentUpon>TeamIdDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\WhatsNewBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\WhatsNewBox.Designer.cs">
+      <DependentUpon>WhatsNewBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MatchesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\TeamIdDialog.resx">
       <DependentUpon>TeamIdDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\WhatsNewBox.resx">
+      <DependentUpon>WhatsNewBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
