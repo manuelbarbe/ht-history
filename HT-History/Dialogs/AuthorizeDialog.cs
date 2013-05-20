@@ -25,7 +25,7 @@ namespace HtHistory
         {
             try
             {
-                linkLabelRequestUri.Text = _accessor.GetAuthorizeUrl();
+                noTr_linkLabelRequestUri.Text = _accessor.GetAuthorizeUrl();
             }
             catch (Exception ex)
             {
@@ -53,7 +53,7 @@ namespace HtHistory
 
         private void linkLabelRequestUri_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(linkLabelRequestUri.Text);
+            System.Diagnostics.Process.Start(noTr_linkLabelRequestUri.Text);
         }
     }
 }

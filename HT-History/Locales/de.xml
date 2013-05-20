@@ -212,5 +212,8 @@
     <Translation id="labelSelectedColumns">Ausgewählte Spalten:</Translation>
     <Translation id="labelAvailableColumns">Verfügbare Spalten:</Translation>
     <Translation id="labelSpecifyPeriodInfo">Bitte verwenden für Bots, zweite Mannschaften und ehemalige Benutzer!</Translation>
+    <Translation id="AuthorizeDialog">Bitte authorisieren Sie sich</Translation>
+    <Translation id="labelAuthorizeInstructions">TODO</Translation>
+    <Translation id="labelAuthorizeEnterKey"></Translation>
   </Translations>
 </HtHistoryTranslation>

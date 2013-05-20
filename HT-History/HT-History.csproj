@@ -70,6 +70,12 @@
     <Compile Include="Dialogs\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\ChooseItemBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\ChooseItemBox.Designer.cs">
+      <DependentUpon>ChooseItemBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\TeamIdDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\ChooseColumnsDialog.resx">
       <DependentUpon>ChooseColumnsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\ChooseItemBox.resx">
+      <DependentUpon>ChooseItemBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\PlayerDetails.resx">
       <DependentUpon>PlayerDetails.cs</DependentUpon>
