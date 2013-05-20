@@ -33,5 +33,14 @@ namespace HtHistory.Dialogs
                 return listBox1.SelectedItem;
             }
         }
+
+        private void listBox1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItem != null)
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
     }
 }

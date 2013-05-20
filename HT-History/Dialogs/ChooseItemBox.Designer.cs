@@ -36,7 +36,7 @@
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(197, 227);
+            this.button1.Location = new System.Drawing.Point(107, 159);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -51,19 +51,20 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(13, 13);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(259, 199);
+            this.listBox1.Size = new System.Drawing.Size(169, 134);
             this.listBox1.TabIndex = 1;
+            this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
             // 
-            // ChooseLanguageBox
+            // ChooseItemBox
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(194, 194);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
             this.Icon = global::HtHistory.Images.ht_history_ball1;
-            this.Name = "ChooseLanguageBox";
+            this.Name = "ChooseItemBox";
             this.Text = "Språk";
             this.ResumeLayout(false);
 

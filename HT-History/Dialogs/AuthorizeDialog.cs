@@ -39,7 +39,7 @@ namespace HtHistory
         {
             try
             {
-                string[] token_info = _accessor.Authorize(textBoxPIN.Text);
+                string[] token_info = _accessor.Authorize(noTr_textBoxPIN.Text);
                 AccessToken = token_info[0];
                 AccessTokenSecret = token_info[1];
                 DialogResult = DialogResult.OK;
