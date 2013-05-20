@@ -214,6 +214,6 @@
     <Translation id="labelSpecifyPeriodInfo">Bitte verwenden für Bots, zweite Mannschaften und ehemalige Benutzer!</Translation>
     <Translation id="AuthorizeDialog">Bitte authorisieren Sie sich</Translation>
     <Translation id="labelAuthorizeInstructions">Um Ht-History verwenden zu können, müssen sie es bei Hattrick authorisieren. Bitte klicken sie den folgenden Link und gewähren sie HT-History die benötigten Lese-Rechte.</Translation>
-    <Translation id="labelAuthorizeEnterKey">Geben Sie bitte nun den erhaltenen Schlüssel in der Eingabemaske unten ein:</Translation>
+    <Translation id="labelAuthorizeEnterKey">Geben Sie bitte nun den erhaltenen Schlüssel unten in der Eingabemaske ein:</Translation>
   </Translations>
 </HtHistoryTranslation>

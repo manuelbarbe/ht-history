@@ -32,7 +32,7 @@
             this.buttonOk = new System.Windows.Forms.Button();
             this.labelAuthorizeInstructions = new System.Windows.Forms.Label();
             this.labelAuthorizeEnterKey = new System.Windows.Forms.Label();
-            this.textBoxPIN = new System.Windows.Forms.TextBox();
+            this.noTr_textBoxPIN = new System.Windows.Forms.TextBox();
             this.noTr_linkLabelRequestUri = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
@@ -74,12 +74,12 @@
             this.labelAuthorizeEnterKey.TabIndex = 3;
             this.labelAuthorizeEnterKey.Text = "Now enter the received activation key in the box below:";
             // 
-            // textBoxPIN
+            // noTr_textBoxPIN
             // 
-            this.textBoxPIN.Location = new System.Drawing.Point(12, 138);
-            this.textBoxPIN.Name = "textBoxPIN";
-            this.textBoxPIN.Size = new System.Drawing.Size(456, 20);
-            this.textBoxPIN.TabIndex = 4;
+            this.noTr_textBoxPIN.Location = new System.Drawing.Point(12, 138);
+            this.noTr_textBoxPIN.Name = "noTr_textBoxPIN";
+            this.noTr_textBoxPIN.Size = new System.Drawing.Size(456, 20);
+            this.noTr_textBoxPIN.TabIndex = 4;
             // 
             // noTr_linkLabelRequestUri
             // 
@@ -99,7 +99,7 @@
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(486, 221);
             this.Controls.Add(this.noTr_linkLabelRequestUri);
-            this.Controls.Add(this.textBoxPIN);
+            this.Controls.Add(this.noTr_textBoxPIN);
             this.Controls.Add(this.labelAuthorizeEnterKey);
             this.Controls.Add(this.labelAuthorizeInstructions);
             this.Controls.Add(this.buttonOk);
@@ -121,7 +121,7 @@
         private System.Windows.Forms.Button buttonOk;
         private System.Windows.Forms.Label labelAuthorizeInstructions;
         private System.Windows.Forms.Label labelAuthorizeEnterKey;
-        private System.Windows.Forms.TextBox textBoxPIN;
+        private System.Windows.Forms.TextBox noTr_textBoxPIN;
         private System.Windows.Forms.LinkLabel noTr_linkLabelRequestUri;
     }
 }
