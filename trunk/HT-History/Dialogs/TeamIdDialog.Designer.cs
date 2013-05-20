@@ -38,12 +38,13 @@
             this.noTr_dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.labelFrom = new System.Windows.Forms.Label();
             this.labelTo = new System.Windows.Forms.Label();
+            this.labelSpecifyPeriodInfo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(152, 215);
+            this.buttonCancel.Location = new System.Drawing.Point(152, 255);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 2;
@@ -53,7 +54,7 @@
             // buttonOk
             // 
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(71, 215);
+            this.buttonOk.Location = new System.Drawing.Point(71, 255);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 1;
@@ -104,7 +105,7 @@
             // noTr_dateTimePickerFrom
             // 
             this.noTr_dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.noTr_dateTimePickerFrom.Location = new System.Drawing.Point(53, 146);
+            this.noTr_dateTimePickerFrom.Location = new System.Drawing.Point(53, 186);
             this.noTr_dateTimePickerFrom.Name = "noTr_dateTimePickerFrom";
             this.noTr_dateTimePickerFrom.Size = new System.Drawing.Size(174, 20);
             this.noTr_dateTimePickerFrom.TabIndex = 6;
@@ -112,14 +113,14 @@
             // noTr_dateTimePickerTo
             // 
             this.noTr_dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.noTr_dateTimePickerTo.Location = new System.Drawing.Point(53, 172);
+            this.noTr_dateTimePickerTo.Location = new System.Drawing.Point(53, 212);
             this.noTr_dateTimePickerTo.Name = "noTr_dateTimePickerTo";
             this.noTr_dateTimePickerTo.Size = new System.Drawing.Size(174, 20);
             this.noTr_dateTimePickerTo.TabIndex = 7;
             // 
             // labelFrom
             // 
-            this.labelFrom.Location = new System.Drawing.Point(2, 146);
+            this.labelFrom.Location = new System.Drawing.Point(2, 186);
             this.labelFrom.Name = "labelFrom";
             this.labelFrom.Size = new System.Drawing.Size(45, 18);
             this.labelFrom.TabIndex = 8;
@@ -128,12 +129,22 @@
             // 
             // labelTo
             // 
-            this.labelTo.Location = new System.Drawing.Point(5, 174);
+            this.labelTo.Location = new System.Drawing.Point(5, 214);
             this.labelTo.Name = "labelTo";
             this.labelTo.Size = new System.Drawing.Size(42, 13);
             this.labelTo.TabIndex = 8;
             this.labelTo.Text = "to";
             this.labelTo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelSpecifyPeriodInfo
+            // 
+            this.labelSpecifyPeriodInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSpecifyPeriodInfo.ForeColor = System.Drawing.Color.Red;
+            this.labelSpecifyPeriodInfo.Location = new System.Drawing.Point(12, 144);
+            this.labelSpecifyPeriodInfo.Name = "labelSpecifyPeriodInfo";
+            this.labelSpecifyPeriodInfo.Size = new System.Drawing.Size(215, 39);
+            this.labelSpecifyPeriodInfo.TabIndex = 9;
+            this.labelSpecifyPeriodInfo.Text = "For bots, second teams and former users!";
             // 
             // TeamIdDialog
             // 
@@ -141,7 +152,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(241, 250);
+            this.ClientSize = new System.Drawing.Size(241, 290);
+            this.Controls.Add(this.labelSpecifyPeriodInfo);
             this.Controls.Add(this.labelTo);
             this.Controls.Add(this.labelFrom);
             this.Controls.Add(this.noTr_dateTimePickerTo);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.DateTimePicker noTr_dateTimePickerTo;
         private System.Windows.Forms.Label labelFrom;
         private System.Windows.Forms.Label labelTo;
+        private System.Windows.Forms.Label labelSpecifyPeriodInfo;
     }
 }

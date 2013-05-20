@@ -211,5 +211,6 @@
     <Translation id="labelName">Name: </Translation>
     <Translation id="labelSelectedColumns">Ausgewählte Spalten:</Translation>
     <Translation id="labelAvailableColumns">Verfügbare Spalten:</Translation>
+    <Translation id="labelSpecifyPeriodInfo">Bitte verwenden für Bots, zweite Mannschaften und ehemalige Benutzer!</Translation>
   </Translations>
 </HtHistoryTranslation>
