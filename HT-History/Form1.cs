@@ -80,6 +80,7 @@ namespace HtHistory
                 {
                     _translator = t;
                     _settings["language"] = t.ToString();
+                    _settings.Save(SettingsFile);
                     this.Translate(t);
                     //this.menuStrip.Translate(t);
                 }
@@ -88,8 +89,14 @@ namespace HtHistory
 
         private void SetTranslator()
         {
-            _translator = GetTranslatorFromSettings() ?? GetTranslatorFromDialog();
-            _translator = _translator ?? TranslatorFactory.GetDefaultTranslator();           
+            _translator = GetTranslatorFromSettings();
+
+            if (_translator == null)
+            {
+                _translator = GetTranslatorFromDialog() ?? TranslatorFactory.GetDefaultTranslator();
+                _settings["language"] = _translator.ToString();
+                _settings.Save(SettingsFile);
+            }
         }
 
         private ITranslator GetTranslatorFromSettings()
