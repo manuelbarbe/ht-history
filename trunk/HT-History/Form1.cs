@@ -86,7 +86,13 @@ namespace HtHistory
             }
         }
 
-        private void SetTranslatorFromSettings()
+        private void SetTranslator()
+        {
+            _translator = GetTranslatorFromSettings() ?? GetTranslatorFromDialog();
+            _translator = _translator ?? TranslatorFactory.GetDefaultTranslator();           
+        }
+
+        private ITranslator GetTranslatorFromSettings()
         {
             ITranslator t = null;
             string strTranslator;
@@ -94,7 +100,22 @@ namespace HtHistory
             {
                 t = TranslatorFactory.FindTranslator(strTranslator); // null if not found
             }
-            _translator = t ?? TranslatorFactory.GetDefaultTranslator();
+            return t;
+        }
+
+        private static ITranslator GetTranslatorFromDialog()
+        {
+            ITranslator t2 = null;
+            ChooseItemBox chooseLanguageBox = new ChooseItemBox(TranslatorFactory.Translators.Select(t3 => new TaggedObject(t3.ToString(), t3)));
+            if (chooseLanguageBox.ShowDialog() == DialogResult.OK)
+            {
+                TaggedObject to = chooseLanguageBox.Item as TaggedObject;
+                if (to != null)
+                {
+                    t2 = to.Tag as ITranslator;
+                }
+            }
+            return t2;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -109,7 +130,7 @@ namespace HtHistory
                     });
                 }
 
-                SetTranslatorFromSettings();
+                SetTranslator();
                 this.Translate(_translator);
                 //menuStrip.Translate(_translator);
 
@@ -516,12 +537,12 @@ namespace HtHistory
             if (startDate == null || endDate == null)
             { // get data from CHPP
                 TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(teamId);
-                matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime());
+                matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime(), _translator);
                 teamId = td.ID;
             }
             else
             { // use date specified by user input
-                matchFilterControl.Prepare(teamId, startDate.Value, endDate.Value);
+                matchFilterControl.Prepare(teamId, startDate.Value, endDate.Value, _translator);
             }
         }
 

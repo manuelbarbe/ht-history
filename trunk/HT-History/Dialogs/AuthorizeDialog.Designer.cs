@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthorizeDialog));
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelAuthorizeInstructions = new System.Windows.Forms.Label();
+            this.labelAuthorizeEnterKey = new System.Windows.Forms.Label();
             this.textBoxPIN = new System.Windows.Forms.TextBox();
-            this.linkLabelRequestUri = new System.Windows.Forms.LinkLabel();
+            this.noTr_linkLabelRequestUri = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // buttonCancel
@@ -57,23 +56,23 @@
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
-            // label1
+            // labelAuthorizeInstructions
             // 
-            this.label1.Location = new System.Drawing.Point(12, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(462, 30);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "It seems, that you have not authorized this application yet. Please visit the fol" +
+            this.labelAuthorizeInstructions.Location = new System.Drawing.Point(12, 21);
+            this.labelAuthorizeInstructions.Name = "labelAuthorizeInstructions";
+            this.labelAuthorizeInstructions.Size = new System.Drawing.Size(462, 30);
+            this.labelAuthorizeInstructions.TabIndex = 1;
+            this.labelAuthorizeInstructions.Text = "It seems, that you have not authorized this application yet. Please visit the fol" +
                 "lowing URI and grant permission to this product.";
             // 
-            // label2
+            // labelAuthorizeEnterKey
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 108);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(270, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Now enter the received activation key in the box below:";
+            this.labelAuthorizeEnterKey.AutoSize = true;
+            this.labelAuthorizeEnterKey.Location = new System.Drawing.Point(12, 108);
+            this.labelAuthorizeEnterKey.Name = "labelAuthorizeEnterKey";
+            this.labelAuthorizeEnterKey.Size = new System.Drawing.Size(270, 13);
+            this.labelAuthorizeEnterKey.TabIndex = 3;
+            this.labelAuthorizeEnterKey.Text = "Now enter the received activation key in the box below:";
             // 
             // textBoxPIN
             // 
@@ -82,15 +81,15 @@
             this.textBoxPIN.Size = new System.Drawing.Size(456, 20);
             this.textBoxPIN.TabIndex = 4;
             // 
-            // linkLabelRequestUri
+            // noTr_linkLabelRequestUri
             // 
-            this.linkLabelRequestUri.Location = new System.Drawing.Point(15, 61);
-            this.linkLabelRequestUri.Name = "linkLabelRequestUri";
-            this.linkLabelRequestUri.Size = new System.Drawing.Size(453, 36);
-            this.linkLabelRequestUri.TabIndex = 5;
-            this.linkLabelRequestUri.TabStop = true;
-            this.linkLabelRequestUri.Text = "request uri";
-            this.linkLabelRequestUri.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRequestUri_LinkClicked);
+            this.noTr_linkLabelRequestUri.Location = new System.Drawing.Point(15, 61);
+            this.noTr_linkLabelRequestUri.Name = "noTr_linkLabelRequestUri";
+            this.noTr_linkLabelRequestUri.Size = new System.Drawing.Size(453, 36);
+            this.noTr_linkLabelRequestUri.TabIndex = 5;
+            this.noTr_linkLabelRequestUri.TabStop = true;
+            this.noTr_linkLabelRequestUri.Text = "request uri";
+            this.noTr_linkLabelRequestUri.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelRequestUri_LinkClicked);
             // 
             // AuthorizeDialog
             // 
@@ -99,14 +98,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(486, 221);
-            this.Controls.Add(this.linkLabelRequestUri);
+            this.Controls.Add(this.noTr_linkLabelRequestUri);
             this.Controls.Add(this.textBoxPIN);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelAuthorizeEnterKey);
+            this.Controls.Add(this.labelAuthorizeInstructions);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.buttonCancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = Images.ht_history_ball1;
+            this.Icon = global::HtHistory.Images.ht_history_ball1;
             this.MaximizeBox = false;
             this.Name = "AuthorizeDialog";
             this.Text = "Authorization required";
@@ -120,9 +119,9 @@
 
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelAuthorizeInstructions;
+        private System.Windows.Forms.Label labelAuthorizeEnterKey;
         private System.Windows.Forms.TextBox textBoxPIN;
-        private System.Windows.Forms.LinkLabel linkLabelRequestUri;
+        private System.Windows.Forms.LinkLabel noTr_linkLabelRequestUri;
     }
 }

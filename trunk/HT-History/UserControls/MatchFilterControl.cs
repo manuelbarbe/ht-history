@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using HtHistory.Statistics.Filters.Matches;
 using System.Collections;
 using HtHistory.Core.DataContainers;
+using HtHistory.Translation;
 
 namespace HtHistory.UserControls
 {
@@ -21,52 +22,52 @@ namespace HtHistory.UserControls
 
         #region PREPARE LAYOUT
 
-        private void InitializeSeasons(int seasonFrom, int seasonTo)
+        private void InitializeSeasons(int seasonFrom, int seasonTo, ITranslator translator)
         {
             listBoxSeason.SuspendLayout();
             listBoxSeason.Items.Clear();
-            listBoxSeason.Items.Add(new TaggedObject("All seasons", new MatchFilterNull()));
+            listBoxSeason.Items.Add(new TaggedObject(translator.Translate("itemSeasonAll"), new MatchFilterNull()));
             for (int i = seasonFrom; i <= seasonTo; ++i)
             {
-                listBoxSeason.Items.Add(new TaggedObject(String.Format("Season {0}", i), new MatchFilterSeason(i)));
+                listBoxSeason.Items.Add(new TaggedObject(String.Format(translator.Translate("itemSeason"), i), new MatchFilterSeason(i)));
             }
             listBoxSeason.SelectedIndex = 0;
             listBoxSeason.ResumeLayout();
         }
 
-        private void InitializeVenue(uint teamId)
+        private void InitializeVenue(uint teamId, ITranslator translator)
         {
             listBoxVenue.SuspendLayout();
             listBoxVenue.Items.Clear();
-            listBoxVenue.Items.Add(new TaggedObject("All", new MatchFilterNull()));
-            listBoxVenue.Items.Add(new TaggedObject("Home", new MatchFilterHome(teamId)));
-            listBoxVenue.Items.Add(new TaggedObject("Away", new MatchFilterAway(teamId)));
+            listBoxVenue.Items.Add(new TaggedObject(translator.Translate("itemVenueAll"), new MatchFilterNull()));
+            listBoxVenue.Items.Add(new TaggedObject(translator.Translate("itemVenueHome"), new MatchFilterHome(teamId)));
+            listBoxVenue.Items.Add(new TaggedObject(translator.Translate("itemVenueAway"), new MatchFilterAway(teamId)));
             //listBoxVenue.Items.Add(new TaggedObject("Neutral", new MatchFilterNeutral()));
             listBoxVenue.SelectedIndex = 0;
             listBoxVenue.ResumeLayout();
         }
 
-        private void InitializeType()
+        private void InitializeType(ITranslator translator)
         {
             listBoxType.SuspendLayout();
             listBoxType.Items.Clear();
-            listBoxType.Items.Add(new TaggedObject("All", new MatchFilterNull()));
-            listBoxType.Items.Add(new TaggedObject("Competitive", new MatchFilterCompetitive()));
-            listBoxType.Items.Add(new TaggedObject("League", new MatchFilterLeague()));
-            listBoxType.Items.Add(new TaggedObject("Cup", new MatchFilterCup()));
-            listBoxType.Items.Add(new TaggedObject("Qualifier", new MatchFilterQualifier()));
-            listBoxType.Items.Add(new TaggedObject("Masters / Other", new MatchFilterMastersOther()));
-            listBoxType.Items.Add(new TaggedObject("Friendly", new MatchFilterFriendly()));
+            listBoxType.Items.Add(new TaggedObject(translator.Translate("itemMatchTypeAll"), new MatchFilterNull()));
+            listBoxType.Items.Add(new TaggedObject(translator.Translate("itemMatchTypeCompetitive"), new MatchFilterCompetitive()));
+            listBoxType.Items.Add(new TaggedObject(translator.Translate("itemMatchTypeLeague"), new MatchFilterLeague()));
+            listBoxType.Items.Add(new TaggedObject(translator.Translate("itemMatchTypeCup"), new MatchFilterCup()));
+            listBoxType.Items.Add(new TaggedObject(translator.Translate("itemMatchTypeQualifier"), new MatchFilterQualifier()));
+            listBoxType.Items.Add(new TaggedObject(translator.Translate("itemMatchTypeOther"), new MatchFilterMastersOther()));
+            listBoxType.Items.Add(new TaggedObject(translator.Translate("itemMatchTypeFriendly"), new MatchFilterFriendly()));
             listBoxType.SelectedIndex = 0;
             listBoxType.ResumeLayout();
         }
 
-        public void Prepare(uint teamId, DateTime from, DateTime to)
+        public void Prepare(uint teamId, DateTime from, DateTime to, ITranslator translator)
         {
             noTr_textBoxTeamId.Text = teamId.ToString();
-            InitializeVenue(teamId);
-            InitializeSeasons(new HtTime(from).Season, new HtTime(to).Season);
-            InitializeType();
+            InitializeVenue(teamId, translator);
+            InitializeSeasons(new HtTime(from).Season, new HtTime(to).Season, translator);
+            InitializeType(translator);
 
             listBoxSeason.Enabled = true;
             listBoxType.Enabled = true;
