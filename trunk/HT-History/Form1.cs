@@ -33,7 +33,7 @@ namespace HtHistory
 {
     public partial class Form1 : Form
     {
-        private ITranslator _translator = TranslatorFactory.DefaultTranslator;
+        private ITranslator _translator;
 
         private ComfortSettings _settings = new ComfortSettings();
         private static readonly string BaseDirectory;
@@ -61,8 +61,6 @@ namespace HtHistory
             InitializeComponent();
             string version = GetVersionString();
             this.Text = String.Format("HT-History by manuhell, {0}", version);
-            this.Translate(_translator);
-            menuStrip.Translate(_translator);
         }
 
         private static string GetVersionString()
@@ -81,10 +79,22 @@ namespace HtHistory
                 if (t != null)
                 {
                     _translator = t;
+                    _settings["language"] = t.ToString();
                     this.Translate(t);
-                    this.menuStrip.Translate(t);
+                    //this.menuStrip.Translate(t);
                 }
             }
+        }
+
+        private void SetTranslatorFromSettings()
+        {
+            ITranslator t = null;
+            string strTranslator;
+            if (_settings.TryGetValue("language", out strTranslator))
+            {
+                t = TranslatorFactory.FindTranslator(strTranslator); // null if not found
+            }
+            _translator = t ?? TranslatorFactory.GetDefaultTranslator();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -98,6 +108,10 @@ namespace HtHistory
                         _settings.Load(SettingsFile);
                     });
                 }
+
+                SetTranslatorFromSettings();
+                this.Translate(_translator);
+                //menuStrip.Translate(_translator);
 
                 languageToolStripMenuItem.DropDownItems.Clear();
                 foreach (ITranslator translator in Translation.TranslatorFactory.Translators.SafeEnum())
@@ -375,24 +389,27 @@ namespace HtHistory
             });
         }
 
+        private TaggedObject CalculatorToTaggedObject(IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> calculator)
+        {
+            string first = _translator.Translate("playerStatLong_" + calculator.Identifier);
+            string second = _translator.Translate("playerStatShort_" + calculator.Identifier);
+            return new TaggedObject(string.Format("{0} ({1})", first, second), calculator);
+        }
+
         private void columnsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveDo(() =>
                 {
                     var shownRawColumns = _settings.ActiveColumnSet.Columns;
-                    Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators().Except(shownRawColumns), shownRawColumns, _settings.ActiveColumnSet.Name);
+                    Dialogs.ChooseColumnsDialog ccd =
+                        new Dialogs.ChooseColumnsDialog(
+                            CalculatorFactory.GetAllCalulators().Except(shownRawColumns).Select( calc => CalculatorToTaggedObject(calc) ),
+                            shownRawColumns.Select(calc => CalculatorToTaggedObject(calc)),
+                            _settings.ActiveColumnSet.Name);
                     ccd.Translate(_translator);
                     if (ccd.ShowDialog() == DialogResult.OK)
                     {
-                        IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
-                        foreach (object o in ccd.Right.SafeEnum())
-                        {
-                            if (o is IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)
-                            {
-                                myList.Add((IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)o);
-                            }
-                        }
-
+                        IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = GetCalculatorsListFromDialog(ccd);
                         _settings.ActiveColumnSet.Name = ccd.MyName;
                         _settings.ActiveColumnSet.Columns = myList;
                         _settings.ColumnSets = _settings.ColumnSets; // TODO: force save another way
@@ -409,18 +426,14 @@ namespace HtHistory
         {
             SaveDo(() =>
                 {
-                    Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(CalculatorFactory.GetAllCalulators(), null, String.Format("Custom set #{0}", comboBoxColumnSets.Items.Count + 1));
+                    Dialogs.ChooseColumnsDialog ccd = new Dialogs.ChooseColumnsDialog(
+                        CalculatorFactory.GetAllCalulators().Select ( calc => CalculatorToTaggedObject(calc) ),
+                        null,
+                        String.Format("Custom set #{0}", comboBoxColumnSets.Items.Count + 1));
                     ccd.Translate(_translator);
                     if (ccd.ShowDialog() == DialogResult.OK)
                     {
-                        IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
-                        foreach (object o in ccd.Right.SafeEnum())
-                        {
-                            if (o is IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)
-                            {
-                                myList.Add((IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>)o);
-                            }
-                        }
+                        IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = GetCalculatorsListFromDialog(ccd);
 
                         ColumnSet set = new ColumnSet(ccd.MyName, myList);
                         _settings.ColumnSets.Add(set);
@@ -431,6 +444,24 @@ namespace HtHistory
                         SetColumns(_settings.ActiveColumnSet);
                     }
                 });
+        }
+
+        private static IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> GetCalculatorsListFromDialog(Dialogs.ChooseColumnsDialog ccd)
+        {
+            IList<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> myList = new List<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>>();
+            foreach (object o in ccd.Right.SafeEnum())
+            {
+                TaggedObject to = o as TaggedObject;
+                if (to != null)
+                {
+                    IPlayerStatisticCalculator<IEnumerable<MatchAppearance>> c = to.Tag as IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>;
+                    if (c != null)
+                    {
+                        myList.Add(c);
+                    }
+                }
+            }
+            return myList;
         }
 
         private void button2_Click(object sender, EventArgs e)
