@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.noTr_buttonAdd = new System.Windows.Forms.Button();
             this.labelAvailableColumns = new System.Windows.Forms.Label();
             this.listBoxLeft = new System.Windows.Forms.ListBox();
-            this.buttonDown = new System.Windows.Forms.Button();
-            this.buttonUp = new System.Windows.Forms.Button();
-            this.buttonRemove = new System.Windows.Forms.Button();
+            this.noTr_buttonDown = new System.Windows.Forms.Button();
+            this.noTr_buttonUp = new System.Windows.Forms.Button();
+            this.noTr_buttonRemove = new System.Windows.Forms.Button();
             this.listBoxRight = new System.Windows.Forms.ListBox();
             this.labelSelectedColumns = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -57,32 +57,32 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.buttonAdd);
+            this.splitContainer1.Panel1.Controls.Add(this.noTr_buttonAdd);
             this.splitContainer1.Panel1.Controls.Add(this.labelAvailableColumns);
             this.splitContainer1.Panel1.Controls.Add(this.listBoxLeft);
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.buttonDown);
-            this.splitContainer1.Panel2.Controls.Add(this.buttonUp);
-            this.splitContainer1.Panel2.Controls.Add(this.buttonRemove);
+            this.splitContainer1.Panel2.Controls.Add(this.noTr_buttonDown);
+            this.splitContainer1.Panel2.Controls.Add(this.noTr_buttonUp);
+            this.splitContainer1.Panel2.Controls.Add(this.noTr_buttonRemove);
             this.splitContainer1.Panel2.Controls.Add(this.listBoxRight);
             this.splitContainer1.Panel2.Controls.Add(this.labelSelectedColumns);
             this.splitContainer1.Size = new System.Drawing.Size(627, 271);
             this.splitContainer1.SplitterDistance = 317;
             this.splitContainer1.TabIndex = 0;
             // 
-            // buttonAdd
+            // noTr_buttonAdd
             // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.Location = new System.Drawing.Point(278, 39);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(27, 23);
-            this.buttonAdd.TabIndex = 2;
-            this.buttonAdd.Text = "→";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.noTr_buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.noTr_buttonAdd.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noTr_buttonAdd.Location = new System.Drawing.Point(278, 39);
+            this.noTr_buttonAdd.Name = "noTr_buttonAdd";
+            this.noTr_buttonAdd.Size = new System.Drawing.Size(27, 23);
+            this.noTr_buttonAdd.TabIndex = 2;
+            this.noTr_buttonAdd.Text = "→";
+            this.noTr_buttonAdd.UseVisualStyleBackColor = true;
+            this.noTr_buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // labelAvailableColumns
             // 
@@ -105,38 +105,38 @@
             this.listBoxLeft.TabIndex = 0;
             this.listBoxLeft.DoubleClick += new System.EventHandler(this.listBoxLeft_DoubleClick);
             // 
-            // buttonDown
+            // noTr_buttonDown
             // 
-            this.buttonDown.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDown.Location = new System.Drawing.Point(13, 153);
-            this.buttonDown.Name = "buttonDown";
-            this.buttonDown.Size = new System.Drawing.Size(26, 23);
-            this.buttonDown.TabIndex = 4;
-            this.buttonDown.Text = "↓";
-            this.buttonDown.UseVisualStyleBackColor = true;
-            this.buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
+            this.noTr_buttonDown.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noTr_buttonDown.Location = new System.Drawing.Point(13, 153);
+            this.noTr_buttonDown.Name = "noTr_buttonDown";
+            this.noTr_buttonDown.Size = new System.Drawing.Size(26, 23);
+            this.noTr_buttonDown.TabIndex = 4;
+            this.noTr_buttonDown.Text = "↓";
+            this.noTr_buttonDown.UseVisualStyleBackColor = true;
+            this.noTr_buttonDown.Click += new System.EventHandler(this.buttonDown_Click);
             // 
-            // buttonUp
+            // noTr_buttonUp
             // 
-            this.buttonUp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonUp.Location = new System.Drawing.Point(13, 123);
-            this.buttonUp.Name = "buttonUp";
-            this.buttonUp.Size = new System.Drawing.Size(26, 23);
-            this.buttonUp.TabIndex = 3;
-            this.buttonUp.Text = "↑";
-            this.buttonUp.UseVisualStyleBackColor = true;
-            this.buttonUp.Click += new System.EventHandler(this.buttonUp_Click);
+            this.noTr_buttonUp.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noTr_buttonUp.Location = new System.Drawing.Point(13, 123);
+            this.noTr_buttonUp.Name = "noTr_buttonUp";
+            this.noTr_buttonUp.Size = new System.Drawing.Size(26, 23);
+            this.noTr_buttonUp.TabIndex = 3;
+            this.noTr_buttonUp.Text = "↑";
+            this.noTr_buttonUp.UseVisualStyleBackColor = true;
+            this.noTr_buttonUp.Click += new System.EventHandler(this.buttonUp_Click);
             // 
-            // buttonRemove
+            // noTr_buttonRemove
             // 
-            this.buttonRemove.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonRemove.Location = new System.Drawing.Point(13, 67);
-            this.buttonRemove.Name = "buttonRemove";
-            this.buttonRemove.Size = new System.Drawing.Size(26, 23);
-            this.buttonRemove.TabIndex = 2;
-            this.buttonRemove.Text = "←";
-            this.buttonRemove.UseVisualStyleBackColor = true;
-            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            this.noTr_buttonRemove.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.noTr_buttonRemove.Location = new System.Drawing.Point(13, 67);
+            this.noTr_buttonRemove.Name = "noTr_buttonRemove";
+            this.noTr_buttonRemove.Size = new System.Drawing.Size(26, 23);
+            this.noTr_buttonRemove.TabIndex = 2;
+            this.noTr_buttonRemove.Text = "←";
+            this.noTr_buttonRemove.UseVisualStyleBackColor = true;
+            this.noTr_buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
             // listBoxRight
             // 
@@ -186,7 +186,7 @@
             // 
             this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(13, 281);
+            this.labelName.Location = new System.Drawing.Point(10, 281);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(38, 13);
             this.labelName.TabIndex = 3;
@@ -233,10 +233,10 @@
         private System.Windows.Forms.ListBox listBoxRight;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOk;
-        private System.Windows.Forms.Button buttonRemove;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonDown;
-        private System.Windows.Forms.Button buttonUp;
+        private System.Windows.Forms.Button noTr_buttonRemove;
+        private System.Windows.Forms.Button noTr_buttonAdd;
+        private System.Windows.Forms.Button noTr_buttonDown;
+        private System.Windows.Forms.Button noTr_buttonUp;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.TextBox noTr_textBoxName;
     }

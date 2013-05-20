@@ -11,21 +11,24 @@ namespace HtHistory.Translation
     public class TranslatorFactory
     {
         public static IEnumerable<ITranslator> Translators { get; private set; }
-        public static ITranslator DefaultTranslator { get; private set; }
-
+        
         static TranslatorFactory()
         {
             Translators = CreateTranslators();
-            DefaultTranslator = ChooseDefaultTranslator(Translators);
         }
 
-        private static ITranslator ChooseDefaultTranslator(IEnumerable<ITranslator> translators)
+        public static ITranslator FindTranslator(string name)
+        {
+            return Translators.SafeEnum().FirstOrDefault(t => t.ToString().Equals(name));
+        }
+
+        public static ITranslator GetDefaultTranslator()
         {
             // "English" is default
-            ITranslator defaultTranslator = translators.FirstOrDefault(t => t.ToString().Equals("English"));
+            ITranslator defaultTranslator = FindTranslator("English");
             if (defaultTranslator == null)
             { // if "English is not found, choose the first one
-                defaultTranslator = translators.FirstOrDefault();
+                defaultTranslator = Translators.SafeEnum().FirstOrDefault();
                 if (defaultTranslator == null)
                 { //if no translator is present, do not translate at all
                     defaultTranslator = new NullTranslator();

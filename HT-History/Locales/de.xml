@@ -105,7 +105,7 @@
         <Translation id="Los%">Verl%</Translation>
         <Translation id="Goa">Tore</Translation>
         <Translation id="GpM">TpS</Translation>
-        <Translation id="Gp90M">Tp90M</Translation>
+        <Translation id="Gp90Min">Tp90Min</Translation>
         <Translation id="Min">Min</Translation>
         <Translation id="MpM">MpS</Translation>
         <Translation id="MotM">SdT</Translation>
@@ -127,7 +127,7 @@
         <Translation id="Stars">Sterne</Translation>
         <Translation id="Hat">Hat</Translation>
         <Translation id="MinNotScored">MinOhneTor</Translation>
-        <Translation id="MinNotConceeded">MinOhneGgT</Translation>
+        <Translation id="MinNotConceded">MinOhneGgT</Translation>
       </TranslationTier>
     </TranslationCombination>
     <Translation id="playerStatLong_Name">Name</Translation>
@@ -137,13 +137,13 @@
         <Translation id="playerStatLong_"></Translation>
       </TranslationTier>
       <TranslationTier>
-        <Translation id="Tot">Alle Spiele</Translation>
-        <Translation id="Com">Pflichtspiele</Translation>
-        <Translation id="Lea">Ligaspiele</Translation>
-        <Translation id="Cup">Pokalspiele</Translation>
-        <Translation id="Qua">Relegationsspiele</Translation>
-        <Translation id="Fri">Freundschaftsspiele</Translation>
-        <Translation id="Oth">Sonstige Spiele</Translation>
+        <Translation id="Tot">Alle Spiele: </Translation>
+        <Translation id="Com">Pflichtspiele: </Translation>
+        <Translation id="Lea">Ligaspiele: </Translation>
+        <Translation id="Cup">Pokalspiele: </Translation>
+        <Translation id="Qua">Relegationsspiele: </Translation>
+        <Translation id="Fri">Freundschaftsspiele: </Translation>
+        <Translation id="Oth">Sonstige Spiele: </Translation>
       </TranslationTier>
       <TranslationTier>
         <Translation id="Mat">Spiele</Translation>
@@ -157,29 +157,29 @@
         <Translation id="Los%">Anteil Niederlagen</Translation>
         <Translation id="Goa">Tore</Translation>
         <Translation id="GpM">Tore pro Spiel</Translation>
-        <Translation id="Gp90M">Tore pro 90 Minuten</Translation>
+        <Translation id="Gp90Min">Tore pro 90 Minuten</Translation>
         <Translation id="Min">Minuten</Translation>
-        <Translation id="playerStatLong_MpM">Minuten pro Spiel</Translation>
-        <Translation id="playerStatLong_MotM">Spieler des Tages</Translation>
-        <Translation id="playerStatLong_Yellow">Gelbe Karten</Translation>
-        <Translation id="playerStatLong_Red">Rote Karten</Translation>
-        <Translation id="playerStatLong_Bru">Angeschlagen</Translation>
-        <Translation id="playerStatLong_Inj">Verletzungen</Translation>
-        <Translation id="playerStatLong_First">Erstes Spiel</Translation>
-        <Translation id="playerStatLong_Last">Letztes Spiel</Translation>
-        <Translation id="playerStatLong_Keep">Spiele als Torhüter</Translation>
-        <Translation id="playerStatLong_CD">Spiele als Innenverteidiger</Translation>
-        <Translation id="playerStatLong_WB">Spiele als Außenverteidiger</Translation>
-        <Translation id="playerStatLong_IM">Spiele als zentraler Mittelfeldspieler</Translation>
-        <Translation id="playerStatLong_Wing">Spiele als Flügelspieler</Translation>
-        <Translation id="playerStatLong_FW">Spiele als Stürmer</Translation>
-        <Translation id="playerStatLong_Unkn">Spiele auf unbekannter Position</Translation>
-        <Translation id="playerStatLong_TeamGoa">Tore der Mannschaft</Translation>
-        <Translation id="playerStatLong_OppGoa">Gegentore</Translation>
-        <Translation id="playerStatLong_Stars">Maximale Sternezahl</Translation>
-        <Translation id="playerStatLong_Hat">Hattricks</Translation>
-        <Translation id="playerStatLong_MinNotScored">Minuten ohne eigenen Torerfolg</Translation>
-        <Translation id="playerStatLong_MinNotConceeded">Minuten ohne Gegentor</Translation>
+        <Translation id="MpM">Minuten pro Spiel</Translation>
+        <Translation id="MotM">Spieler des Tages</Translation>
+        <Translation id="Yellow">Gelbe Karten</Translation>
+        <Translation id="Red">Rote Karten</Translation>
+        <Translation id="Bru">Angeschlagen</Translation>
+        <Translation id="Inj">Verletzungen</Translation>
+        <Translation id="First">Erstes Spiel</Translation>
+        <Translation id="Last">Letztes Spiel</Translation>
+        <Translation id="Keep">Spiele als Torhüter</Translation>
+        <Translation id="CD">Spiele als Innenverteidiger</Translation>
+        <Translation id="WB">Spiele als Außenverteidiger</Translation>
+        <Translation id="IM">Spiele als zentraler Mittelfeldspieler</Translation>
+        <Translation id="Wing">Spiele als Flügelspieler</Translation>
+        <Translation id="FW">Spiele als Stürmer</Translation>
+        <Translation id="Unkn">Spiele auf unbekannter Position</Translation>
+        <Translation id="TeamGoa">Tore der Mannschaft</Translation>
+        <Translation id="OppGoa">Gegentore</Translation>
+        <Translation id="Stars">Maximale Sternezahl</Translation>
+        <Translation id="Hat">Hattricks</Translation>
+        <Translation id="MinNotScored">Minuten ohne eigenen Torerfolg</Translation>
+        <Translation id="MinNotConceded">Minuten ohne Gegentor</Translation>
       </TranslationTier>
     </TranslationCombination>
     <Translation id="tabPagePlayerGoals">Tore</Translation>
@@ -207,5 +207,9 @@
     <Translation id="columnHeaderPlayerMatchStars">Sterne</Translation>
     <Translation id="labelCurrency">Währung:</Translation>
     <Translation id="buttonColumns">Spalten</Translation>
+    <Translation id="ChooseColumnsDialog">Spalten auswählen</Translation>
+    <Translation id="labelName">Name: </Translation>
+    <Translation id="labelSelectedColumns">Ausgewählte Spalten:</Translation>
+    <Translation id="labelAvailableColumns">Verfügbare Spalten:</Translation>
   </Translations>
 </HtHistoryTranslation>
