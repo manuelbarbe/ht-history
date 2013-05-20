@@ -36,6 +36,32 @@ namespace HtHistory.Translation
                     _translations.Add(attrId.Value, elTranslation.Value);
                 }
             }
+            foreach (XElement elCombination in elTranslations.Elements("TranslationCombination").SafeEnum())
+            {
+                Dictionary<string, string> baseDict = new Dictionary<string, string>();
+                baseDict.Add(string.Empty, string.Empty);
+
+                foreach (XElement elTier in elCombination.Elements("TranslationTier").SafeEnum())
+                {
+                    Dictionary<string, string> newDict = new Dictionary<string, string>();
+                    foreach (XElement elTranslation in elTier.Elements("Translation").SafeEnum())
+                    {
+                        XAttribute attrId = elTranslation.Attribute("id");
+                        if (attrId != null)
+                        { 
+                            foreach (var keyvalue in baseDict)
+                            {
+                                newDict.Add(keyvalue.Key + attrId.Value, keyvalue.Value + elTranslation.Value);  
+                            }
+                        }
+                    }
+                    baseDict = newDict;
+                }
+                foreach (var keyvalue in baseDict)
+                {
+                    _translations.Add(keyvalue.Key, keyvalue.Value);
+                }
+            }
         }
 
         public string Translate(string metaname)
