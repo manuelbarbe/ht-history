@@ -59,7 +59,18 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
             <!--<File Id='GPLv3License' Name='COPYING' DiskId='1' Source='COPYING' KeyPath='yes' />-->
           </Component>
 
-        </Directory>
+          <Component Id='VersionInfo' Guid='e75d1102-63b6-485e-852f-99d72e953e90'>
+            <File Id='version' Name='version.txt' DiskId='1' Source='version.txt' KeyPath='yes' />
+          </Component>
+
+          <Directory Id='LocalesDir' Name='Locales'>
+            <Component Id='Languages' Guid='e483d455-e7f1-40d2-885d-939d4920cf26'>
+              <File Id='en' Name='en.xml' DiskId='1' Source='Locales/en.xml' KeyPath='yes' />
+              <File Id='de' Name='de.xml' DiskId='1' Source='Locales/de.xml' KeyPath='yes' />
+            </Component>
+          </Directory>
+          
+         </Directory>
       </Directory>
 
       <Directory Id="ProgramMenuFolder" Name="Programs">
@@ -82,6 +93,8 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
       <ComponentRef Id='StatisticsLibrary' />
       <ComponentRef Id='OAuthLibrary' />
       <ComponentRef Id='Licenses' />
+      <ComponentRef Id='VersionInfo' />
+      <ComponentRef Id='Languages'/>
       <ComponentRef Id='ProgramMenuDir' />
     </Feature>
 
