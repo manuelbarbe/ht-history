@@ -122,7 +122,7 @@
         <Translation id="Wing">FL</Translation>
         <Translation id="FW">ST</Translation>
         <Translation id="Unkn">Unb</Translation>
-        <Translation id="TeamGoa">Tore</Translation>
+        <Translation id="TeamGoa">TeamT</Translation>
         <Translation id="OppGoa">GgT</Translation>
         <Translation id="Stars">Sterne</Translation>
         <Translation id="Hat">Hat</Translation>
@@ -213,7 +213,7 @@
     <Translation id="labelAvailableColumns">Verfügbare Spalten:</Translation>
     <Translation id="labelSpecifyPeriodInfo">Bitte verwenden für Bots, zweite Mannschaften und ehemalige Benutzer!</Translation>
     <Translation id="AuthorizeDialog">Bitte authorisieren Sie sich</Translation>
-    <Translation id="labelAuthorizeInstructions">TODO</Translation>
-    <Translation id="labelAuthorizeEnterKey"></Translation>
+    <Translation id="labelAuthorizeInstructions">Um Ht-History verwenden zu können, müssen sie es bei Hattrick authorisieren. Bitte klicken sie den folgenden Link und gewähren sie HT-History die benötigten Lese-Rechte.</Translation>
+    <Translation id="labelAuthorizeEnterKey">Geben Sie bitte nun den erhaltenen Schlüssel in der Eingabemaske unten ein:</Translation>
   </Translations>
 </HtHistoryTranslation>
