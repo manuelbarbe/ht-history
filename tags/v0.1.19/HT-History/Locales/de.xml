@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HtHistoryTranslation version="1.0">
+  <Creator>manuhell</Creator>
+  <Language>Deutsch</Language>
+  <Translations>
+    <Translation id="Form1">HT-History</Translation>
+    <Translation id="fileToolStripMenuItem">&amp;Datei</Translation>
+    <Translation id="settingsToolStripMenuItem">&amp;Einstellungen</Translation>
+    <Translation id="aboutToolStripMenuItem">&amp;Über</Translation>
+    <Translation id="clearCacheToolStripMenuItem">Cache löschen...</Translation>
+    <Translation id="exitToolStripMenuItem">Beenden</Translation>
+    <Translation id="proxyToolStripMenuItem">Proxy konfigurieren...</Translation>
+    <Translation id="columnsToolStripMenuItem">Spalten definieren...</Translation>
+    <Translation id="languageToolStripMenuItem">Sprache</Translation>
+    <Translation id="helpToolStripMenuItem">Hilfe</Translation>
+    <Translation id="updateToolStripMenuItem">Auf Updates prüfen</Translation>
+    <Translation id="whatsNewToolStripMenuItem">Was ist neu...</Translation>
+    <Translation id="aboutHtHistoryToolStripMenuItem">Über HT-History...</Translation>
+    <Translation id="labelTeamId">Team-ID</Translation>
+    <Translation id="labelOppId">Gegner-ID
+    (0=alle)</Translation>
+    <Translation id="labelMatchType">Wettbewerb</Translation>
+    <Translation id="itemMatchTypeAll">Alle</Translation>
+    <Translation id="itemMatchTypeCompetitive">Pflichtspiele</Translation>
+    <Translation id="itemMatchTypeLeague">Liga</Translation>
+    <Translation id="itemMatchTypeCup">Pokal</Translation>
+    <Translation id="itemMatchTypeQualifier">Relegation</Translation>
+    <Translation id="itemMatchTypeOther">Masters / Andere</Translation>
+    <Translation id="itemMatchTypeFriendly">Freundschaftsspiele</Translation>
+    <Translation id="labelVenue">Ort</Translation>
+    <Translation id="itemVenueAll">Heim/Auswärts</Translation>
+    <Translation id="itemVenueHome">Heim</Translation>
+    <Translation id="itemVenueAway">Auswärts</Translation>
+    <Translation id="itemVenueNeutral">Neutral</Translation>
+    <Translation id="labelForfaits">Walkovers</Translation>
+    <Translation id="checkBoxForfaitsExcluded">nicht berücksichtigt</Translation>
+    <Translation id="labelSeason">Saison</Translation>
+    <Translation id="itemSeasonAll">Alle Saisons</Translation>
+    <Translation id="itemSeason">Saison {0}</Translation>
+    <Translation id="buttonRefresh">Aktualisieren</Translation>
+    <Translation id="buttonCancel">Abbrechen</Translation>
+    <Translation id="buttonOk">OK</Translation>
+    <Translation id="TeamIdDialog">Team auswählen</Translation>
+    <Translation id="labelInsertTeamId">Bitte geben Sie die Team-ID ein. 0 wählt automatisch das Team des CHPP-Benutzers.</Translation>
+    <Translation id="labelFrom">von:</Translation>
+    <Translation id="labelTo">bis:</Translation>
+    <Translation id="AboutBox">Über HT-History</Translation>
+    <Translation id="WhatsNewBox">Was ist neu</Translation>
+    <Translation id="WebProxyDialog">Proxy-Konfiguration</Translation>
+    <Translation id="labelEnterProxyUri">Bitte geben Sie die URI des Proxys ein:</Translation>
+    <Translation id="buttonTestProxy">Testen</Translation>
+    <Translation id="radioButtonOwner">Derzeitiger Manager</Translation>
+    <Translation id="radioButtonPeriod">Definierter Zeitraum (HT-Zeit)</Translation>
+    <Translation id="tabPageTransfers">Transfers</Translation>
+    <Translation id="columnHeaderTransferDate">Datum</Translation>
+    <Translation id="columnHeaderTransferWeek">Woche</Translation>
+    <Translation id="columnHeaderTransferBoughtSold">Kauf/Verkauf</Translation>
+    <Translation id="columnHeaderTransferPlayer">Spieler</Translation>
+    <Translation id="columnHeaderTransferTeam">Team</Translation>
+    <Translation id="columnHeaderTransferPrice">Preis</Translation>
+    <Translation id="tabPageMatches">Spielarchiv</Translation>
+    <Translation id="columnHeaderMatchDate">Datum</Translation>
+    <Translation id="columnHeaderMatchWeek">Woche</Translation>
+    <Translation id="columnHeaderMatchOpponent">Gegner</Translation>
+    <Translation id="columnHeaderMatchType">Wettbewerb</Translation>
+    <Translation id="columnHeaderMatchVenue">Ort</Translation>
+    <Translation id="columnHeaderMatchGoals">Tore</Translation>
+    <Translation id="columnHeaderMatchOppGoals">Gegentore</Translation>
+    <Translation id="columnHeaderMatchMinutes">Minuten</Translation>
+    <Translation id="columnHeaderMatchVisitors">Zuschauer</Translation>
+    <Translation id="columnHeaderMatchHatstats">Hatstats</Translation>
+    <Translation id="columnHeaderMatchDefense">Verteidigung</Translation>
+    <Translation id="columnHeaderMatchMidfield">Mittelfeld</Translation>
+    <Translation id="columnHeaderMatchAttack">Angriff</Translation>
+    <Translation id="columnHeaderMatchOppHatstats">Gegner-Hatstats</Translation>
+    <Translation id="columnHeaderMatchOppDefense">Gegner-Verteidigung</Translation>
+    <Translation id="columnHeaderMatchOppMidfield">Gegner-Mittelfeld</Translation>
+    <Translation id="columnHeaderMatchOppAttack">Gegner-Angriff</Translation>
+    <Translation id="tabPagePlayers">Spieler</Translation>
+    <Translation id="tabPagePlayerSeasons">Saisons</Translation>
+    <Translation id="playerStatShort_Name">Name</Translation>
+    <Translation id="playerStatShort_ID">ID</Translation>
+    <TranslationCombination>
+      <TranslationTier>
+        <Translation id="playerStatShort_"></Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Tot">Alle</Translation>
+        <Translation id="Com">Pfl</Translation>
+        <Translation id="Lea">Lig</Translation>
+        <Translation id="Cup">Pok</Translation>
+        <Translation id="Qua">Rel</Translation>
+        <Translation id="Fri">Fre</Translation>
+        <Translation id="Oth">And</Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Mat">Spi</Translation>
+        <Translation id="In">Ein</Translation>
+        <Translation id="Out">Aus</Translation>
+        <Translation id="Win">Gew</Translation>
+        <Translation id="Win%">Gew%</Translation>
+        <Translation id="Draw">Unent</Translation>
+        <Translation id="Draw%">Unent%</Translation>
+        <Translation id="Lost">Verl</Translation>
+        <Translation id="Los%">Verl%</Translation>
+        <Translation id="Goa">Tore</Translation>
+        <Translation id="GpM">TpS</Translation>
+        <Translation id="Gp90Min">Tp90Min</Translation>
+        <Translation id="Min">Min</Translation>
+        <Translation id="MpM">MpS</Translation>
+        <Translation id="MotM">SdT</Translation>
+        <Translation id="Yellow">Gelb</Translation>
+        <Translation id="Red">Rot</Translation>
+        <Translation id="Bru">Ange</Translation>
+        <Translation id="Inj">Verl</Translation>
+        <Translation id="First">Erst</Translation>
+        <Translation id="Last">Letz</Translation>
+        <Translation id="Keep">TW</Translation>
+        <Translation id="CD">IV</Translation>
+        <Translation id="WB">AV</Translation>
+        <Translation id="IM">ZM</Translation>
+        <Translation id="Wing">FL</Translation>
+        <Translation id="FW">ST</Translation>
+        <Translation id="Unkn">Unb</Translation>
+        <Translation id="TeamGoa">TeamT</Translation>
+        <Translation id="OppGoa">GgT</Translation>
+        <Translation id="Stars">Sterne</Translation>
+        <Translation id="Hat">Hat</Translation>
+        <Translation id="MinNotScored">MinOhneTor</Translation>
+        <Translation id="MinNotConceded">MinOhneGgT</Translation>
+      </TranslationTier>
+    </TranslationCombination>
+    <Translation id="playerStatLong_Name">Name</Translation>
+    <Translation id="playerStatLong_ID">ID</Translation>
+    <TranslationCombination>
+      <TranslationTier>
+        <Translation id="playerStatLong_"></Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Tot">Alle Spiele: </Translation>
+        <Translation id="Com">Pflichtspiele: </Translation>
+        <Translation id="Lea">Ligaspiele: </Translation>
+        <Translation id="Cup">Pokalspiele: </Translation>
+        <Translation id="Qua">Relegationsspiele: </Translation>
+        <Translation id="Fri">Freundschaftsspiele: </Translation>
+        <Translation id="Oth">Sonstige Spiele: </Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Mat">Spiele</Translation>
+        <Translation id="In">Einwechslungen</Translation>
+        <Translation id="Out">Auswechslungen</Translation>
+        <Translation id="Win">Siege</Translation>
+        <Translation id="Win%">Anteil Siege</Translation>
+        <Translation id="Draw">Unentschieden</Translation>
+        <Translation id="Draw%">Anteil Unentschieden</Translation>
+        <Translation id="Lost">Niederlagen</Translation>
+        <Translation id="Los%">Anteil Niederlagen</Translation>
+        <Translation id="Goa">Tore</Translation>
+        <Translation id="GpM">Tore pro Spiel</Translation>
+        <Translation id="Gp90Min">Tore pro 90 Minuten</Translation>
+        <Translation id="Min">Minuten</Translation>
+        <Translation id="MpM">Minuten pro Spiel</Translation>
+        <Translation id="MotM">Spieler des Tages</Translation>
+        <Translation id="Yellow">Gelbe Karten</Translation>
+        <Translation id="Red">Rote Karten</Translation>
+        <Translation id="Bru">Angeschlagen</Translation>
+        <Translation id="Inj">Verletzungen</Translation>
+        <Translation id="First">Erstes Spiel</Translation>
+        <Translation id="Last">Letztes Spiel</Translation>
+        <Translation id="Keep">Spiele als Torhüter</Translation>
+        <Translation id="CD">Spiele als Innenverteidiger</Translation>
+        <Translation id="WB">Spiele als Außenverteidiger</Translation>
+        <Translation id="IM">Spiele als zentraler Mittelfeldspieler</Translation>
+        <Translation id="Wing">Spiele als Flügelspieler</Translation>
+        <Translation id="FW">Spiele als Stürmer</Translation>
+        <Translation id="Unkn">Spiele auf unbekannter Position</Translation>
+        <Translation id="TeamGoa">Tore der Mannschaft</Translation>
+        <Translation id="OppGoa">Gegentore</Translation>
+        <Translation id="Stars">Maximale Sternezahl</Translation>
+        <Translation id="Hat">Hattricks</Translation>
+        <Translation id="MinNotScored">Minuten ohne eigenen Torerfolg</Translation>
+        <Translation id="MinNotConceded">Minuten ohne Gegentor</Translation>
+      </TranslationTier>
+    </TranslationCombination>
+    <Translation id="tabPagePlayerGoals">Tore</Translation>
+    <Translation id="columnHeaderPlayerGoalDate">Datum</Translation>
+    <Translation id="columnHeaderPlayerGoalWeek">Woche</Translation>
+    <Translation id="columnHeaderPlayerGoalType">Wettbewerb</Translation>
+    <Translation id="columnHeaderPlayerGoalMatch">Spiel</Translation>
+    <Translation id="columnHeaderPlayerGoalScored">Tor zum</Translation>
+    <Translation id="columnHeaderPlayerGoalMinute">Minute</Translation>
+    <Translation id="tabPagePlayerMatches">Spiele</Translation>
+    <Translation id="columnHeaderPlayerMatchDate">Datum</Translation>
+    <Translation id="columnHeaderPlayerMatchWeek">Woche</Translation>
+    <Translation id="columnHeaderPlayerMatchType">Wettbewerb</Translation>
+    <Translation id="columnHeaderPlayerMatchMatch">Spiel</Translation>
+    <Translation id="columnHeaderPlayerMatchPosition">Position</Translation>
+    <Translation id="columnHeaderPlayerMatchMinutes">Minuten</Translation>
+    <Translation id="columnHeaderPlayerMatchGoals">Tore</Translation>
+    <Translation id="columnHeaderPlayerMatchIn">Ein</Translation>
+    <Translation id="columnHeaderPlayerMatchOut">Aus</Translation>
+    <Translation id="columnHeaderPlayerMatchYellowCard">Gelb</Translation>
+    <Translation id="columnHeaderPlayerMatchRedCard">Rot</Translation>
+    <Translation id="columnHeaderPlayerMatchBruised">Angeschlagen</Translation>
+    <Translation id="columnHeaderPlayerMatchInjured">Verletzt</Translation>
+    <Translation id="columnHeaderPlayerMatchMotM">SdT</Translation>
+    <Translation id="columnHeaderPlayerMatchStars">Sterne</Translation>
+    <Translation id="labelCurrency">Währung:</Translation>
+    <Translation id="buttonColumns">Spalten</Translation>
+    <Translation id="ChooseColumnsDialog">Spalten auswählen</Translation>
+    <Translation id="labelName">Name: </Translation>
+    <Translation id="labelSelectedColumns">Ausgewählte Spalten:</Translation>
+    <Translation id="labelAvailableColumns">Verfügbare Spalten:</Translation>
+    <Translation id="labelSpecifyPeriodInfo">Bitte verwenden für Bots, zweite Mannschaften und ehemalige Benutzer!</Translation>
+    <Translation id="AuthorizeDialog">Bitte authorisieren Sie sich</Translation>
+    <Translation id="labelAuthorizeInstructions">Um Ht-History verwenden zu können, müssen sie es bei Hattrick authorisieren. Bitte klicken sie den folgenden Link und gewähren sie HT-History die benötigten Lese-Rechte.</Translation>
+    <Translation id="labelAuthorizeEnterKey">Geben Sie bitte nun den erhaltenen Schlüssel unten in der Eingabemaske ein:</Translation>
+  </Translations>
+</HtHistoryTranslation>
