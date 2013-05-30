@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Wix xmlns='http://schemas.microsoft.com/wix/2006/wi'>
+  <Product Name='Ht-History !(bind.FileVersion.HtHistoryEXE)' Id='*' UpgradeCode='7BAB6F46-62D9-43A6-B77A-855579CDEE10'
+    Language='1033' Codepage='1252' Version='!(bind.FileVersion.HtHistoryEXE)' Manufacturer='manuhell'>
+
+    <Package Id='*' Keywords='Installer' Description="HtHistory Installer"
+      Comments='HtHistory is licensed under MIT license' Manufacturer='manuhell'
+      InstallerVersion='100' Languages='1033' Compressed='yes' SummaryCodepage='1252' />
+
+    <PropertyRef Id="NETFRAMEWORK40FULL" />
+    <Condition Message="This setup requires the .NET Framework 4.0 to be installed.">
+      Installed OR NETFRAMEWORK40FULL
+    </Condition>
+
+    <Upgrade Id='7BAB6F46-62D9-43A6-B77A-855579CDEE10'>
+      <UpgradeVersion OnlyDetect='yes' Property='SELFFOUND'
+        Minimum='!(bind.FileVersion.HtHistoryEXE)' IncludeMinimum='yes'
+        Maximum='!(bind.FileVersion.HtHistoryEXE)' IncludeMaximum='yes' />
+      <UpgradeVersion OnlyDetect='yes' Property='NEWERFOUND'
+        Minimum='!(bind.FileVersion.HtHistoryEXE)' IncludeMinimum='no' />
+      <UpgradeVersion OnlyDetect='no' Property='PREVIOUSFOUND'
+        Minimum='0.0.0' IncludeMinimum='yes'
+        Maximum='!(bind.FileVersion.HtHistoryEXE)' IncludeMaximum='no' />
+    </Upgrade>
+
+    <CustomAction Id='AlreadyUpdated' Error='[ProductName] is already installed.' />
+    <CustomAction Id='NoDowngrade' Error='A later version of [ProductName] is already installed.' />
+
+    <Media Id='1' Cabinet='HtHistory.cab' EmbedCab='yes' DiskPrompt='CD-ROM #1' />
+    <Property Id='DiskPrompt' Value="HtHistory Installation [1]" />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='INSTALLDIR' Name='HT-History'>
+
+          <Component Id='MainExecutable' Guid='9D61BBEB-4791-4AD8-B60D-88D5A3D2BCAF'>
+            <File Id='HtHistoryEXE' Name='HT-History.exe' DiskId='1' Source='HT-History.exe' KeyPath='yes'>
+              <Shortcut Id="startmenuHtHistory" Directory="ProgramMenuDir" Name="HT-History"
+WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise="yes" />
+              <Shortcut Id="desktopHtHistory" Directory="DesktopFolder" Name="HT-History"
+                WorkingDirectory='INSTALLDIR' Icon="HtHistoryIcon.exe" IconIndex="0" Advertise="yes" />
+            </File>
+          </Component>
+
+          <Component Id='CoreLibrary' Guid='CFA84BE2-91DA-4C5E-9E12-6F24AB6404C2'>
+            <File Id='CoreDLL' Name='HtHistory.Core.dll' DiskId='1' Source='HtHistory.Core.dll' KeyPath='yes' />
+          </Component>
+
+          <Component Id='StatisticsLibrary' Guid='61C0216E-BE8D-408F-A902-0AE3816E6A8C'>
+            <File Id='StatDLL' Name='HtHistory.Statistics.dll' DiskId='1' Source='HtHistory.Statistics.dll' KeyPath='yes' />
+          </Component>
+
+          <Component Id='OAuthLibrary' Guid='4E587C03-D8DD-4339-82A6-44666EF6CC6D'>
+            <File Id='OAuthDLL' Name='DevDefined.OAuth.dll' DiskId='1' Source='DevDefined.OAuth.dll' KeyPath='yes' />
+          </Component>
+
+          <Component Id='Licenses' Guid='223B6A9A-0BA6-4FFE-BEA8-88C1E0F733F0'>
+            <File Id='MITLicense' Name='MIT_License.rtf' DiskId='1' Source='MIT_License.rtf' KeyPath='yes' />
+            <!--<File Id='GPLv3License' Name='COPYING' DiskId='1' Source='COPYING' KeyPath='yes' />-->
+          </Component>
+
+          <Component Id='VersionInfo' Guid='e75d1102-63b6-485e-852f-99d72e953e90'>
+            <File Id='version' Name='version.txt' DiskId='1' Source='version.txt' KeyPath='yes' />
+          </Component>
+
+          <Directory Id='LocalesDir' Name='Locales'>
+            <Component Id='Languages' Guid='e483d455-e7f1-40d2-885d-939d4920cf26'>
+              <File Id='en' Name='en.xml' DiskId='1' Source='Locales/en.xml' KeyPath='yes' />
+              <File Id='de' Name='de.xml' DiskId='1' Source='Locales/de.xml' />
+              <File Id='fr' Name='fr.xml' DiskId='1' Source='Locales/fr.xml' />
+            </Component>
+          </Directory>
+          
+         </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="HT-History">
+          <Component Id="ProgramMenuDir" Guid="69E15FB7-1AF4-4D8D-ABE5-4849B5FE31C1">
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+
+    </Directory>
+
+    <Feature Id='Complete' Title='HT-History' Description='The complete package.'
+      Display='expand' Level='1' ConfigurableDirectory='INSTALLDIR'>
+      <ComponentRef Id='MainExecutable' />
+      <ComponentRef Id='CoreLibrary' />
+      <ComponentRef Id='StatisticsLibrary' />
+      <ComponentRef Id='OAuthLibrary' />
+      <ComponentRef Id='Licenses' />
+      <ComponentRef Id='VersionInfo' />
+      <ComponentRef Id='Languages'/>
+      <ComponentRef Id='ProgramMenuDir' />
+    </Feature>
+
+    <InstallExecuteSequence>
+      <Custom Action='AlreadyUpdated' After='FindRelatedProducts'>SELFFOUND</Custom>
+      <Custom Action='NoDowngrade' After='FindRelatedProducts'>NEWERFOUND</Custom>
+      <RemoveExistingProducts Before="InstallInitialize" />
+    </InstallExecuteSequence>
+    
+    <Icon Id="HtHistoryIcon.exe" SourceFile="ht-history_ball.ico" />
+
+    <!--<UIRef Id="WixUI_Mondo" />-->
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLDIR" />
+    <UIRef Id="WixUI_InstallDir" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="MIT_License.rtf" />
+    
+  </Product>
+</Wix>
+

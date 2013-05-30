@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{75B039ED-5C8F-4FCC-9AEE-BE0B9C073334}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HtHistory.Core</RootNamespace>
+    <AssemblyName>HtHistory.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Auth\Password.cs" />
+    <Compile Include="Auth\User.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppException.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppFilesystemAccessor.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\ChppOnlineAccessor.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppFileAccessors\IChppAccessor.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppBridgeBase.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppMatchArchiveBridge.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppMatchDetailsBridge.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppPlayersBridge.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppTeamDetailsBridge.cs" />
+    <Compile Include="DataBridges\ChppBridges\ChppTransferHistoryBridge.cs" />
+    <Compile Include="DataBridges\DatabaseBridges\DatabaseMatchDetailsBridge.cs" />
+    <Compile Include="DataBridges\DataBridgeFactory.cs" />
+    <Compile Include="DataBridges\IDataBridgeFactory.cs" />
+    <Compile Include="DataBridges\IPlayersBridge.cs" />
+    <Compile Include="DataBridges\ITeamDetailsBridge.cs" />
+    <Compile Include="DataBridges\ChppBridges\MatchParserHelper.cs" />
+    <Compile Include="DataBridges\IDataBridge.cs" />
+    <Compile Include="DataBridges\IMatchArchiveBridge.cs" />
+    <Compile Include="DataBridges\IMatchDetailsBridge.cs" />
+    <Compile Include="DataBridges\ITransferHistoryBridge.cs" />
+    <Compile Include="DataBridges\ProxyBridges\BridgeChain.cs" />
+    <Compile Include="DataBridges\CacheBridges\CacheBridge.cs" />
+    <Compile Include="DataBridges\ProxyBridges\FalltroughBridge.cs" />
+    <Compile Include="DataContainers\Crowd.cs" />
+    <Compile Include="DataContainers\Goal.cs" />
+    <Compile Include="DataContainers\HatStats.cs" />
+    <Compile Include="DataContainers\HtNamedObject.cs" />
+    <Compile Include="DataContainers\HtObject.cs" />
+    <Compile Include="DataContainers\HtTime.cs" />
+    <Compile Include="DataContainers\Lineup.cs" />
+    <Compile Include="DataContainers\Match.cs" />
+    <Compile Include="DataContainers\MatchArchive.cs" />
+    <Compile Include="DataContainers\MatchDetails.cs" />
+    <Compile Include="DataContainers\MatchEvent.cs" />
+    <Compile Include="DataContainers\Money.cs" />
+    <Compile Include="DataContainers\Player.cs" />
+    <Compile Include="DataContainers\PlayerDetails.cs" />
+    <Compile Include="DataContainers\Ratings.cs" />
+    <Compile Include="DataContainers\Score.cs" />
+    <Compile Include="DataContainers\Team.cs" />
+    <Compile Include="DataContainers\TeamDetails.cs" />
+    <Compile Include="DataContainers\Transfer.cs" />
+    <Compile Include="DataContainers\TransferHistory.cs" />
+    <Compile Include="DataContainers\Types.cs" />
+    <Compile Include="DataContainers\User.cs" />
+    <Compile Include="ExtensionMethods\DataContainerExtensions.cs" />
+    <Compile Include="ExtensionMethods\DateTimeExtensions.cs" />
+    <Compile Include="ExtensionMethods\EnumExtensions.cs" />
+    <Compile Include="ExtensionMethods\XContainerExtensions.cs" />
+    <Compile Include="HtLog.cs" />
+    <Compile Include="PersistentObject.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DataBridges\FilesystemBridges\" />
+    <Folder Include="externals\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DevDefined.OAuth\src\DevDefined.OAuth\DevDefined.OAuth.csproj">
+      <Project>{61B700B6-3911-4CEF-8751-7F42CA765068}</Project>
+      <Name>DevDefined.OAuth</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
