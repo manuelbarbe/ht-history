@@ -63,7 +63,7 @@
             // noTr_textBoxTeamId
             // 
             this.noTr_textBoxTeamId.Enabled = false;
-            this.noTr_textBoxTeamId.Location = new System.Drawing.Point(80, 7);
+            this.noTr_textBoxTeamId.Location = new System.Drawing.Point(96, 7);
             this.noTr_textBoxTeamId.Name = "noTr_textBoxTeamId";
             this.noTr_textBoxTeamId.Size = new System.Drawing.Size(104, 20);
             this.noTr_textBoxTeamId.TabIndex = 2;
@@ -72,7 +72,7 @@
             // noTr_textBoxOpponentId
             // 
             this.noTr_textBoxOpponentId.Enabled = false;
-            this.noTr_textBoxOpponentId.Location = new System.Drawing.Point(80, 51);
+            this.noTr_textBoxOpponentId.Location = new System.Drawing.Point(96, 51);
             this.noTr_textBoxOpponentId.Name = "noTr_textBoxOpponentId";
             this.noTr_textBoxOpponentId.Size = new System.Drawing.Size(104, 20);
             this.noTr_textBoxOpponentId.TabIndex = 2;
@@ -82,7 +82,7 @@
             // labelVenue
             // 
             this.labelVenue.AutoSize = true;
-            this.labelVenue.Location = new System.Drawing.Point(369, 10);
+            this.labelVenue.Location = new System.Drawing.Point(385, 10);
             this.labelVenue.Name = "labelVenue";
             this.labelVenue.Size = new System.Drawing.Size(41, 13);
             this.labelVenue.TabIndex = 3;
@@ -99,7 +99,7 @@
             "Home",
             "Away",
             "Neutral"});
-            this.listBoxVenue.Location = new System.Drawing.Point(372, 26);
+            this.listBoxVenue.Location = new System.Drawing.Point(388, 26);
             this.listBoxVenue.Name = "listBoxVenue";
             this.listBoxVenue.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxVenue.Size = new System.Drawing.Size(120, 56);
@@ -109,7 +109,7 @@
             // labelSeason
             // 
             this.labelSeason.AutoSize = true;
-            this.labelSeason.Location = new System.Drawing.Point(532, 10);
+            this.labelSeason.Location = new System.Drawing.Point(548, 10);
             this.labelSeason.Name = "labelSeason";
             this.labelSeason.Size = new System.Drawing.Size(46, 13);
             this.labelSeason.TabIndex = 5;
@@ -121,7 +121,7 @@
             this.listBoxSeason.Enabled = false;
             this.listBoxSeason.ForeColor = System.Drawing.Color.Black;
             this.listBoxSeason.FormattingEnabled = true;
-            this.listBoxSeason.Location = new System.Drawing.Point(535, 26);
+            this.listBoxSeason.Location = new System.Drawing.Point(551, 26);
             this.listBoxSeason.Name = "listBoxSeason";
             this.listBoxSeason.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxSeason.Size = new System.Drawing.Size(144, 95);
@@ -131,7 +131,7 @@
             // labelForfaits
             // 
             this.labelForfaits.AutoSize = true;
-            this.labelForfaits.Location = new System.Drawing.Point(369, 89);
+            this.labelForfaits.Location = new System.Drawing.Point(385, 89);
             this.labelForfaits.Name = "labelForfaits";
             this.labelForfaits.Size = new System.Drawing.Size(44, 13);
             this.labelForfaits.TabIndex = 7;
@@ -141,7 +141,7 @@
             // 
             this.checkBoxForfaitsExcluded.AutoSize = true;
             this.checkBoxForfaitsExcluded.Enabled = false;
-            this.checkBoxForfaitsExcluded.Location = new System.Drawing.Point(372, 104);
+            this.checkBoxForfaitsExcluded.Location = new System.Drawing.Point(388, 104);
             this.checkBoxForfaitsExcluded.Name = "checkBoxForfaitsExcluded";
             this.checkBoxForfaitsExcluded.Size = new System.Drawing.Size(69, 17);
             this.checkBoxForfaitsExcluded.TabIndex = 8;
@@ -152,7 +152,7 @@
             // labelMatchType
             // 
             this.labelMatchType.AutoSize = true;
-            this.labelMatchType.Location = new System.Drawing.Point(202, 10);
+            this.labelMatchType.Location = new System.Drawing.Point(218, 10);
             this.labelMatchType.Name = "labelMatchType";
             this.labelMatchType.Size = new System.Drawing.Size(34, 13);
             this.labelMatchType.TabIndex = 9;
@@ -172,7 +172,7 @@
             "Qualifier",
             "Masters / Other",
             "Friendly"});
-            this.listBoxType.Location = new System.Drawing.Point(205, 26);
+            this.listBoxType.Location = new System.Drawing.Point(221, 26);
             this.listBoxType.Name = "listBoxType";
             this.listBoxType.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxType.Size = new System.Drawing.Size(120, 95);
@@ -196,7 +196,7 @@
             this.Controls.Add(this.labelOppId);
             this.Controls.Add(this.labelTeamId);
             this.Name = "MatchFilterControl";
-            this.Size = new System.Drawing.Size(693, 129);
+            this.Size = new System.Drawing.Size(714, 129);
             this.ResumeLayout(false);
             this.PerformLayout();
 

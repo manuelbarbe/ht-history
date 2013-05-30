@@ -4,6 +4,11 @@
 - removed
 C changed
 
+v 0.1.20 - 05/30/2013
+-----------
++ language "french"
++ export of all lists (context menu)
+
 v 0.1.19 - 05/20/2013
 -----------
 + language "german"

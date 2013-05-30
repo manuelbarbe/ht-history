@@ -18,7 +18,7 @@
     <Translation id="aboutHtHistoryToolStripMenuItem">A propos de HT-History...</Translation>
     <Translation id="labelTeamId">ID de l'équipe</Translation>
     <Translation id="labelOppId">ID de l'adversaire
-      (0=all)
+(0=all)
     </Translation>
     <Translation id="labelMatchType">Type</Translation>
     <Translation id="itemMatchTypeAll">Tous</Translation>
@@ -38,7 +38,8 @@
     <Translation id="labelSeason">Saison</Translation>
     <Translation id="itemSeasonAll">Toutes les saisons</Translation>
     <Translation id="itemSeason">Saison {0}</Translation>
-    <Translation id="buttonRefresh">Rafraîchir</Translation>
+    <Translation id="buttonRefresh">Changer d'équipe /
+Actualiser</Translation>
     <Translation id="buttonCancel">Quitter</Translation>
     <Translation id="buttonOk">OK</Translation>
     <Translation id="TeamIdDialog">Choix de l'équipe</Translation>
