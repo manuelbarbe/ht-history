@@ -42,9 +42,9 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutHtHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.whatsNewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPagePlayers = new System.Windows.Forms.TabPage();
@@ -172,6 +172,13 @@
             this.updateToolStripMenuItem.Text = "Update...";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
+            // whatsNewToolStripMenuItem
+            // 
+            this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
+            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.whatsNewToolStripMenuItem.Text = "What\'s new...";
+            this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemWhatsNew_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -184,18 +191,11 @@
             this.aboutHtHistoryToolStripMenuItem.Text = "About HT-History...";
             this.aboutHtHistoryToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
             // 
-            // whatsNewToolStripMenuItem
-            // 
-            this.whatsNewToolStripMenuItem.Name = "whatsNewToolStripMenuItem";
-            this.whatsNewToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.whatsNewToolStripMenuItem.Text = "What\'s new...";
-            this.whatsNewToolStripMenuItem.Click += new System.EventHandler(this.toolStripMenuItemWhatsNew_Click);
-            // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(102, 119);
+            this.buttonRefresh.Location = new System.Drawing.Point(118, 126);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(90, 34);
+            this.buttonRefresh.Size = new System.Drawing.Size(104, 34);
             this.buttonRefresh.TabIndex = 13;
             this.buttonRefresh.Text = "change team\r\n/ refresh";
             this.buttonRefresh.UseVisualStyleBackColor = true;

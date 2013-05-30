@@ -36,17 +36,12 @@ namespace HtHistory.Pages
             InitializeComponent();
         }
 
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exportToCSVToolStripMenuItem;
-
         private IEnumerable<IPlayerStatisticCalculator<IEnumerable<MatchAppearance>>> _stats;
 
         private void InitializeComponent()
         {
             //_stats = CalculatorFactory.GetAllCalulators();
 
-            InitializeContextMenu();
             InitializeTabs();
             InitializeOverviewList();
             AttachEventHandlerToOverviewList();
@@ -164,7 +159,6 @@ namespace HtHistory.Pages
         private void AttachEventHandlerToOverviewList()
         {
             this.sortableListViewOverview.SelectedIndexChanged += OverviewSelectedIndexChanged;
-            this.sortableListViewOverview.ContextMenuStrip = contextMenuStrip1;
         }
 
         private void InitializeTabs()
@@ -174,38 +168,7 @@ namespace HtHistory.Pages
             tabPagePlayerGoals.Text = "Goals";
         }
 
-        private void InitializeContextMenu()
-        {
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
-            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip1.SuspendLayout();
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToClipboardToolStripMenuItem, this.exportToCSVToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 48);
-            // 
-            // copyToClipboardToolStripMenuItem
-            // 
-            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
-            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
-            this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
-            // 
-            // exportToCSVToolStripMenuItem
-            // 
-            this.exportToCSVToolStripMenuItem.Name = "exportToCSVToolStripMenuItem";
-            this.exportToCSVToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
-            this.exportToCSVToolStripMenuItem.Text = "Export to CSV...";
-            this.exportToCSVToolStripMenuItem.Click += new System.EventHandler(this.exportToCSVToolStripMenuItem_Click);
-
-
-            this.contextMenuStrip1.ResumeLayout(false);
-        }
-
+        
         public void OverviewSelectedIndexChanged(object sender, EventArgs e)
         {
             FillDetailsSeason();
@@ -412,42 +375,6 @@ namespace HtHistory.Pages
             return ts.GetMatchesOfPlayers(teamId, true);
         }
 
-        protected void DoWork(object sender, DoWorkEventArgs e)
-        {/*
-            DataSourceMatches dataSourceMatches = new DataSourceMatches(
-                                Environment.Team == null ? 0 : Environment.Team.ID,
-                                Environment.DataBridgeFactory.TeamDetailsBridge,
-                                Environment.DataBridgeFactory.MatchArchiveBridge,
-                                Environment.DataBridgeFactory.MatchDetailsBridge);
-       
-            dataSourceMatches.ProgressChanged += (dummy, args) => ((BackgroundWorker)sender).ReportProgress(args.ProgressPercentage, args.UserState);
-            IEnumerable<MatchDetails> matches = dataSourceMatches.GetData();
-
-            uint opponentId = Environment.Opponent == null ? 0 : Environment.Opponent.ID;
-            if (opponentId != 0)
-            {
-                matches = matches.Where(m => (opponentId == m.HomeTeam.ID || opponentId == m.AwayTeam.ID));
-            }
-
-            IEnumerable<Player> currentPlayers = new List<Player>();
-            try
-            {
-                currentPlayers = Environment.DataBridgeFactory.PlayersBridge.GetPlayers(Environment.Team.ID);
-            }
-            catch (Exception ex)
-            {
-                HtLog.Warn("Cannot get current players ({0})", ex.ToString());
-            }
-
-            e.Result = new ResultData()
-            {
-                Infos = GetForMatches(matches),
-                CurrentPlayers = currentPlayers,
-                Matches = matches 
-            };
-          * */
-        }
-
         public void ShowResult(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
@@ -517,52 +444,6 @@ namespace HtHistory.Pages
             }
         }
 
-        private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Table table = TableFromListView(sortableListViewOverview);
 
-            StringWriter wr = new StringWriter();
-            new TableExporterBBCode().Export(table, wr);
-
-            Clipboard.SetText(wr.ToString());
-        }
-
-        private void exportToCSVToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.SaveDo(() =>
-            {
-                SaveFileDialog safeFileDialog = new SaveFileDialog();
-                safeFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-
-                if (safeFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    Table table = TableFromListView(sortableListViewOverview);
-                    using (FileStream stream = new FileStream(safeFileDialog.FileName, FileMode.Create))
-                    {
-                        using (StreamWriter wr = new StreamWriter(stream, Encoding.UTF8))
-                        {
-                            //wr.Write((char)0xFEFF); // BOM
-                            new TableExporterCSV(";").Export(table, wr);
-                        }
-                    }
-                }
-            });
-        }
-
-        private Table TableFromListView(ListView view)
-        {
-            Table table = new Table();
-            IEnumerable<ColumnHeader> headers = view.Columns.Cast<ColumnHeader>();
-            table.ColumHeaders = headers.Select((ch) => ch.Text).ToArray();
-
-            ICollection items = (view.SelectedItems.Count > 1) ? (ICollection)view.SelectedItems : view.Items;
-
-            table.Data =
-            items.Cast<ListViewItem>().Select(
-                (lvi) => lvi.SubItems.Cast<ListViewItem.ListViewSubItem>().Select(
-                    (lvsi) => lvsi.Text).ToArray()).ToArray();
-
-            return table;
-        }
    }
 }

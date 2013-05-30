@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
+using System.ComponentModel;
+using HtHistory.Export;
+using System.IO;
 
 namespace HtHistory.UserControls
 {
@@ -157,6 +160,8 @@ namespace HtHistory.UserControls
             View = View.Details;
             FullRowSelect = true;
             ListViewItemSorter = this; // hej, we are self sorting
+
+            InitializeContextMenu();
         }
 
         #region sorter handling
@@ -258,6 +263,105 @@ namespace HtHistory.UserControls
 
             return result;
         }
+
+        #endregion
+
+        #region context menu
+
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToCSVToolStripMenuItem;
+
+        private void InitializeContextMenu()
+        {
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip();
+            this.copyToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToClipboardToolStripMenuItem, this.exportToCSVToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(170, 48);
+            // 
+            // copyToClipboardToolStripMenuItem
+            // 
+            this.copyToClipboardToolStripMenuItem.Name = "copyToClipboardToolStripMenuItem";
+            this.copyToClipboardToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.copyToClipboardToolStripMenuItem.Text = "Copy to clipboard";
+            this.copyToClipboardToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboardToolStripMenuItem_Click);
+            // 
+            // exportToCSVToolStripMenuItem
+            // 
+            this.exportToCSVToolStripMenuItem.Name = "exportToCSVToolStripMenuItem";
+            this.exportToCSVToolStripMenuItem.Size = new System.Drawing.Size(169, 22);
+            this.exportToCSVToolStripMenuItem.Text = "Export to CSV...";
+            this.exportToCSVToolStripMenuItem.Click += new System.EventHandler(this.exportToCSVToolStripMenuItem_Click);
+
+            this.contextMenuStrip1.ResumeLayout(false);
+
+            this.ContextMenuStrip = contextMenuStrip1;
+        }
+
+        private void copyToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ITable table = this.ToTable();
+
+            StringWriter wr = new StringWriter();
+            new TableExporterBBCode().Export(table, wr);
+
+            Clipboard.SetText(wr.ToString());
+        }
+
+        private void exportToCSVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.SaveDo(() =>
+            {
+                SaveFileDialog safeFileDialog = new SaveFileDialog();
+                safeFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+
+                if (safeFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    ITable table = this.ToTable();
+                    using (FileStream stream = new FileStream(safeFileDialog.FileName, FileMode.Create))
+                    {
+                        using (StreamWriter wr = new StreamWriter(stream, Encoding.UTF8))
+                        {
+                            //wr.Write((char)0xFEFF); // BOM
+                            new TableExporterCSV(";").Export(table, wr);
+                        }
+                    }
+                }
+            });
+        }
+
+        private ITable ToTable()
+        {
+            Table table = new Table();
+            IEnumerable<ColumnHeader> headers = Columns.Cast<ColumnHeader>();
+            table.ColumHeaders = headers.Select((ch) => ch.Text).ToArray();
+
+            ICollection items = (SelectedItems.Count > 1) ? (ICollection)SelectedItems : Items;
+
+            table.Data =
+            items.Cast<ListViewItem>().Select(
+                (lvi) => lvi.SubItems.Cast<ListViewItem.ListViewSubItem>().Select(
+                    (lvsi) => lvsi.Text).ToArray()).ToArray();
+
+            return table;
+        }
+
+        /*
+        [Category("Behavior")]
+        public bool ShowContextMenu
+        {
+            get { }
+            set { }
+        }
+        */
+
 
         #endregion
     }
