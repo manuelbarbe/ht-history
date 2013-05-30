@@ -38,7 +38,7 @@
     <Translation id="labelSeason">Saison</Translation>
     <Translation id="itemSeasonAll">Toutes les saisons</Translation>
     <Translation id="itemSeason">Saison {0}</Translation>
-    <Translation id="buttonRefresh">Changer d'équipe /
+    <Translation id="buttonRefresh">Changer d'équipe/
 Actualiser</Translation>
     <Translation id="buttonCancel">Quitter</Translation>
     <Translation id="buttonOk">OK</Translation>
