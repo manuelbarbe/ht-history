@@ -12,6 +12,7 @@ namespace HtHistory.Translation
     {
         private Dictionary<string, string> _translations = new Dictionary<string,string>();
         private string _language;
+        private string _creator;
 
         public XmlTranslator(Stream stream)
         {
@@ -27,6 +28,12 @@ namespace HtHistory.Translation
             XDocument doc = XDocument.Load(stream);
             XElement elLanguage = doc.Root.AssertElement("Language");
             _language = elLanguage.Value;
+            XElement elCreator = doc.Root.Element("Creator");
+            if (elCreator != null)
+            {
+                _creator = elCreator.Value;
+            }
+
             XElement elTranslations = doc.Root.AssertElement("Translations");
             foreach(XElement elTranslation in elTranslations.Elements("Translation").SafeEnum())
             {
@@ -76,7 +83,14 @@ namespace HtHistory.Translation
 
         public override string ToString()
         {
-            return _language;
+            if (string.IsNullOrEmpty(_creator))
+            {
+                return _language;
+            }
+            else
+            {
+                return string.Format("{0} (by {1})", _language, _creator);
+            }
         }
     }
 }
