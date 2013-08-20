@@ -68,6 +68,8 @@ WorkingDirectory='INSTALLDIR' Icon ="HtHistoryIcon.exe" IconIndex="0" Advertise=
               <File Id='en' Name='en.xml' DiskId='1' Source='Locales/en.xml' KeyPath='yes' />
               <File Id='de' Name='de.xml' DiskId='1' Source='Locales/de.xml' />
               <File Id='fr' Name='fr.xml' DiskId='1' Source='Locales/fr.xml' />
+              <File Id='es' Name='es.xml' DiskId='1' Source='Locales/es.xml' />
+              <File Id='nl' Name='nl.xml' DiskId='1' Source='Locales/nl.xml' />
             </Component>
           </Directory>
           
