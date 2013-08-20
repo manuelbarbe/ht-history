@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <HtHistoryTranslation version="1.0">
-  <Creator>manuhell</Creator>
+  <Creator></Creator>
   <Language>English</Language>
   <Translations>
     <Translation id="Form1">HT-History</Translation>
@@ -87,7 +87,7 @@ Refresh</Translation>
         <Translation id="playerStatShort_"></Translation>
       </TranslationTier>
       <TranslationTier>
-        <Translation id="Tot">All</Translation>
+        <Translation id="Tot">Tot</Translation>
         <Translation id="Com">Com</Translation>
         <Translation id="Lea">Lea</Translation>
         <Translation id="Cup">Cup</Translation>

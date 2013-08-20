@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <HtHistoryTranslation version="1.0">
-  <Creator>manuhell</Creator>
-  <Language>Français (by Davidatorus)</Language>
+  <Creator>Davidatorus</Creator>
+  <Language>Français</Language>
   <Translations>
     <Translation id="Form1">HT-History</Translation>
     <Translation id="fileToolStripMenuItem">&amp;Fichier</Translation>
