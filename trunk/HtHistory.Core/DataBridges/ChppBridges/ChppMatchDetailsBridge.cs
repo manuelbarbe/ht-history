@@ -69,7 +69,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                                     uint.Parse(elGoal.AssertElement("ScorerTeamID").Value),
                                     "unnamed team"),
                                 new Player(
-                                    uint.Parse(elGoal.AssertElement("ScorerPlayerID").Value),
+                                    (uint)int.Parse(elGoal.AssertElement("ScorerPlayerID").Value), // this handles negative dummy players
                                     elGoal.AssertElement("ScorerPlayerName").Value)));
             }
             md.Goals = goals;
@@ -84,8 +84,8 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                 uint.Parse(elEvent.AssertElement("Minute").Value),
                 elEvent.AssertElement("EventText").Value,
                 uint.Parse(elEvent.AssertElement("SubjectTeamID").Value),
-                uint.Parse(elEvent.AssertElement("SubjectPlayerID").Value),
-                uint.Parse(elEvent.AssertElement("ObjectPlayerID").Value)));
+                (uint)int.Parse(elEvent.AssertElement("SubjectPlayerID").Value),  // this handles negative dummy players
+                (uint)int.Parse(elEvent.AssertElement("ObjectPlayerID").Value)));  // this handles negative dummy players
             }
             md.Events = events;
 

@@ -34,7 +34,8 @@ namespace HtHistory.Core.DataBridges.ProxyBridges
 
             if (EqualityComparer<T>.Default.Equals(t, default(T)))
             {
-                t = SafeGet(_second, id);
+                //t = SafeGet(_second, id);
+                t = _second.Get(id);
                 if (!EqualityComparer<T>.Default.Equals(t, default(T)))
                 {
                     _first.Set(id, t);
