@@ -605,8 +605,8 @@ namespace HtHistory
                 {
                     SaveDo(() =>
                     {
-                        _matches = (IEnumerable<MatchDetails>)getMatchesTask.Result;
-                        _players = (IEnumerable<Player>)getPlayersTask.Result;
+                        _matches = ((IEnumerable<MatchDetails>)getMatchesTask.Result).SafeEnum();
+                        _players = ((IEnumerable<Player>)getPlayersTask.Result).SafeEnum();
                         _transfers = (TransferHistory)getTransfersTask.Result;
                         UpdateAll(this, new EventArgs());
                     });
