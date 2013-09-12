@@ -34,7 +34,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
         public static Player GetPlayer(XElement elPlayer)
         {
             if (elPlayer == null) throw new ArgumentNullException("elPlayer");
-            return new Player(uint.Parse(elPlayer.AssertElement("PlayerID").Value),
+            return new Player((uint)int.Parse(elPlayer.AssertElement("PlayerID").Value),
                                elPlayer.AssertElement("PlayerName").Value);
         }
     }
