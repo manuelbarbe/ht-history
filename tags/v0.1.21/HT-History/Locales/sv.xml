@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HtHistoryTranslation version="1.0">
+  <Creator>SwissMad_HT31</Creator>
+  <Language>Svenska</Language>
+  <Translations>
+    <Translation id="Form1">HT-History</Translation>
+    <Translation id="fileToolStripMenuItem">&amp;Arkiv</Translation>
+    <Translation id="settingsToolStripMenuItem">&amp;Inställningar</Translation>
+    <Translation id="aboutToolStripMenuItem">&amp;Om</Translation>
+    <Translation id="clearCacheToolStripMenuItem">Töm cache...</Translation>
+    <Translation id="exitToolStripMenuItem">Avsluta</Translation>
+    <Translation id="proxyToolStripMenuItem">Proxy inställningar...</Translation>
+    <Translation id="columnsToolStripMenuItem">Kolumner...</Translation>
+    <Translation id="languageToolStripMenuItem">Språk</Translation>
+    <Translation id="helpToolStripMenuItem">Hjälp</Translation>
+    <Translation id="updateToolStripMenuItem">Sök efter uppdateringar</Translation>
+    <Translation id="whatsNewToolStripMenuItem">Vad är nytt?</Translation>
+    <Translation id="aboutHtHistoryToolStripMenuItem">Om HT-History...</Translation>
+    <Translation id="labelTeamId">Lag-ID</Translation>
+    <Translation id="labelOppId">Motstånd-ID
+(0=alla)
+    </Translation>
+    <Translation id="labelMatchType">Typ</Translation>
+    <Translation id="itemMatchTypeAll">Alla</Translation>
+    <Translation id="itemMatchTypeCompetitive">Tävling</Translation>
+    <Translation id="itemMatchTypeLeague">Serie</Translation>
+    <Translation id="itemMatchTypeCup">Cup</Translation>
+    <Translation id="itemMatchTypeQualifier">Kval</Translation>
+    <Translation id="itemMatchTypeOther">Masters / Övriga</Translation>
+    <Translation id="itemMatchTypeFriendly">Vänskapsmatch</Translation>
+    <Translation id="labelVenue">Spelplats</Translation>
+    <Translation id="itemVenueAll">Alla</Translation>
+    <Translation id="itemVenueHome">Hemma</Translation>
+    <Translation id="itemVenueAway">Borta</Translation>
+    <Translation id="itemVenueNeutral">Neutral</Translation>
+    <Translation id="labelForfaits">WO</Translation>
+    <Translation id="checkBoxForfaitsExcluded">Inkluderade ej WO</Translation>
+    <Translation id="labelSeason">Säsong</Translation>
+    <Translation id="itemSeasonAll">Alla säsonger</Translation>
+    <Translation id="itemSeason">Säsong {0}</Translation>
+    <Translation id="buttonRefresh">Byt lag /
+Uppdatera</Translation>
+    <Translation id="buttonCancel">Avbryt</Translation>
+    <Translation id="buttonOk">OK</Translation>
+    <Translation id="TeamIdDialog">Välj lag</Translation>
+    <Translation id="labelInsertTeamId">Vänligen fyll i lag ID. 0 standard för ditt lag.</Translation>
+    <Translation id="labelFrom">fr.o.m.:</Translation>
+    <Translation id="labelTo">t.o.m.:</Translation>
+    <Translation id="AboutBox">Om HT-History</Translation>
+    <Translation id="WhatsNewBox">Vad är nytt?</Translation>
+    <Translation id="WebProxyDialog">Proxy inställningar</Translation>
+    <Translation id="labelEnterProxyUri">Vänligen fyll i proxy URL:</Translation>
+    <Translation id="buttonTestProxy">Test</Translation>
+    <Translation id="radioButtonOwner">Nuvarande Manager</Translation>
+    <Translation id="radioButtonPeriod">Specificerad tids period (HT-tid)</Translation>
+    <Translation id="tabPageTransfers">Transfers</Translation>
+    <Translation id="columnHeaderTransferDate">Datum</Translation>
+    <Translation id="columnHeaderTransferWeek">Vecka</Translation>
+    <Translation id="columnHeaderTransferBoughtSold">Köpt/Såld</Translation>
+    <Translation id="columnHeaderTransferPlayer">Spelare</Translation>
+    <Translation id="columnHeaderTransferTeam">Lag</Translation>
+    <Translation id="columnHeaderTransferPrice">Pris</Translation>
+    <Translation id="tabPageMatches">Match arkiv</Translation>
+    <Translation id="columnHeaderMatchDate">Datum</Translation>
+    <Translation id="columnHeaderMatchWeek">Vecka</Translation>
+    <Translation id="columnHeaderMatchOpponent">Motståndare</Translation>
+    <Translation id="columnHeaderMatchType">Typ</Translation>
+    <Translation id="columnHeaderMatchVenue">Hemma/Borta</Translation>
+    <Translation id="columnHeaderMatchGoals">Gjorda Mål</Translation>
+    <Translation id="columnHeaderMatchOppGoals">Insläppta Mål</Translation>
+    <Translation id="columnHeaderMatchMinutes">Minuter</Translation>
+    <Translation id="columnHeaderMatchVisitors">Publik</Translation>
+    <Translation id="columnHeaderMatchHatstats">Hatstats</Translation>
+    <Translation id="columnHeaderMatchDefense">Försvar</Translation>
+    <Translation id="columnHeaderMatchMidfield">Mittfält</Translation>
+    <Translation id="columnHeaderMatchAttack">Anfall</Translation>
+    <Translation id="columnHeaderMatchOppHatstats">Mots-Hatstats</Translation>
+    <Translation id="columnHeaderMatchOppDefense">Mots-Försvar</Translation>
+    <Translation id="columnHeaderMatchOppMidfield">Mots-Mittfält</Translation>
+    <Translation id="columnHeaderMatchOppAttack">Mots-Anfall</Translation>
+    <Translation id="tabPagePlayers">Spelare</Translation>
+    <Translation id="tabPagePlayerSeasons">Säsong</Translation>
+    <Translation id="playerStatShort_Name">Namn</Translation>
+    <Translation id="playerStatShort_ID">ID</Translation>
+    <TranslationCombination>
+      <TranslationTier>
+        <Translation id="playerStatShort_"></Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Tot">Antal</Translation>
+        <Translation id="Com">Tävling</Translation>
+        <Translation id="Lea">Liga</Translation>
+        <Translation id="Cup">Cup</Translation>
+        <Translation id="Qua">Kval</Translation>
+        <Translation id="Fri">Träning</Translation>
+        <Translation id="Oth">Övr</Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Mat">Matcher</Translation>
+        <Translation id="In">Inbytt</Translation>
+        <Translation id="Out">Utbytt</Translation>
+        <Translation id="Win">Vinst</Translation>
+        <Translation id="Win%">Vinst%</Translation>
+        <Translation id="Draw">Oavg</Translation>
+        <Translation id="Draw%">Oavg%</Translation>
+        <Translation id="Lost">Förlust</Translation>
+        <Translation id="Los%">Förl%</Translation>
+        <Translation id="Goa">Mål</Translation>
+        <Translation id="GpM">M/M</Translation>
+        <Translation id="Gp90Min">M/90Min</Translation>
+        <Translation id="Min">Min</Translation>
+        <Translation id="MpM">MpM</Translation>
+        <Translation id="MotM">MotM</Translation>
+        <Translation id="Yellow">Gul</Translation>
+        <Translation id="Red">Röd</Translation>
+        <Translation id="Bru">plåster</Translation>
+        <Translation id="Inj">Skada</Translation>
+        <Translation id="First">Första</Translation>
+        <Translation id="Last">Sista</Translation>
+        <Translation id="Keep">Behåll</Translation>
+        <Translation id="CD">IB</Translation>
+        <Translation id="WB">YB</Translation>
+        <Translation id="IM">IM</Translation>
+        <Translation id="Wing">Ytter</Translation>
+        <Translation id="FW">FW</Translation>
+        <Translation id="Unkn">Okänd</Translation>
+        <Translation id="TeamGoa">LagMål</Translation>
+        <Translation id="OppGoa">MotsMål</Translation>
+        <Translation id="Stars">Stjärnor</Translation>
+        <Translation id="Hat">Hat</Translation>
+        <Translation id="MinNotScored">MinUtanMål</Translation>
+        <Translation id="MinNotConceded">MinNotConceded</Translation>
+      </TranslationTier>
+    </TranslationCombination>
+    <Translation id="playerStatLong_Name">Namn</Translation>
+    <Translation id="playerStatLong_ID">ID</Translation>
+    <TranslationCombination>
+      <TranslationTier>
+        <Translation id="playerStatLong_"></Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Tot">Alla matcher: </Translation>
+        <Translation id="Com">Tävlingsmatcher: </Translation>
+        <Translation id="Lea">Seriematcher: </Translation>
+        <Translation id="Cup">Cupmatcher: </Translation>
+        <Translation id="Qua">Kvalmatcher: </Translation>
+        <Translation id="Fri">Vänskapsmatcher: </Translation>
+        <Translation id="Oth">Masters/övriga matcher: </Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Mat">Matcher</Translation>
+        <Translation id="In">Avbytare in</Translation>
+        <Translation id="Out">Avbytare ut</Translation>
+        <Translation id="Win">Vinster</Translation>
+        <Translation id="Win%">Vinst procent</Translation>
+        <Translation id="Draw">Oavgjorda</Translation>
+        <Translation id="Draw%">Oavgjorda procent</Translation>
+        <Translation id="Lost">Förluster</Translation>
+        <Translation id="Los%">Förluster procent</Translation>
+        <Translation id="Goa">Mål</Translation>
+        <Translation id="GpM">Mål per match</Translation>
+        <Translation id="Gp90Min">Mål per 90 minuter</Translation>
+        <Translation id="Min">Minuter</Translation>
+        <Translation id="MpM">Minuter per match</Translation>
+        <Translation id="MotM">Matchens lirare</Translation>
+        <Translation id="Yellow">Gult kort</Translation>
+        <Translation id="Red">Rött kort</Translation>
+        <Translation id="Bru">Plåster</Translation>
+        <Translation id="Inj">Skadad</Translation>
+        <Translation id="First">Första match</Translation>
+        <Translation id="Last">Sista match</Translation>
+        <Translation id="Keep">Spelade som målvakt</Translation>
+        <Translation id="CD">Spelade som innerback</Translation>
+        <Translation id="WB">Spelade som ytterback</Translation>
+        <Translation id="IM">Spelade som innermittfältare</Translation>
+        <Translation id="Wing">Spelade som yttermittfältare</Translation>
+        <Translation id="FW">Spelade som forward</Translation>
+        <Translation id="Unkn">Spelade på okänd position</Translation>
+        <Translation id="TeamGoa">Mål för lag</Translation>
+        <Translation id="OppGoa">Mål för motståndare</Translation>
+        <Translation id="Stars">Maximalt antal stjärnor</Translation>
+        <Translation id="Hat">Hattricks</Translation>
+        <Translation id="MinNotScored">Minuter utan gjorda mål</Translation>
+        <Translation id="MinNotConceded">Minutes without conceding a goal</Translation>
+      </TranslationTier>
+    </TranslationCombination>
+    <Translation id="tabPagePlayerGoals">Mål</Translation>
+    <Translation id="columnHeaderPlayerGoalDate">Datum</Translation>
+    <Translation id="columnHeaderPlayerGoalWeek">Vecka</Translation>
+    <Translation id="columnHeaderPlayerGoalType">Typ</Translation>
+    <Translation id="columnHeaderPlayerGoalMatch">Match</Translation>
+    <Translation id="columnHeaderPlayerGoalScored">Gjorda mål</Translation>
+    <Translation id="columnHeaderPlayerGoalMinute">Minut</Translation>
+    <Translation id="tabPagePlayerMatches">Match arkiv</Translation>
+    <Translation id="columnHeaderPlayerMatchDate">Datum</Translation>
+    <Translation id="columnHeaderPlayerMatchWeek">Vecka</Translation>
+    <Translation id="columnHeaderPlayerMatchType">Typ</Translation>
+    <Translation id="columnHeaderPlayerMatchMatch">Match</Translation>
+    <Translation id="columnHeaderPlayerMatchPosition">Position</Translation>
+    <Translation id="columnHeaderPlayerMatchMinutes">Minut</Translation>
+    <Translation id="columnHeaderPlayerMatchGoals">Mål</Translation>
+    <Translation id="columnHeaderPlayerMatchIn">In</Translation>
+    <Translation id="columnHeaderPlayerMatchOut">Ut</Translation>
+    <Translation id="columnHeaderPlayerMatchYellowCard">Gult</Translation>
+    <Translation id="columnHeaderPlayerMatchRedCard">Rött</Translation>
+    <Translation id="columnHeaderPlayerMatchBruised">Plåster</Translation>
+    <Translation id="columnHeaderPlayerMatchInjured">Skadad</Translation>
+    <Translation id="columnHeaderPlayerMatchMotM">MotM</Translation>
+    <Translation id="columnHeaderPlayerMatchStars">Stjärnor</Translation>
+    <Translation id="labelCurrency">Valuta:</Translation>
+    <Translation id="buttonColumns">Kolumner</Translation>
+    <Translation id="ChooseColumnsDialog">Välj kolumner</Translation>
+    <Translation id="labelName">Namn: </Translation>
+    <Translation id="labelSelectedColumns">Valda kolumner:</Translation>
+    <Translation id="labelAvailableColumns">Valbara kolumner:</Translation>
+    <Translation id="labelSpecifyPeriodInfo"> Använd detta för bot, andralag och tidigare ägare!</Translation>
+    <Translation id="AuthorizeDialog">Vänligen godkänn</Translation>
+    <Translation id="labelAuthorizeInstructions">Det verkar som att du inte har godkännt denna applikation ännu. Besök följande URL för att godkänna denna applikation.</Translation>
+    <Translation id="labelAuthorizeEnterKey">Fyll i den mottagna aktiveringskoden i rutan nedan:</Translation>
+  </Translations>
+</HtHistoryTranslation>
