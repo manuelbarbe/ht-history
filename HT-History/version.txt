@@ -9,7 +9,7 @@ v 0.1.21 - 09/12/2013
 + language "spanish"
 + language "dutch"
 + language "swedish" 
-C fixed bug related to "avoided walkovers"
+C fixed a bug related to "avoided walkovers"
 
 v 0.1.20 - 05/30/2013
 -----------
