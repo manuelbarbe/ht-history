@@ -80,9 +80,9 @@
             this.noTr_labelCreators.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.noTr_labelCreators.Location = new System.Drawing.Point(226, 107);
             this.noTr_labelCreators.Name = "noTr_labelCreators";
-            this.noTr_labelCreators.Size = new System.Drawing.Size(191, 48);
+            this.noTr_labelCreators.Size = new System.Drawing.Size(135, 16);
             this.noTr_labelCreators.TabIndex = 4;
-            this.noTr_labelCreators.Text = "Software by manuhell\r\n\r\nLogo by harrymoon (from flickr)";
+            this.noTr_labelCreators.Text = "Software by manuhell";
             // 
             // AboutBox
             // 
