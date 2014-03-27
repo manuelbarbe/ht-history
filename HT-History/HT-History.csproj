@@ -221,6 +221,7 @@
     <EmbeddedResource Include="Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Images.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\MatchesPage.resx">
       <DependentUpon>MatchesPage.cs</DependentUpon>
@@ -268,20 +269,15 @@
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\chpp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\splash.jpg" />
     <None Include="Resources\HtHistory.png" />
     <None Include="Resources\HtHistory_withtext3.png" />
-    <None Include="Resources\HtHistory_high500.png" />
-    <None Include="Resources\HtHistory_small.png" />
-    <None Include="Resources\ht-history_ball.gif" />
     <Content Include="ht-history_ball.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\Icon1.ico" />
     <None Include="Resources\ht-history_ball.ico" />
+    <Content Include="Locales\da.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Locales\de.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -303,6 +299,7 @@
     <Content Include="Locales\sv.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\HtHistoryBallOnly.png" />
     <Content Include="version.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

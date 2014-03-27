@@ -35,13 +35,13 @@
             // 
             this.labelVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.labelVersion.BackColor = System.Drawing.Color.Transparent;
-            this.labelVersion.ForeColor = System.Drawing.Color.White;
-            this.labelVersion.Location = new System.Drawing.Point(5, 193);
+            this.labelVersion.ForeColor = System.Drawing.Color.Black;
+            this.labelVersion.Location = new System.Drawing.Point(118, 191);
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(72, 19);
             this.labelVersion.TabIndex = 2;
             this.labelVersion.Text = "version";
-            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SplashScreen
             // 
