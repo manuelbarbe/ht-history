@@ -50,12 +50,12 @@
             this.tabPagePlayers = new System.Windows.Forms.TabPage();
             this.comboBoxColumnSets = new System.Windows.Forms.ComboBox();
             this.buttonColumns = new System.Windows.Forms.Button();
-            this.tabPageMatches = new System.Windows.Forms.TabPage();
-            this.tabPageTransfers = new System.Windows.Forms.TabPage();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overviewPage1 = new HtHistory.Pages.OverviewPage();
+            this.tabPageMatches = new System.Windows.Forms.TabPage();
             this.matchesPage1 = new HtHistory.Pages.MatchesPage();
+            this.tabPageTransfers = new System.Windows.Forms.TabPage();
             this.transfersPage1 = new HtHistory.Pages.TransfersPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.matchFilterControl = new HtHistory.UserControls.MatchFilterControl();
             this.menuStrip.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -250,6 +250,15 @@
             this.buttonColumns.UseVisualStyleBackColor = true;
             this.buttonColumns.Click += new System.EventHandler(this.button2_Click);
             // 
+            // overviewPage1
+            // 
+            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
+            this.overviewPage1.Name = "overviewPage1";
+            this.overviewPage1.Size = new System.Drawing.Size(843, 442);
+            this.overviewPage1.Stats = null;
+            this.overviewPage1.TabIndex = 0;
+            // 
             // tabPageMatches
             // 
             this.tabPageMatches.Controls.Add(this.matchesPage1);
@@ -260,6 +269,14 @@
             this.tabPageMatches.TabIndex = 3;
             this.tabPageMatches.Text = "Matches";
             this.tabPageMatches.UseVisualStyleBackColor = true;
+            // 
+            // matchesPage1
+            // 
+            this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchesPage1.Location = new System.Drawing.Point(3, 3);
+            this.matchesPage1.Name = "matchesPage1";
+            this.matchesPage1.Size = new System.Drawing.Size(843, 442);
+            this.matchesPage1.TabIndex = 0;
             // 
             // tabPageTransfers
             // 
@@ -272,6 +289,14 @@
             this.tabPageTransfers.Text = "Transfers";
             this.tabPageTransfers.UseVisualStyleBackColor = true;
             // 
+            // transfersPage1
+            // 
+            this.transfersPage1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.transfersPage1.Location = new System.Drawing.Point(3, 3);
+            this.transfersPage1.Name = "transfersPage1";
+            this.transfersPage1.Size = new System.Drawing.Size(843, 442);
+            this.transfersPage1.TabIndex = 0;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -282,31 +307,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(78, 75);
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            // 
-            // overviewPage1
-            // 
-            this.overviewPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overviewPage1.Location = new System.Drawing.Point(3, 3);
-            this.overviewPage1.Name = "overviewPage1";
-            this.overviewPage1.Size = new System.Drawing.Size(843, 442);
-            this.overviewPage1.Stats = null;
-            this.overviewPage1.TabIndex = 0;
-            // 
-            // matchesPage1
-            // 
-            this.matchesPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchesPage1.Location = new System.Drawing.Point(3, 3);
-            this.matchesPage1.Name = "matchesPage1";
-            this.matchesPage1.Size = new System.Drawing.Size(843, 442);
-            this.matchesPage1.TabIndex = 0;
-            // 
-            // transfersPage1
-            // 
-            this.transfersPage1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transfersPage1.Location = new System.Drawing.Point(3, 3);
-            this.transfersPage1.Name = "transfersPage1";
-            this.transfersPage1.Size = new System.Drawing.Size(843, 442);
-            this.transfersPage1.TabIndex = 0;
             // 
             // matchFilterControl
             // 
