@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HtHistoryTranslation version="1.0">
+  <Creator>Seutekop</Creator>
+  <Language>Nederlands</Language>
+  <Translations>
+    <Translation id="Form1">HT-History</Translation>
+    <Translation id="fileToolStripMenuItem">&amp;Bestand</Translation>
+    <Translation id="settingsToolStripMenuItem">&amp;Instellingen</Translation>
+    <Translation id="aboutToolStripMenuItem">&amp;Over</Translation>
+    <Translation id="clearCacheToolStripMenuItem">Cache legen...</Translation>
+    <Translation id="exitToolStripMenuItem">Afsluiten</Translation>
+    <Translation id="proxyToolStripMenuItem">Proxy instellingen...</Translation>
+    <Translation id="columnsToolStripMenuItem">Kolommen...</Translation>
+    <Translation id="languageToolStripMenuItem">Taal</Translation>
+    <Translation id="helpToolStripMenuItem">Hulp</Translation>
+    <Translation id="updateToolStripMenuItem">Controleren op updates</Translation>
+    <Translation id="whatsNewToolStripMenuItem">Wat is er nieuw</Translation>
+    <Translation id="aboutHtHistoryToolStripMenuItem">Over HT-History...</Translation>
+    <Translation id="labelTeamId">Team-ID</Translation>
+    <Translation id="labelOppId">ID tegenstander
+(0=alle)
+    </Translation>
+    <Translation id="labelMatchType">Soort</Translation>
+    <Translation id="itemMatchTypeAll">Alle soorten</Translation>
+    <Translation id="itemMatchTypeCompetitive">Officieel</Translation>
+    <Translation id="itemMatchTypeLeague">Competitie</Translation>
+    <Translation id="itemMatchTypeCup">Beker</Translation>
+    <Translation id="itemMatchTypeQualifier">Kwalificatie</Translation>
+    <Translation id="itemMatchTypeOther">Masters / Overige</Translation>
+    <Translation id="itemMatchTypeFriendly">Vriendschappelijk</Translation>
+    <Translation id="labelVenue">Speelterrein</Translation>
+    <Translation id="itemVenueAll">Alle</Translation>
+    <Translation id="itemVenueHome">Thuis</Translation>
+    <Translation id="itemVenueAway">Uit</Translation>
+    <Translation id="itemVenueNeutral">Neutraal</Translation>
+    <Translation id="labelForfaits">Walkovers</Translation>
+    <Translation id="checkBoxForfaitsExcluded">uitsluiten</Translation>
+    <Translation id="labelSeason">Seizoen</Translation>
+    <Translation id="itemSeasonAll">Alle seizoenen</Translation>
+    <Translation id="itemSeason">Seizoen {0}</Translation>
+    <Translation id="buttonRefresh">Verander club /
+Vernieuw</Translation>
+    <Translation id="buttonCancel">Annuleer</Translation>
+    <Translation id="buttonOk">OK</Translation>
+    <Translation id="TeamIdDialog">Kies team</Translation>
+    <Translation id="labelInsertTeamId">Voer het team-ID in. 0 geeft jouw club.</Translation>
+    <Translation id="labelFrom">van:</Translation>
+    <Translation id="labelTo">tot:</Translation>
+    <Translation id="AboutBox">Over HT-History</Translation>
+    <Translation id="WhatsNewBox">Wat is er nieuw</Translation>
+    <Translation id="WebProxyDialog">Proxy instellingen</Translation>
+    <Translation id="labelEnterProxyUri">Voer aub de proxy URI in:</Translation>
+    <Translation id="buttonTestProxy">Test</Translation>
+    <Translation id="radioButtonOwner">Huidige Manager</Translation>
+    <Translation id="radioButtonPeriod">Specifieke tijdsperiode (HT-time)</Translation>
+    <Translation id="tabPageTransfers">Transfers</Translation>
+    <Translation id="columnHeaderTransferDate">Datum</Translation>
+    <Translation id="columnHeaderTransferWeek">Week</Translation>
+    <Translation id="columnHeaderTransferBoughtSold">Gekocht/Verkocht</Translation>
+    <Translation id="columnHeaderTransferPlayer">Speler</Translation>
+    <Translation id="columnHeaderTransferTeam">Club</Translation>
+    <Translation id="columnHeaderTransferPrice">Prijs</Translation>
+    <Translation id="tabPageMatches">Wedstrijdarchief</Translation>
+    <Translation id="columnHeaderMatchDate">Datum</Translation>
+    <Translation id="columnHeaderMatchWeek">Week</Translation>
+    <Translation id="columnHeaderMatchOpponent">Tegenstander</Translation>
+    <Translation id="columnHeaderMatchType">Soort</Translation>
+    <Translation id="columnHeaderMatchVenue">Speelterrein</Translation>
+    <Translation id="columnHeaderMatchGoals">Doelpunten</Translation>
+    <Translation id="columnHeaderMatchOppGoals">Doelpunten tegen</Translation>
+    <Translation id="columnHeaderMatchMinutes">Minuten</Translation>
+    <Translation id="columnHeaderMatchVisitors">Toeschouwers</Translation>
+    <Translation id="columnHeaderMatchHatstats">Hatstats</Translation>
+    <Translation id="columnHeaderMatchDefense">Verdediging</Translation>
+    <Translation id="columnHeaderMatchMidfield">Middenveld</Translation>
+    <Translation id="columnHeaderMatchAttack">Aanval</Translation>
+    <Translation id="columnHeaderMatchOppHatstats">Teg-Hatstats</Translation>
+    <Translation id="columnHeaderMatchOppDefense">Teg-Verdediging</Translation>
+    <Translation id="columnHeaderMatchOppMidfield">Teg-Middenveld</Translation>
+    <Translation id="columnHeaderMatchOppAttack">Teg-Aanval</Translation>
+    <Translation id="tabPagePlayers">Spelers</Translation>
+    <Translation id="tabPagePlayerSeasons">Seizoenen</Translation>
+    <Translation id="playerStatShort_Name">Naam</Translation>
+    <Translation id="playerStatShort_ID">ID</Translation>
+    <TranslationCombination>
+      <TranslationTier>
+        <Translation id="playerStatShort_"></Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Tot">Alle</Translation>
+        <Translation id="Com">Off</Translation>
+        <Translation id="Lea">Com</Translation>
+        <Translation id="Cup">Bek</Translation>
+        <Translation id="Qua">Kwa</Translation>
+        <Translation id="Fri">Vri</Translation>
+        <Translation id="Oth">Ove</Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Mat">Wed</Translation>
+        <Translation id="In">In</Translation>
+        <Translation id="Out">Uit</Translation>
+        <Translation id="Win">Gew</Translation>
+        <Translation id="Win%">Gew%</Translation>
+        <Translation id="Draw">Gelijk</Translation>
+        <Translation id="Draw%">Gelijk%</Translation>
+        <Translation id="Lost">Verl</Translation>
+        <Translation id="Los%">Verl%</Translation>
+        <Translation id="Goa">Dpt</Translation>
+        <Translation id="GpM">DpW</Translation>
+        <Translation id="Gp90Min">Gp90Min</Translation>
+        <Translation id="Min">Min</Translation>
+        <Translation id="MpM">MpW</Translation>
+        <Translation id="MotM">MvdW</Translation>
+        <Translation id="Yellow">Yellow</Translation>
+        <Translation id="Red">Rood</Translation>
+        <Translation id="Bru">Pleister</Translation>
+        <Translation id="Inj">Geblesseerd</Translation>
+        <Translation id="First">Eerste</Translation>
+        <Translation id="Last">Laatste</Translation>
+        <Translation id="Keep">Bewaar</Translation>
+        <Translation id="CD">CV</Translation>
+        <Translation id="WB">VV</Translation>
+        <Translation id="IM">CM</Translation>
+        <Translation id="Wing">Vleugel</Translation>
+        <Translation id="FW">Aanv</Translation>
+        <Translation id="Unkn">Onb</Translation>
+        <Translation id="TeamGoa">TeamDpt</Translation>
+        <Translation id="OppGoa">TegDpt</Translation>
+        <Translation id="Stars">Sterren</Translation>
+        <Translation id="Hat">Hat</Translation>
+        <Translation id="MinNotScored">MinNietGescoord</Translation>
+        <Translation id="MinNotConceded">MinGeenTegen</Translation>
+      </TranslationTier>
+    </TranslationCombination>
+    <Translation id="playerStatLong_Name">Naam</Translation>
+    <Translation id="playerStatLong_ID">ID</Translation>
+    <TranslationCombination>
+      <TranslationTier>
+        <Translation id="playerStatLong_"></Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Tot">Alle wedstrijden: </Translation>
+        <Translation id="Com">Officiële wedstrijden: </Translation>
+        <Translation id="Lea">Competitiewedstrijden: </Translation>
+        <Translation id="Cup">Bekerwedstrijden: </Translation>
+        <Translation id="Qua">Kwalificatiewedstrijden: </Translation>
+        <Translation id="Fri">Vriendschappelijke wedstrijden: </Translation>
+        <Translation id="Oth">Masters/Overige wedstrijden: </Translation>
+      </TranslationTier>
+      <TranslationTier>
+        <Translation id="Mat">Wedstrijden</Translation>
+        <Translation id="In">Wissel In</Translation>
+        <Translation id="Out">Wissel Uit</Translation>
+        <Translation id="Win">Overwinningen</Translation>
+        <Translation id="Win%">Winstpercentage</Translation>
+        <Translation id="Draw">Gelijke spelen</Translation>
+        <Translation id="Draw%">Gelijk percentage</Translation>
+        <Translation id="Lost">Nederlagen</Translation>
+        <Translation id="Los%">Verliespercentage</Translation>
+        <Translation id="Goa">Doelpunten</Translation>
+        <Translation id="GpM">Doelpunten per wedstrijd</Translation>
+        <Translation id="Gp90Min">Doelpunten per 90 Minuten</Translation>
+        <Translation id="Min">Minuten</Translation>
+        <Translation id="MpM">Minuten per wedstrijd</Translation>
+        <Translation id="MotM">Man van de wedstrijd</Translation>
+        <Translation id="Yellow">Gele kaarten</Translation>
+        <Translation id="Red">Rode kaarten</Translation>
+        <Translation id="Bru">Pleister</Translation>
+        <Translation id="Inj">Geblesseerd</Translation>
+        <Translation id="First">Eerste wedstrijd</Translation>
+        <Translation id="Last">Laatste wedstrijd</Translation>
+        <Translation id="Keep">Gespeeld als keeper</Translation>
+        <Translation id="CD">Gespeeld als centrale verdediger</Translation>
+        <Translation id="WB">Gespeeld als vleugelverdediger</Translation>
+        <Translation id="IM">Gespeeld als centrale middenvelder</Translation>
+        <Translation id="Wing">Gespeeld als vleugelspeler</Translation>
+        <Translation id="FW">Gespeeld als aanvaller</Translation>
+        <Translation id="Unkn">Gespeeld op onbekende positie</Translation>
+        <Translation id="TeamGoa">Doelpunten van team</Translation>
+        <Translation id="OppGoa">Doelpunten van tegenstander</Translation>
+        <Translation id="Stars">Maximum aantal sterren</Translation>
+        <Translation id="Hat">Hattricks</Translation>
+        <Translation id="MinNotScored">Minuten zonder gescoord te hebben</Translation>
+        <Translation id="MinNotConceded">Minuten zonder doelpunt tegen</Translation>
+      </TranslationTier>
+    </TranslationCombination>
+    <Translation id="tabPagePlayerGoals">Doelpunten</Translation>
+    <Translation id="columnHeaderPlayerGoalDate">Datum</Translation>
+    <Translation id="columnHeaderPlayerGoalWeek">Week</Translation>
+    <Translation id="columnHeaderPlayerGoalType">Soort</Translation>
+    <Translation id="columnHeaderPlayerGoalMatch">Wedstrijd</Translation>
+    <Translation id="columnHeaderPlayerGoalScored">Gescoord</Translation>
+    <Translation id="columnHeaderPlayerGoalMinute">Minuut</Translation>
+    <Translation id="tabPagePlayerMatches">Wedstrijdarchief</Translation>
+    <Translation id="columnHeaderPlayerMatchDate">Datum</Translation>
+    <Translation id="columnHeaderPlayerMatchWeek">Week</Translation>
+    <Translation id="columnHeaderPlayerMatchType">Soort</Translation>
+    <Translation id="columnHeaderPlayerMatchMatch">Wedstrijd</Translation>
+    <Translation id="columnHeaderPlayerMatchPosition">Positie</Translation>
+    <Translation id="columnHeaderPlayerMatchMinutes">Minuten</Translation>
+    <Translation id="columnHeaderPlayerMatchGoals">Doelpunten</Translation>
+    <Translation id="columnHeaderPlayerMatchIn">In</Translation>
+    <Translation id="columnHeaderPlayerMatchOut">Uit</Translation>
+    <Translation id="columnHeaderPlayerMatchYellowCard">Geel</Translation>
+    <Translation id="columnHeaderPlayerMatchRedCard">Rood</Translation>
+    <Translation id="columnHeaderPlayerMatchBruised">Pleister</Translation>
+    <Translation id="columnHeaderPlayerMatchInjured">Geblesseerd</Translation>
+    <Translation id="columnHeaderPlayerMatchMotM">MvdW</Translation>
+    <Translation id="columnHeaderPlayerMatchStars">Sterren</Translation>
+    <Translation id="labelCurrency">Valuta:</Translation>
+    <Translation id="buttonColumns">Kolommen</Translation>
+    <Translation id="ChooseColumnsDialog">Selecteer kolommen</Translation>
+    <Translation id="labelName">Naam: </Translation>
+    <Translation id="labelSelectedColumns">Geselecteerde kolommen:</Translation>
+    <Translation id="labelAvailableColumns">Beschikbare kolommen:</Translation>
+    <Translation id="labelSpecifyPeriodInfo">Gebruik deze voor bots, tweede elftallen of vorige eigenaren!</Translation>
+    <Translation id="AuthorizeDialog">Autoriseer HT-History aub.</Translation>
+    <Translation id="labelAuthorizeInstructions">Het lijkt erop dat je deze applicatie nog niet geautoriseerd hebt. Bezoek de volgende link om toestemming te verlenen.</Translation>
+    <Translation id="labelAuthorizeEnterKey">Voer de ontvangen activatiecode hieronder in:</Translation>
+  </Translations>
+</HtHistoryTranslation>
