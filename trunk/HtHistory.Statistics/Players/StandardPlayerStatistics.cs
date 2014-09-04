@@ -71,7 +71,7 @@ namespace HtHistory.Statistics.Players
 
         private static void AddTeamDummyGoals(Team myTeam, IDictionary<Player, MatchAppearance> thisMatchAppearances, MatchDetails md)
         {
-             Player teamDummyPlayer = new Player(0, myTeam.Name);
+            Player teamDummyPlayer = new Player(0, myTeam.Name);
 
             foreach (Goal g in md.Goals)
             {
@@ -105,6 +105,8 @@ namespace HtHistory.Statistics.Players
             {
                 if (!item.Role.IsActive()) continue;
 
+                if (item.Player.ID == 0) continue; // ignore neighbourhood players
+
                 if (!ret.ContainsKey(item.Player))
                 {
                     ret.Add(item.Player, new MatchAppearance(item.Player, myTeam, md, item.Role, item.RatingStars));
@@ -137,6 +139,8 @@ namespace HtHistory.Statistics.Players
 
         private static void AddPlayer(IDictionary<Player, MatchAppearance> ret, uint playerId, Team playerTeam, Lineup.LineupRole role, MatchDetails md, uint? redcarded, uint? substitutedIn, uint? substitutedOut)
         {
+            if (playerId == 0) return; // ignore neighbourhood players
+
             Player player = new Player(playerId, Player.UnknownName);
 
             if (!ret.ContainsKey(player))
@@ -154,6 +158,8 @@ namespace HtHistory.Statistics.Players
             foreach (Goal g in md.Goals)
             {
                 if (myTeam.ID != g.Team.ID) continue; // ignore opponent goals
+
+                if (g.Scorer.ID == 0) continue; // ignore neighbourhood players
 
                 if (!thisMatchAppearances.ContainsKey(g.Scorer))
                 {
@@ -189,6 +195,8 @@ namespace HtHistory.Statistics.Players
 
                 if (ev.Type == MatchEvent.MatchEventType.BestPlayer)
                 {
+                    if (ev.PlayerId == 0) continue; // ignore neighbourhood players
+
                     Player player = new Player(ev.PlayerId, Player.UnknownName);
 
                     if (thisMatchAppearances.ContainsKey(player))
@@ -208,6 +216,8 @@ namespace HtHistory.Statistics.Players
 
                 if (ev.Type.IsYellowCard())
                 {
+                    if (ev.PlayerId == 0) continue; // ignore neighbourhood players
+
                     Player player = new Player(ev.PlayerId, Player.UnknownName);
 
                     if (thisMatchAppearances.ContainsKey(player))
@@ -227,6 +237,8 @@ namespace HtHistory.Statistics.Players
 
                 if (ev.Type.IsBruised())
                 {
+                    if (ev.PlayerId == 0) continue; // ignore neighbourhood players
+
                     Player player = new Player(ev.PlayerId, Player.UnknownName);
 
                     if (thisMatchAppearances.ContainsKey(player))
@@ -236,6 +248,8 @@ namespace HtHistory.Statistics.Players
                 }
                 else if (ev.Type.IsInjury())
                 {
+                    if (ev.PlayerId == 0) continue; // ignore neighbourhood players
+
                     Player player = new Player(ev.PlayerId, Player.UnknownName);
 
                     if (thisMatchAppearances.ContainsKey(player))

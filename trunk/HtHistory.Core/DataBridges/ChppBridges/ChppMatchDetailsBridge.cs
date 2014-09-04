@@ -114,7 +114,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
         private Lineup GetLineup(uint matchId, uint teamId)
         {
             string url = new StringBuilder("file=matchlineup&version=1.6&matchID=").Append(matchId)
-                                       .Append("&teamID=").Append(teamId).ToString();
+                                       .Append("&teamID=").Append((int)teamId).ToString();
                                        
             XDocument doc = XDocument.Load(ChppAccessor.GetDataReader(url, DataFlags.Static));
 
