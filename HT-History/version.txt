@@ -4,6 +4,11 @@
 - removed
 C changed
 
+v 0.1.23 - 09/04/2014
+-----------
+C fixed a bug related to new cup system (negative team ids) 
+C fixed a bug with neighbourhood players (and player id zero)
+
 v 0.1.22 - 03/27/2014
 -----------
 + language "danish" 

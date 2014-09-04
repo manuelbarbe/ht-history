@@ -28,7 +28,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
             if (elTeam == null) throw new ArgumentNullException("elTeam"); ;
             XElement elTeamId = elTeam.AssertElement(team + "TeamID");
             XElement elTeamName = elTeam.AssertElement(team + "TeamName");
-            return new Team(UInt32.Parse(elTeamId.Value), elTeamName.Value);
+            return new Team((uint)int.Parse(elTeamId.Value), elTeamName.Value);
         }
 
         public static Player GetPlayer(XElement elPlayer)
