@@ -11,11 +11,11 @@ namespace HtHistory.Tasks
     public class GetPlayersTask : BaseTask
     {
         private IPlayersBridge _pb;
-        private uint _teamId;
+        private int _teamId;
 
         private IEnumerable<Player> _pl = null;
 
-        public GetPlayersTask(uint teamId, IPlayersBridge pb)
+        public GetPlayersTask(int teamId, IPlayersBridge pb)
         {
             if (pb == null) throw new ArgumentNullException("pb");
             _pb = pb;
@@ -23,7 +23,7 @@ namespace HtHistory.Tasks
             _teamId = teamId;
         }
 
-        public uint TeamId { get { return _teamId; } }
+        public int TeamId { get { return _teamId; } }
 
         public override string Name
         {
@@ -34,7 +34,7 @@ namespace HtHistory.Tasks
         {
             //if (_pl == null)
             {
-                _pl = _pb.GetPlayers(TeamId);
+                _pl = _pb.GetPlayers((uint)TeamId);
             }
 
             return _pl;

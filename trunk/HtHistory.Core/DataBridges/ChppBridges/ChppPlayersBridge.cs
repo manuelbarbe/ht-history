@@ -29,7 +29,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
             foreach (XElement el in elTeam.AssertElement("PlayerList").Elements("Player"))
             {
-                uint id = (uint)int.Parse(el.AssertElement("PlayerID").Value);
+                int id = int.Parse(el.AssertElement("PlayerID").Value);
                 string givenName = el.AssertElement("FirstName").Value;
                 string nickName = el.AssertElement("NickName").Value;
                 string surName = el.AssertElement("LastName").Value;

@@ -13,7 +13,7 @@ namespace HtHistory.Core.DataContainers
         public Team Seller { get; private set; }
         public Money Price { get; private set; }
 
-        public Transfer(uint id, DateTime date, Player player, Team buyer, Team seller, Money price) : base(id)
+        public Transfer(int id, DateTime date, Player player, Team buyer, Team seller, Money price) : base(id)
         {
             if (player == null || buyer == null || seller == null)
             {

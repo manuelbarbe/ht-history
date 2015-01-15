@@ -12,7 +12,7 @@ namespace HtHistory.Dialogs
 {
     public partial class TeamIdDialog : Form
     {
-        public TeamIdDialog(uint teamId = 0)
+        public TeamIdDialog(int teamId = 0)
         {
             InitializeComponent();
             noTr_textBoxTeamId.Text = teamId.ToString();
@@ -23,9 +23,9 @@ namespace HtHistory.Dialogs
             ShowHideDates(radioButtonPeriod.Checked);
         }
 
-        private uint _teamId = 0;
+        private int _teamId = 0;
 
-        public uint TeamId
+        public int TeamId
         {
             get
             {
@@ -72,7 +72,7 @@ namespace HtHistory.Dialogs
 
             try
             {
-                _teamId = uint.Parse(noTr_textBoxTeamId.Text);
+                _teamId = int.Parse(noTr_textBoxTeamId.Text);
             }
             catch
             {

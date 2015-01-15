@@ -27,7 +27,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
             XElement elUser = doc.Root.AssertElement("User");
 
-            uint userId = uint.Parse(elUser.AssertElement("UserID").Value);
+            int userId = int.Parse(elUser.AssertElement("UserID").Value);
             string userName = elUser.AssertElement("Loginname").Value;
             DateTime userJoinDate = DateTime.Parse(elUser.AssertElement("ActivationDate").Value); // not <SignupDate> here
 

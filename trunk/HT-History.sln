@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtHistory.Statistics", "HtH
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtHistory.Installer", "HtHistory.Installer\HtHistory.Installer.csproj", "{1FBCF94E-CB40-476A-B782-2AE95C80B4F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectListView2010", "ObjectListView\ObjectListView\ObjectListView2010.csproj", "{18FEDA0C-D147-4286-B39A-01204808106A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,16 +71,6 @@ Global
 		{1FBCF94E-CB40-476A-B782-2AE95C80B4F0}.Release|Mixed Platforms.Build.0 = Release|x86
 		{1FBCF94E-CB40-476A-B782-2AE95C80B4F0}.Release|x86.ActiveCfg = Release|x86
 		{1FBCF94E-CB40-476A-B782-2AE95C80B4F0}.Release|x86.Build.0 = Release|x86
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{18FEDA0C-D147-4286-B39A-01204808106A}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

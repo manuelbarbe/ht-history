@@ -66,10 +66,10 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                                     uint.Parse(elGoal.AssertElement("ScorerHomeGoals").Value),
                                     uint.Parse(elGoal.AssertElement("ScorerAwayGoals").Value)),
                                 new Team(
-                                    uint.Parse(elGoal.AssertElement("ScorerTeamID").Value),
+                                    int.Parse(elGoal.AssertElement("ScorerTeamID").Value),
                                     "unnamed team"),
                                 new Player(
-                                    (uint)int.Parse(elGoal.AssertElement("ScorerPlayerID").Value), // this handles negative dummy players
+                                    int.Parse(elGoal.AssertElement("ScorerPlayerID").Value), // this handles negative dummy players
                                     elGoal.AssertElement("ScorerPlayerName").Value)));
             }
             md.Goals = goals;
@@ -83,9 +83,9 @@ namespace HtHistory.Core.DataBridges.ChppBridges
                 (MatchEvent.MatchEventType)uint.Parse(elEvent.AssertElement("EventKey").Value.Split('_')[0]),
                 uint.Parse(elEvent.AssertElement("Minute").Value),
                 elEvent.AssertElement("EventText").Value,
-                uint.Parse(elEvent.AssertElement("SubjectTeamID").Value),
-                (uint)int.Parse(elEvent.AssertElement("SubjectPlayerID").Value),  // this handles negative dummy players
-                (uint)int.Parse(elEvent.AssertElement("ObjectPlayerID").Value)));  // this handles negative dummy players
+                int.Parse(elEvent.AssertElement("SubjectTeamID").Value),
+                int.Parse(elEvent.AssertElement("SubjectPlayerID").Value),  // this handles negative dummy players
+                int.Parse(elEvent.AssertElement("ObjectPlayerID").Value)));  // this handles negative dummy players
             }
             md.Events = events;
 
@@ -111,10 +111,10 @@ namespace HtHistory.Core.DataBridges.ChppBridges
             return md;
         }
 
-        private Lineup GetLineup(uint matchId, uint teamId)
+        private Lineup GetLineup(int matchId, int teamId)
         {
             string url = new StringBuilder("file=matchlineup&version=1.6&matchID=").Append(matchId)
-                                       .Append("&teamID=").Append((int)teamId).ToString();
+                                       .Append("&teamID=").Append(teamId).ToString();
                                        
             XDocument doc = XDocument.Load(ChppAccessor.GetDataReader(url, DataFlags.Static));
 

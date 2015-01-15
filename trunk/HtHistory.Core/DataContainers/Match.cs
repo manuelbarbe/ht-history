@@ -28,7 +28,7 @@ namespace HtHistory.Core.DataContainers
             YouthFriendlyInternationalCupRules = 106,
         }
 
-        public Match(uint id, MatchType type, Team home, Team away) : base(id)
+        public Match(int id, MatchType type, Team home, Team away) : base(id)
         {
             if (home == null || away == null) throw new ArgumentNullException("home or away team is null");
 

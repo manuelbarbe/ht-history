@@ -25,7 +25,7 @@ namespace HtHistory.Pages
 
         public class ResultData
         {
-            public uint TeamId { get; set; }
+            public int TeamId { get; set; }
             public IDictionary<Player, IList<MatchAppearance>> Infos { get; set; }
             public IEnumerable<Player> CurrentPlayers { get; set; }
             public IEnumerable<MatchDetails> Matches { get; set; }
@@ -369,7 +369,7 @@ namespace HtHistory.Pages
 
         }
 
-        IDictionary<Player, IList<MatchAppearance>> GetForMatches(uint teamId, IEnumerable<MatchDetails> matches)
+        IDictionary<Player, IList<MatchAppearance>> GetForMatches(int teamId, IEnumerable<MatchDetails> matches)
         {
             StandardPlayerStatistics ts = new StandardPlayerStatistics(matches);
             return ts.GetMatchesOfPlayers(teamId, true);

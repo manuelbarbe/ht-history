@@ -7,7 +7,7 @@ namespace HtHistory.Core.DataContainers
 {
     public class TeamDetails : Team
     {
-        public TeamDetails(uint id, string name) : base(id, name) { }
+        public TeamDetails(int id, string name) : base(id, name) { }
 
         public User Owner { get; set; }
 

@@ -7,7 +7,7 @@ namespace HtHistory.Core.DataContainers
 {
     public class HtNamedObject : HtObject
     {
-        public HtNamedObject(uint id, string name)
+        public HtNamedObject(int id, string name)
             : base(id)
         {
             if (name == null) throw new ArgumentNullException("name");

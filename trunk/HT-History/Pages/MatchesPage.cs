@@ -61,13 +61,13 @@ namespace HtHistory.Pages
                 .SetSorter(16, UserControls.SortableListView.TagSorter<uint>());
         }
 
-        public void ShowMatches(IEnumerable<MatchDetails> details, uint teamId)
+        public void ShowMatches(IEnumerable<MatchDetails> details, int teamId)
         {
             FillList(details, teamId);
 			FillChart(details, teamId);
         }
 		
-        private void FillChart(IEnumerable<MatchDetails> details, uint teamId)
+        private void FillChart(IEnumerable<MatchDetails> details, int teamId)
         {
 #if !MONO
             chartHatstats.Series.Clear();
@@ -109,7 +109,7 @@ namespace HtHistory.Pages
 #endif
         }
 
-        private void FillList(IEnumerable<MatchDetails> details, uint teamId)
+        private void FillList(IEnumerable<MatchDetails> details, int teamId)
         {
             try
             {

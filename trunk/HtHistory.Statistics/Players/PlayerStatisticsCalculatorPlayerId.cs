@@ -6,13 +6,13 @@ using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Statistics.Players
 {
-    public class PlayerStatisticsCalculatorPlayerId : PlayerStatisticsCalculatorBase<IEnumerable<MatchAppearance>, uint>
+    public class PlayerStatisticsCalculatorPlayerId : PlayerStatisticsCalculatorBase<IEnumerable<MatchAppearance>, int>
     {
         public override string Name { get { return "Player ID"; } }
 
         public override string Abbreviation { get { return "ID"; } }
 
-        public override uint Calculate(IEnumerable<MatchAppearance> matches)
+        public override int Calculate(IEnumerable<MatchAppearance> matches)
         {
             MatchAppearance ma = matches.FirstOrDefault();
 

@@ -227,7 +227,7 @@ namespace HtHistory.Core.DataContainers
             MatchFinished = 599,
         }
 
-        public MatchEvent(Match match, uint index, MatchEventType type, uint minute, string text, uint teamId, uint playerId, uint otherPlayerId)
+        public MatchEvent(Match match, uint index, MatchEventType type, uint minute, string text, int teamId, int playerId, int otherPlayerId)
         {
             if (match == null || text == null) throw new ArgumentNullException("match or text");
 
@@ -246,8 +246,8 @@ namespace HtHistory.Core.DataContainers
         public MatchEventType Type { get; set; }
         public uint Minute { get; set; }
         public string Text { get; set; }
-        public uint TeamId { get; set; }
-        public uint PlayerId { get; set; }
-        public uint OtherPlayerId { get; set; }
+        public int TeamId { get; set; }
+        public int PlayerId { get; set; }
+        public int OtherPlayerId { get; set; }
     }
 }

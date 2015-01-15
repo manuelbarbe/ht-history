@@ -13,8 +13,8 @@ namespace HtHistory.Dialogs
 {
     public partial class ChooseColumnsDialog : Form
     {
-        public IEnumerable Left { get { return listBoxLeft.Items; } }
-        public IEnumerable Right { get { return listBoxRight.Items; } }
+        public new IEnumerable Left { get { return listBoxLeft.Items; } }
+        public new IEnumerable Right { get { return listBoxRight.Items; } }
         public string MyName { get { return noTr_textBoxName.Text; } }
 
         public ChooseColumnsDialog(IEnumerable left, IEnumerable right, string name = null)

@@ -35,7 +35,7 @@ namespace HtHistory.UserControls
             listBoxSeason.ResumeLayout();
         }
 
-        private void InitializeVenue(uint teamId, ITranslator translator)
+        private void InitializeVenue(int teamId, ITranslator translator)
         {
             listBoxVenue.SuspendLayout();
             listBoxVenue.Items.Clear();
@@ -62,7 +62,7 @@ namespace HtHistory.UserControls
             listBoxType.ResumeLayout();
         }
 
-        public void Prepare(uint teamId, DateTime from, DateTime to, ITranslator translator)
+        public void Prepare(int teamId, DateTime from, DateTime to, ITranslator translator)
         {
             noTr_textBoxTeamId.Text = teamId.ToString();
             InitializeVenue(teamId, translator);

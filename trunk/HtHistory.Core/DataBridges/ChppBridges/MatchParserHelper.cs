@@ -14,7 +14,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
         {
             if (elMatch == null) throw new ArgumentNullException("elMatch");
             Match m = new Match(
-                        uint.Parse(elMatch.AssertElement("MatchID").Value),
+                        int.Parse(elMatch.AssertElement("MatchID").Value),
                         (Match.MatchType)uint.Parse(elMatch.AssertElement("MatchType").Value),
                         GetTeam(elMatch.AssertElement("HomeTeam"), "Home"),
                         GetTeam(elMatch.AssertElement("AwayTeam"), "Away"));
@@ -28,13 +28,13 @@ namespace HtHistory.Core.DataBridges.ChppBridges
             if (elTeam == null) throw new ArgumentNullException("elTeam"); ;
             XElement elTeamId = elTeam.AssertElement(team + "TeamID");
             XElement elTeamName = elTeam.AssertElement(team + "TeamName");
-            return new Team((uint)int.Parse(elTeamId.Value), elTeamName.Value);
+            return new Team(int.Parse(elTeamId.Value), elTeamName.Value);
         }
 
         public static Player GetPlayer(XElement elPlayer)
         {
             if (elPlayer == null) throw new ArgumentNullException("elPlayer");
-            return new Player((uint)int.Parse(elPlayer.AssertElement("PlayerID").Value),
+            return new Player(int.Parse(elPlayer.AssertElement("PlayerID").Value),
                                elPlayer.AssertElement("PlayerName").Value);
         }
     }
