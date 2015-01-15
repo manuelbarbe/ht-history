@@ -7,7 +7,7 @@ namespace HtHistory.Core.DataContainers
 {
     public class Team : HtNamedObject
     {
-        public Team(uint id, string name) : base (id, name)
+        public Team(int id, string name) : base (id, name)
         {
 
         }

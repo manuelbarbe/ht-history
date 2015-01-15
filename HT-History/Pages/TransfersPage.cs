@@ -132,7 +132,7 @@ namespace HtHistory.Pages
             //attach the shown data to the list
             sortableListViewTransfers.Tag = th;
 
-            uint teamId = th.Team.ID;
+            int teamId = th.Team.ID;
 
             foreach (Transfer t in th.Transfers.SafeEnum())
             {

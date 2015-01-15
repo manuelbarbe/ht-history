@@ -15,11 +15,11 @@ namespace HtHistory.Tasks
         private ITeamDetailsBridge _tdb;
         private DateTime? _startDate;
         private DateTime? _endDate;
-        private uint _teamId;
+        private int _teamId;
 
         private IList<MatchDetails> _mdl = null;
 
-        public GetMatchesTask(  uint teamId,
+        public GetMatchesTask(  int teamId,
                                 DateTime? startDate,
                                 DateTime? endDate,
                                 IMatchArchiveBridge mab,
@@ -40,7 +40,7 @@ namespace HtHistory.Tasks
             _teamId = teamId;
         }
 
-        public GetMatchesTask(uint teamId, ITeamDetailsBridge tdb, IMatchArchiveBridge mab, IDataBridge<MatchDetails> mdb)
+        public GetMatchesTask(int teamId, ITeamDetailsBridge tdb, IMatchArchiveBridge mab, IDataBridge<MatchDetails> mdb)
         {
             if (tdb == null) throw new ArgumentNullException("tbd");
             _tdb = tdb;
@@ -54,7 +54,7 @@ namespace HtHistory.Tasks
             _teamId = teamId;
         }
 
-        public uint TeamId { get { return _teamId; } } 
+        public int TeamId { get { return _teamId; } } 
 
         protected override object DoImpl()
         {
@@ -67,7 +67,7 @@ namespace HtHistory.Tasks
 
                 if (_tdb != null)
                 {
-                    TeamDetails teamDetails = _tdb.GetTeamDetails(_teamId);
+                    TeamDetails teamDetails = _tdb.GetTeamDetails((uint)_teamId);
                     if (teamDetails == null || teamDetails.Owner == null || teamDetails.Owner.JoinDate == null)
                     {
                         throw new Exception("Cannot get join date of owner");
@@ -86,7 +86,7 @@ namespace HtHistory.Tasks
                 ReportProgress(10, "Getting match archive");
 
 
-                MatchArchive ar = _mab.GetMatches(_teamId, startDate.Value, endDate.Value);
+                MatchArchive ar = _mab.GetMatches((uint)_teamId, startDate.Value, endDate.Value);
                 int noMatches = ar.Count();
                 int noCurMatch = 0;
 
@@ -94,7 +94,7 @@ namespace HtHistory.Tasks
                 foreach (Match m in ar.SafeEnum())
                 {
                     ReportProgress(20 + (80 * noCurMatch / noMatches), String.Format("Getting match {0}/{1}", noCurMatch + 1, noMatches));
-                    _mdl.Add(_mdb.Get(m.ID));
+                    _mdl.Add(_mdb.Get((uint)m.ID));
                     ++noCurMatch;
                 }
 

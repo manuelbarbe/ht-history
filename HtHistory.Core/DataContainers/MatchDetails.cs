@@ -8,7 +8,7 @@ namespace HtHistory.Core.DataContainers
 {
     public class MatchDetails : Match
     {
-        public MatchDetails(uint id, MatchType type, Team home, Team away)
+        public MatchDetails(int id, MatchType type, Team home, Team away)
             : base(id, type, home, away)
         {
         }

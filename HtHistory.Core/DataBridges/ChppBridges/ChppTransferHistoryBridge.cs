@@ -52,7 +52,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
                 foreach (XElement elTransfer in elTransfers.Elements("Transfer"))
                 {
-                    uint id = uint.Parse(elTransfer.AssertElement("TransferID").Value);
+                    int id = int.Parse(elTransfer.AssertElement("TransferID").Value);
                     DateTime date = DateTime.Parse(elTransfer.AssertElement("Deadline").Value);
                     Player player = MatchParserHelper.GetPlayer(elTransfer.AssertElement("Player"));
                     Team buyer = MatchParserHelper.GetTeam(elTransfer.AssertElement("Buyer"), "Buyer");

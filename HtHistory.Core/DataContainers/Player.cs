@@ -9,7 +9,7 @@ namespace HtHistory.Core.DataContainers
     {
         public static readonly string UnknownName = "unknown player";
 
-        public Player(uint id, string name)
+        public Player(int id, string name)
             : base(id, name)
         {
         }

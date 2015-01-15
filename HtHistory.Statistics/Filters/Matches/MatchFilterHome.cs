@@ -7,9 +7,9 @@ namespace HtHistory.Statistics.Filters.Matches
 {
     public class MatchFilterHome : IMatchFilter
     {
-        private uint _teamId;
+        private int _teamId;
 
-        public MatchFilterHome(uint teamId)
+        public MatchFilterHome(int teamId)
         {
             _teamId = teamId;
         }

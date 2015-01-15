@@ -17,7 +17,7 @@ namespace HtHistory.Statistics.Players
 
         private IEnumerable<MatchDetails> Matches { get; set; }
 
-        public IDictionary<Player, IList<MatchAppearance>> GetMatchesOfPlayers(uint teamId, bool addTeamItem = false)
+        public IDictionary<Player, IList<MatchAppearance>> GetMatchesOfPlayers(int teamId, bool addTeamItem = false)
         {
             IDictionary<Player, IList<MatchAppearance>> ret2 = new Dictionary<Player, IList<MatchAppearance>>();
            
@@ -124,7 +124,7 @@ namespace HtHistory.Statistics.Players
             {
                 if (ev.TeamId != myTeam.ID) continue;
 
-                uint playerId = ev.PlayerId;
+                int playerId = ev.PlayerId;
 
                 if ( ev.Type.IsRedCard() )
                 {
@@ -137,7 +137,7 @@ namespace HtHistory.Statistics.Players
             }
         }
 
-        private static void AddPlayer(IDictionary<Player, MatchAppearance> ret, uint playerId, Team playerTeam, Lineup.LineupRole role, MatchDetails md, uint? redcarded, uint? substitutedIn, uint? substitutedOut)
+        private static void AddPlayer(IDictionary<Player, MatchAppearance> ret, int playerId, Team playerTeam, Lineup.LineupRole role, MatchDetails md, uint? redcarded, uint? substitutedIn, uint? substitutedOut)
         {
             if (playerId == 0) return; // ignore neighbourhood players
 

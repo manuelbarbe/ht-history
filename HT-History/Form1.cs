@@ -41,7 +41,7 @@ namespace HtHistory
         private static readonly string SettingsFile;
         private static readonly string UpdateDirectory;
 
-        private uint _teamId = 0;
+        private int _teamId = 0;
         IEnumerable<MatchDetails> _matches = new List<MatchDetails>();
         IEnumerable<Player> _players = new List<Player>();
         TransferHistory _transfers = null;
@@ -163,7 +163,7 @@ namespace HtHistory
                 {
                     string team;
                     _settings.TryGetValue("team", out team);
-                    if (!string.IsNullOrEmpty(team)) _teamId = uint.Parse(team);
+                    if (!string.IsNullOrEmpty(team)) _teamId = int.Parse(team);
                 }
                 catch
                 {
@@ -538,12 +538,12 @@ namespace HtHistory
             transfersPage1.ShowTransfers(_transfers);
         }
 
-        private void UpdateTeam(ref uint teamId, DateTime? startDate, DateTime? endDate)
+        private void UpdateTeam(ref int teamId, DateTime? startDate, DateTime? endDate)
         {
             //ugly hack ahead
             if (startDate == null || endDate == null)
             { // get data from CHPP
-                TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails(teamId);
+                TeamDetails td = Environment.DataBridgeFactory.TeamDetailsBridge.GetTeamDetails((uint)teamId);
                 matchFilterControl.Prepare(td.ID, td.Owner.JoinDate.Value, DateTime.Now.ToHtTime(), _translator);
                 teamId = td.ID;
             }
@@ -553,7 +553,7 @@ namespace HtHistory
             }
         }
 
-        private void UpdateMatches(uint teamId, DateTime? startDate, DateTime? endDate)
+        private void UpdateMatches(int teamId, DateTime? startDate, DateTime? endDate)
         {
             //_pwd.Show();
 
@@ -616,7 +616,7 @@ namespace HtHistory
             bgw.RunWorkerAsync();
         }
 
-        private void ChangeTeam(ref uint teamId)
+        private void ChangeTeam(ref int teamId)
         {
             TeamIdDialog tid = new TeamIdDialog(teamId);
             tid.Translate(_translator, true);

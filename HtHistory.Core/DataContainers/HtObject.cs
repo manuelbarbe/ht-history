@@ -7,9 +7,9 @@ namespace HtHistory.Core.DataContainers
 {
     public class HtObject
     {
-        protected HtObject(uint id) { ID = id; }
+        protected HtObject(int id) { ID = id; }
 
-        public uint ID { get; private set; }
+        public int ID { get; private set; }
 
         public override bool Equals(object obj)
         {

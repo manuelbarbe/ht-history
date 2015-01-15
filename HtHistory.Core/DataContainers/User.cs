@@ -7,7 +7,7 @@ namespace HtHistory.Core.DataContainers
 {
     public class User : HtNamedObject
     {
-        public User(uint id, string name) : base(id, name) { }
+        public User(int id, string name) : base(id, name) { }
 
         public DateTime? JoinDate { get; set; }
 

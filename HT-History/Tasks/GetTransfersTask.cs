@@ -11,11 +11,11 @@ namespace HtHistory.Tasks
     public class GetTransfersTask : BaseTask
     {
         private ITransferHistoryBridge _thb;
-        private uint _teamId;
+        private int _teamId;
 
         private TransferHistory _th = null;
 
-        public GetTransfersTask(uint teamId, ITransferHistoryBridge thb)
+        public GetTransfersTask(int teamId, ITransferHistoryBridge thb)
         {
             if (thb == null) throw new ArgumentNullException("thb");
             _thb = thb;
@@ -23,7 +23,7 @@ namespace HtHistory.Tasks
             _teamId = teamId;
         }
 
-        public uint TeamId { get { return _teamId; } }
+        public int TeamId { get { return _teamId; } }
 
         public override string Name
         {
@@ -35,7 +35,7 @@ namespace HtHistory.Tasks
             //if (_pl == null)
             {
                 ReportProgress(10, "Getting complete transfer history");
-                _th = _thb.GetTransfers(TeamId);
+                _th = _thb.GetTransfers((uint)TeamId);
                 ReportProgress(100, "done");
             }
 
