@@ -4,6 +4,10 @@
 - removed
 C changed
 
+v 0.1.24 - 01/16/2015
+-----------
+C allowing negative id's (almost) everywhere; thus fixing the overflow bug
+
 v 0.1.23 - 09/04/2014
 -----------
 C fixed a bug related to new cup system (negative team ids) 
