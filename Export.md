@@ -1,0 +1,5 @@
+All lists allow you to export the shown columns. To do so, select some line (use CTRL to multiselect) and right-click the selection.
+
+![http://ht-history.googlecode.com/svn/wiki/Export.png](http://ht-history.googlecode.com/svn/wiki/Export.png)
+
+You are then able to export the selected lines to a CSV file or to copy them as HT board code to the clipboard. If you select one single line only, the complete list is exported instead.

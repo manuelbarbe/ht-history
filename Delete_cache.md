@@ -1,0 +1,1 @@
+HT-History caches all downloaded files from CHPP in c:/users/username/AppData/Roaming/HT-History/data (I don't know for mono). If something went terribly wrong, it is always a good option to get rid of them. In this situatin you may click File->Delete cache.
