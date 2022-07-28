@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -53,7 +54,11 @@ namespace HtHistory
 
         private void linkLabelRequestUri_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start(noTr_linkLabelRequestUri.Text);
+            //System.Diagnostics.Process.Start(noTr_linkLabelRequestUri.Text);
+            //Clipboard.SetText(noTr_linkLabelRequestUri.Text);
+            string url = noTr_linkLabelRequestUri.Text.Replace("&", "^&");
+            Process.Start(new ProcessStartInfo("cmd", $"/c start {url}") { CreateNoWindow = true });
+            
         }
     }
 }

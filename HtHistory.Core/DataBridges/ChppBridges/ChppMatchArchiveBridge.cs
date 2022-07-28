@@ -34,9 +34,10 @@ namespace HtHistory.Core.DataBridges.ChppBridges
 
                 string url = new StringBuilder("file=matchesarchive&version=1.1")
                                         .Append("&teamID=").Append(teamId)
-                                        .Append("&FirstMatchDate=").Append(curMonthStart.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture))
-                                        .Append("&LastMatchDate=").Append(curMonthEnd.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)).ToString();
-                
+                                        .Append("&firstmatchdate=").Append(curMonthStart.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture))
+                                        .Append("&lastmatchdate=").Append(curMonthEnd.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)).ToString();
+                                       
+
                 XDocument doc = XDocument.Load(ChppAccessor.GetDataReader(url, DataFlags.Static));
 
                 XElement elTeam = doc.Root.AssertElement("Team");
