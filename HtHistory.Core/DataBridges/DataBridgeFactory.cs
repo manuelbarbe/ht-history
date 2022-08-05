@@ -14,7 +14,7 @@ namespace HtHistory.Core.DataBridges
             set;
         }
 
-        public IDataBridge<MatchDetails> MatchDetailsBridge
+        public IMatchDetailsBridge MatchDetailsBridge
         {
             get;
             set;

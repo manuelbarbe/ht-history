@@ -11,7 +11,7 @@ namespace HtHistory.Tasks
     public class GetMatchesTask : BaseTask
     {
         private IMatchArchiveBridge _mab;
-        private IDataBridge<MatchDetails> _mdb;
+        private IMatchDetailsBridge _mdb;
         private ITeamDetailsBridge _tdb;
         private DateTime? _startDate;
         private DateTime? _endDate;
@@ -23,7 +23,7 @@ namespace HtHistory.Tasks
                                 DateTime? startDate,
                                 DateTime? endDate,
                                 IMatchArchiveBridge mab,
-                                IDataBridge<MatchDetails> mdb)
+                                IMatchDetailsBridge mdb)
         {
             if (startDate == null) throw new ArgumentNullException("startDate");
             _startDate = startDate;
@@ -40,7 +40,7 @@ namespace HtHistory.Tasks
             _teamId = teamId;
         }
 
-        public GetMatchesTask(int teamId, ITeamDetailsBridge tdb, IMatchArchiveBridge mab, IDataBridge<MatchDetails> mdb)
+        public GetMatchesTask(int teamId, ITeamDetailsBridge tdb, IMatchArchiveBridge mab, IMatchDetailsBridge mdb)
         {
             if (tdb == null) throw new ArgumentNullException("tbd");
             _tdb = tdb;
@@ -87,14 +87,14 @@ namespace HtHistory.Tasks
 
 
                 MatchArchive ar = _mab.GetMatches((uint)_teamId, startDate.Value, endDate.Value);
-                int noMatches = ar.Count();
+                int noMatches = ar.Matches.Count();
                 int noCurMatch = 0;
 
                 _mdl = new List<MatchDetails>();
-                foreach (Match m in ar.SafeEnum())
+                foreach (Match m in ar.Matches.SafeEnum())
                 {
                     ReportProgress(20 + (80 * noCurMatch / noMatches), String.Format("Getting match {0}/{1}", noCurMatch + 1, noMatches));
-                    _mdl.Add(_mdb.Get((uint)m.ID));
+                    _mdl.Add(_mdb.GetMatchDetails((uint)m.ID));
                     ++noCurMatch;
                 }
 

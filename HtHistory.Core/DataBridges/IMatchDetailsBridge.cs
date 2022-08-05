@@ -6,7 +6,7 @@ using HtHistory.Core.DataContainers;
 
 namespace HtHistory.Core.DataBridges
 {
-    public interface IMatchDetailsBridge : IDataBridge<MatchDetails>
+    public interface IMatchDetailsBridge
     {
         MatchDetails GetMatchDetails(uint matchId);
     }

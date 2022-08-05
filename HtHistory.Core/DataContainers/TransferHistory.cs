@@ -6,8 +6,8 @@ using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Core.DataContainers
 {
-    public class TransferHistory : IEnumerable<Transfer>
-    {
+    public class TransferHistory
+    { 
         public TransferHistory(Team team, DateTime from, DateTime to)
         {
             if (team == null) throw new ArgumentNullException("team");
@@ -22,14 +22,5 @@ namespace HtHistory.Core.DataContainers
 
         public virtual IEnumerable<Transfer> Transfers { get; set; }
 
-        public virtual IEnumerator<Transfer> GetEnumerator()
-        {
-            return Transfers.SafeEnum().GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
     }
 }

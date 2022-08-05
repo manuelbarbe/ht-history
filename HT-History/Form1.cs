@@ -8,8 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using HtHistory.Core.DataContainers;
 using HtHistory.Core.DataBridges;
-using HtHistory.Core.DataBridges.ChppBridges;
-using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
+using HtHistory.Core.DataBridges.RestBridges;
 using System.Reflection;
 using System.IO;
 using HtHistory.Core.DataBridges.CacheBridges;
@@ -25,7 +24,6 @@ using HtHistory.Pages;
 using HtHistory.Core;
 using HtHistory.Dialogs;
 using HtHistory.Core.DataBridges.ProxyBridges;
-using HtHistory.Core.DataBridges.DatabaseBridges;
 using HtHistory.Translation;
 using HtHistory.UserControls;
 
@@ -232,34 +230,22 @@ namespace HtHistory
 
             _settings.TryGetValue("proxy", out proxy);
 
-            IChppAccessor accessor = new ChppFilesystemAccessor(DataDirectory, new ChppOnlineAccessor(token, tokenSecret, proxy));
+            string base_url = "http://localhost:17782/";
+
             DataBridgeFactory dbf = new DataBridgeFactory();
-            dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
-            dbf.MatchDetailsBridge =    new BridgeChain<MatchDetails>(
-                                            new CacheBridge<MatchDetails>(),
-                                            //new BridgeChain<MatchDetails>(
-                                                //new DatabaseMatchDetailsBridge(),
-                                                new ChppMatchDetailsBridge(accessor));
-            dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
-            dbf.PlayersBridge = new ChppPlayersBridge(accessor);
-            dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
+            dbf.MatchArchiveBridge = new RestMatchArchiveBridge(base_url);
+            dbf.MatchDetailsBridge =   // new BridgeChain<MatchDetails>(
+                                       //   new CacheBridge<MatchDetails>(),
+                                                new RestMatchDetailsBridge(base_url);//);
+            dbf.TeamDetailsBridge = new RestTeamDetailsBridge(base_url);
+            dbf.PlayersBridge = new RestPlayersBridge(base_url);
+            dbf.TransfersBridge = new RestTransferHistoryBridge(base_url);
             Environment.DataBridgeFactory = dbf;
         }
 
         private void SetOfflineMode()
         {
-            IChppAccessor accessor = new ChppFilesystemAccessor(DataDirectory);
-            DataBridgeFactory dbf = new DataBridgeFactory();
-            dbf.MatchArchiveBridge = new ChppMatchArchiveBridge(accessor);
-            dbf.MatchDetailsBridge = new BridgeChain<MatchDetails>(
-                                            new CacheBridge<MatchDetails>(),
-                                            //new BridgeChain<MatchDetails>(
-                                                //new DatabaseMatchDetailsBridge(),
-                                                new ChppMatchDetailsBridge(accessor));
-			dbf.TeamDetailsBridge = new ChppTeamDetailsBridge(accessor);
-            dbf.PlayersBridge = new ChppPlayersBridge(accessor);
-            dbf.TransfersBridge = new ChppTransferHistoryBridge(accessor);
-            Environment.DataBridgeFactory = dbf;
+         
         }
 
         private void clearCacheToolStripMenuItem_Click(object sender, EventArgs e)

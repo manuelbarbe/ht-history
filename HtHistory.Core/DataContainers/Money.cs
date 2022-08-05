@@ -51,15 +51,10 @@ namespace HtHistory.Core.DataContainers
         public double Amount { get; private set; }
         public Currency Currency { get; private set; }
 
-        public Money(double amount, Currency currency = null)
+        public Money(double amount, Currency currency)
         {
             this.Currency = currency ?? Currency.SEK;
             this.Amount = amount;
-        }
-
-        //copy constructor
-        public Money(Money rhs) : this(rhs.Amount, rhs.Currency)
-        {
         }
 
         public override string ToString()

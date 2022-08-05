@@ -29,16 +29,9 @@ namespace HtHistory.Core.DataContainers
 
             public uint Value { get; private set; } 
 
-            public SectorRating(Ability ability, SubAbility sub)
+            public SectorRating(uint value)
             {
-                if (ability == Ability.NonExistent) Value = 0;
-
-                Value = ((uint)ability - 1) * 4 + (uint)sub;
-            }
-
-            public SectorRating(uint rating)
-            {
-                Value = rating;
+                Value = value;
             }
 
             public static implicit operator SectorRating(uint i)

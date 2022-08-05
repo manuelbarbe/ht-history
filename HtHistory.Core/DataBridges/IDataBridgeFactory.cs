@@ -9,7 +9,7 @@ namespace HtHistory.Core.DataBridges
     public interface IDataBridgeFactory
     {
         IMatchArchiveBridge MatchArchiveBridge { get; }
-        IDataBridge<MatchDetails> MatchDetailsBridge { get; }
+        IMatchDetailsBridge MatchDetailsBridge { get; }
         ITeamDetailsBridge TeamDetailsBridge { get; }
         IPlayersBridge PlayersBridge { get; }
         ITransferHistoryBridge TransfersBridge { get; }

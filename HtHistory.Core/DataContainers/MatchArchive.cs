@@ -6,7 +6,7 @@ using HtHistory.Core.ExtensionMethods;
 
 namespace HtHistory.Core.DataContainers
 {
-    public class MatchArchive : IEnumerable<Match>
+    public class MatchArchive
     {
         public MatchArchive(Team team, DateTime from, DateTime to)
         {
@@ -25,11 +25,6 @@ namespace HtHistory.Core.DataContainers
         public virtual IEnumerator<Match> GetEnumerator()
         {
             return Matches.SafeEnum().GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
         }
     }
 }

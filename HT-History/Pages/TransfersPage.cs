@@ -60,7 +60,7 @@ namespace HtHistory.Pages
             Currency newCurrency = comboBoxCurrency.SelectedItem as Currency;
             if (newCurrency != null)
             {
-                foreach (Transfer t in th.SafeEnum())
+                foreach (Transfer t in th.Transfers.SafeEnum())
                 {
                     t.Price.ConvertTo(newCurrency);
                 }
@@ -94,8 +94,8 @@ namespace HtHistory.Pages
                 int noBuys = buys.Count();
                 int noSales = sales.Count();
 
-                Money amountBuys = new Money(0);
-                Money amountSales = new Money(0);
+                Money amountBuys = new Money(0, Currency.SEK);
+                Money amountSales = new Money(0, Currency.SEK);
 
                 // ORIGINAL IMPLEMENTATION:
                 //buys.ForEach(t => amountBuys += t.Price);

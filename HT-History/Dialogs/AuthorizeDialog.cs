@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
 
 namespace HtHistory
 {
@@ -18,7 +17,7 @@ namespace HtHistory
             InitializeComponent();
         }
 
-        private ChppOnlineAccessor _accessor = new ChppOnlineAccessor();
+        //private ChppOnlineAccessor _accessor = new ChppOnlineAccessor();
         public string AccessToken { get; private set; }
         public string AccessTokenSecret { get; private set; }
 
@@ -26,7 +25,7 @@ namespace HtHistory
         {
             try
             {
-                noTr_linkLabelRequestUri.Text = _accessor.GetAuthorizeUrl();
+                //noTr_linkLabelRequestUri.Text = _accessor.GetAuthorizeUrl();
             }
             catch (Exception ex)
             {
@@ -40,9 +39,11 @@ namespace HtHistory
         {
             try
             {
+                /*
                 string[] token_info = _accessor.Authorize(noTr_textBoxPIN.Text);
                 AccessToken = token_info[0];
                 AccessTokenSecret = token_info[1];
+                */
                 DialogResult = DialogResult.OK;
                 Close();
             }
