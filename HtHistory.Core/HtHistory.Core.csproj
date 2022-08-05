@@ -20,5 +20,8 @@
   <ItemGroup>
     <Compile Remove="DataBridges\CacheBridges\CacheMatchDetailsBridge.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HtHistory.Data.Types\HtHistory.Data.Types.csproj" />
+  </ItemGroup>
   <PropertyGroup />
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Toolbox;
 using HtHistory.Core;
 
 namespace HtHistory.Translation

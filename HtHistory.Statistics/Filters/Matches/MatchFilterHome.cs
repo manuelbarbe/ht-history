@@ -14,7 +14,7 @@ namespace HtHistory.Statistics.Filters.Matches
             _teamId = teamId;
         }
 
-        public IEnumerable<Core.DataContainers.MatchDetails> Filter(IEnumerable<Core.DataContainers.MatchDetails> input)
+        public IEnumerable<Data.Types.MatchDetails> Filter(IEnumerable<Data.Types.MatchDetails> input)
         {
             return input.Where(m => m.HomeTeam.ID == _teamId);
         }

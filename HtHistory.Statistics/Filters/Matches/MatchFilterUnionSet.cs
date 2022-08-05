@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.ExtensionMethods;
-using HtHistory.Core.DataContainers;
+using HtHistory.Toolbox;
+using HtHistory.Data.Types;
 
 namespace HtHistory.Statistics.Filters.Matches
 {

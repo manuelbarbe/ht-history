@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Toolbox;
 
 namespace HtHistory.Dialogs
 {

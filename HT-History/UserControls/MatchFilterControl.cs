@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using HtHistory.Statistics.Filters.Matches;
 using System.Collections;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 using HtHistory.Translation;
 
 namespace HtHistory.UserControls

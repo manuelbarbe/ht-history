@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Toolbox;
 
 namespace HtHistory.Export
 {

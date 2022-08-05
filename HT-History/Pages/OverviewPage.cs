@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 using HtHistory.Statistics;
 using HtHistory.Statistics.Players;
 using System.Windows.Forms;
 using System.ComponentModel;
 using HtHistory.Core;
 using System.Drawing;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Toolbox;
 using HtHistory.Export;
 using System.IO;
 using System.Collections;

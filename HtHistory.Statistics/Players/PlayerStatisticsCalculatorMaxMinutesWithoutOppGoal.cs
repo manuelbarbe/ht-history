@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HtHistory.Statistics.Types;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 
 namespace HtHistory.Statistics.Players
 {

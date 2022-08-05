@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Text;
 using System.IO;
-using HtHistory.Core.ExtensionMethods;
-using HtHistory.Core.DataContainers;
+using HtHistory.Toolbox;
+using HtHistory.Data.Types;
+using HtHistory.Core.DataBridges;
 using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
 using System.Globalization;
 

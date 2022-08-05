@@ -4,7 +4,7 @@ using HtHistory.Core.DataBridges.CacheBridges;
 using HtHistory.Core.DataBridges.ChppBridges;
 using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
 using HtHistory.Core.DataBridges.ProxyBridges;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 
 IChppAccessor accessor = new ChppFilesystemAccessor("/data", new ChppOnlineAccessor("JWp24dkskEGTXCvH", "n5HjBPDyZq4xqpIY", null));
 //IChppAccessor accessor = new ChppOnlineAccessor("JWp24dkskEGTXCvH", "n5HjBPDyZq4xqpIY", null);

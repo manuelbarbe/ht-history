@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
 using System.Xml.Linq;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Toolbox;
 using System.Globalization;
 
 namespace HtHistory.Core.DataBridges.ChppBridges

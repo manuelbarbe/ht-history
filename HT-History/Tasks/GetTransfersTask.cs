@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 using HtHistory.Core.DataBridges;
 using HtHistory.Core;
 

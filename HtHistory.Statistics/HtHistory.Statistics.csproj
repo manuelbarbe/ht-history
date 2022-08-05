@@ -9,6 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HtHistory.Core\HtHistory.Core.csproj" />
+    <ProjectReference Include="..\HtHistory.Data.Types\HtHistory.Data.Types.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

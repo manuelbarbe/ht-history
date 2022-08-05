@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 
 namespace HtHistory.Statistics.Filters.Matches
 {
@@ -15,7 +15,7 @@ namespace HtHistory.Statistics.Filters.Matches
             _season = season;
         }
 
-        public IEnumerable<Core.DataContainers.MatchDetails> Filter(IEnumerable<Core.DataContainers.MatchDetails> input)
+        public IEnumerable<Data.Types.MatchDetails> Filter(IEnumerable<Data.Types.MatchDetails> input)
         {
             return input.Where(m => new HtTime(m.Date).Season == _season);
         }

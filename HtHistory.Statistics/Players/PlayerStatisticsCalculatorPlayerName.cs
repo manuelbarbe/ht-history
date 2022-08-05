@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Toolbox;
 
 namespace HtHistory.Statistics.Players
 {
@@ -14,9 +14,9 @@ namespace HtHistory.Statistics.Players
 
         public override string Calculate(IEnumerable<MatchAppearance> matches)
         {
-            MatchAppearance ma = matches.FirstOrDefault(m => m.Player.Name != HtHistory.Core.DataContainers.Player.UnknownName);
+            MatchAppearance ma = matches.FirstOrDefault(m => m.Player.Name != HtHistory.Data.Types.Player.UnknownName);
 
-            if (ma == null) return HtHistory.Core.DataContainers.Player.UnknownName;
+            if (ma == null) return HtHistory.Data.Types.Player.UnknownName;
             else return ma.Player.Name;
         }
     }

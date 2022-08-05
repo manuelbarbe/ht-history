@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using HtHistory.Core.DataBridges;
-using HtHistory.Core.DataContainers;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Data.Types;
+using HtHistory.Toolbox;
 
 namespace HtHistory.Tasks
 {

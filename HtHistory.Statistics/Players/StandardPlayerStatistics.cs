@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HtHistory.Core.DataContainers;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Data.Types;
+using HtHistory.Toolbox;
 using HtHistory.Core;
 
 namespace HtHistory.Statistics.Players

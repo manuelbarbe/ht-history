@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using HtHistory.Core.DataBridges.ChppBridges.ChppFileAccessors;
-using HtHistory.Core.ExtensionMethods;
-using HtHistory.Core.DataContainers;
+using HtHistory.Toolbox;
+using HtHistory.Data.Types;
 
 namespace HtHistory.Core.DataBridges.ChppBridges
 {
@@ -13,7 +13,7 @@ namespace HtHistory.Core.DataBridges.ChppBridges
     {
         public ChppPlayersBridge(IChppAccessor accessor) : base(accessor) { }
 
-        public IEnumerable<DataContainers.PlayerDetails> GetPlayers(uint teamId)
+        public IEnumerable<PlayerDetails> GetPlayers(uint teamId)
         {
             string url = new StringBuilder("file=players&version=2.0&teamID=")
                                        .Append(teamId).ToString();

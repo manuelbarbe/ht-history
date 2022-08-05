@@ -6,8 +6,8 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using HtHistory.Core.DataContainers;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Data.Types;
+using HtHistory.Toolbox;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Diagnostics;
 

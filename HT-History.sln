@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtHistory.Data.WebApi", "Ht
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtHistory.Data.Types", "HtHistory.Data.Types\HtHistory.Data.Types.csproj", "{2FEB64B8-ADDB-4A6F-93A1-7CFA1EF73C98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtHistory.Toolbox", "HtHistory.Toolbox\HtHistory.Toolbox.csproj", "{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,18 @@ Global
 		{2FEB64B8-ADDB-4A6F-93A1-7CFA1EF73C98}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{2FEB64B8-ADDB-4A6F-93A1-7CFA1EF73C98}.Release|x86.ActiveCfg = Release|Any CPU
 		{2FEB64B8-ADDB-4A6F-93A1-7CFA1EF73C98}.Release|x86.Build.0 = Release|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Debug|x86.Build.0 = Debug|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Release|x86.ActiveCfg = Release|Any CPU
+		{CEB07D4C-8DBB-41B7-8F48-9FDE391CE43F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

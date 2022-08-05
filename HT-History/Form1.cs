@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using HtHistory.Core.DataContainers;
+using HtHistory.Data.Types;
 using HtHistory.Core.DataBridges;
 using HtHistory.Core.DataBridges.RestBridges;
 using System.Reflection;
@@ -15,7 +15,7 @@ using HtHistory.Core.DataBridges.CacheBridges;
 using HtHistory.Update;
 using System.Threading;
 using HtHistory.Statistics.Players;
-using HtHistory.Core.ExtensionMethods;
+using HtHistory.Toolbox;
 using HtHistory.Settings;
 
 using Columns = System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.IPlayerStatisticCalculator<System.Collections.Generic.IEnumerable<HtHistory.Statistics.Players.MatchAppearance>>>;
