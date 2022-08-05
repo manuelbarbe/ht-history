@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "hthistorydev-7780"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "hthistorydev-7780"
+  template:
+    metadata:
+      labels:
+        app: "hthistorydev-7780"
+    spec:
+      containers:
+        - name: "hthistorydev-7780"
+          image: "hthistorycontainerregistry.azurecr.io/hthistorydev"
+          ports:
+          - containerPort: 80
